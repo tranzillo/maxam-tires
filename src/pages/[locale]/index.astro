@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/ui/Hero.astro';
+import Section from '../../components/ui/Section.astro';
+import ContentGrid from '../../components/ui/ContentGrid.astro';
+import IndustryCard from '../../components/ui/IndustryCard.astro';
+import ProductCard from '../../components/ui/ProductCard.astro';
+import ArticleCard from '../../components/ui/ArticleCard.astro';
+import type { Locale } from '../../types';
+import { locales, t, localePath } from '../../lib/i18n';
+import { getAllIndustries, getFeaturedProducts, getRecentArticles } from '../../lib/data';
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({ params: { locale } }));
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const industries = getAllIndustries(locale);
+const featuredProducts = getFeaturedProducts(locale, 4);
+const recentArticles = getRecentArticles(locale, 3);
+---
+
+<BaseLayout locale={locale}>
+  <!-- Hero -->
+  <Hero heading={t(locale, 'home.hero_heading')} subheading={t(locale, 'home.hero_subheading')}>
+    <a
+      href={localePath(locale, '/products')}
+      class="inline-block bg-maxam-white text-maxam-black font-semibold px-6 py-3 rounded hover:bg-maxam-gray-100 transition-colors text-sm"
+    >
+      {t(locale, 'home.hero_cta')}
+    </a>
+  </Hero>
+
+  <!-- Industries grid -->
+  <Section
+    heading={t(locale, 'home.industries_heading')}
+    subheading={t(locale, 'home.industries_subheading')}
+  >
+    <ContentGrid columns={3}>
+      {industries.map((industry) => (
+        <IndustryCard industry={industry} locale={locale} />
+      ))}
+    </ContentGrid>
+  </Section>
+
+  <!-- Featured products -->
+  <Section
+    heading={t(locale, 'home.featured_heading')}
+    viewAllHref={localePath(locale, '/products')}
+    viewAllLabel={t(locale, 'home.featured_view_all')}
+    background="gray"
+  >
+    <ContentGrid columns={4}>
+      {featuredProducts.map((tire) => (
+        <ProductCard tire={tire} locale={locale} />
+      ))}
+    </ContentGrid>
+  </Section>
+
+  <!-- Recent resources -->
+  {recentArticles.length > 0 && (
+    <Section
+      heading={t(locale, 'home.resources_heading')}
+      subheading={t(locale, 'home.resources_subheading')}
+      viewAllHref={localePath(locale, '/resources')}
+      viewAllLabel={t(locale, 'home.resources_view_all')}
+    >
+      <ContentGrid columns={3}>
+        {recentArticles.map((article) => (
+          <ArticleCard article={article} locale={locale} />
+        ))}
+      </ContentGrid>
+    </Section>
+  )}
+</BaseLayout>

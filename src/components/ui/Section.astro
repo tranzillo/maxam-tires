@@ -1,0 +1,31 @@
+---
+interface Props {
+  heading: string;
+  subheading?: string;
+  viewAllHref?: string;
+  viewAllLabel?: string;
+  background?: 'white' | 'gray';
+  class?: string;
+}
+
+const { heading, subheading, viewAllHref, viewAllLabel, background = 'white', class: className } = Astro.props;
+
+const bgClass = background === 'gray' ? 'bg-maxam-gray-100' : '';
+---
+
+<section class:list={['py-16', bgClass, className]}>
+  <div class="max-w-[var(--container-max)] mx-auto px-4">
+    <div class="flex items-end justify-between mb-8 gap-4">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-maxam-black">{heading}</h2>
+        {subheading && <p class="text-maxam-gray-500 mt-2 max-w-2xl">{subheading}</p>}
+      </div>
+      {viewAllHref && viewAllLabel && (
+        <a href={viewAllHref} class="text-sm font-semibold text-maxam-blue hover:underline shrink-0">
+          {viewAllLabel} <span class="inline-block rtl:scale-x-[-1]" aria-hidden="true">&rarr;</span>
+        </a>
+      )}
+    </div>
+    <slot />
+  </div>
+</section>

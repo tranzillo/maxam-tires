@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Hero from '../../../../components/ui/Hero.astro';
+import Section from '../../../../components/ui/Section.astro';
+import ContentGrid from '../../../../components/ui/ContentGrid.astro';
+import ProductCard from '../../../../components/ui/ProductCard.astro';
+import ArticleCard from '../../../../components/ui/ArticleCard.astro';
+import type { Locale } from '../../../../types';
+import { locales, t, localePath } from '../../../../lib/i18n';
+import { getAllIndustries, getIndustryBySlug, getProductsByIndustry, getArticlesByIndustry, getAllApplications } from '../../../../lib/data';
+
+export function getStaticPaths() {
+  const industries = getAllIndustries('en');
+  const paths: Array<{ params: { locale: string; industry: string } }> = [];
+  for (const locale of locales) {
+    for (const industry of industries) {
+      paths.push({ params: { locale, industry: industry.slug } });
+    }
+  }
+  return paths;
+}
+
+const { locale, industry: industrySlug } = Astro.params as { locale: Locale; industry: string };
+const industry = getIndustryBySlug(locale, industrySlug);
+
+if (!industry) {
+  return Astro.redirect(localePath(locale, '/products'));
+}
+
+const products = getProductsByIndustry(locale, industrySlug);
+const articles = getArticlesByIndustry(locale, industrySlug).slice(0, 6);
+const allApplications = getAllApplications(locale);
+
+// Group products by application
+const applicationGroups: Array<{ name: string; products: typeof products }> = [];
+const ungrouped: typeof products = [];
+
+for (const product of products) {
+  if (product.applications.length === 0) {
+    ungrouped.push(product);
+    continue;
+  }
+  for (const app of product.applications) {
+    let group = applicationGroups.find((g) => g.name === app.name);
+    if (!group) {
+      group = { name: app.name, products: [] };
+      applicationGroups.push(group);
+    }
+    if (!group.products.some((p) => p.id === product.id)) {
+      group.products.push(product);
+    }
+  }
+}
+if (ungrouped.length > 0) {
+  applicationGroups.push({ name: t(locale, 'industry.products_heading'), products: ungrouped });
+}
+---
+
+<BaseLayout locale={locale} title={industry.name}>
+  <!-- Hero -->
+  <Hero heading={industry.name} subheading={industry.description} overlayColor={industry.color}>
+    <a
+      href={localePath(locale, '/products')}
+      class="inline-block bg-maxam-white text-maxam-black font-semibold px-6 py-3 rounded hover:bg-maxam-gray-100 transition-colors text-sm"
+    >
+      {t(locale, 'industry.view_all_products')}
+    </a>
+  </Hero>
+
+  <!-- Breadcrumb -->
+  <div class="max-w-[var(--container-max)] mx-auto px-4 pt-6">
+    <nav class="text-sm text-maxam-gray-500">
+      <a href={localePath(locale, '/')} class="hover:text-maxam-blue">{t(locale, 'nav.home')}</a>
+      <span class="mx-2">/</span>
+      <a href={localePath(locale, '/products')} class="hover:text-maxam-blue">{t(locale, 'nav.products')}</a>
+      <span class="mx-2">/</span>
+      <span class="text-maxam-black font-medium">{industry.name}</span>
+    </nav>
+  </div>
+
+  <!-- Products grouped by application -->
+  {applicationGroups.map((group) => (
+    <Section heading={group.name}>
+      <ContentGrid columns={3}>
+        {group.products.map((tire) => (
+          <ProductCard tire={tire} locale={locale} accentColor={industry.color} />
+        ))}
+      </ContentGrid>
+    </Section>
+  ))}
+
+  <!-- Related resources -->
+  {articles.length > 0 && (
+    <Section
+      heading={t(locale, 'industry.resources_heading')}
+      viewAllHref={`/${locale}/resources/?industry=${industry.id}`}
+      viewAllLabel={t(locale, 'common.view_all')}
+      background="gray"
+    >
+      <ContentGrid columns={3}>
+        {articles.map((article) => (
+          <ArticleCard article={article} locale={locale} />
+        ))}
+      </ContentGrid>
+    </Section>
+  )}
+</BaseLayout>

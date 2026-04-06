@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import type { Locale } from '../../../types';
+import { locales, t, localePath } from '../../../lib/i18n';
+import { getAllIndustries } from '../../../lib/data';
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({ params: { locale } }));
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const industries = getAllIndustries(locale);
+
+// Office data extracted from WordPress (block-3-column-special)
+// Region names are localized per the WP WPML translations
+const officeRegionNames: Record<string, Record<Locale, string>> = {
+  northAmerica: { en: 'North America', 'ar-ae': 'أمريكا الشمالية', 'zh-hant': '北美' },
+  eu: { en: 'Maxam Tire EU', 'ar-ae': 'شركة Maxam للإطارات في الاتحاد الأوروبي', 'zh-hant': 'Maxam Tire（欧盟）' },
+  amea: { en: 'Maxam Tire AMEA', 'ar-ae': 'شركة Maxam للإطارات في أفريقيا والشرق الأوسط وآسيا', 'zh-hant': 'Maxam Tire（亚洲、中东和非洲）' },
+};
+
+const offices = [
+  {
+    region: officeRegionNames.northAmerica[locale],
+    color: '#092479',
+    company: 'MAXAM Tire North America Inc.',
+    locations: [
+      { label: '', address: '300 Rosewood Drive, Suite 102\nDanvers, MA 01923\nUnited States of America' },
+      { label: 'Memphis', address: '5510 East Holmes Rd, Suite A\nMemphis, TN 38118' },
+      { label: 'Los Angeles', address: '19119 South Reyes Avenue\nRancho Dominguez, CA 90221' },
+      { label: 'Houston', address: '121 Esplanade Blvd\nHouston, TX 77060' },
+    ],
+    phones: ['+1 844-629-2662', '+1 978-560-0624'],
+  },
+  {
+    region: officeRegionNames.eu[locale],
+    color: '#0077c8',
+    company: 'MAXAM International Limited',
+    locations: [
+      { label: '', address: 'Grosser Hasenpfad 30\nD-60598\nFrankfurt am Main\nGermany' },
+    ],
+    phones: ['+44 121 790 0505', '+44 121 767 1898'],
+  },
+  {
+    region: officeRegionNames.amea[locale],
+    color: '#000000',
+    company: 'MAXAM Tire Solutions Co, Ltd',
+    locations: [
+      { label: '', address: 'EVE Building, No. 43\nZhengzhou Road,\nQingdao, China\n266000' },
+      { label: '', address: 'Room 1911, Lee Garden One\n33 Hysan Avenue,\nCauseway Bay, Hong Kong' },
+    ],
+    phones: ['+86-532-66981649'],
+  },
+];
+---
+
+<BaseLayout locale={locale} title={t(locale, 'contact.title')}>
+  <section class="max-w-[var(--container-max)] mx-auto px-4 py-10">
+    <!-- Page heading -->
+    <div class="mb-10">
+      <h1 class="text-4xl font-bold text-maxam-black mb-2">
+        {t(locale, 'contact.heading')}
+      </h1>
+      <p class="text-lg text-maxam-gray-500 max-w-2xl">
+        {t(locale, 'contact.subheading')}
+      </p>
+    </div>
+
+    <!-- Main: Offices + Form -->
+    <div class="flex flex-col lg:flex-row gap-10">
+      <!-- Left: Office locations -->
+      <div class="flex-1">
+        <h2 class="text-2xl font-bold text-maxam-black mb-2">
+          {t(locale, 'contact.offices.heading')}
+        </h2>
+        <p class="text-sm text-maxam-gray-500 mb-6">
+          {t(locale, 'contact.offices.subheading')}
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-6">
+          {offices.map((office) => (
+            <div class="border border-maxam-gray-100 rounded-lg p-5">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="inline-block w-3 h-3 rounded-full shrink-0" style={`background:${office.color}`}></span>
+                <h3 class="font-semibold text-maxam-black">{office.region}</h3>
+              </div>
+              <p class="text-sm font-medium text-maxam-gray-700 mb-2">{office.company}</p>
+
+              {office.locations.map((loc) => (
+                <div class="text-sm text-maxam-gray-700 mb-3">
+                  {loc.label && <p class="font-bold">{loc.label}</p>}
+                  <p class="whitespace-pre-line">{loc.address}</p>
+                </div>
+              ))}
+
+              <div class="space-y-1">
+                {office.phones.map((phone) => (
+                  <p>
+                    <a
+                      href={`tel:${phone.replace(/[\s()-]/g, '')}`}
+                      class="text-sm text-maxam-blue hover:underline"
+                    >
+                      {phone}
+                    </a>
+                  </p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: Contact form -->
+      <div class="w-full lg:w-[420px] shrink-0">
+        <div class="bg-maxam-blue rounded-2xl p-6 text-maxam-white">
+          <h2 class="text-xl font-bold mb-2">
+            {t(locale, 'product.get_in_touch')}
+          </h2>
+          <p class="text-sm opacity-90 mb-4">
+            {t(locale, 'contact.form_intro')}
+          </p>
+
+          <form class="space-y-3" data-static-form>
+            <div>
+              <label for="contact-name" class="block text-sm mb-1 opacity-90">
+                {t(locale, 'contact.form.name')}
+              </label>
+              <input
+                type="text" id="contact-name" name="name" required
+                class="w-full px-3 py-2 rounded bg-maxam-white text-maxam-black text-sm focus:outline-none focus:ring-2 focus:ring-maxam-white"
+              />
+            </div>
+
+            <div>
+              <label for="contact-email" class="block text-sm mb-1 opacity-90">
+                {t(locale, 'contact.form.email')}
+              </label>
+              <input
+                type="email" id="contact-email" name="email" required
+                class="w-full px-3 py-2 rounded bg-maxam-white text-maxam-black text-sm focus:outline-none focus:ring-2 focus:ring-maxam-white"
+              />
+            </div>
+
+            <div>
+              <label for="contact-phone" class="block text-sm mb-1 opacity-90">
+                {t(locale, 'contact.form.phone')}
+              </label>
+              <input
+                type="tel" id="contact-phone" name="phone"
+                class="w-full px-3 py-2 rounded bg-maxam-white text-maxam-black text-sm focus:outline-none focus:ring-2 focus:ring-maxam-white"
+              />
+            </div>
+
+            <div>
+              <label for="contact-company" class="block text-sm mb-1 opacity-90">
+                {t(locale, 'contact.form.company')}
+              </label>
+              <input
+                type="text" id="contact-company" name="company"
+                class="w-full px-3 py-2 rounded bg-maxam-white text-maxam-black text-sm focus:outline-none focus:ring-2 focus:ring-maxam-white"
+              />
+            </div>
+
+            <div>
+              <label for="contact-industry" class="block text-sm mb-1 opacity-90">
+                {t(locale, 'contact.form.industry')}
+              </label>
+              <select
+                id="contact-industry" name="industry"
+                class="w-full px-3 py-2 rounded bg-maxam-white text-maxam-black text-sm focus:outline-none focus:ring-2 focus:ring-maxam-white"
+              >
+                <option value="">{t(locale, 'contact.form.industry_placeholder')}</option>
+                {industries.map((ind) => (
+                  <option value={ind.slug}>{ind.name}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label for="contact-message" class="block text-sm mb-1 opacity-90">
+                {t(locale, 'contact.form.message')}
+              </label>
+              <textarea
+                id="contact-message" name="message" rows="4" required
+                class="w-full px-3 py-2 rounded bg-maxam-white text-maxam-black text-sm focus:outline-none focus:ring-2 focus:ring-maxam-white resize-y"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-maxam-white text-maxam-blue font-semibold py-2.5 rounded-full hover:bg-maxam-gray-100 transition-colors text-sm"
+            >
+              {t(locale, 'contact.form.submit')}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

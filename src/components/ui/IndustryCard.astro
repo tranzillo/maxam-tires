@@ -1,0 +1,31 @@
+---
+import type { Industry, Locale } from '../../types';
+import { t } from '../../lib/i18n';
+
+interface Props {
+  industry: Industry;
+  locale: Locale;
+}
+
+const { industry, locale } = Astro.props;
+const href = `/${locale}/products/${industry.slug}/`;
+---
+
+<a
+  href={href}
+  class="group block rounded-lg overflow-hidden border border-maxam-gray-100 hover:shadow-lg transition-shadow"
+>
+  <!-- Image placeholder with industry color -->
+  <div
+    class="aspect-[16/9] flex items-center justify-center text-maxam-white text-sm font-medium"
+    style={`background:${industry.color}`}
+  >
+    {industry.name}
+  </div>
+  <div class="p-4 flex items-center justify-between">
+    <h3 class="font-bold text-base text-maxam-black group-hover:text-maxam-blue transition-colors">
+      {industry.name}
+    </h3>
+    <span class="text-maxam-blue text-sm inline-block rtl:scale-x-[-1]" aria-hidden="true">&rarr;</span>
+  </div>
+</a>

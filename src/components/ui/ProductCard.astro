@@ -1,0 +1,59 @@
+---
+import type { Tire, Locale } from '../../types';
+import { t } from '../../lib/i18n';
+import IndustryBadge from './IndustryBadge.astro';
+
+interface Props {
+  tire: Tire;
+  locale: Locale;
+  accentColor?: string;
+  showFilterData?: boolean;
+}
+
+const { tire, locale, accentColor, showFilterData = false } = Astro.props;
+const linkColor = accentColor ?? 'var(--color-maxam-blue)';
+const detailHref = `/${locale}/products/${tire.industries[0].slug}/${tire.slug}`;
+
+const filterAttrs = showFilterData ? {
+  'data-industries': tire.industries.map((i) => i.id).join(','),
+  'data-applications': tire.applications.map((a) => a.id).join(','),
+  'data-sizes': tire.sizes.join(','),
+  'data-rating': String(tire.rating ?? 0),
+  'data-title': tire.title.toLowerCase(),
+} : {};
+---
+
+<article
+  class:list={['product-card border border-maxam-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow', Astro.props.class]}
+  {...filterAttrs}
+>
+  <!-- Image placeholder -->
+  <div class="aspect-[4/3] bg-maxam-gray-100 flex items-center justify-center text-maxam-gray-500 text-sm">
+    {tire.title}
+  </div>
+
+  <div class="p-4">
+    <h3 class="font-bold text-lg">{tire.title}</h3>
+    {tire.subheading && <p class="text-sm text-maxam-gray-500">{tire.subheading}</p>}
+
+    <!-- Industry badges -->
+    <div class="flex flex-wrap gap-1 mt-2">
+      {tire.industries.map((ind) => (
+        <IndustryBadge name={ind.name} color={ind.color} />
+      ))}
+    </div>
+
+    <!-- Description -->
+    <p class="text-sm text-maxam-gray-700 mt-3 line-clamp-3">
+      {tire.description}
+    </p>
+
+    <a
+      href={detailHref}
+      class="inline-block mt-4 text-sm font-semibold hover:underline"
+      style={`color:${linkColor}`}
+    >
+      {t(locale, 'products.learn_more')} <span class="inline-block rtl:scale-x-[-1]" aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</article>

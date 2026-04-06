@@ -1,0 +1,65 @@
+---
+import type { Locale } from '../../types';
+import { t, localePath } from '../../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const year = new Date().getFullYear();
+const copyright = t(locale, 'footer.copyright').replace('{year}', String(year));
+---
+
+<footer class="bg-maxam-black text-maxam-gray-300 mt-auto">
+  <div class="max-w-[var(--container-max)] mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Brand -->
+      <div>
+        <a href={localePath(locale, '/')} class="text-maxam-white font-bold text-xl">
+          MAXAM
+        </a>
+        <p class="mt-3 text-sm leading-relaxed">
+          {t(locale, 'site.description')}
+        </p>
+      </div>
+
+      <!-- Products links -->
+      <div>
+        <h3 class="text-maxam-white font-semibold text-sm uppercase tracking-wider mb-3">
+          {t(locale, 'footer.products')}
+        </h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href={localePath(locale, '/products')} class="hover:text-maxam-white transition-colors">
+              {t(locale, 'nav.products')}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <h3 class="text-maxam-white font-semibold text-sm uppercase tracking-wider mb-3">
+          {t(locale, 'nav.contact')}
+        </h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href={localePath(locale, '/contact')} class="hover:text-maxam-white transition-colors">
+              {t(locale, 'nav.contact')}
+            </a>
+          </li>
+          <li>
+            <a href={localePath(locale, '/resources')} class="hover:text-maxam-white transition-colors">
+              {t(locale, 'nav.resources')}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-maxam-gray-700 mt-8 pt-6 text-sm text-center">
+      {copyright}
+    </div>
+  </div>
+</footer>

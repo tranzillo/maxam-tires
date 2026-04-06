@@ -1,0 +1,45 @@
+---
+import type { Locale } from '../../types';
+import { locales, t } from '../../lib/i18n';
+
+interface Props {
+  locale: Locale;
+  currentPath: string;
+}
+
+const { locale, currentPath } = Astro.props;
+
+/** Replace the locale segment in a path. */
+function switchLocalePath(targetLocale: Locale, path: string): string {
+  // Strip current locale prefix and rebuild
+  const segments = path.split('/').filter(Boolean);
+  if (locales.includes(segments[0] as Locale)) {
+    segments.shift();
+  }
+  return `/${targetLocale}/${segments.join('/')}`;
+}
+---
+
+<div class="relative inline-block">
+  <select
+    id="lang-select"
+    class="bg-maxam-gray-900 text-maxam-gray-300 text-sm border border-maxam-gray-700 rounded px-2 py-1 cursor-pointer hover:text-maxam-white focus:outline-none focus:ring-1 focus:ring-maxam-blue"
+    aria-label="Select language"
+  >
+    {locales.map((loc) => (
+      <option
+        value={switchLocalePath(loc, currentPath)}
+        selected={loc === locale}
+      >
+        {t(locale, `language.${loc}`)}
+      </option>
+    ))}
+  </select>
+</div>
+
+<script>
+  const select = document.getElementById('lang-select') as HTMLSelectElement | null;
+  select?.addEventListener('change', () => {
+    window.location.href = select.value;
+  });
+</script>

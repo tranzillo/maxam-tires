@@ -1,0 +1,61 @@
+---
+/**
+ * Compact featured card for mega nav.
+ * Renders either a product or an article with thumbnail placeholder, title, and subtitle.
+ */
+import type { Tire, Article, Locale } from '../../types';
+import { t, localePath } from '../../lib/i18n';
+import IndustryBadge from './IndustryBadge.astro';
+
+interface Props {
+  locale: Locale;
+  product?: Tire;
+  article?: Article;
+}
+
+const { locale, product, article } = Astro.props;
+
+let href = '';
+let title = '';
+if (product) {
+  href = localePath(locale, `/products/${product.industries[0].slug}/${product.slug}`);
+  title = product.title;
+} else if (article) {
+  href = article.externalUrl || article.fileUrl || localePath(locale, `/resources/${article.slug}`);
+  title = article.title;
+}
+---
+
+{(product || article) && (
+  <a href={href} class="block rounded-lg border border-maxam-gray-100 overflow-hidden hover:shadow-md transition-shadow group">
+    <!-- Thumbnail placeholder -->
+    <div class="aspect-[16/9] bg-maxam-gray-100 flex items-center justify-center text-maxam-gray-500 text-xs">
+      {title}
+    </div>
+
+    <div class="p-3">
+      {/* Subtitle line */}
+      {product && product.industries.length > 0 && (
+        <div class="flex flex-wrap gap-1 mb-1">
+          {product.industries.slice(0, 2).map((ind) => (
+            <IndustryBadge name={ind.name} color={ind.color} />
+          ))}
+        </div>
+      )}
+
+      {article && (
+        <div class="flex items-center gap-2 mb-1 text-xs text-maxam-gray-500">
+          <span class="bg-maxam-blue text-maxam-white px-1.5 py-0.5 rounded text-[10px] uppercase font-medium">
+            {t(locale, `resources.type.${article.type}`)}
+          </span>
+          <time>{article.date}</time>
+        </div>
+      )}
+
+      {/* Title */}
+      <h4 class="text-sm font-semibold text-maxam-black line-clamp-2 group-hover:text-maxam-blue transition-colors">
+        {title}
+      </h4>
+    </div>
+  </a>
+)}

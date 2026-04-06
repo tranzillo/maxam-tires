@@ -1,0 +1,30 @@
+---
+interface Props {
+  heading: string;
+  subheading?: string;
+  backgroundImage?: string;
+  overlayColor?: string;
+  class?: string;
+}
+
+const { heading, subheading, backgroundImage, overlayColor, class: className } = Astro.props;
+
+const bgStyle = backgroundImage ? `background-image:url(${backgroundImage});background-size:cover;background-position:center;` : '';
+const overlayStyle = overlayColor ? `background:${overlayColor}` : 'background:var(--color-maxam-black)';
+---
+
+<section
+  class:list={['relative overflow-hidden', className]}
+  style={bgStyle}
+>
+  <div class="absolute inset-0 opacity-85" style={overlayStyle}></div>
+  <div class="relative max-w-[var(--container-max)] mx-auto px-4 py-20 md:py-28">
+    <h1 class="text-3xl md:text-5xl font-bold text-maxam-white max-w-3xl">{heading}</h1>
+    {subheading && (
+      <p class="text-lg md:text-xl text-maxam-gray-300 mt-4 max-w-2xl">{subheading}</p>
+    )}
+    <div class="mt-8">
+      <slot />
+    </div>
+  </div>
+</section>

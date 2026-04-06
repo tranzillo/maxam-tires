@@ -1,0 +1,91 @@
+@import 'tailwindcss';
+
+/*
+ * MAXAM Tires – Design Tokens
+ * Extracted from current site for incremental refresh.
+ */
+
+@theme {
+  /* Brand palette */
+  --color-maxam-blue: #0077c8;
+  --color-maxam-blue-dark: #005a9e;
+  --color-maxam-black: #1a1a1a;
+  --color-maxam-gray-900: #2d2d2d;
+  --color-maxam-gray-700: #4a4a4a;
+  --color-maxam-gray-500: #6b6b6b;
+  --color-maxam-gray-300: #b0b0b0;
+  --color-maxam-gray-100: #f0f0f0;
+  --color-maxam-white: #ffffff;
+
+  /* Industry colors */
+  --color-industry-mining: #d4a017;
+  --color-industry-underground: #8b6914;
+  --color-industry-forestry: #2d6a2e;
+  --color-industry-trucking: #1565c0;
+  --color-industry-agricultural: #558b2f;
+  --color-industry-industrial: #e65100;
+  --color-industry-construction: #ef6c00;
+  --color-industry-otr: #6a1b9a;
+  --color-industry-solid-otr: #4a148c;
+  --color-industry-rubber-tracks: #37474f;
+
+  /* Typography scale */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+
+  /* Spacing */
+  --spacing-section: 5rem;
+  --spacing-section-sm: 3rem;
+
+  /* Container */
+  --container-max: 1280px;
+}
+
+/* Base resets */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--color-maxam-gray-900);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* RTL utilities */
+[dir='rtl'] {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans Arabic', sans-serif;
+}
+
+/* Filter drawer — direction-aware slide */
+#filter-sidebar[data-open="false"] {
+  transform: translateX(-100%);
+}
+#filter-sidebar[data-open="true"] {
+  transform: translateX(0);
+}
+[dir='rtl'] #filter-sidebar[data-open="false"] {
+  transform: translateX(100%);
+}
+@media (min-width: 768px) {
+  #filter-sidebar {
+    transform: none !important;
+  }
+}
+
+/* CJK utilities */
+:lang(zh) {
+  font-family: system-ui, -apple-system, 'Segoe UI', 'Noto Sans SC', 'PingFang SC', sans-serif;
+  line-height: 1.8;
+}

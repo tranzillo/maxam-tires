@@ -1,0 +1,112 @@
+---
+/**
+ * Mega navigation panels for Products and Resources.
+ * Rendered inside the Header, toggled by client-side JS.
+ */
+import type { Locale, ArticleType } from '../../types';
+import { t, localePath } from '../../lib/i18n';
+import { getAllIndustries, getFeaturedProducts, getRecentArticles } from '../../lib/data';
+import FeaturedCard from '../ui/FeaturedCard.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const industries = getAllIndustries(locale);
+const featuredProduct = getFeaturedProducts(locale, 1)[0];
+const featuredArticle = getRecentArticles(locale, 1)[0];
+
+const resourceTypes: ArticleType[] = ['blog', 'news', 'event', 'product-sheet', 'brochure'];
+---
+
+<!-- Products mega nav panel -->
+<div
+  id="mega-nav-products"
+  class="hidden absolute inset-x-0 top-full z-40 bg-maxam-white border-b border-maxam-gray-300 shadow-lg"
+>
+  <div class="max-w-[var(--container-max)] mx-auto px-4 py-6 flex gap-8">
+    <!-- Industry links -->
+    <div class="flex-1">
+      <h3 class="font-semibold text-xs uppercase tracking-wider text-maxam-gray-500 mb-3">
+        {t(locale, 'home.industries_heading')}
+      </h3>
+      <ul class="grid grid-cols-2 gap-x-6 gap-y-1">
+        <li>
+          <a
+            href={localePath(locale, '/products')}
+            class="mega-nav-link flex items-center gap-2 py-1.5 text-sm font-semibold text-maxam-blue hover:underline"
+          >
+            {t(locale, 'nav.all_products')}
+          </a>
+        </li>
+        {industries.map((ind) => (
+          <li>
+            <a
+              href={localePath(locale, `/products/${ind.slug}/`)}
+              class="mega-nav-link flex items-center gap-2 py-1.5 text-sm text-maxam-gray-700 hover:text-maxam-black"
+            >
+              <span class="inline-block w-2.5 h-2.5 rounded-full shrink-0" style={`background:${ind.color}`}></span>
+              {ind.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Featured product -->
+    {featuredProduct && (
+      <div class="w-56 shrink-0">
+        <h3 class="font-semibold text-xs uppercase tracking-wider text-maxam-gray-500 mb-3">
+          {t(locale, 'nav.featured')}
+        </h3>
+        <FeaturedCard locale={locale} product={featuredProduct} />
+      </div>
+    )}
+  </div>
+</div>
+
+<!-- Resources mega nav panel -->
+<div
+  id="mega-nav-resources"
+  class="hidden absolute inset-x-0 top-full z-40 bg-maxam-white border-b border-maxam-gray-300 shadow-lg"
+>
+  <div class="max-w-[var(--container-max)] mx-auto px-4 py-6 flex gap-8">
+    <!-- Resource type links -->
+    <div class="flex-1">
+      <h3 class="font-semibold text-xs uppercase tracking-wider text-maxam-gray-500 mb-3">
+        {t(locale, 'resources.title')}
+      </h3>
+      <ul class="space-y-1">
+        <li>
+          <a
+            href={localePath(locale, '/resources')}
+            class="mega-nav-link block py-1.5 text-sm font-semibold text-maxam-blue hover:underline"
+          >
+            {t(locale, 'nav.all_resources')}
+          </a>
+        </li>
+        {resourceTypes.map((type) => (
+          <li>
+            <a
+              href={`${localePath(locale, '/resources')}?type=${type}`}
+              class="mega-nav-link block py-1.5 text-sm text-maxam-gray-700 hover:text-maxam-black"
+            >
+              {t(locale, `resources.type.${type}`)}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Featured article -->
+    {featuredArticle && (
+      <div class="w-56 shrink-0">
+        <h3 class="font-semibold text-xs uppercase tracking-wider text-maxam-gray-500 mb-3">
+          {t(locale, 'nav.featured')}
+        </h3>
+        <FeaturedCard locale={locale} article={featuredArticle} />
+      </div>
+    )}
+  </div>
+</div>

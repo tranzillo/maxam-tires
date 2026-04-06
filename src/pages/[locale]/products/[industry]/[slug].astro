@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import SpecTable from '../../../../components/ui/SpecTable.astro';
+import type { Locale } from '../../../../types';
+import { locales, t, localePath } from '../../../../lib/i18n';
+import { getAllProducts, getProductBySlug } from '../../../../lib/data';
+
+export function getStaticPaths() {
+  const products = getAllProducts('en');
+  const paths: Array<{ params: { locale: string; industry: string; slug: string } }> = [];
+  for (const locale of locales) {
+    for (const tire of products) {
+      paths.push({
+        params: {
+          locale,
+          industry: tire.industries[0].slug,
+          slug: tire.slug,
+        },
+      });
+    }
+  }
+  return paths;
+}
+
+const { locale, slug } = Astro.params as { locale: Locale; industry: string; slug: string };
+const tire = getProductBySlug(locale, slug);
+
+if (!tire) {
+  return Astro.redirect(localePath(locale, '/products'));
+}
+
+const primaryIndustry = tire.industries[0];
+---
+
+<BaseLayout locale={locale} title={tire.title}>
+  <article class="max-w-[var(--container-max)] mx-auto px-4 py-10">
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-maxam-gray-500 mb-6">
+      <a href={localePath(locale, '/products')} class="hover:text-maxam-blue">{t(locale, 'nav.products')}</a>
+      <span class="mx-2">/</span>
+      <a href={localePath(locale, `/products/${primaryIndustry.slug}`)} class="hover:text-maxam-blue">
+        {primaryIndustry.name}
+      </a>
+      <span class="mx-2">/</span>
+      <span class="text-maxam-black font-medium">{tire.title}</span>
+    </nav>
+
+    <!-- Hero -->
+    <header class="mb-10">
+      <!-- Industry badges -->
+      <div class="flex flex-wrap gap-2 mb-3">
+        {tire.industries.map((ind) => (
+          <span
+            class="text-xs text-maxam-white px-3 py-1 rounded-full font-medium"
+            style={`background:${ind.color}`}
+          >
+            {ind.name}
+          </span>
+        ))}
+      </div>
+
+      <h1 class="text-4xl font-bold text-maxam-black">{tire.title}</h1>
+      {tire.subheading && (
+        <p class="text-xl text-maxam-gray-500 mt-1">{tire.subheading}</p>
+      )}
+
+      <!-- Application icons -->
+      {tire.applications.length > 0 && (
+        <div class="flex flex-wrap gap-3 mt-4 text-sm text-maxam-gray-700">
+          {tire.applications.map((app) => (
+            <span class="bg-maxam-gray-100 px-3 py-1 rounded">{app.name}</span>
+          ))}
+        </div>
+      )}
+
+      <p class="text-maxam-gray-700 mt-6 max-w-3xl leading-relaxed">{tire.description}</p>
+    </header>
+
+    <!-- Gallery placeholder -->
+    <section class="mb-10">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {tire.galleryImages.map((img) => (
+          <div class="aspect-square bg-maxam-gray-100 rounded-lg flex items-center justify-center text-maxam-gray-500 text-sm">
+            {img.split('/').pop()}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="mb-10">
+      <a
+        href={localePath(locale, '/contact')}
+        class="inline-block bg-maxam-blue text-maxam-white font-semibold px-6 py-3 rounded hover:bg-maxam-blue-dark transition-colors"
+      >
+        {t(locale, 'product.get_in_touch')}
+      </a>
+    </div>
+
+    <!-- Features -->
+    {tire.features.length > 0 && (
+      <section class="mb-10 rounded-lg p-8" style={`background:${primaryIndustry.color}10`}>
+        <h2 class="text-2xl font-bold text-maxam-black mb-4">
+          {t(locale, 'product.features')}
+        </h2>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {tire.features.map((feature) => (
+            <li class="flex items-start gap-2">
+              <span class="mt-1 w-2 h-2 rounded-full shrink-0" style={`background:${primaryIndustry.color}`}></span>
+              <span>{feature}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <!-- Specifications -->
+    {tire.specTable && (
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold text-maxam-black mb-4">
+          {t(locale, 'product.specifications')}
+        </h2>
+        <SpecTable table={tire.specTable} industryColor={primaryIndustry.color} />
+      </section>
+    )}
+
+    <!-- Sizes (shown if no spec table, since sizes are usually columns in the table) -->
+    {!tire.specTable && tire.sizes.length > 0 && (
+      <section class="mb-10">
+        <span class="font-medium text-maxam-gray-700 text-sm">{t(locale, 'products.filter.size')}:</span>
+        <div class="flex flex-wrap gap-2 mt-2">
+          {tire.sizes.map((size) => (
+            <span class="bg-maxam-gray-100 text-sm px-3 py-1 rounded">{size}</span>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Back link -->
+    <div class="mt-12 pt-6 border-t border-maxam-gray-100">
+      <a
+        href={localePath(locale, '/products')}
+        class="text-maxam-blue font-medium hover:underline"
+      >
+        <span class="inline-block rtl:scale-x-[-1]" aria-hidden="true">←</span> {t(locale, 'product.back')}
+      </a>
+    </div>
+  </article>
+</BaseLayout>

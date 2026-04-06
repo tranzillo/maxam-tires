@@ -1,0 +1,118 @@
+---
+/**
+ * Multi-column spec table with horizontal scroll and sticky first column.
+ * Renders TablePress-style data: headers, unit rows (first 2), and data rows.
+ */
+import type { SpecTable } from '../../types';
+
+interface Props {
+  table: SpecTable;
+  industryColor?: string;
+}
+
+const { table, industryColor = '#0077c8' } = Astro.props;
+
+// First 2 rows are unit rows (imperial, metric) — rest are data
+const unitRows = table.rows.slice(0, 2);
+const dataRows = table.rows.slice(2);
+---
+
+<div class="spec-table-wrapper overflow-x-auto border border-maxam-gray-300 rounded-lg">
+  <table class="spec-table w-full text-xs border-collapse whitespace-nowrap">
+    <thead>
+      <tr>
+        {table.headers.map((header, i) => (
+          <th
+            class:list={[
+              'px-3 py-2 text-maxam-white font-medium text-start',
+              i === 0 && 'sticky-col',
+            ]}
+            style={`background:${industryColor};${i === 0 ? `z-index:3;` : ''}`}
+          >
+            {header.replace(/\n/g, ' ')}
+          </th>
+        ))}
+      </tr>
+      {unitRows.map((row) => (
+        <tr class="unit-row">
+          {row.map((cell, i) => (
+            <td
+              class:list={[
+                'px-3 py-1 text-maxam-white text-start bg-maxam-gray-500',
+                i === 0 && 'sticky-col',
+              ]}
+              style={i === 0 ? 'z-index:2;' : ''}
+            >
+              {cell}
+            </td>
+          ))}
+        </tr>
+      ))}
+    </thead>
+    <tbody>
+      {dataRows.map((row, rowIdx) => (
+        <tr class={rowIdx % 2 === 0 ? 'bg-maxam-white' : 'bg-maxam-gray-100'}>
+          {row.map((cell, i) => (
+            <td
+              class:list={[
+                'px-3 py-2 border-b border-maxam-gray-300 text-start',
+                i === 0 && 'sticky-col font-medium',
+              ]}
+              style={i === 0 ? `z-index:1; background: inherit;` : ''}
+            >
+              {cell}
+            </td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .spec-table-wrapper {
+    position: relative;
+  }
+
+  .spec-table {
+    min-width: max-content;
+  }
+
+  .spec-table th,
+  .spec-table td {
+    min-width: 60px;
+  }
+
+  /* Sticky first column */
+  .sticky-col {
+    position: sticky;
+    inset-inline-start: 0;
+    min-width: 100px;
+  }
+
+  /* Shadow hint on the sticky column when scrolled */
+  .spec-table-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    inset-inline-start: 100px;
+    bottom: 0;
+    width: 8px;
+    pointer-events: none;
+    background: linear-gradient(to right, rgba(0,0,0,0.06), transparent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .spec-table-wrapper.is-scrolled::after {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.spec-table-wrapper').forEach((wrapper) => {
+    wrapper.addEventListener('scroll', () => {
+      wrapper.classList.toggle('is-scrolled', wrapper.scrollLeft > 0);
+    });
+  });
+</script>

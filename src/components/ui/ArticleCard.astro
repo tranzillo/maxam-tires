@@ -1,0 +1,66 @@
+---
+import type { Article, Locale } from '../../types';
+import { t } from '../../lib/i18n';
+
+interface Props {
+  article: Article;
+  locale: Locale;
+  showFilterData?: boolean;
+}
+
+const { article, locale, showFilterData = false } = Astro.props;
+
+const typeLabel = t(locale, `resources.type.${article.type}`);
+const isDownload = article.type === 'product-sheet' || article.type === 'brochure';
+const isExternal = !!article.externalUrl;
+const actionLabel = isDownload ? t(locale, 'resources.download') : t(locale, 'resources.read_more');
+
+const href = isExternal
+  ? article.externalUrl!
+  : isDownload && article.fileUrl
+    ? article.fileUrl
+    : `/${locale}/resources/${article.slug}`;
+
+const dateFormatted = new Date(article.date).toLocaleDateString(
+  locale === 'ar-ae' ? 'ar' : locale === 'zh-hant' ? 'zh-Hant' : 'en',
+  { year: 'numeric', month: 'short', day: 'numeric' }
+);
+
+const filterAttrs = showFilterData ? {
+  'data-type': article.type,
+  'data-industries': article.industries.map((i) => i.id).join(','),
+  'data-title': article.title.toLowerCase(),
+} : {};
+---
+
+<article
+  class:list={['article-card border border-maxam-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow', Astro.props.class]}
+  {...filterAttrs}
+>
+  <!-- Image placeholder -->
+  <div class="aspect-[16/9] bg-maxam-gray-100 flex items-center justify-center text-maxam-gray-500 text-xs relative">
+    {article.type === 'product-sheet' || article.type === 'brochure' ? 'PDF' : article.title}
+    <!-- Type badge -->
+    <span class="absolute top-3 start-3 bg-maxam-blue text-maxam-white text-xs font-medium px-2 py-0.5 rounded">
+      {typeLabel}
+    </span>
+  </div>
+
+  <div class="p-4">
+    <time class="text-xs text-maxam-gray-500" datetime={article.date}>{dateFormatted}</time>
+    <h3 class="font-bold text-base mt-1">
+      <a href={href} class="hover:text-maxam-blue" {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+        {article.title}
+      </a>
+    </h3>
+    <p class="text-sm text-maxam-gray-700 mt-2 line-clamp-3">{article.excerpt}</p>
+    <a
+      href={href}
+      class="inline-block mt-3 text-sm font-semibold text-maxam-blue hover:underline"
+      {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      {...(isDownload ? { download: '' } : {})}
+    >
+      {actionLabel} <span class="inline-block rtl:scale-x-[-1]" aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</article>

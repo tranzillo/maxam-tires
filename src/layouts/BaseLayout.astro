@@ -1,0 +1,37 @@
+---
+import '../styles/global.css';
+import Header from '../components/global/Header.astro';
+import Footer from '../components/global/Footer.astro';
+import type { Locale } from '../types';
+import { t, getDir, getLang } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+  title?: string;
+  description?: string;
+}
+
+const { locale, title, description } = Astro.props;
+const dir = getDir(locale);
+const lang = getLang(locale);
+const pageTitle = title ? `${title} | ${t(locale, 'site.title')}` : t(locale, 'site.title');
+const pageDescription = description ?? t(locale, 'site.description');
+---
+
+<!doctype html>
+<html lang={lang} dir={dir}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={pageDescription} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{pageTitle}</title>
+  </head>
+  <body class="min-h-screen flex flex-col bg-maxam-white text-maxam-gray-900">
+    <Header locale={locale} />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>
