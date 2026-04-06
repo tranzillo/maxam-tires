@@ -32,10 +32,7 @@ const recentArticles = getRecentArticles(locale, 3);
   </Hero>
 
   <!-- Industries grid -->
-  <Section
-    heading={t(locale, 'home.industries_heading')}
-    subheading={t(locale, 'home.industries_subheading')}
-  >
+  <Section>
     <ContentGrid columns={3}>
       {industries.map((industry) => (
         <IndustryCard industry={industry} locale={locale} />
