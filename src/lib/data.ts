@@ -25,19 +25,17 @@ import applicationsJson from '../data/notion-content/applications.json';
 import tireTypesJson from '../data/notion-content/tire-types.json';
 import documentsJson from '../data/notion-content/documents.json';
 import { existsSync, readFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
+import { join } from 'node:path';
 
-// Resolve the blocks directory once. Sidecar block files are read lazily
-// at build time to avoid statically importing tens of MB of JSON into
-// every page bundle.
-const blocksDir = join(
-  dirname(fileURLToPath(import.meta.url)),
-  '..',
-  'data',
-  'notion-content',
-  'blocks'
-);
+// Sidecar block files are read lazily at build time to avoid statically
+// importing tens of MB of JSON into every page bundle.
+//
+// We resolve from `process.cwd()` rather than `import.meta.url` because
+// Astro bundles this module into dist/.prerender/chunks/* during `astro
+// build`, which makes `import.meta.url`-relative paths point at the
+// wrong location. `process.cwd()` is the project root in both `astro
+// dev` and `astro build`, so the path is stable.
+const blocksDir = join(process.cwd(), 'src', 'data', 'notion-content', 'blocks');
 
 function readBlocks(type: 'product' | 'article' | 'event', locale: string, slug: string): any[] {
   const file = join(blocksDir, `${type}-${locale}-${slug}.json`);
