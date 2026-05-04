@@ -65,6 +65,7 @@ export interface RawArticle {
   externalLink: string | null;
   featuredImage: string | null;
   author: string;
+  industryIds: string[];
   translationIds: string[];
   blocks?: any[];
 }
@@ -202,6 +203,7 @@ export async function fetchArticles({ withBlocks = false } = {}): Promise<RawArt
       externalLink: getUrl(props, 'External Link'),
       featuredImage: getUrl(props, 'Featured Image'),
       author: getRichText(props, 'Author'),
+      industryIds: getRelationIds(props, 'Industries'),
       translationIds: getRelationIds(props, 'Translations'),
     };
     if (withBlocks) row.blocks = await fetchPageBlocks(p.id);

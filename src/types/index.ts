@@ -60,6 +60,7 @@ export interface Tire {
   features: string[];
   specifications: SpecRow[];
   specTable?: SpecTable;
+  featuredImage?: string;
   galleryImages: string[];
   specialLogo?: string;
   documents: Document[];

@@ -3,14 +3,15 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ArticleCard from '../../../components/ui/ArticleCard.astro';
 import type { Locale } from '../../../types';
 import { locales, t } from '../../../lib/i18n';
-import { getAllArticles, getAllIndustries } from '../../../lib/data';
+import { getAllResources, getAllIndustries } from '../../../lib/data';
 
 export function getStaticPaths() {
   return locales.map((locale) => ({ params: { locale } }));
 }
 
 const { locale } = Astro.params as { locale: Locale };
-const articles = getAllArticles(locale);
+// Mixed feed: articles (blog/news/event) + documents (brochures + sheets).
+const articles = getAllResources(locale);
 const industries = getAllIndustries(locale);
 
 const articleTypes = [

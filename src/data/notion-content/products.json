@@ -3513,7 +3513,8 @@
       "35534d6d-7cea-8126-ac3f-f271fb997621"
     ],
     "translationIds": [
-      "35534d6d-7cea-81ef-b40f-fe8e874186e6"
+      "35534d6d-7cea-81ef-b40f-fe8e874186e6",
+      "35634d6d-7cea-812e-b8b0-d741c04725a1"
     ],
     "industries": [
       "agricultural-tires"
@@ -16703,7 +16704,8 @@
     ],
     "documentIds": [],
     "translationIds": [
-      "35534d6d-7cea-8130-84ae-f00ef1195b3f"
+      "35534d6d-7cea-8130-84ae-f00ef1195b3f",
+      "35634d6d-7cea-812e-b8b0-d741c04725a1"
     ],
     "industries": [
       "agricultural-tires"
@@ -17743,5 +17745,292 @@
       "maxam-mining-catalog",
       "maxam-otr-catalog"
     ]
+  },
+  {
+    "pageId": "35634d6d-7cea-8100-bffc-ddae6f2073b7",
+    "wpId": 38749,
+    "trid": 95958,
+    "language": "zh-hant",
+    "title": "MS353",
+    "slug": "ms353",
+    "subheading": "E3",
+    "sizes": [
+      "46/90R57"
+    ],
+    "rating": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2025/11/MS353_shadow.png",
+    "industryIds": [
+      "35534d6d-7cea-8121-bfaa-db93dc5f5df8",
+      "35534d6d-7cea-81d6-aa6e-cd55f592eb61"
+    ],
+    "applicationIds": [
+      "35534d6d-7cea-8135-9bd8-cdd60bf286ca"
+    ],
+    "tireTypeIds": [
+      "35534d6d-7cea-8190-a83b-ce678bf395bc"
+    ],
+    "documentIds": [],
+    "translationIds": [
+      "35634d6d-7cea-81c4-832a-dac17e1c290d",
+      "35634d6d-7cea-81e3-89c4-df906eb8bab5"
+    ],
+    "industries": [
+      "off-the-road-tires",
+      "mining-tires"
+    ],
+    "applications": [
+      "rigid-frame-haul-truck-zh-hant"
+    ],
+    "tireType": "all-steel-radial-zh-hant",
+    "documents": []
+  },
+  {
+    "pageId": "35634d6d-7cea-812e-b8b0-d741c04725a1",
+    "wpId": 38645,
+    "trid": 95578,
+    "language": "zh-hant",
+    "title": "TRACXTRA",
+    "slug": "tracxtra",
+    "subheading": "MS971R",
+    "sizes": [],
+    "rating": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2025/01/241210_Maxam_SOW20__MS971R.jpg",
+    "industryIds": [
+      "35534d6d-7cea-81d1-a564-c02591cd86c5"
+    ],
+    "applicationIds": [
+      "35534d6d-7cea-81c9-b956-cd23834ad23d",
+      "35534d6d-7cea-8147-840f-d3153539d504",
+      "35534d6d-7cea-81bf-9e20-c8fe03d9bbed"
+    ],
+    "tireTypeIds": [
+      "35534d6d-7cea-81b0-83e8-f18620957024"
+    ],
+    "documentIds": [],
+    "translationIds": [
+      "35534d6d-7cea-8130-84ae-f00ef1195b3f",
+      "35534d6d-7cea-81ef-b40f-fe8e874186e6"
+    ],
+    "industries": [
+      "agricultural-tractor-tires"
+    ],
+    "applications": [
+      "tractor-zh-hant",
+      "compact-tractor-zh-hant",
+      "multipurpose-tractor-zh-hant"
+    ],
+    "tireType": "radial-zh-hant",
+    "documents": []
+  },
+  {
+    "pageId": "35634d6d-7cea-815a-966a-ebc5ce9b5382",
+    "wpId": 39003,
+    "trid": 95988,
+    "language": "zh-hant",
+    "title": "ROWXTRA",
+    "slug": "rowxtra",
+    "subheading": "MS963R",
+    "sizes": [
+      "VF245/70R19.5",
+      "VF295/75R22.5"
+    ],
+    "rating": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2025/12/MS963R_shadow.png",
+    "industryIds": [
+      "35534d6d-7cea-81d1-a564-c02591cd86c5"
+    ],
+    "applicationIds": [
+      "35534d6d-7cea-81d7-9d07-c417074f6c25",
+      "35534d6d-7cea-8133-a607-da0d9cc09ec9",
+      "35534d6d-7cea-81da-9795-f5b7d4e5cd81",
+      "35534d6d-7cea-81de-8257-fd615d6cd60d",
+      "35534d6d-7cea-8167-8a8d-d4600910728e"
+    ],
+    "tireTypeIds": [
+      "35534d6d-7cea-8190-a83b-ce678bf395bc"
+    ],
+    "documentIds": [],
+    "translationIds": [
+      "35634d6d-7cea-81a1-a28f-c41ad7f72dd4",
+      "35634d6d-7cea-81e7-acd7-c8e5d9840991"
+    ],
+    "industries": [
+      "agricultural-tractor-tires"
+    ],
+    "applications": [
+      "implement-trailer-zh-hant",
+      "flotation-hf4-zh-hant",
+      "grain-cart-for-agricultural-applications-zh-hant",
+      "water-tanker-zh-hant",
+      "wind-rower-zh-hant"
+    ],
+    "tireType": "all-steel-radial-zh-hant",
+    "documents": []
+  },
+  {
+    "pageId": "35634d6d-7cea-81a1-a28f-c41ad7f72dd4",
+    "wpId": 38915,
+    "trid": 95988,
+    "language": "en",
+    "title": "ROWXTRA",
+    "slug": "rowxtra",
+    "subheading": "MS963R",
+    "sizes": [
+      "VF245/70R19.5",
+      "VF295/75R22.5"
+    ],
+    "rating": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2025/12/MS963R_shadow.png",
+    "industryIds": [
+      "35534d6d-7cea-81ae-b6ea-c7c91195dcde"
+    ],
+    "applicationIds": [
+      "35534d6d-7cea-81d5-a908-ff2dcd0a3ecd",
+      "35534d6d-7cea-81a5-a06e-d75da1b74a5b",
+      "35534d6d-7cea-81f5-a8d7-fc0d277bd709",
+      "35534d6d-7cea-81fb-850d-d094e85abe16",
+      "35534d6d-7cea-8174-ac5d-f5bbf66971d7"
+    ],
+    "tireTypeIds": [
+      "35534d6d-7cea-81b8-86a1-fb4f7050d437"
+    ],
+    "documentIds": [],
+    "translationIds": [
+      "35634d6d-7cea-81e7-acd7-c8e5d9840991",
+      "35634d6d-7cea-815a-966a-ebc5ce9b5382"
+    ],
+    "industries": [
+      "agricultural-tires"
+    ],
+    "applications": [
+      "implement-trailer",
+      "water-tanker",
+      "wind-rower",
+      "trailer-flotation-implements",
+      "grain-cart-for-agricultural-applications"
+    ],
+    "tireType": "all-steel-radial",
+    "documents": []
+  },
+  {
+    "pageId": "35634d6d-7cea-81c4-832a-dac17e1c290d",
+    "wpId": 38745,
+    "trid": 95958,
+    "language": "en",
+    "title": "MS353",
+    "slug": "ms353",
+    "subheading": "E3",
+    "sizes": [
+      "46/90R57"
+    ],
+    "rating": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2025/11/MS353_shadow.png",
+    "industryIds": [
+      "35534d6d-7cea-8193-a922-d38658c5ec95",
+      "35534d6d-7cea-8191-a6e5-fdbcb2d482b4"
+    ],
+    "applicationIds": [
+      "35534d6d-7cea-8182-9fe8-f9a87da55cde"
+    ],
+    "tireTypeIds": [
+      "35534d6d-7cea-81b8-86a1-fb4f7050d437"
+    ],
+    "documentIds": [],
+    "translationIds": [
+      "35634d6d-7cea-81e3-89c4-df906eb8bab5",
+      "35634d6d-7cea-8100-bffc-ddae6f2073b7"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
+    ],
+    "applications": [
+      "rigid-frame-haul-truck"
+    ],
+    "tireType": "all-steel-radial",
+    "documents": []
+  },
+  {
+    "pageId": "35634d6d-7cea-81e3-89c4-df906eb8bab5",
+    "wpId": 38748,
+    "trid": 95958,
+    "language": "ar-ae",
+    "title": "MS353",
+    "slug": "ms353",
+    "subheading": "E3",
+    "sizes": [
+      "46/90R57"
+    ],
+    "rating": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2025/11/MS353_shadow.png",
+    "industryIds": [
+      "35534d6d-7cea-812c-b777-fe29ff920041",
+      "35534d6d-7cea-81b4-96ac-db8aafdb30b7"
+    ],
+    "applicationIds": [
+      "35534d6d-7cea-81df-bf16-e91db7d70e2a"
+    ],
+    "tireTypeIds": [
+      "35534d6d-7cea-812c-a6ae-d4056015e2f3"
+    ],
+    "documentIds": [],
+    "translationIds": [
+      "35634d6d-7cea-81c4-832a-dac17e1c290d",
+      "35634d6d-7cea-8100-bffc-ddae6f2073b7"
+    ],
+    "industries": [
+      "off-the-road-tires",
+      "mining-tires"
+    ],
+    "applications": [
+      "rigid-frame-haul-truck-ar-ae"
+    ],
+    "tireType": "all-steel-radial-ar-ae",
+    "documents": []
+  },
+  {
+    "pageId": "35634d6d-7cea-81e7-acd7-c8e5d9840991",
+    "wpId": 39002,
+    "trid": 95988,
+    "language": "ar-ae",
+    "title": "ROWXTRA",
+    "slug": "rowxtra",
+    "subheading": "MS963R",
+    "sizes": [
+      "VF245/70R19.5",
+      "VF295/75R22.5"
+    ],
+    "rating": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2025/12/MS963R_shadow.png",
+    "industryIds": [
+      "35534d6d-7cea-81d4-9940-e05aaa4a9bd7"
+    ],
+    "applicationIds": [
+      "35534d6d-7cea-81eb-b3da-e6e505e0076f",
+      "35534d6d-7cea-8116-9317-d2b8da315592",
+      "35534d6d-7cea-8142-be1b-c68835252f0e",
+      "35534d6d-7cea-81b3-b6f6-c6bdba5d1aee",
+      "35534d6d-7cea-816b-b2f4-ef3cb924ead8"
+    ],
+    "tireTypeIds": [
+      "35534d6d-7cea-812c-a6ae-d4056015e2f3"
+    ],
+    "documentIds": [],
+    "translationIds": [
+      "35634d6d-7cea-81a1-a28f-c41ad7f72dd4",
+      "35634d6d-7cea-815a-966a-ebc5ce9b5382"
+    ],
+    "industries": [
+      "agricultural-tires"
+    ],
+    "applications": [
+      "wind-rower-ar-ae",
+      "implement-trailer-ar-ae",
+      "trailer-flotation-implements-ar-ae",
+      "grain-cart-for-agricultural-applications-ar-ae",
+      "water-tanker-ar-ae"
+    ],
+    "tireType": "all-steel-radial-ar-ae",
+    "documents": []
   }
 ]

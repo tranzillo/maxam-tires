@@ -8,6 +8,7 @@ interface Props {
   locale: Locale;
   accentColor?: string;
   showFilterData?: boolean;
+  class?: string;
 }
 
 const { tire, locale, accentColor, showFilterData = false } = Astro.props;
@@ -27,10 +28,22 @@ const filterAttrs = showFilterData ? {
   class:list={['product-card border border-maxam-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow', Astro.props.class]}
   {...filterAttrs}
 >
-  <!-- Image placeholder -->
-  <div class="aspect-[4/3] bg-maxam-gray-100 flex items-center justify-center text-maxam-gray-500 text-sm">
-    {tire.title}
-  </div>
+  <!-- Image — Maxam product shots are square (1:1) on a transparent/white
+       background. We match the source aspect so there's no letterboxing. -->
+  <a href={detailHref} class="block aspect-square bg-maxam-gray-100 overflow-hidden">
+    {tire.featuredImage ? (
+      <img
+        src={tire.featuredImage}
+        alt={tire.title}
+        loading="lazy"
+        class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+      />
+    ) : (
+      <span class="w-full h-full flex items-center justify-center text-maxam-gray-500 text-sm">
+        {tire.title}
+      </span>
+    )}
+  </a>
 
   <div class="p-4">
     <h3 class="font-bold text-lg">{tire.title}</h3>

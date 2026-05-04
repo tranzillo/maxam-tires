@@ -12,6 +12,11 @@
     "translationIds": [
       "35534d6d-7cea-81dd-b234-cfb09c965c8c",
       "35534d6d-7cea-8190-8d47-e741e3949639"
+    ],
+    "industries": [
+      "off-the-road-tires",
+      "mining-tires",
+      "underground-mining-tires"
     ]
   },
   {
@@ -27,6 +32,10 @@
     "translationIds": [
       "35534d6d-7cea-811e-b7d7-cf95840c95ea",
       "35534d6d-7cea-81c4-9759-d7de33954be7"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -42,6 +51,9 @@
     "translationIds": [
       "35534d6d-7cea-81d1-ae22-c0323af82af4",
       "35534d6d-7cea-8107-8b84-fa8f6025c2bb"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -57,6 +69,9 @@
     "translationIds": [
       "35534d6d-7cea-817f-8f16-e6b5a545eb55",
       "35534d6d-7cea-81d4-8da7-e2bec64b46e6"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -72,6 +87,9 @@
     "translationIds": [
       "35534d6d-7cea-8122-acf0-dea8823cd502",
       "35534d6d-7cea-81f0-823c-cd96af64293c"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -87,6 +105,10 @@
     "translationIds": [
       "35534d6d-7cea-8187-86ba-e2e250dcd9c1",
       "35534d6d-7cea-817c-bb3b-ff8cfcd4c9dd"
+    ],
+    "industries": [
+      "agricultural-tractor-tires",
+      "construction-tires"
     ]
   },
   {
@@ -102,6 +124,9 @@
     "translationIds": [
       "35534d6d-7cea-8150-8a3e-dde388ddb972",
       "35534d6d-7cea-810b-9477-dcab42bd0834"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -117,6 +142,9 @@
     "translationIds": [
       "35534d6d-7cea-81f4-ba81-ff2dc3a81b77",
       "35534d6d-7cea-81f8-8387-dfd1202314ae"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -132,6 +160,9 @@
     "translationIds": [
       "35534d6d-7cea-81ff-8961-e9953d7e2155",
       "35534d6d-7cea-81ec-8486-d9df476ac1e5"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -147,6 +178,9 @@
     "translationIds": [
       "35534d6d-7cea-8126-ac3f-f271fb997621",
       "35534d6d-7cea-8178-92d3-c5c75cbbc2e6"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -162,6 +196,9 @@
     "translationIds": [
       "35534d6d-7cea-811a-a0d4-f3f8a8c34176",
       "35534d6d-7cea-815a-a2e8-c4339ba55706"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -177,6 +214,9 @@
     "translationIds": [
       "35534d6d-7cea-81c3-b6df-e0d36ce71982",
       "35534d6d-7cea-8126-b944-e871ea0b2e25"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -192,6 +232,9 @@
     "translationIds": [
       "35534d6d-7cea-8160-a88d-db0b8456368a",
       "35534d6d-7cea-81df-9006-e9f287ddc9f7"
+    ],
+    "industries": [
+      "solid-otr-tires"
     ]
   },
   {
@@ -207,6 +250,10 @@
     "translationIds": [
       "35534d6d-7cea-81e0-b309-d91ebcff4d07",
       "35534d6d-7cea-81f2-8a73-ea4c3a2de3fe"
+    ],
+    "industries": [
+      "off-the-road-tires",
+      "construction-tires"
     ]
   },
   {
@@ -222,6 +269,10 @@
     "translationIds": [
       "35534d6d-7cea-8132-8426-ffae2dda6889",
       "35534d6d-7cea-8184-9058-e818c38cd9ea"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -237,6 +288,9 @@
     "translationIds": [
       "35534d6d-7cea-812d-accb-fbc79972fc01",
       "35534d6d-7cea-811d-9c6d-eb58d054c1af"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -252,6 +306,9 @@
     "translationIds": [
       "35534d6d-7cea-8100-bee3-da338155345b",
       "35534d6d-7cea-81d1-ae22-c0323af82af4"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -267,6 +324,9 @@
     "translationIds": [
       "35534d6d-7cea-8154-a3d0-ddad508bf989",
       "35534d6d-7cea-8115-ac42-f28cb20bef5f"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -282,6 +342,10 @@
     "translationIds": [
       "35534d6d-7cea-8112-bae8-c172a4d610a7",
       "35534d6d-7cea-8157-8bcc-d21b4ac7be48"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -297,6 +361,9 @@
     "translationIds": [
       "35534d6d-7cea-8173-ac55-e01fcdcb7c12",
       "35534d6d-7cea-8130-9097-f367203032ab"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -312,6 +379,9 @@
     "translationIds": [
       "35534d6d-7cea-81b3-abd6-d883404e1636",
       "35534d6d-7cea-81c4-af2a-fa3d4c5d47c9"
+    ],
+    "industries": [
+      "solid-otr-tires"
     ]
   },
   {
@@ -327,6 +397,9 @@
     "translationIds": [
       "35534d6d-7cea-8150-8a3e-dde388ddb972",
       "35534d6d-7cea-8103-8db8-c360f5023f86"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -342,6 +415,9 @@
     "translationIds": [
       "35534d6d-7cea-8111-8dcd-ebbcbd69d103",
       "35534d6d-7cea-8114-9546-f4153916da11"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -357,6 +433,9 @@
     "translationIds": [
       "35534d6d-7cea-81ad-b936-d3435a1d1e77",
       "35534d6d-7cea-8140-a57d-ef2869f7d6a5"
+    ],
+    "industries": [
+      "forestry-tires"
     ]
   },
   {
@@ -372,6 +451,10 @@
     "translationIds": [
       "35534d6d-7cea-81db-b936-d92d3af157e5",
       "35534d6d-7cea-8141-aed6-c1346ddef5bf"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -387,6 +470,11 @@
     "translationIds": [
       "35534d6d-7cea-8147-b0ca-c7fec55306c1",
       "35534d6d-7cea-81e2-b800-cf0ed76479db"
+    ],
+    "industries": [
+      "underground-mining-tires",
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -402,6 +490,9 @@
     "translationIds": [
       "35534d6d-7cea-81ce-8977-e7b015755771",
       "35534d6d-7cea-81fb-a606-d37d635a770a"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -417,6 +508,9 @@
     "translationIds": [
       "35534d6d-7cea-81b0-98ed-f319b7ac0a08",
       "35534d6d-7cea-815d-a71b-ce3b6ca25bef"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -432,6 +526,9 @@
     "translationIds": [
       "35534d6d-7cea-817a-8e29-f5b837c822de",
       "35534d6d-7cea-818a-9ff0-f82743856604"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -447,6 +544,10 @@
     "translationIds": [
       "35534d6d-7cea-81f9-b0ec-e8cd41b9e0d6",
       "35534d6d-7cea-8120-8132-d0f0c502e175"
+    ],
+    "industries": [
+      "off-the-road-tires",
+      "underground-mining-tires"
     ]
   },
   {
@@ -462,6 +563,9 @@
     "translationIds": [
       "35534d6d-7cea-81a4-ba83-ddc0ed467cac",
       "35534d6d-7cea-812e-98c5-f6aa4ac2ab2c"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -477,6 +581,9 @@
     "translationIds": [
       "35534d6d-7cea-811b-9425-e316b4645885",
       "35534d6d-7cea-817c-8130-f647d76a9f98"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -492,6 +599,9 @@
     "translationIds": [
       "35534d6d-7cea-8142-9699-ed37a92f3025",
       "35534d6d-7cea-8148-b0ea-db70558833e6"
+    ],
+    "industries": [
+      "rubber-tracks-ar-ae"
     ]
   },
   {
@@ -507,6 +617,10 @@
     "translationIds": [
       "35534d6d-7cea-8155-985d-cef48a2da7e5",
       "35534d6d-7cea-8148-9508-cb6bd0b20876"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -522,6 +636,9 @@
     "translationIds": [
       "35534d6d-7cea-819e-8ee9-ed1a029d5153",
       "35534d6d-7cea-81ec-960b-dfcec791cdd6"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -537,6 +654,9 @@
     "translationIds": [
       "35534d6d-7cea-810b-b83a-d5b5a1eaec79",
       "35534d6d-7cea-8114-9546-f4153916da11"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -552,6 +672,10 @@
     "translationIds": [
       "35534d6d-7cea-8157-8bcc-d21b4ac7be48",
       "35534d6d-7cea-8108-bdb5-cf9db274ed0c"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -567,6 +691,9 @@
     "translationIds": [
       "35534d6d-7cea-810b-b83a-d5b5a1eaec79",
       "35534d6d-7cea-8111-8dcd-ebbcbd69d103"
+    ],
+    "industries": [
+      "agricultural-tractor-tires"
     ]
   },
   {
@@ -582,6 +709,9 @@
     "translationIds": [
       "35534d6d-7cea-8193-9bee-f7be0bd18ccc",
       "35534d6d-7cea-8124-afc3-e4a7cd1577c8"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -597,6 +727,9 @@
     "translationIds": [
       "35534d6d-7cea-81e0-9aa2-c5783d5046dc",
       "35534d6d-7cea-813e-a49a-eb039fe7fb2f"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -612,6 +745,9 @@
     "translationIds": [
       "35534d6d-7cea-819f-a0d4-f97eb9c4dceb",
       "35534d6d-7cea-81c5-9630-cead8172f565"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -627,6 +763,9 @@
     "translationIds": [
       "35534d6d-7cea-8154-a3d0-ddad508bf989",
       "35534d6d-7cea-8107-bffd-cfedb7184641"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -642,6 +781,9 @@
     "translationIds": [
       "35534d6d-7cea-81be-b4d9-c9d7547b7e77",
       "35534d6d-7cea-81fa-8289-df1ac4bfef80"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -657,6 +799,9 @@
     "translationIds": [
       "35534d6d-7cea-819d-962a-d53c5e024b0e",
       "35534d6d-7cea-81b7-ad33-cb83d0f1f70a"
+    ],
+    "industries": [
+      "tbr-ar-ae"
     ]
   },
   {
@@ -672,6 +817,15 @@
     "translationIds": [
       "35534d6d-7cea-81b3-996c-eaaa9958988a",
       "35534d6d-7cea-818e-a45c-d9d0521545f5"
+    ],
+    "industries": [
+      "off-the-road-tires",
+      "construction-tires",
+      "underground-mining-tires",
+      "mining-tires",
+      "industrial-forklift-tires",
+      "solid-otr-tires",
+      "forestry-tires"
     ]
   },
   {
@@ -687,6 +841,9 @@
     "translationIds": [
       "35534d6d-7cea-812f-b409-d22736b39990",
       "35534d6d-7cea-81e2-8aae-e5a4e13b9c50"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -702,6 +859,9 @@
     "translationIds": [
       "35534d6d-7cea-815f-bd46-cf823b86a536",
       "35534d6d-7cea-811a-81fa-dc43994cd9a7"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -717,6 +877,9 @@
     "translationIds": [
       "35534d6d-7cea-815f-bd46-cf823b86a536",
       "35534d6d-7cea-8119-bd37-e9d778bc0bd3"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -732,6 +895,9 @@
     "translationIds": [
       "35534d6d-7cea-8103-bd8a-fdd6682a6260",
       "35534d6d-7cea-815a-a2e8-c4339ba55706"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -747,6 +913,9 @@
     "translationIds": [
       "35534d6d-7cea-8135-ac7a-e87bcde23f37",
       "35534d6d-7cea-81d4-951c-fadf2aea4132"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -762,6 +931,9 @@
     "translationIds": [
       "35534d6d-7cea-817c-8130-f647d76a9f98",
       "35534d6d-7cea-8110-992d-c6d83a3c5af5"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -777,6 +949,9 @@
     "translationIds": [
       "35534d6d-7cea-8144-99c8-d0f9cfd52a71",
       "35534d6d-7cea-81ab-925a-c061c973db31"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -792,6 +967,10 @@
     "translationIds": [
       "35534d6d-7cea-8122-b5e6-ee11855a75c7",
       "35534d6d-7cea-8146-9875-f2006510f580"
+    ],
+    "industries": [
+      "underground-mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -807,6 +986,9 @@
     "translationIds": [
       "35534d6d-7cea-812d-accb-fbc79972fc01",
       "35534d6d-7cea-8106-b468-fcd7d0a13dad"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -822,6 +1004,10 @@
     "translationIds": [
       "35534d6d-7cea-8100-aa02-fe8d20231e67",
       "35534d6d-7cea-81c4-9759-d7de33954be7"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -837,6 +1023,9 @@
     "translationIds": [
       "35534d6d-7cea-819f-82fa-f72fa8fcd00f",
       "35534d6d-7cea-81f0-a567-f587e162cff5"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -852,6 +1041,10 @@
     "translationIds": [
       "35534d6d-7cea-81f9-b0ec-e8cd41b9e0d6",
       "35534d6d-7cea-810f-9bb2-e457ffc5d76a"
+    ],
+    "industries": [
+      "off-the-road-tires",
+      "underground-mining-tires"
     ]
   },
   {
@@ -867,6 +1060,9 @@
     "translationIds": [
       "35534d6d-7cea-817b-bb74-e81ffd64159e",
       "35534d6d-7cea-8164-9d4f-f117bac0fa1a"
+    ],
+    "industries": [
+      "agricultural-tractor-tires"
     ]
   },
   {
@@ -882,6 +1078,9 @@
     "translationIds": [
       "35534d6d-7cea-81e4-ab7a-e7db5eb7fe6d",
       "35534d6d-7cea-8123-993d-e651ae9e3b54"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -897,6 +1096,10 @@
     "translationIds": [
       "35534d6d-7cea-8171-9cef-e508643fdc13",
       "35534d6d-7cea-817e-aeec-e1dc2a36f9b2"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -912,6 +1115,9 @@
     "translationIds": [
       "35534d6d-7cea-81f2-9d10-c39c82b0ffd1",
       "35534d6d-7cea-81db-8297-fc6b64146d1b"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -927,6 +1133,9 @@
     "translationIds": [
       "35534d6d-7cea-8102-864d-e06adee90d87",
       "35534d6d-7cea-81f0-823c-cd96af64293c"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -942,6 +1151,9 @@
     "translationIds": [
       "35534d6d-7cea-811c-8ba7-f46b2be51647",
       "35534d6d-7cea-8146-9875-f2006510f580"
+    ],
+    "industries": [
+      "underground-mining-tires"
     ]
   },
   {
@@ -957,6 +1169,9 @@
     "translationIds": [
       "35534d6d-7cea-8190-963c-f938c8b19b87",
       "35534d6d-7cea-8141-abd6-d81899f5bb80"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -972,6 +1187,9 @@
     "translationIds": [
       "35534d6d-7cea-81e4-ab7a-e7db5eb7fe6d",
       "35534d6d-7cea-8120-8985-e3aa637a4da8"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -987,6 +1205,9 @@
     "translationIds": [
       "35534d6d-7cea-81aa-a574-e328e2ce8250",
       "35534d6d-7cea-81b2-b827-ff64ce8b028a"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -1002,6 +1223,9 @@
     "translationIds": [
       "35534d6d-7cea-8114-a8e7-e54e30ff2b66",
       "35534d6d-7cea-8193-9bee-f7be0bd18ccc"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -1017,6 +1241,9 @@
     "translationIds": [
       "35534d6d-7cea-813a-bfb6-d468d3d579ed",
       "35534d6d-7cea-8128-a5ae-c7b9b3904f15"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -1032,6 +1259,9 @@
     "translationIds": [
       "35534d6d-7cea-81d8-8bbe-c50007c966bd",
       "35534d6d-7cea-81fa-ba26-d91d9e6b5f98"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -1047,6 +1277,9 @@
     "translationIds": [
       "35534d6d-7cea-8103-bd4f-f8b892726dae",
       "35534d6d-7cea-8178-92d3-c5c75cbbc2e6"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -1062,6 +1295,9 @@
     "translationIds": [
       "35534d6d-7cea-81c3-b6df-e0d36ce71982",
       "35534d6d-7cea-8105-a59f-c89b78335d4b"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -1077,6 +1313,9 @@
     "translationIds": [
       "35534d6d-7cea-81f5-84cd-d886bd8284ea",
       "35534d6d-7cea-817d-98ef-cd5badf7e74c"
+    ],
+    "industries": [
+      "forestry-tires"
     ]
   },
   {
@@ -1092,6 +1331,9 @@
     "translationIds": [
       "35534d6d-7cea-813a-bfb6-d468d3d579ed",
       "35534d6d-7cea-8125-b926-c3806fcc0a17"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -1107,6 +1349,9 @@
     "translationIds": [
       "35534d6d-7cea-81b9-9286-dc5517e71118",
       "35534d6d-7cea-8160-907c-c91639aa9230"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -1122,6 +1367,9 @@
     "translationIds": [
       "35534d6d-7cea-8152-b7dd-cff843ee827a",
       "35534d6d-7cea-81e0-ab8c-dbdecac67c65"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -1137,6 +1385,10 @@
     "translationIds": [
       "35534d6d-7cea-8144-a686-de30715323fb",
       "35534d6d-7cea-81be-9900-ca8f52124db4"
+    ],
+    "industries": [
+      "off-the-road-tires",
+      "underground-mining-tires"
     ]
   },
   {
@@ -1152,6 +1404,9 @@
     "translationIds": [
       "35534d6d-7cea-81d8-a59a-d3de64c5f9df",
       "35534d6d-7cea-81d1-b92e-cc6b8a96262e"
+    ],
+    "industries": [
+      "solid-otr-tires"
     ]
   },
   {
@@ -1167,6 +1422,9 @@
     "translationIds": [
       "35534d6d-7cea-8157-a721-e50720d1f1db",
       "35534d6d-7cea-8132-8cb2-db9ef50d94ff"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -1182,6 +1440,9 @@
     "translationIds": [
       "35534d6d-7cea-8106-b468-fcd7d0a13dad",
       "35534d6d-7cea-811d-9c6d-eb58d054c1af"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -1197,6 +1458,9 @@
     "translationIds": [
       "35534d6d-7cea-813d-be14-d8d1c8d50775",
       "35534d6d-7cea-818d-aace-e412043400bf"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -1212,6 +1476,9 @@
     "translationIds": [
       "35534d6d-7cea-8110-8e22-d90638ea4767",
       "35534d6d-7cea-81a4-ba83-ddc0ed467cac"
+    ],
+    "industries": [
+      "agricultural-tractor-tires"
     ]
   },
   {
@@ -1227,6 +1494,9 @@
     "translationIds": [
       "35534d6d-7cea-81bf-b65c-ce775c20d7bc",
       "35534d6d-7cea-8150-babf-d5a537a37fe3"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -1242,6 +1512,9 @@
     "translationIds": [
       "35534d6d-7cea-8118-9959-da4e3cca66e9",
       "35534d6d-7cea-81e2-8aae-e5a4e13b9c50"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -1257,6 +1530,9 @@
     "translationIds": [
       "35534d6d-7cea-8173-ac55-e01fcdcb7c12",
       "35534d6d-7cea-810a-a792-f049f8cf159b"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -1272,6 +1548,9 @@
     "translationIds": [
       "35534d6d-7cea-8156-a336-e2a94787b605",
       "35534d6d-7cea-8167-930a-eeb4f1469a3f"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -1287,6 +1566,10 @@
     "translationIds": [
       "35534d6d-7cea-8106-97ec-d14c02e609c6",
       "35534d6d-7cea-8184-9058-e818c38cd9ea"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -1302,6 +1585,9 @@
     "translationIds": [
       "35534d6d-7cea-8157-a721-e50720d1f1db",
       "35534d6d-7cea-812b-a73c-d9adc66b3b49"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -1317,6 +1603,9 @@
     "translationIds": [
       "35534d6d-7cea-8180-bac4-c37bb44f53b1",
       "35534d6d-7cea-8169-965b-c59b92c2c437"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -1332,6 +1621,9 @@
     "translationIds": [
       "35534d6d-7cea-811a-b0f3-da8c0447d9a5",
       "35534d6d-7cea-81d4-951c-fadf2aea4132"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -1347,6 +1639,9 @@
     "translationIds": [
       "35534d6d-7cea-8197-94b5-f6979f25be20",
       "35534d6d-7cea-81c4-9536-f12e7becd9af"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -1362,6 +1657,9 @@
     "translationIds": [
       "35534d6d-7cea-81a4-814d-cca8491ae73e",
       "35534d6d-7cea-815b-921c-f3a8835e74e2"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -1377,6 +1675,9 @@
     "translationIds": [
       "35534d6d-7cea-8128-a5ae-c7b9b3904f15",
       "35534d6d-7cea-8125-b926-c3806fcc0a17"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -1392,6 +1693,9 @@
     "translationIds": [
       "35534d6d-7cea-8151-ae62-f3d4f41e56f3",
       "35534d6d-7cea-8159-b2dc-cdc4fd5e991e"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -1407,6 +1711,10 @@
     "translationIds": [
       "35534d6d-7cea-814f-8986-d55f682872aa",
       "35534d6d-7cea-81cd-a651-c797c121d2cd"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -1422,6 +1730,9 @@
     "translationIds": [
       "35534d6d-7cea-814a-a335-c98bfaa2e219",
       "35534d6d-7cea-816f-8cc0-fc19332131d2"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -1437,7 +1748,8 @@
     "translationIds": [
       "35534d6d-7cea-818f-8ca3-e4774bdc00f4",
       "35534d6d-7cea-8194-9a31-d837f958c070"
-    ]
+    ],
+    "industries": []
   },
   {
     "pageId": "35534d6d-7cea-813d-bd8a-f778be445ad0",
@@ -1452,6 +1764,9 @@
     "translationIds": [
       "35534d6d-7cea-8166-89e5-e4f9de363ae4",
       "35534d6d-7cea-81f0-8735-e9628f57b587"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -1467,6 +1782,9 @@
     "translationIds": [
       "35534d6d-7cea-818d-aace-e412043400bf",
       "35534d6d-7cea-812d-bf23-dcbe50937dc2"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -1482,6 +1800,9 @@
     "translationIds": [
       "35534d6d-7cea-81e0-9aa2-c5783d5046dc",
       "35534d6d-7cea-8114-b739-c7e40a244598"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -1497,6 +1818,9 @@
     "translationIds": [
       "35534d6d-7cea-81d3-858c-e155d1855a72",
       "35534d6d-7cea-81ea-95a8-cc09e4eb7cd2"
+    ],
+    "industries": [
+      "rubber-tracks-ar-ae"
     ]
   },
   {
@@ -1512,6 +1836,9 @@
     "translationIds": [
       "35534d6d-7cea-81ad-b936-d3435a1d1e77",
       "35534d6d-7cea-810d-a699-f197ef5f3bf1"
+    ],
+    "industries": [
+      "forestry-tires"
     ]
   },
   {
@@ -1527,6 +1854,9 @@
     "translationIds": [
       "35534d6d-7cea-81d4-82a2-c3196d918ae7",
       "35534d6d-7cea-8145-a2d9-c16b3d1f3371"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -1542,6 +1872,9 @@
     "translationIds": [
       "35534d6d-7cea-8190-963c-f938c8b19b87",
       "35534d6d-7cea-8123-828e-d7efb389cd8a"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -1557,6 +1890,10 @@
     "translationIds": [
       "35534d6d-7cea-81db-b936-d92d3af157e5",
       "35534d6d-7cea-810e-871a-cc3a3106cabc"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -1572,6 +1909,9 @@
     "translationIds": [
       "35534d6d-7cea-8110-bb29-dc7f1d18ae58",
       "35534d6d-7cea-8148-b0ea-db70558833e6"
+    ],
+    "industries": [
+      "rubber-tracks"
     ]
   },
   {
@@ -1587,6 +1927,9 @@
     "translationIds": [
       "35534d6d-7cea-8157-b062-f49fdc703753",
       "35534d6d-7cea-8153-b110-fcd6717e4a91"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -1602,6 +1945,9 @@
     "translationIds": [
       "35534d6d-7cea-811b-a1ea-cbfc28f78f73",
       "35534d6d-7cea-81ab-925a-c061c973db31"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -1617,6 +1963,10 @@
     "translationIds": [
       "35534d6d-7cea-812a-878b-da2d2c3b8c9b",
       "35534d6d-7cea-81be-9900-ca8f52124db4"
+    ],
+    "industries": [
+      "off-the-road-tires",
+      "underground-mining-tires"
     ]
   },
   {
@@ -1632,6 +1982,9 @@
     "translationIds": [
       "35534d6d-7cea-81f5-8b99-f7067781b0a0",
       "35534d6d-7cea-8148-a37f-d28e77fff1f2"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -1647,6 +2000,10 @@
     "translationIds": [
       "35534d6d-7cea-815d-813d-ccc7eae88eec",
       "35534d6d-7cea-819f-bb70-c6815482c5c8"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -1662,6 +2019,9 @@
     "translationIds": [
       "35534d6d-7cea-81d4-82a2-c3196d918ae7",
       "35534d6d-7cea-8141-959c-c59d81805e51"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -1677,6 +2037,9 @@
     "translationIds": [
       "35534d6d-7cea-811c-8ba7-f46b2be51647",
       "35534d6d-7cea-8122-b5e6-ee11855a75c7"
+    ],
+    "industries": [
+      "underground-mining-tires"
     ]
   },
   {
@@ -1692,6 +2055,9 @@
     "translationIds": [
       "35534d6d-7cea-81a8-9c0a-e605847f2215",
       "35534d6d-7cea-8152-a2f4-d727eb9701f1"
+    ],
+    "industries": [
+      "solid-otr-tires"
     ]
   },
   {
@@ -1707,6 +2073,9 @@
     "translationIds": [
       "35534d6d-7cea-8159-b507-f14cdb92561d",
       "35534d6d-7cea-81fe-a449-d650602ee9da"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -1722,6 +2091,11 @@
     "translationIds": [
       "35534d6d-7cea-810e-897b-cdcafeac6b36",
       "35534d6d-7cea-81e2-b800-cf0ed76479db"
+    ],
+    "industries": [
+      "off-the-road-tires",
+      "mining-tires",
+      "underground-mining-tires"
     ]
   },
   {
@@ -1737,6 +2111,9 @@
     "translationIds": [
       "35534d6d-7cea-817f-ad42-d89cd57914e2",
       "35534d6d-7cea-817a-b669-c540f47d01ff"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -1752,6 +2129,10 @@
     "translationIds": [
       "35534d6d-7cea-8111-8096-d34c34009dce",
       "35534d6d-7cea-8155-985d-cef48a2da7e5"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -1767,6 +2148,9 @@
     "translationIds": [
       "35534d6d-7cea-81f7-bb4b-d7e486040a4c",
       "35534d6d-7cea-81ad-b66a-d98341bcba18"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -1782,6 +2166,9 @@
     "translationIds": [
       "35534d6d-7cea-81f5-8b99-f7067781b0a0",
       "35534d6d-7cea-8144-b4c0-d4238989d769"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -1797,6 +2184,9 @@
     "translationIds": [
       "35534d6d-7cea-8142-9699-ed37a92f3025",
       "35534d6d-7cea-8110-bb29-dc7f1d18ae58"
+    ],
+    "industries": [
+      "rubber-tracks-zh-hant"
     ]
   },
   {
@@ -1812,6 +2202,10 @@
     "translationIds": [
       "35534d6d-7cea-81e3-b4c7-dcb6bf21be31",
       "35534d6d-7cea-816d-8fc8-cfbed8a7c9c5"
+    ],
+    "industries": [
+      "agricultural-tractor-tires",
+      "construction-tires"
     ]
   },
   {
@@ -1827,6 +2221,9 @@
     "translationIds": [
       "35534d6d-7cea-813d-945f-d7b948cf8605",
       "35534d6d-7cea-816f-8cc0-fc19332131d2"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -1842,6 +2239,9 @@
     "translationIds": [
       "35534d6d-7cea-81ed-8248-c41bbea3c7a7",
       "35534d6d-7cea-81b8-a6bc-dd2f6bd2da47"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -1857,6 +2257,9 @@
     "translationIds": [
       "35534d6d-7cea-81df-9c79-d8ecb05362cc",
       "35534d6d-7cea-81bc-a96e-c0ee473ce1d0"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -1872,6 +2275,9 @@
     "translationIds": [
       "35534d6d-7cea-81ed-adf2-f431877ffcfb",
       "35534d6d-7cea-81ea-8b00-ef943e9a6fee"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -1887,6 +2293,9 @@
     "translationIds": [
       "35534d6d-7cea-81a3-a9fe-ef6b9b91c4ac",
       "35534d6d-7cea-81bf-82ff-d0cfe9d1334d"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -1902,6 +2311,10 @@
     "translationIds": [
       "35534d6d-7cea-813d-844a-f8a2a238012c",
       "35534d6d-7cea-81cd-a651-c797c121d2cd"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -1917,6 +2330,9 @@
     "translationIds": [
       "35534d6d-7cea-810b-9477-dcab42bd0834",
       "35534d6d-7cea-8103-8db8-c360f5023f86"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -1932,6 +2348,9 @@
     "translationIds": [
       "35534d6d-7cea-81dd-ac8a-e0ff71a3d0bd",
       "35534d6d-7cea-81ee-9433-e8c1d0449f0d"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -1947,6 +2366,9 @@
     "translationIds": [
       "35534d6d-7cea-81bf-b65c-ce775c20d7bc",
       "35534d6d-7cea-812f-8d4a-fbe99de9c642"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -1962,6 +2384,9 @@
     "translationIds": [
       "35534d6d-7cea-813b-8901-e95de29c1c57",
       "35534d6d-7cea-8159-b2dc-cdc4fd5e991e"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -1977,6 +2402,9 @@
     "translationIds": [
       "35534d6d-7cea-81a8-9c0a-e605847f2215",
       "35534d6d-7cea-8146-9c0d-d8e0e8a1433c"
+    ],
+    "industries": [
+      "solid-otr-tires"
     ]
   },
   {
@@ -1992,6 +2420,9 @@
     "translationIds": [
       "35534d6d-7cea-81e0-ab8c-dbdecac67c65",
       "35534d6d-7cea-8129-b86d-e5af42526b08"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -2007,6 +2438,9 @@
     "translationIds": [
       "35534d6d-7cea-815a-8186-ecfc768e0575",
       "35534d6d-7cea-8195-b588-f6d0fe9923c2"
+    ],
+    "industries": [
+      "rubber-tracks"
     ]
   },
   {
@@ -2022,6 +2456,9 @@
     "translationIds": [
       "35534d6d-7cea-8173-9ba8-f10a0ac3b08a",
       "35534d6d-7cea-8190-a181-fe0e47843153"
+    ],
+    "industries": [
+      "agricultural-tractor-tires"
     ]
   },
   {
@@ -2037,6 +2474,9 @@
     "translationIds": [
       "35534d6d-7cea-8157-b062-f49fdc703753",
       "35534d6d-7cea-8143-930f-fd60a90dbd55"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -2052,6 +2492,9 @@
     "translationIds": [
       "35534d6d-7cea-8115-ac42-f28cb20bef5f",
       "35534d6d-7cea-8107-bffd-cfedb7184641"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -2067,6 +2510,10 @@
     "translationIds": [
       "35534d6d-7cea-8111-8096-d34c34009dce",
       "35534d6d-7cea-8148-9508-cb6bd0b20876"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -2082,6 +2529,9 @@
     "translationIds": [
       "35534d6d-7cea-8167-930a-eeb4f1469a3f",
       "35534d6d-7cea-8130-9805-e955847e4581"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -2097,6 +2547,9 @@
     "translationIds": [
       "35534d6d-7cea-81f1-a882-e00763a64f4a",
       "35534d6d-7cea-818a-9793-e2a865d00bf5"
+    ],
+    "industries": [
+      "tbr-ar-ae"
     ]
   },
   {
@@ -2112,6 +2565,9 @@
     "translationIds": [
       "35534d6d-7cea-819a-a691-e353dfc7e13d",
       "35534d6d-7cea-816c-9e93-dde599fcb088"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -2127,6 +2583,10 @@
     "translationIds": [
       "35534d6d-7cea-8112-bae8-c172a4d610a7",
       "35534d6d-7cea-8108-bdb5-cf9db274ed0c"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -2142,6 +2602,10 @@
     "translationIds": [
       "35534d6d-7cea-8132-8cb2-db9ef50d94ff",
       "35534d6d-7cea-812b-a73c-d9adc66b3b49"
+    ],
+    "industries": [
+      "off-the-road-tires",
+      "construction-tires"
     ]
   },
   {
@@ -2157,6 +2621,9 @@
     "translationIds": [
       "35534d6d-7cea-8143-930f-fd60a90dbd55",
       "35534d6d-7cea-8153-b110-fcd6717e4a91"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -2172,6 +2639,9 @@
     "translationIds": [
       "35534d6d-7cea-81e9-9290-fd912e652e65",
       "35534d6d-7cea-8186-bfba-e507dc5fc262"
+    ],
+    "industries": [
+      "rubber-tracks"
     ]
   },
   {
@@ -2187,6 +2657,9 @@
     "translationIds": [
       "35534d6d-7cea-8151-ae62-f3d4f41e56f3",
       "35534d6d-7cea-813b-8901-e95de29c1c57"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -2202,6 +2675,9 @@
     "translationIds": [
       "35534d6d-7cea-8146-9c69-d546542115e0",
       "35534d6d-7cea-81fe-a449-d650602ee9da"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -2217,6 +2693,9 @@
     "translationIds": [
       "35534d6d-7cea-8153-a003-e828e44fad7a",
       "35534d6d-7cea-8195-b588-f6d0fe9923c2"
+    ],
+    "industries": [
+      "rubber-tracks-ar-ae"
     ]
   },
   {
@@ -2232,6 +2711,9 @@
     "translationIds": [
       "35534d6d-7cea-811a-a0d4-f3f8a8c34176",
       "35534d6d-7cea-8103-bd8a-fdd6682a6260"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -2247,6 +2729,9 @@
     "translationIds": [
       "35534d6d-7cea-8139-8cf8-ed36ec3442b0",
       "35534d6d-7cea-81a4-814d-cca8491ae73e"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -2262,6 +2747,9 @@
     "translationIds": [
       "35534d6d-7cea-8168-97d4-f56352e33a33",
       "35534d6d-7cea-81ee-9846-e240efaba454"
+    ],
+    "industries": [
+      "tbr-ar-ae"
     ]
   },
   {
@@ -2277,6 +2765,10 @@
     "translationIds": [
       "35534d6d-7cea-8145-955f-f9363c3778d3",
       "35534d6d-7cea-819f-bb70-c6815482c5c8"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -2292,6 +2784,9 @@
     "translationIds": [
       "35534d6d-7cea-81e1-8bfa-eeba84a39df3",
       "35534d6d-7cea-81c2-88fe-f9535373ba26"
+    ],
+    "industries": [
+      "rubber-tracks-ar-ae"
     ]
   },
   {
@@ -2307,6 +2802,9 @@
     "translationIds": [
       "35534d6d-7cea-810e-bb5c-e0deb80cd52b",
       "35534d6d-7cea-81b0-98ed-f319b7ac0a08"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -2322,6 +2820,9 @@
     "translationIds": [
       "35534d6d-7cea-8119-bd37-e9d778bc0bd3",
       "35534d6d-7cea-811a-81fa-dc43994cd9a7"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -2337,6 +2838,9 @@
     "translationIds": [
       "35534d6d-7cea-8129-a998-e2802392018c",
       "35534d6d-7cea-81b9-9286-dc5517e71118"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -2352,6 +2856,9 @@
     "translationIds": [
       "35534d6d-7cea-8105-bf37-e6432ee02215",
       "35534d6d-7cea-81df-9006-e9f287ddc9f7"
+    ],
+    "industries": [
+      "solid-otr-tires"
     ]
   },
   {
@@ -2367,6 +2874,10 @@
     "translationIds": [
       "35534d6d-7cea-81f0-a1f5-f7dd1262962f",
       "35534d6d-7cea-81aa-ba8c-de17d8d9d05d"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -2382,6 +2893,9 @@
     "translationIds": [
       "35534d6d-7cea-817c-b7cc-ebee73c5eeaf",
       "35534d6d-7cea-81b3-9288-e23f7e409108"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -2397,6 +2911,9 @@
     "translationIds": [
       "35534d6d-7cea-81d4-861e-ed72a7eb2878",
       "35534d6d-7cea-81f9-b320-c81f9f27ad0e"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -2412,6 +2929,9 @@
     "translationIds": [
       "35534d6d-7cea-817b-bb74-e81ffd64159e",
       "35534d6d-7cea-8120-8622-f6ae8865bd3a"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -2427,6 +2947,9 @@
     "translationIds": [
       "35534d6d-7cea-813d-bd8a-f778be445ad0",
       "35534d6d-7cea-81f0-8735-e9628f57b587"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -2442,6 +2965,9 @@
     "translationIds": [
       "35534d6d-7cea-816f-bf1e-d172d6940ac7",
       "35534d6d-7cea-81c6-9efb-f7a434c45cdc"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -2457,7 +2983,8 @@
     "translationIds": [
       "35534d6d-7cea-8169-8aea-d5cd62b83b11",
       "35534d6d-7cea-8187-b68f-c9d4747726fa"
-    ]
+    ],
+    "industries": []
   },
   {
     "pageId": "35534d6d-7cea-8167-930a-eeb4f1469a3f",
@@ -2472,6 +2999,9 @@
     "translationIds": [
       "35534d6d-7cea-8156-a336-e2a94787b605",
       "35534d6d-7cea-8130-9805-e955847e4581"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -2487,6 +3017,9 @@
     "translationIds": [
       "35534d6d-7cea-815c-9eea-cb9fa5834a16",
       "35534d6d-7cea-81ee-9846-e240efaba454"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -2502,7 +3035,8 @@
     "translationIds": [
       "35534d6d-7cea-8187-b68f-c9d4747726fa",
       "35534d6d-7cea-8166-b51c-e68d7dfa0af2"
-    ]
+    ],
+    "industries": []
   },
   {
     "pageId": "35534d6d-7cea-8169-965b-c59b92c2c437",
@@ -2517,6 +3051,9 @@
     "translationIds": [
       "35534d6d-7cea-8132-9cd2-ce1dea1f735a",
       "35534d6d-7cea-8180-bac4-c37bb44f53b1"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -2532,6 +3069,9 @@
     "translationIds": [
       "35534d6d-7cea-81b6-98ca-f8961c52e60a",
       "35534d6d-7cea-81e3-b0ec-e12de8587a84"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -2547,6 +3087,9 @@
     "translationIds": [
       "35534d6d-7cea-81c3-a726-c733aaf4a431",
       "35534d6d-7cea-81d2-ac9c-d803280218b3"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -2562,6 +3105,9 @@
     "translationIds": [
       "35534d6d-7cea-81f5-975f-d26f6a1d47c2",
       "35534d6d-7cea-8192-a7df-ddb272d018c2"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -2577,6 +3123,9 @@
     "translationIds": [
       "35534d6d-7cea-81d2-9821-dca2ad904220",
       "35534d6d-7cea-81fc-a36c-e1e147556d4c"
+    ],
+    "industries": [
+      "solid-otr-tires"
     ]
   },
   {
@@ -2592,6 +3141,10 @@
     "translationIds": [
       "35534d6d-7cea-8185-938e-cf8a4b1b2726",
       "35534d6d-7cea-8181-84cc-ca198ae1136f"
+    ],
+    "industries": [
+      "off-the-road-tires",
+      "underground-mining-tires"
     ]
   },
   {
@@ -2607,6 +3160,9 @@
     "translationIds": [
       "35534d6d-7cea-819a-a691-e353dfc7e13d",
       "35534d6d-7cea-8156-b9e4-e00dc5fdeb13"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -2622,6 +3178,9 @@
     "translationIds": [
       "35534d6d-7cea-81e3-b4c7-dcb6bf21be31",
       "35534d6d-7cea-8149-be3a-eba4108e5e1c"
+    ],
+    "industries": [
+      "agricultural-tractor-tires"
     ]
   },
   {
@@ -2637,6 +3196,9 @@
     "translationIds": [
       "35534d6d-7cea-814a-a335-c98bfaa2e219",
       "35534d6d-7cea-813d-945f-d7b948cf8605"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -2652,6 +3214,9 @@
     "translationIds": [
       "35534d6d-7cea-81c6-9efb-f7a434c45cdc",
       "35534d6d-7cea-8166-b32a-fd6befb562a3"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -2667,6 +3232,9 @@
     "translationIds": [
       "35534d6d-7cea-8177-a1dd-c686def357df",
       "35534d6d-7cea-818c-9798-e44ce587a0cf"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -2682,6 +3250,10 @@
     "translationIds": [
       "35534d6d-7cea-817e-aeec-e1dc2a36f9b2",
       "35534d6d-7cea-8121-99da-da6e3467ccf3"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -2697,6 +3269,9 @@
     "translationIds": [
       "35534d6d-7cea-81af-b4ad-f1655cfbad0c",
       "35534d6d-7cea-81b8-8b4f-f4e2e342069a"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -2712,6 +3287,9 @@
     "translationIds": [
       "35534d6d-7cea-81cd-96f8-cc7858e211eb",
       "35534d6d-7cea-81bb-9ce3-c3f5158dba92"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -2727,6 +3305,10 @@
     "translationIds": [
       "35534d6d-7cea-8188-9e7d-f359044c014e",
       "35534d6d-7cea-817e-a49c-ee21e0e70d64"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -2742,6 +3324,9 @@
     "translationIds": [
       "35534d6d-7cea-8190-a181-fe0e47843153",
       "35534d6d-7cea-8153-aa0c-fd29f20dc44f"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -2757,6 +3342,9 @@
     "translationIds": [
       "35534d6d-7cea-8130-9097-f367203032ab",
       "35534d6d-7cea-810a-a792-f049f8cf159b"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -2772,6 +3360,16 @@
     "translationIds": [
       "35534d6d-7cea-81e9-b177-f1f2cd75ab5a",
       "35534d6d-7cea-81ff-b126-e13762fc43ce"
+    ],
+    "industries": [
+      "off-the-road-tires",
+      "construction-tires",
+      "underground-mining-tires",
+      "mining-tires",
+      "industrial-forklift-tires",
+      "rubber-tracks",
+      "forestry-tires",
+      "solid-otr-tires"
     ]
   },
   {
@@ -2787,6 +3385,9 @@
     "translationIds": [
       "35534d6d-7cea-8170-9fb5-c0c39754bd34",
       "35534d6d-7cea-818c-9798-e44ce587a0cf"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -2802,6 +3403,9 @@
     "translationIds": [
       "35534d6d-7cea-81b3-8a71-f72e5f278e1c",
       "35534d6d-7cea-81e7-8da1-c6de71f3d75a"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -2817,6 +3421,9 @@
     "translationIds": [
       "35534d6d-7cea-8126-ac3f-f271fb997621",
       "35534d6d-7cea-8103-bd4f-f8b892726dae"
+    ],
+    "industries": [
+      "agricultural-tractor-tires"
     ]
   },
   {
@@ -2832,6 +3439,9 @@
     "translationIds": [
       "35534d6d-7cea-818a-9ff0-f82743856604",
       "35534d6d-7cea-810f-9402-eb13a10d2e94"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -2847,6 +3457,9 @@
     "translationIds": [
       "35534d6d-7cea-8147-b522-f7d0de8764df",
       "35534d6d-7cea-817f-ad42-d89cd57914e2"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -2862,6 +3475,9 @@
     "translationIds": [
       "35534d6d-7cea-8186-8dd4-f3bbbf90a11e",
       "35534d6d-7cea-81b8-b04e-e3156873f6cb"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -2877,6 +3493,9 @@
     "translationIds": [
       "35534d6d-7cea-8164-9d4f-f117bac0fa1a",
       "35534d6d-7cea-8120-8622-f6ae8865bd3a"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -2892,6 +3511,9 @@
     "translationIds": [
       "35534d6d-7cea-811b-9425-e316b4645885",
       "35534d6d-7cea-8110-992d-c6d83a3c5af5"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -2907,6 +3529,9 @@
     "translationIds": [
       "35534d6d-7cea-8163-889a-c1936bfe4dcf",
       "35534d6d-7cea-81b3-9288-e23f7e409108"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -2922,6 +3547,9 @@
     "translationIds": [
       "35534d6d-7cea-8187-86ba-e2e250dcd9c1",
       "35534d6d-7cea-8102-907f-fde2883ff649"
+    ],
+    "industries": [
+      "agricultural-tractor-tires"
     ]
   },
   {
@@ -2937,6 +3565,9 @@
     "translationIds": [
       "35534d6d-7cea-81f5-84cd-d886bd8284ea",
       "35534d6d-7cea-8127-aab0-c97c833255ef"
+    ],
+    "industries": [
+      "forestry-tires"
     ]
   },
   {
@@ -2952,6 +3583,10 @@
     "translationIds": [
       "35534d6d-7cea-8172-b1f1-fba50cfbfd5d",
       "35534d6d-7cea-8188-9e7d-f359044c014e"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -2967,6 +3602,10 @@
     "translationIds": [
       "35534d6d-7cea-8171-9cef-e508643fdc13",
       "35534d6d-7cea-8121-99da-da6e3467ccf3"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -2982,6 +3621,9 @@
     "translationIds": [
       "35534d6d-7cea-8101-853f-c423b8c854bd",
       "35534d6d-7cea-81d4-8da7-e2bec64b46e6"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -2997,6 +3639,9 @@
     "translationIds": [
       "35534d6d-7cea-8147-b522-f7d0de8764df",
       "35534d6d-7cea-817a-b669-c540f47d01ff"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -3012,6 +3657,9 @@
     "translationIds": [
       "35534d6d-7cea-8132-9cd2-ce1dea1f735a",
       "35534d6d-7cea-8169-965b-c59b92c2c437"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -3027,6 +3675,9 @@
     "translationIds": [
       "35534d6d-7cea-816c-995a-e43a6a954b99",
       "35534d6d-7cea-8185-938e-cf8a4b1b2726"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -3042,6 +3693,10 @@
     "translationIds": [
       "35534d6d-7cea-8132-8426-ffae2dda6889",
       "35534d6d-7cea-8106-97ec-d14c02e609c6"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -3057,6 +3712,9 @@
     "translationIds": [
       "35534d6d-7cea-816c-995a-e43a6a954b99",
       "35534d6d-7cea-8181-84cc-ca198ae1136f"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -3072,6 +3730,9 @@
     "translationIds": [
       "35534d6d-7cea-81b8-b04e-e3156873f6cb",
       "35534d6d-7cea-817b-8881-d309ab4ed845"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -3087,6 +3748,9 @@
     "translationIds": [
       "35534d6d-7cea-8158-8cc8-e60cb9f1f672",
       "35534d6d-7cea-81e9-9290-fd912e652e65"
+    ],
+    "industries": [
+      "rubber-tracks-zh-hant"
     ]
   },
   {
@@ -3102,6 +3766,9 @@
     "translationIds": [
       "35534d6d-7cea-8102-907f-fde2883ff649",
       "35534d6d-7cea-817c-bb3b-ff8cfcd4c9dd"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -3117,6 +3784,10 @@
     "translationIds": [
       "35534d6d-7cea-81ad-b911-d578a5305e26",
       "35534d6d-7cea-8198-bcb7-e522f95ea247"
+    ],
+    "industries": [
+      "agricultural-tractor-tires",
+      "construction-tires"
     ]
   },
   {
@@ -3132,7 +3803,8 @@
     "translationIds": [
       "35534d6d-7cea-8169-8aea-d5cd62b83b11",
       "35534d6d-7cea-8166-b51c-e68d7dfa0af2"
-    ]
+    ],
+    "industries": []
   },
   {
     "pageId": "35534d6d-7cea-8188-9e7d-f359044c014e",
@@ -3147,6 +3819,10 @@
     "translationIds": [
       "35534d6d-7cea-8172-b1f1-fba50cfbfd5d",
       "35534d6d-7cea-817e-a49c-ee21e0e70d64"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -3162,6 +3838,9 @@
     "translationIds": [
       "35534d6d-7cea-81f1-a882-e00763a64f4a",
       "35534d6d-7cea-8156-adc9-f65c605017de"
+    ],
+    "industries": [
+      "tbr-tires-zh-hant"
     ]
   },
   {
@@ -3177,6 +3856,9 @@
     "translationIds": [
       "35534d6d-7cea-817a-8e29-f5b837c822de",
       "35534d6d-7cea-810f-9402-eb13a10d2e94"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -3192,7 +3874,8 @@
     "translationIds": [
       "35534d6d-7cea-81d0-bcb0-c2f188d4fa93",
       "35534d6d-7cea-81fb-8061-c4e540667fba"
-    ]
+    ],
+    "industries": []
   },
   {
     "pageId": "35534d6d-7cea-818c-9798-e44ce587a0cf",
@@ -3207,6 +3890,9 @@
     "translationIds": [
       "35534d6d-7cea-8177-a1dd-c686def357df",
       "35534d6d-7cea-8170-9fb5-c0c39754bd34"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -3222,6 +3908,9 @@
     "translationIds": [
       "35534d6d-7cea-81c9-8dfb-d5054b12604e",
       "35534d6d-7cea-8199-a118-d8f9b2572cca"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -3237,6 +3926,9 @@
     "translationIds": [
       "35534d6d-7cea-813d-be14-d8d1c8d50775",
       "35534d6d-7cea-812d-bf23-dcbe50937dc2"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -3252,6 +3944,15 @@
     "translationIds": [
       "35534d6d-7cea-8117-8d87-ef0a110d2d30",
       "35534d6d-7cea-81b3-996c-eaaa9958988a"
+    ],
+    "industries": [
+      "construction-tires",
+      "industrial-forklift-tires",
+      "off-the-road-tires",
+      "mining-tires",
+      "underground-mining-tires",
+      "agricultural-tractor-tires",
+      "solid-otr-tires"
     ]
   },
   {
@@ -3267,6 +3968,10 @@
     "translationIds": [
       "35534d6d-7cea-81a6-afb6-d6ca141e7e33",
       "35534d6d-7cea-81e2-8fed-fc36d5342390"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -3282,6 +3987,9 @@
     "translationIds": [
       "35534d6d-7cea-8193-80ae-e54ce3886d34",
       "35534d6d-7cea-8191-976e-c8e1a299a4d7"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -3297,7 +4005,8 @@
     "translationIds": [
       "35534d6d-7cea-8194-9a31-d837f958c070",
       "35534d6d-7cea-813d-a984-de45b1577a98"
-    ]
+    ],
+    "industries": []
   },
   {
     "pageId": "35534d6d-7cea-8190-8d47-e741e3949639",
@@ -3312,6 +4021,11 @@
     "translationIds": [
       "35534d6d-7cea-81dd-b234-cfb09c965c8c",
       "35534d6d-7cea-8100-8e94-f39e07e18386"
+    ],
+    "industries": [
+      "off-the-road-tires",
+      "mining-tires",
+      "underground-mining-tires"
     ]
   },
   {
@@ -3327,6 +4041,9 @@
     "translationIds": [
       "35534d6d-7cea-8123-828e-d7efb389cd8a",
       "35534d6d-7cea-8141-abd6-d81899f5bb80"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -3342,6 +4059,9 @@
     "translationIds": [
       "35534d6d-7cea-8173-9ba8-f10a0ac3b08a",
       "35534d6d-7cea-8153-aa0c-fd29f20dc44f"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -3357,6 +4077,9 @@
     "translationIds": [
       "35534d6d-7cea-818e-ab23-f94425335f3f",
       "35534d6d-7cea-8193-80ae-e54ce3886d34"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -3372,6 +4095,9 @@
     "translationIds": [
       "35534d6d-7cea-81e4-8fe0-e985cc18884c",
       "35534d6d-7cea-81bb-a5e2-e9ab618c50fd"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -3387,6 +4113,9 @@
     "translationIds": [
       "35534d6d-7cea-81f5-975f-d26f6a1d47c2",
       "35534d6d-7cea-816b-8c85-cd89767ea644"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -3402,6 +4131,9 @@
     "translationIds": [
       "35534d6d-7cea-81a2-926d-cda40d2465d5",
       "35534d6d-7cea-81f0-bbdc-e20e3159bcff"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -3417,6 +4149,9 @@
     "translationIds": [
       "35534d6d-7cea-818e-ab23-f94425335f3f",
       "35534d6d-7cea-8191-976e-c8e1a299a4d7"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -3432,6 +4167,9 @@
     "translationIds": [
       "35534d6d-7cea-8114-a8e7-e54e30ff2b66",
       "35534d6d-7cea-8124-afc3-e4a7cd1577c8"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -3447,7 +4185,8 @@
     "translationIds": [
       "35534d6d-7cea-818f-8ca3-e4774bdc00f4",
       "35534d6d-7cea-813d-a984-de45b1577a98"
-    ]
+    ],
+    "industries": []
   },
   {
     "pageId": "35534d6d-7cea-8194-bf1b-f4dc8957b5f0",
@@ -3462,6 +4201,9 @@
     "translationIds": [
       "35534d6d-7cea-81ab-b969-e6efdeae8830",
       "35534d6d-7cea-81c2-a30a-de24fad4a75e"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -3477,6 +4219,9 @@
     "translationIds": [
       "35534d6d-7cea-8153-a003-e828e44fad7a",
       "35534d6d-7cea-815a-8186-ecfc768e0575"
+    ],
+    "industries": [
+      "rubber-tracks-zh-hant"
     ]
   },
   {
@@ -3492,6 +4237,9 @@
     "translationIds": [
       "35534d6d-7cea-81c4-9536-f12e7becd9af",
       "35534d6d-7cea-8138-8a4d-c737ecd7b919"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -3507,6 +4255,9 @@
     "translationIds": [
       "35534d6d-7cea-81ad-b911-d578a5305e26",
       "35534d6d-7cea-8187-8a04-f58c85e0956f"
+    ],
+    "industries": [
+      "agricultural-tractor-tires"
     ]
   },
   {
@@ -3522,6 +4273,9 @@
     "translationIds": [
       "35534d6d-7cea-81f2-8e9c-db22a762b499",
       "35534d6d-7cea-81fe-b44c-e263fe56bd03"
+    ],
+    "industries": [
+      "forestry-tires"
     ]
   },
   {
@@ -3537,6 +4291,9 @@
     "translationIds": [
       "35534d6d-7cea-818c-a889-fc71f1cbb3f0",
       "35534d6d-7cea-81c9-8dfb-d5054b12604e"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -3552,6 +4309,9 @@
     "translationIds": [
       "35534d6d-7cea-816c-9e93-dde599fcb088",
       "35534d6d-7cea-8156-b9e4-e00dc5fdeb13"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -3567,6 +4327,9 @@
     "translationIds": [
       "35534d6d-7cea-81de-b013-f69d077420d9",
       "35534d6d-7cea-81b3-8348-c7be38a51489"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -3582,6 +4345,9 @@
     "translationIds": [
       "35534d6d-7cea-8116-be02-e16305eb53b3",
       "35534d6d-7cea-81b7-ad33-cb83d0f1f70a"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -3597,6 +4363,9 @@
     "translationIds": [
       "35534d6d-7cea-81ad-8820-d33286880534",
       "35534d6d-7cea-81e1-b793-f4b5a904b049"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -3612,6 +4381,9 @@
     "translationIds": [
       "35534d6d-7cea-8111-80b3-eaa31786583a",
       "35534d6d-7cea-81ec-960b-dfcec791cdd6"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -3627,6 +4399,9 @@
     "translationIds": [
       "35534d6d-7cea-81a9-bc00-f15ee478f664",
       "35534d6d-7cea-81ee-80f2-cf9958e550a1"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -3642,6 +4417,9 @@
     "translationIds": [
       "35534d6d-7cea-811f-ba22-f0066877bdd8",
       "35534d6d-7cea-81f0-a567-f587e162cff5"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -3657,6 +4435,9 @@
     "translationIds": [
       "35534d6d-7cea-81c5-9630-cead8172f565",
       "35534d6d-7cea-8115-8546-c5271dd1c000"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -3672,6 +4453,10 @@
     "translationIds": [
       "35534d6d-7cea-8145-955f-f9363c3778d3",
       "35534d6d-7cea-815d-813d-ccc7eae88eec"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -3687,6 +4472,9 @@
     "translationIds": [
       "35534d6d-7cea-81f0-bbdc-e20e3159bcff",
       "35534d6d-7cea-8192-bdbd-f706ed9c7342"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -3702,6 +4490,9 @@
     "translationIds": [
       "35534d6d-7cea-81bf-82ff-d0cfe9d1334d",
       "35534d6d-7cea-814e-9337-e286f36b1432"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -3717,6 +4508,9 @@
     "translationIds": [
       "35534d6d-7cea-8139-8cf8-ed36ec3442b0",
       "35534d6d-7cea-815b-921c-f3a8835e74e2"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -3732,6 +4526,9 @@
     "translationIds": [
       "35534d6d-7cea-8110-8e22-d90638ea4767",
       "35534d6d-7cea-812e-98c5-f6aa4ac2ab2c"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -3747,6 +4544,10 @@
     "translationIds": [
       "35534d6d-7cea-818e-a653-f893b8668f7b",
       "35534d6d-7cea-81e2-8fed-fc36d5342390"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -3762,6 +4563,9 @@
     "translationIds": [
       "35534d6d-7cea-81d4-96e2-e28a072fafe3",
       "35534d6d-7cea-81e9-b52f-fc833c07b329"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -3777,6 +4581,9 @@
     "translationIds": [
       "35534d6d-7cea-8146-9c0d-d8e0e8a1433c",
       "35534d6d-7cea-8152-a2f4-d727eb9701f1"
+    ],
+    "industries": [
+      "solid-otr-tires"
     ]
   },
   {
@@ -3792,6 +4599,9 @@
     "translationIds": [
       "35534d6d-7cea-819e-b292-fc81738e1fc2",
       "35534d6d-7cea-81ee-80f2-cf9958e550a1"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -3807,6 +4617,9 @@
     "translationIds": [
       "35534d6d-7cea-81b2-bae3-db4d18cd38ef",
       "35534d6d-7cea-81fb-8320-ff5f0366524d"
+    ],
+    "industries": [
+      "forestry-tires"
     ]
   },
   {
@@ -3822,6 +4635,9 @@
     "translationIds": [
       "35534d6d-7cea-8123-99e6-dbbce91f2b4d",
       "35534d6d-7cea-81b2-b827-ff64ce8b028a"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -3837,6 +4653,10 @@
     "translationIds": [
       "35534d6d-7cea-81f0-a1f5-f7dd1262962f",
       "35534d6d-7cea-8162-9ecd-d8e54cc567c8"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -3852,6 +4672,9 @@
     "translationIds": [
       "35534d6d-7cea-811b-a1ea-cbfc28f78f73",
       "35534d6d-7cea-8144-99c8-d0f9cfd52a71"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -3867,6 +4690,9 @@
     "translationIds": [
       "35534d6d-7cea-8194-bf1b-f4dc8957b5f0",
       "35534d6d-7cea-81c2-a30a-de24fad4a75e"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -3882,6 +4708,9 @@
     "translationIds": [
       "35534d6d-7cea-819d-abf6-e328b07dfc44",
       "35534d6d-7cea-81e1-b793-f4b5a904b049"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -3897,6 +4726,9 @@
     "translationIds": [
       "35534d6d-7cea-81f7-bb4b-d7e486040a4c",
       "35534d6d-7cea-8148-9bdc-e4a3d9ec5917"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -3912,6 +4744,9 @@
     "translationIds": [
       "35534d6d-7cea-8187-8a04-f58c85e0956f",
       "35534d6d-7cea-8198-bcb7-e522f95ea247"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -3927,6 +4762,9 @@
     "translationIds": [
       "35534d6d-7cea-8140-a57d-ef2869f7d6a5",
       "35534d6d-7cea-810d-a699-f197ef5f3bf1"
+    ],
+    "industries": [
+      "forestry-tires"
     ]
   },
   {
@@ -3942,6 +4780,9 @@
     "translationIds": [
       "35534d6d-7cea-81c2-a838-c586af786fed",
       "35534d6d-7cea-81db-9c55-d27f3697a950"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -3957,6 +4798,9 @@
     "translationIds": [
       "35534d6d-7cea-8172-8799-d2e4eebc3276",
       "35534d6d-7cea-81b8-8b4f-f4e2e342069a"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -3972,6 +4816,9 @@
     "translationIds": [
       "35534d6d-7cea-810e-bb5c-e0deb80cd52b",
       "35534d6d-7cea-815d-a71b-ce3b6ca25bef"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -3987,6 +4834,9 @@
     "translationIds": [
       "35534d6d-7cea-8123-99e6-dbbce91f2b4d",
       "35534d6d-7cea-81aa-a574-e328e2ce8250"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -4002,6 +4852,9 @@
     "translationIds": [
       "35534d6d-7cea-81a9-bfd1-e35989944d44",
       "35534d6d-7cea-81fb-8320-ff5f0366524d"
+    ],
+    "industries": [
+      "forestry-tires"
     ]
   },
   {
@@ -4017,6 +4870,9 @@
     "translationIds": [
       "35534d6d-7cea-81de-b013-f69d077420d9",
       "35534d6d-7cea-819c-97fb-dea9cea13a6b"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -4032,6 +4888,9 @@
     "translationIds": [
       "35534d6d-7cea-8178-8b57-e81837e8e317",
       "35534d6d-7cea-81e7-8da1-c6de71f3d75a"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -4047,6 +4906,9 @@
     "translationIds": [
       "35534d6d-7cea-8163-889a-c1936bfe4dcf",
       "35534d6d-7cea-817c-b7cc-ebee73c5eeaf"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -4062,6 +4924,9 @@
     "translationIds": [
       "35534d6d-7cea-81ba-9f48-d54fd5f0f2fc",
       "35534d6d-7cea-81cc-9860-d7eb76ea9aef"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -4077,6 +4942,14 @@
     "translationIds": [
       "35534d6d-7cea-8117-8d87-ef0a110d2d30",
       "35534d6d-7cea-818e-a45c-d9d0521545f5"
+    ],
+    "industries": [
+      "industrial-forklift-tires",
+      "off-the-road-tires",
+      "mining-tires",
+      "construction-tires",
+      "underground-mining-tires",
+      "solid-otr-tires"
     ]
   },
   {
@@ -4092,6 +4965,9 @@
     "translationIds": [
       "35534d6d-7cea-81c4-af2a-fa3d4c5d47c9",
       "35534d6d-7cea-810a-b6eb-d5769b3281c8"
+    ],
+    "industries": [
+      "solid-otr-tires"
     ]
   },
   {
@@ -4107,6 +4983,9 @@
     "translationIds": [
       "35534d6d-7cea-8169-bf04-f32f5b6c3c1d",
       "35534d6d-7cea-81e3-b0ec-e12de8587a84"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -4122,6 +5001,9 @@
     "translationIds": [
       "35534d6d-7cea-81f6-ac39-e20adb72f7f1",
       "35534d6d-7cea-81f5-bc3a-e41c1bf1e4c8"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -4137,6 +5019,9 @@
     "translationIds": [
       "35534d6d-7cea-819d-962a-d53c5e024b0e",
       "35534d6d-7cea-8116-be02-e16305eb53b3"
+    ],
+    "industries": [
+      "tbr-tires-zh-hant"
     ]
   },
   {
@@ -4152,6 +5037,9 @@
     "translationIds": [
       "35534d6d-7cea-81af-b4ad-f1655cfbad0c",
       "35534d6d-7cea-8172-8799-d2e4eebc3276"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -4167,6 +5055,9 @@
     "translationIds": [
       "35534d6d-7cea-81ed-8248-c41bbea3c7a7",
       "35534d6d-7cea-814b-8548-c56de614883d"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -4182,6 +5073,9 @@
     "translationIds": [
       "35534d6d-7cea-8186-8dd4-f3bbbf90a11e",
       "35534d6d-7cea-817b-8881-d309ab4ed845"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -4197,6 +5091,9 @@
     "translationIds": [
       "35534d6d-7cea-8129-a998-e2802392018c",
       "35534d6d-7cea-8160-907c-c91639aa9230"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -4212,6 +5109,9 @@
     "translationIds": [
       "35534d6d-7cea-81b3-9707-c355589fe9c0",
       "35534d6d-7cea-81cc-9860-d7eb76ea9aef"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -4227,6 +5127,9 @@
     "translationIds": [
       "35534d6d-7cea-81d6-bdec-eae61ff0b1f4",
       "35534d6d-7cea-81f0-8505-d858d36029b8"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -4242,6 +5145,9 @@
     "translationIds": [
       "35534d6d-7cea-8172-9122-c6aff10eec8f",
       "35534d6d-7cea-81cd-96f8-cc7858e211eb"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -4257,6 +5163,9 @@
     "translationIds": [
       "35534d6d-7cea-8192-8a6d-da36f44c8f02",
       "35534d6d-7cea-81e4-8fe0-e985cc18884c"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -4272,6 +5181,9 @@
     "translationIds": [
       "35534d6d-7cea-81df-9c79-d8ecb05362cc",
       "35534d6d-7cea-814b-a675-e6b211bae0c5"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -4287,6 +5199,10 @@
     "translationIds": [
       "35534d6d-7cea-812a-878b-da2d2c3b8c9b",
       "35534d6d-7cea-8144-a686-de30715323fb"
+    ],
+    "industries": [
+      "off-the-road-tires",
+      "underground-mining-tires"
     ]
   },
   {
@@ -4302,6 +5218,9 @@
     "translationIds": [
       "35534d6d-7cea-81fa-8289-df1ac4bfef80",
       "35534d6d-7cea-8116-affc-ca330bab18ca"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -4317,6 +5236,9 @@
     "translationIds": [
       "35534d6d-7cea-81a3-a9fe-ef6b9b91c4ac",
       "35534d6d-7cea-814e-9337-e286f36b1432"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -4332,6 +5254,9 @@
     "translationIds": [
       "35534d6d-7cea-8150-babf-d5a537a37fe3",
       "35534d6d-7cea-812f-8d4a-fbe99de9c642"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -4347,6 +5272,9 @@
     "translationIds": [
       "35534d6d-7cea-81d4-bc3f-c244f5150f1b",
       "35534d6d-7cea-81cd-9b29-d8732f60770c"
+    ],
+    "industries": [
+      "agricultural-tractor-tires"
     ]
   },
   {
@@ -4362,6 +5290,9 @@
     "translationIds": [
       "35534d6d-7cea-81e1-8bfa-eeba84a39df3",
       "35534d6d-7cea-815d-93ed-f3cd8f7b1119"
+    ],
+    "industries": [
+      "rubber-tracks-zh-hant"
     ]
   },
   {
@@ -4377,6 +5308,9 @@
     "translationIds": [
       "35534d6d-7cea-8194-bf1b-f4dc8957b5f0",
       "35534d6d-7cea-81ab-b969-e6efdeae8830"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -4392,6 +5326,10 @@
     "translationIds": [
       "35534d6d-7cea-81db-9c55-d27f3697a950",
       "35534d6d-7cea-81af-a965-fc290c2d972a"
+    ],
+    "industries": [
+      "underground-mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -4407,6 +5345,9 @@
     "translationIds": [
       "35534d6d-7cea-816b-85d9-c1b0ca052a29",
       "35534d6d-7cea-81d2-ac9c-d803280218b3"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -4422,6 +5363,9 @@
     "translationIds": [
       "35534d6d-7cea-8105-a59f-c89b78335d4b",
       "35534d6d-7cea-8126-b944-e871ea0b2e25"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -4437,6 +5381,9 @@
     "translationIds": [
       "35534d6d-7cea-8197-94b5-f6979f25be20",
       "35534d6d-7cea-8138-8a4d-c737ecd7b919"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -4452,6 +5399,10 @@
     "translationIds": [
       "35534d6d-7cea-8100-aa02-fe8d20231e67",
       "35534d6d-7cea-811e-b7d7-cf95840c95ea"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -4467,6 +5418,9 @@
     "translationIds": [
       "35534d6d-7cea-81b3-abd6-d883404e1636",
       "35534d6d-7cea-810a-b6eb-d5769b3281c8"
+    ],
+    "industries": [
+      "solid-otr-tires"
     ]
   },
   {
@@ -4482,6 +5436,9 @@
     "translationIds": [
       "35534d6d-7cea-819f-a0d4-f97eb9c4dceb",
       "35534d6d-7cea-8115-8546-c5271dd1c000"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -4497,6 +5454,9 @@
     "translationIds": [
       "35534d6d-7cea-816f-bf1e-d172d6940ac7",
       "35534d6d-7cea-8166-b32a-fd6befb562a3"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -4512,6 +5472,9 @@
     "translationIds": [
       "35534d6d-7cea-818c-a889-fc71f1cbb3f0",
       "35534d6d-7cea-8199-a118-d8f9b2572cca"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -4527,6 +5490,9 @@
     "translationIds": [
       "35534d6d-7cea-81b3-9707-c355589fe9c0",
       "35534d6d-7cea-81ba-9f48-d54fd5f0f2fc"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -4542,6 +5508,9 @@
     "translationIds": [
       "35534d6d-7cea-8172-9122-c6aff10eec8f",
       "35534d6d-7cea-81bb-9ce3-c3f5158dba92"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -4557,6 +5526,9 @@
     "translationIds": [
       "35534d6d-7cea-81d4-bc3f-c244f5150f1b",
       "35534d6d-7cea-81c0-8a89-e220f7dfbfb3"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -4572,6 +5544,10 @@
     "translationIds": [
       "35534d6d-7cea-814f-8986-d55f682872aa",
       "35534d6d-7cea-813d-844a-f8a2a238012c"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -4587,6 +5563,9 @@
     "translationIds": [
       "35534d6d-7cea-81fb-a606-d37d635a770a",
       "35534d6d-7cea-810e-9f0f-f0cdc23e8f26"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -4602,7 +5581,8 @@
     "translationIds": [
       "35534d6d-7cea-818b-b50a-e1f83cb61c40",
       "35534d6d-7cea-81fb-8061-c4e540667fba"
-    ]
+    ],
+    "industries": []
   },
   {
     "pageId": "35534d6d-7cea-81d1-ae22-c0323af82af4",
@@ -4617,6 +5597,9 @@
     "translationIds": [
       "35534d6d-7cea-8100-bee3-da338155345b",
       "35534d6d-7cea-8107-8b84-fa8f6025c2bb"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -4632,6 +5615,9 @@
     "translationIds": [
       "35534d6d-7cea-812b-8d98-fb9468b82287",
       "35534d6d-7cea-81d8-a59a-d3de64c5f9df"
+    ],
+    "industries": [
+      "solid-otr-tires"
     ]
   },
   {
@@ -4647,6 +5633,9 @@
     "translationIds": [
       "35534d6d-7cea-816b-a1be-dc1214e0a13a",
       "35534d6d-7cea-81fc-a36c-e1e147556d4c"
+    ],
+    "industries": [
+      "solid-otr-tires"
     ]
   },
   {
@@ -4662,6 +5651,9 @@
     "translationIds": [
       "35534d6d-7cea-816b-85d9-c1b0ca052a29",
       "35534d6d-7cea-81c3-a726-c733aaf4a431"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -4677,6 +5669,9 @@
     "translationIds": [
       "35534d6d-7cea-8140-9a34-f1017f933071",
       "35534d6d-7cea-81ea-95a8-cc09e4eb7cd2"
+    ],
+    "industries": [
+      "rubber-tracks"
     ]
   },
   {
@@ -4692,6 +5687,9 @@
     "translationIds": [
       "35534d6d-7cea-8141-959c-c59d81805e51",
       "35534d6d-7cea-8145-a2d9-c16b3d1f3371"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -4707,6 +5705,9 @@
     "translationIds": [
       "35534d6d-7cea-8163-973f-ee9ab73cdc3e",
       "35534d6d-7cea-81f9-b320-c81f9f27ad0e"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -4722,6 +5723,9 @@
     "translationIds": [
       "35534d6d-7cea-8101-853f-c423b8c854bd",
       "35534d6d-7cea-817f-8f16-e6b5a545eb55"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -4737,6 +5741,9 @@
     "translationIds": [
       "35534d6d-7cea-8135-ac7a-e87bcde23f37",
       "35534d6d-7cea-811a-b0f3-da8c0447d9a5"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -4752,6 +5759,9 @@
     "translationIds": [
       "35534d6d-7cea-81a6-b195-dae1c5de13eb",
       "35534d6d-7cea-81e9-b52f-fc833c07b329"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -4767,6 +5777,9 @@
     "translationIds": [
       "35534d6d-7cea-81cd-9b29-d8732f60770c",
       "35534d6d-7cea-81c0-8a89-e220f7dfbfb3"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -4782,6 +5795,9 @@
     "translationIds": [
       "35534d6d-7cea-81bb-8a12-dd4580c3036e",
       "35534d6d-7cea-81f0-8505-d858d36029b8"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -4797,6 +5813,9 @@
     "translationIds": [
       "35534d6d-7cea-8126-83f8-c761d1e8a35e",
       "35534d6d-7cea-81fa-ba26-d91d9e6b5f98"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -4812,6 +5831,9 @@
     "translationIds": [
       "35534d6d-7cea-812b-8d98-fb9468b82287",
       "35534d6d-7cea-81d1-b92e-cc6b8a96262e"
+    ],
+    "industries": [
+      "solid-otr-tires"
     ]
   },
   {
@@ -4827,6 +5849,9 @@
     "translationIds": [
       "35534d6d-7cea-8122-9277-e9c63cfb358d",
       "35534d6d-7cea-81f2-9d10-c39c82b0ffd1"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -4842,6 +5867,9 @@
     "translationIds": [
       "35534d6d-7cea-81c2-a838-c586af786fed",
       "35534d6d-7cea-81af-a965-fc290c2d972a"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -4857,6 +5885,10 @@
     "translationIds": [
       "35534d6d-7cea-810e-871a-cc3a3106cabc",
       "35534d6d-7cea-8141-aed6-c1346ddef5bf"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -4872,6 +5904,9 @@
     "translationIds": [
       "35534d6d-7cea-8150-b34b-ed5ab2de0569",
       "35534d6d-7cea-81ee-9433-e8c1d0449f0d"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -4887,6 +5922,11 @@
     "translationIds": [
       "35534d6d-7cea-8100-8e94-f39e07e18386",
       "35534d6d-7cea-8190-8d47-e741e3949639"
+    ],
+    "industries": [
+      "underground-mining-tires",
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -4902,6 +5942,9 @@
     "translationIds": [
       "35534d6d-7cea-819c-97fb-dea9cea13a6b",
       "35534d6d-7cea-81b3-8348-c7be38a51489"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -4917,6 +5960,9 @@
     "translationIds": [
       "35534d6d-7cea-8105-bf37-e6432ee02215",
       "35534d6d-7cea-8160-a88d-db0b8456368a"
+    ],
+    "industries": [
+      "solid-otr-tires"
     ]
   },
   {
@@ -4932,6 +5978,9 @@
     "translationIds": [
       "35534d6d-7cea-81bc-a96e-c0ee473ce1d0",
       "35534d6d-7cea-814b-a675-e6b211bae0c5"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -4947,6 +5996,9 @@
     "translationIds": [
       "35534d6d-7cea-8114-b739-c7e40a244598",
       "35534d6d-7cea-813e-a49a-eb039fe7fb2f"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -4962,6 +6014,9 @@
     "translationIds": [
       "35534d6d-7cea-8152-b7dd-cff843ee827a",
       "35534d6d-7cea-8129-b86d-e5af42526b08"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -4977,6 +6032,10 @@
     "translationIds": [
       "35534d6d-7cea-8106-8fc1-df8647f01df7",
       "35534d6d-7cea-81f2-8a73-ea4c3a2de3fe"
+    ],
+    "industries": [
+      "off-the-road-tires",
+      "construction-tires"
     ]
   },
   {
@@ -4992,6 +6051,9 @@
     "translationIds": [
       "35534d6d-7cea-815d-93ed-f3cd8f7b1119",
       "35534d6d-7cea-81c2-88fe-f9535373ba26"
+    ],
+    "industries": [
+      "rubber-tracks"
     ]
   },
   {
@@ -5007,6 +6069,9 @@
     "translationIds": [
       "35534d6d-7cea-81ad-8820-d33286880534",
       "35534d6d-7cea-819d-abf6-e328b07dfc44"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -5022,6 +6087,9 @@
     "translationIds": [
       "35534d6d-7cea-8118-9959-da4e3cca66e9",
       "35534d6d-7cea-812f-b409-d22736b39990"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -5037,6 +6105,10 @@
     "translationIds": [
       "35534d6d-7cea-81a6-afb6-d6ca141e7e33",
       "35534d6d-7cea-818e-a653-f893b8668f7b"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -5052,6 +6124,11 @@
     "translationIds": [
       "35534d6d-7cea-810e-897b-cdcafeac6b36",
       "35534d6d-7cea-8147-b0ca-c7fec55306c1"
+    ],
+    "industries": [
+      "off-the-road-tires",
+      "mining-tires",
+      "underground-mining-tires"
     ]
   },
   {
@@ -5067,6 +6144,9 @@
     "translationIds": [
       "35534d6d-7cea-8169-bf04-f32f5b6c3c1d",
       "35534d6d-7cea-81b6-98ca-f8961c52e60a"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -5082,6 +6162,9 @@
     "translationIds": [
       "35534d6d-7cea-8149-be3a-eba4108e5e1c",
       "35534d6d-7cea-816d-8fc8-cfbed8a7c9c5"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -5097,6 +6180,9 @@
     "translationIds": [
       "35534d6d-7cea-8192-8a6d-da36f44c8f02",
       "35534d6d-7cea-81bb-a5e2-e9ab618c50fd"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -5112,6 +6198,9 @@
     "translationIds": [
       "35534d6d-7cea-8123-993d-e651ae9e3b54",
       "35534d6d-7cea-8120-8985-e3aa637a4da8"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -5127,6 +6216,9 @@
     "translationIds": [
       "35534d6d-7cea-8178-8b57-e81837e8e317",
       "35534d6d-7cea-81b3-8a71-f72e5f278e1c"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -5142,6 +6234,9 @@
     "translationIds": [
       "35534d6d-7cea-8158-8cc8-e60cb9f1f672",
       "35534d6d-7cea-8186-bfba-e507dc5fc262"
+    ],
+    "industries": [
+      "rubber-tracks-ar-ae"
     ]
   },
   {
@@ -5157,6 +6252,16 @@
     "translationIds": [
       "35534d6d-7cea-8176-a263-f86495cb2cfe",
       "35534d6d-7cea-81ff-b126-e13762fc43ce"
+    ],
+    "industries": [
+      "industrial-forklift-tires",
+      "off-the-road-tires",
+      "mining-tires",
+      "construction-tires",
+      "rubber-tracks-ar-ae",
+      "underground-mining-tires",
+      "forestry-tires",
+      "solid-otr-tires"
     ]
   },
   {
@@ -5172,6 +6277,9 @@
     "translationIds": [
       "35534d6d-7cea-81a6-b195-dae1c5de13eb",
       "35534d6d-7cea-81d4-96e2-e28a072fafe3"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -5187,6 +6295,9 @@
     "translationIds": [
       "35534d6d-7cea-814e-8fd0-fdca0ce6b0f3",
       "35534d6d-7cea-81ed-adf2-f431877ffcfb"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -5202,6 +6313,9 @@
     "translationIds": [
       "35534d6d-7cea-81d3-858c-e155d1855a72",
       "35534d6d-7cea-8140-9a34-f1017f933071"
+    ],
+    "industries": [
+      "rubber-tracks-zh-hant"
     ]
   },
   {
@@ -5217,6 +6331,9 @@
     "translationIds": [
       "35534d6d-7cea-81ff-8961-e9953d7e2155",
       "35534d6d-7cea-8103-aee7-fee7a22dd812"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -5232,6 +6349,9 @@
     "translationIds": [
       "35534d6d-7cea-8111-80b3-eaa31786583a",
       "35534d6d-7cea-819e-8ee9-ed1a029d5153"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -5247,6 +6367,9 @@
     "translationIds": [
       "35534d6d-7cea-81b8-a6bc-dd2f6bd2da47",
       "35534d6d-7cea-814b-8548-c56de614883d"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -5262,6 +6385,9 @@
     "translationIds": [
       "35534d6d-7cea-814e-8fd0-fdca0ce6b0f3",
       "35534d6d-7cea-81ea-8b00-ef943e9a6fee"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -5277,6 +6403,9 @@
     "translationIds": [
       "35534d6d-7cea-81a9-bc00-f15ee478f664",
       "35534d6d-7cea-819e-b292-fc81738e1fc2"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -5292,6 +6421,9 @@
     "translationIds": [
       "35534d6d-7cea-81dd-ac8a-e0ff71a3d0bd",
       "35534d6d-7cea-8150-b34b-ed5ab2de0569"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -5307,6 +6439,9 @@
     "translationIds": [
       "35534d6d-7cea-8168-97d4-f56352e33a33",
       "35534d6d-7cea-815c-9eea-cb9fa5834a16"
+    ],
+    "industries": [
+      "tbr-tires-zh-hant"
     ]
   },
   {
@@ -5322,6 +6457,9 @@
     "translationIds": [
       "35534d6d-7cea-8122-acf0-dea8823cd502",
       "35534d6d-7cea-8102-864d-e06adee90d87"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -5337,6 +6475,9 @@
     "translationIds": [
       "35534d6d-7cea-81d6-bdec-eae61ff0b1f4",
       "35534d6d-7cea-81bb-8a12-dd4580c3036e"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -5352,6 +6493,9 @@
     "translationIds": [
       "35534d6d-7cea-813d-bd8a-f778be445ad0",
       "35534d6d-7cea-8166-89e5-e4f9de363ae4"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -5367,6 +6511,10 @@
     "translationIds": [
       "35534d6d-7cea-8162-9ecd-d8e54cc567c8",
       "35534d6d-7cea-81aa-ba8c-de17d8d9d05d"
+    ],
+    "industries": [
+      "mining-tires",
+      "off-the-road-tires"
     ]
   },
   {
@@ -5382,6 +6530,9 @@
     "translationIds": [
       "35534d6d-7cea-819f-82fa-f72fa8fcd00f",
       "35534d6d-7cea-811f-ba22-f0066877bdd8"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -5397,6 +6548,9 @@
     "translationIds": [
       "35534d6d-7cea-81a2-926d-cda40d2465d5",
       "35534d6d-7cea-8192-bdbd-f706ed9c7342"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -5412,6 +6566,9 @@
     "translationIds": [
       "35534d6d-7cea-8156-adc9-f65c605017de",
       "35534d6d-7cea-818a-9793-e2a865d00bf5"
+    ],
+    "industries": [
+      "tbr-tires"
     ]
   },
   {
@@ -5427,6 +6584,11 @@
     "translationIds": [
       "35534d6d-7cea-81e0-b309-d91ebcff4d07",
       "35534d6d-7cea-8106-8fc1-df8647f01df7"
+    ],
+    "industries": [
+      "off-the-road-tires",
+      "industrial-forklift-tires",
+      "construction-tires"
     ]
   },
   {
@@ -5442,6 +6604,9 @@
     "translationIds": [
       "35534d6d-7cea-81fe-b44c-e263fe56bd03",
       "35534d6d-7cea-8199-8d89-c9c4f9365728"
+    ],
+    "industries": [
+      "forestry-tires"
     ]
   },
   {
@@ -5457,6 +6622,9 @@
     "translationIds": [
       "35534d6d-7cea-8122-9277-e9c63cfb358d",
       "35534d6d-7cea-81db-8297-fc6b64146d1b"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -5472,6 +6640,9 @@
     "translationIds": [
       "35534d6d-7cea-81f8-8387-dfd1202314ae",
       "35534d6d-7cea-8103-9888-c7d503c3f9fc"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -5487,6 +6658,9 @@
     "translationIds": [
       "35534d6d-7cea-817d-98ef-cd5badf7e74c",
       "35534d6d-7cea-8127-aab0-c97c833255ef"
+    ],
+    "industries": [
+      "forestry-tires"
     ]
   },
   {
@@ -5502,6 +6676,9 @@
     "translationIds": [
       "35534d6d-7cea-8144-b4c0-d4238989d769",
       "35534d6d-7cea-8148-a37f-d28e77fff1f2"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -5517,6 +6694,9 @@
     "translationIds": [
       "35534d6d-7cea-8192-a7df-ddb272d018c2",
       "35534d6d-7cea-816b-8c85-cd89767ea644"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -5532,6 +6712,9 @@
     "translationIds": [
       "35534d6d-7cea-81f6-ac39-e20adb72f7f1",
       "35534d6d-7cea-81b7-9c89-d6ca48d3fb20"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -5547,6 +6730,9 @@
     "translationIds": [
       "35534d6d-7cea-81b7-9c89-d6ca48d3fb20",
       "35534d6d-7cea-81f5-bc3a-e41c1bf1e4c8"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -5562,6 +6748,9 @@
     "translationIds": [
       "35534d6d-7cea-81ad-b66a-d98341bcba18",
       "35534d6d-7cea-8148-9bdc-e4a3d9ec5917"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -5577,6 +6766,9 @@
     "translationIds": [
       "35534d6d-7cea-81f4-ba81-ff2dc3a81b77",
       "35534d6d-7cea-8103-9888-c7d503c3f9fc"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -5592,6 +6784,10 @@
     "translationIds": [
       "35534d6d-7cea-8120-8132-d0f0c502e175",
       "35534d6d-7cea-810f-9bb2-e457ffc5d76a"
+    ],
+    "industries": [
+      "off-the-road-tires",
+      "underground-mining-tires"
     ]
   },
   {
@@ -5607,6 +6803,9 @@
     "translationIds": [
       "35534d6d-7cea-8163-973f-ee9ab73cdc3e",
       "35534d6d-7cea-81d4-861e-ed72a7eb2878"
+    ],
+    "industries": [
+      "off-the-road-tires"
     ]
   },
   {
@@ -5622,6 +6821,9 @@
     "translationIds": [
       "35534d6d-7cea-81be-b4d9-c9d7547b7e77",
       "35534d6d-7cea-8116-affc-ca330bab18ca"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -5637,6 +6839,9 @@
     "translationIds": [
       "35534d6d-7cea-8126-83f8-c761d1e8a35e",
       "35534d6d-7cea-81d8-8bbe-c50007c966bd"
+    ],
+    "industries": [
+      "construction-tires"
     ]
   },
   {
@@ -5652,7 +6857,8 @@
     "translationIds": [
       "35534d6d-7cea-81d0-bcb0-c2f188d4fa93",
       "35534d6d-7cea-818b-b50a-e1f83cb61c40"
-    ]
+    ],
+    "industries": []
   },
   {
     "pageId": "35534d6d-7cea-81fb-8320-ff5f0366524d",
@@ -5667,6 +6873,9 @@
     "translationIds": [
       "35534d6d-7cea-81a9-bfd1-e35989944d44",
       "35534d6d-7cea-81b2-bae3-db4d18cd38ef"
+    ],
+    "industries": [
+      "forestry-tires"
     ]
   },
   {
@@ -5682,6 +6891,9 @@
     "translationIds": [
       "35534d6d-7cea-81ce-8977-e7b015755771",
       "35534d6d-7cea-810e-9f0f-f0cdc23e8f26"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -5697,6 +6909,9 @@
     "translationIds": [
       "35534d6d-7cea-81d2-9821-dca2ad904220",
       "35534d6d-7cea-816b-a1be-dc1214e0a13a"
+    ],
+    "industries": [
+      "solid-otr-tires"
     ]
   },
   {
@@ -5712,6 +6927,9 @@
     "translationIds": [
       "35534d6d-7cea-8159-b507-f14cdb92561d",
       "35534d6d-7cea-8146-9c69-d546542115e0"
+    ],
+    "industries": [
+      "agricultural-tires"
     ]
   },
   {
@@ -5727,6 +6945,9 @@
     "translationIds": [
       "35534d6d-7cea-81f2-8e9c-db22a762b499",
       "35534d6d-7cea-8199-8d89-c9c4f9365728"
+    ],
+    "industries": [
+      "forestry-tires"
     ]
   },
   {
@@ -5742,6 +6963,9 @@
     "translationIds": [
       "35534d6d-7cea-8103-aee7-fee7a22dd812",
       "35534d6d-7cea-81ec-8486-d9df476ac1e5"
+    ],
+    "industries": [
+      "industrial-forklift-tires"
     ]
   },
   {
@@ -5757,6 +6981,112 @@
     "translationIds": [
       "35534d6d-7cea-8176-a263-f86495cb2cfe",
       "35534d6d-7cea-81e9-b177-f1f2cd75ab5a"
+    ],
+    "industries": [
+      "construction-tires",
+      "industrial-forklift-tires",
+      "off-the-road-tires",
+      "mining-tires",
+      "underground-mining-tires",
+      "rubber-tracks-zh-hant",
+      "forestry-tires",
+      "solid-otr-tires"
     ]
+  },
+  {
+    "pageId": "35634d6d-7cea-813e-bcd8-c2d5edceb10e",
+    "wpId": 39448,
+    "trid": 96068,
+    "language": "ar-ae",
+    "title": "MS353 Product Sheet",
+    "slug": "ms353-product-sheet",
+    "type": "product-sheet",
+    "fileUrl": "https://maxamtire.com/wp-content/uploads/2026/02/MAXAM_MS353.pdf",
+    "thumbnail": null,
+    "translationIds": [
+      "35634d6d-7cea-819c-871b-f75a1625b328",
+      "35634d6d-7cea-818f-b8b8-de855d08088e"
+    ],
+    "industries": []
+  },
+  {
+    "pageId": "35634d6d-7cea-8162-937b-c110750efe96",
+    "wpId": 39178,
+    "trid": 96045,
+    "language": "ar-ae",
+    "title": "ROWXTRA Product Sheet",
+    "slug": "rowxtra-product-sheet",
+    "type": "product-sheet",
+    "fileUrl": "https://maxamtire.com/wp-content/uploads/2026/02/MAXAM_ROWXTRA_medRes_20260218.pdf",
+    "thumbnail": null,
+    "translationIds": [
+      "35634d6d-7cea-819d-aa95-dbfe40d19dbe",
+      "35634d6d-7cea-818f-9369-e000664799e9"
+    ],
+    "industries": []
+  },
+  {
+    "pageId": "35634d6d-7cea-818f-9369-e000664799e9",
+    "wpId": 39177,
+    "trid": 96045,
+    "language": "zh-hant",
+    "title": "ROWXTRA Product Sheet",
+    "slug": "39177",
+    "type": "product-sheet",
+    "fileUrl": "https://maxamtire.com/wp-content/uploads/2026/02/MAXAM_ROWXTRA_medRes_20260218.pdf",
+    "thumbnail": null,
+    "translationIds": [
+      "35634d6d-7cea-819d-aa95-dbfe40d19dbe",
+      "35634d6d-7cea-8162-937b-c110750efe96"
+    ],
+    "industries": []
+  },
+  {
+    "pageId": "35634d6d-7cea-818f-b8b8-de855d08088e",
+    "wpId": 39450,
+    "trid": 96068,
+    "language": "zh-hant",
+    "title": "MS353 Product Sheet",
+    "slug": "ms353-product-sheet",
+    "type": "product-sheet",
+    "fileUrl": "https://maxamtire.com/wp-content/uploads/2026/02/MAXAM_MS353.pdf",
+    "thumbnail": null,
+    "translationIds": [
+      "35634d6d-7cea-819c-871b-f75a1625b328",
+      "35634d6d-7cea-813e-bcd8-c2d5edceb10e"
+    ],
+    "industries": []
+  },
+  {
+    "pageId": "35634d6d-7cea-819c-871b-f75a1625b328",
+    "wpId": 39447,
+    "trid": 96068,
+    "language": "en",
+    "title": "MS353 Product Sheet",
+    "slug": "ms353-product-sheet",
+    "type": "product-sheet",
+    "fileUrl": "https://maxamtire.com/wp-content/uploads/2026/02/MAXAM_MS353.pdf",
+    "thumbnail": null,
+    "translationIds": [
+      "35634d6d-7cea-813e-bcd8-c2d5edceb10e",
+      "35634d6d-7cea-818f-b8b8-de855d08088e"
+    ],
+    "industries": []
+  },
+  {
+    "pageId": "35634d6d-7cea-819d-aa95-dbfe40d19dbe",
+    "wpId": 39162,
+    "trid": 96045,
+    "language": "en",
+    "title": "ROWXTRA Product Sheet",
+    "slug": "rowxtra-product-sheet",
+    "type": "product-sheet",
+    "fileUrl": "https://maxamtire.com/wp-content/uploads/2026/02/MAXAM_ROWXTRA_medRes_20260218.pdf",
+    "thumbnail": null,
+    "translationIds": [
+      "35634d6d-7cea-8162-937b-c110750efe96",
+      "35634d6d-7cea-818f-9369-e000664799e9"
+    ],
+    "industries": []
   }
 ]

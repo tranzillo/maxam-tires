@@ -92,6 +92,8 @@ interface ArticleRow {
   externalLink: string | null;
   featuredImage: string | null;
   author: string;
+  /** Industry slugs derived from WP `category` taxonomy (resolved at sync). */
+  industries?: string[];
   /** Notion block tree (only present when sync ran with bodies). */
   blocks?: any[];
 }
@@ -105,6 +107,8 @@ interface DocumentRow {
   type: string;
   fileUrl: string | null;
   thumbnail: string | null;
+  /** Industries derived from products that link to this document (synced). */
+  industries?: string[];
 }
 
 const products = productsJson as ProductRow[];
@@ -193,6 +197,7 @@ function toTire(p: ProductRow, locale: Locale): Tire {
     rating: p.rating ?? undefined,
     features: [],
     specifications: [],
+    featuredImage: p.featuredImage ?? undefined,
     galleryImages: [],
     documents: p.documents
       .map((s) => documentBySlug.get(indKey(s)))
@@ -201,7 +206,18 @@ function toTire(p: ProductRow, locale: Locale): Tire {
   };
 }
 
-function toArticle(a: ArticleRow): Article {
+/**
+ * Resolve industry slug list to full Industry domain objects, scoped to the
+ * locale. Used by both Article and Document → Article adapters.
+ */
+function resolveIndustries(slugs: string[], locale: Locale): Industry[] {
+  return slugs
+    .map((s) => industryBySlug.get(`${locale}::${s}`))
+    .filter((r): r is TaxonomyRow => Boolean(r))
+    .map(toIndustry);
+}
+
+function toArticle(a: ArticleRow, locale: Locale): Article {
   // Map Notion type → domain ArticleType. The domain type currently has
   // 'blog' | 'news' | 'event' | 'product-sheet' | 'brochure'. Notion
   // distinguishes press-release vs in-the-news; both collapse to 'news'
@@ -217,8 +233,34 @@ function toArticle(a: ArticleRow): Article {
     type: articleType,
     date: a.publishedDate ?? '',
     featuredImage: a.featuredImage ?? undefined,
-    industries: [],
+    industries: resolveIndustries(a.industries ?? [], locale),
     externalUrl: a.externalLink ?? undefined,
+  };
+}
+
+/**
+ * Adapt a DocumentRow to the Article shape so the Resources page can merge
+ * documents into the same feed and use existing card/filter machinery.
+ *
+ * The card uses `fileUrl` to render a download button, and `industries`
+ * for the industry filter. Documents have no published date in Notion;
+ * we leave `date` empty so they sort to the bottom of date-sorted lists.
+ */
+function documentToArticle(d: DocumentRow, locale: Locale): Article {
+  const articleType: ArticleType = (d.type === 'brochure' || d.type === 'product-sheet'
+    ? d.type
+    : 'product-sheet') as ArticleType;
+  return {
+    id: d.slug,
+    slug: d.slug,
+    title: d.title,
+    excerpt: '',
+    content: '',
+    type: articleType,
+    date: '', // documents have no publish date in our schema
+    featuredImage: d.thumbnail ?? undefined,
+    industries: resolveIndustries(d.industries ?? [], locale),
+    fileUrl: d.fileUrl ?? undefined,
   };
 }
 
@@ -273,13 +315,18 @@ export function getAllApplications(locale: Locale): Application[] {
 
 // ── Article queries ─────────────────────────────────────────────────────
 
+/**
+ * Returns articles only — blog/news/event content with prose bodies.
+ * For the Resources page that mixes articles AND documents, use
+ * `getAllResources(locale)` instead.
+ */
 export function getAllArticles(locale: Locale): Article[] {
-  return articles.filter((a) => a.language === locale).map(toArticle);
+  return articles.filter((a) => a.language === locale).map((a) => toArticle(a, locale));
 }
 
 export function getArticleBySlug(locale: Locale, slug: string): Article | undefined {
   const row = articles.find((a) => a.language === locale && a.slug === slug);
-  return row ? toArticle(row) : undefined;
+  return row ? toArticle(row, locale) : undefined;
 }
 
 /** Get the Notion block tree for an article (full prose body). */
@@ -290,14 +337,14 @@ export function getArticleBlocks(locale: Locale, slug: string): any[] {
 export function getArticlesByType(locale: Locale, type: ArticleType): Article[] {
   return articles
     .filter((a) => a.language === locale)
-    .map(toArticle)
+    .map((a) => toArticle(a, locale))
     .filter((a) => a.type === type);
 }
 
-export function getArticlesByIndustry(_locale: Locale, _industrySlug: string): Article[] {
-  // Articles aren't tagged with industries in the current Notion schema;
-  // when that relation is added, switch this to filter on it.
-  return [];
+export function getArticlesByIndustry(locale: Locale, industrySlug: string): Article[] {
+  return articles
+    .filter((a) => a.language === locale && (a.industries ?? []).includes(industrySlug))
+    .map((a) => toArticle(a, locale));
 }
 
 export function getRecentArticles(locale: Locale, limit: number): Article[] {
@@ -305,7 +352,36 @@ export function getRecentArticles(locale: Locale, limit: number): Article[] {
     .filter((a) => a.language === locale)
     .sort((a, b) => (b.publishedDate ?? '').localeCompare(a.publishedDate ?? ''))
     .slice(0, limit)
-    .map(toArticle);
+    .map((a) => toArticle(a, locale));
+}
+
+// ── Document queries ────────────────────────────────────────────────────
+
+/** Documents (brochures + product sheets) as Article-shaped objects. */
+export function getAllDocuments(locale: Locale): Article[] {
+  return documents
+    .filter((d) => d.language === locale)
+    .map((d) => documentToArticle(d, locale));
+}
+
+// ── Unified resource feed ──────────────────────────────────────────────
+
+/**
+ * Everything that should appear on the Resource Center page: articles
+ * (blog + news + events) AND documents (brochures + product sheets).
+ * All adapted to the Article shape so the existing card and filter UI
+ * work without branching.
+ *
+ * Sorted by date desc; documents have no date, so they fall to the end.
+ */
+export function getAllResources(locale: Locale): Article[] {
+  const articleEntries = articles
+    .filter((a) => a.language === locale)
+    .map((a) => toArticle(a, locale));
+  const documentEntries = documents
+    .filter((d) => d.language === locale)
+    .map((d) => documentToArticle(d, locale));
+  return [...articleEntries, ...documentEntries].sort((a, b) => b.date.localeCompare(a.date));
 }
 
 // ── Utilities ───────────────────────────────────────────────────────────
