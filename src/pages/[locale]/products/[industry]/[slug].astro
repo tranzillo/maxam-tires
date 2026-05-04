@@ -1,15 +1,17 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
-import SpecTable from '../../../../components/ui/SpecTable.astro';
+import NotionBlocks from '../../../../components/NotionBlocks.astro';
 import type { Locale } from '../../../../types';
 import { locales, t, localePath } from '../../../../lib/i18n';
-import { getAllProducts, getProductBySlug } from '../../../../lib/data';
+import { getAllProducts, getProductBySlug, getProductBlocks } from '../../../../lib/data';
 
 export function getStaticPaths() {
-  const products = getAllProducts('en');
   const paths: Array<{ params: { locale: string; industry: string; slug: string } }> = [];
   for (const locale of locales) {
+    const products = getAllProducts(locale as Locale);
     for (const tire of products) {
+      // A product without an industry has no canonical URL; skip rather than crash.
+      if (tire.industries.length === 0) continue;
       paths.push({
         params: {
           locale,
@@ -30,6 +32,7 @@ if (!tire) {
 }
 
 const primaryIndustry = tire.industries[0];
+const blocks = getProductBlocks(locale, slug);
 ---
 
 <BaseLayout locale={locale} title={tire.title}>
@@ -72,19 +75,11 @@ const primaryIndustry = tire.industries[0];
           ))}
         </div>
       )}
-
-      <p class="text-maxam-gray-700 mt-6 max-w-3xl leading-relaxed">{tire.description}</p>
     </header>
 
-    <!-- Gallery placeholder -->
-    <section class="mb-10">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {tire.galleryImages.map((img) => (
-          <div class="aspect-square bg-maxam-gray-100 rounded-lg flex items-center justify-center text-maxam-gray-500 text-sm">
-            {img.split('/').pop()}
-          </div>
-        ))}
-      </div>
+    <!-- Body: description, features, spec table, gallery — all from Notion blocks. -->
+    <section class="mb-10 prose-content">
+      <NotionBlocks blocks={blocks} />
     </section>
 
     <!-- CTA -->
@@ -97,42 +92,27 @@ const primaryIndustry = tire.industries[0];
       </a>
     </div>
 
-    <!-- Features -->
-    {tire.features.length > 0 && (
-      <section class="mb-10 rounded-lg p-8" style={`background:${primaryIndustry.color}10`}>
+    <!-- Documents (PDF downloads from Notion Documents DB) -->
+    {tire.documents.length > 0 && (
+      <section class="mb-10">
         <h2 class="text-2xl font-bold text-maxam-black mb-4">
-          {t(locale, 'product.features')}
+          {t(locale, 'product.documents') || 'Documents'}
         </h2>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {tire.features.map((feature) => (
-            <li class="flex items-start gap-2">
-              <span class="mt-1 w-2 h-2 rounded-full shrink-0" style={`background:${primaryIndustry.color}`}></span>
-              <span>{feature}</span>
+          {tire.documents.map((doc) => (
+            <li>
+              <a
+                href={doc.fileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block border border-maxam-gray-100 rounded-lg p-4 hover:border-maxam-blue transition-colors"
+              >
+                <div class="text-xs uppercase tracking-wide text-maxam-gray-500 mb-1">{doc.type}</div>
+                <div class="font-medium">{doc.title}</div>
+              </a>
             </li>
           ))}
         </ul>
-      </section>
-    )}
-
-    <!-- Specifications -->
-    {tire.specTable && (
-      <section class="mb-10">
-        <h2 class="text-2xl font-bold text-maxam-black mb-4">
-          {t(locale, 'product.specifications')}
-        </h2>
-        <SpecTable table={tire.specTable} industryColor={primaryIndustry.color} />
-      </section>
-    )}
-
-    <!-- Sizes (shown if no spec table, since sizes are usually columns in the table) -->
-    {!tire.specTable && tire.sizes.length > 0 && (
-      <section class="mb-10">
-        <span class="font-medium text-maxam-gray-700 text-sm">{t(locale, 'products.filter.size')}:</span>
-        <div class="flex flex-wrap gap-2 mt-2">
-          {tire.sizes.map((size) => (
-            <span class="bg-maxam-gray-100 text-sm px-3 py-1 rounded">{size}</span>
-          ))}
-        </div>
       </section>
     )}
 

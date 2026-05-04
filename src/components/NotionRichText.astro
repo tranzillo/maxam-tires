@@ -1,0 +1,46 @@
+---
+/**
+ * Render a Notion rich_text array (the value inside a paragraph,
+ * heading, list item, etc.) as inline HTML with bold/italic/link
+ * annotations applied.
+ */
+interface Props {
+  richText: any[];
+  /** When true, ignore annotations and emit plain text only — for code blocks. */
+  plain?: boolean;
+}
+
+const { richText, plain = false } = Astro.props;
+---
+
+{(richText ?? []).map((node) => {
+  const text = node.plain_text ?? node.text?.content ?? '';
+  if (!text) return null;
+  if (plain) return text;
+
+  const a = node.annotations ?? {};
+  const href = node.text?.link?.url ?? node.href ?? null;
+
+  // Build the inline element with stacked formatting wrappers. Order
+  // doesn't matter visually as long as each annotation is represented.
+  let content: any = text;
+  if (a.code) content = <code class="px-1 py-0.5 bg-maxam-gray-100 rounded text-sm">{content}</code>;
+  if (a.bold) content = <strong>{content}</strong>;
+  if (a.italic) content = <em>{content}</em>;
+  if (a.underline) content = <u>{content}</u>;
+  if (a.strikethrough) content = <s>{content}</s>;
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        class="text-maxam-blue hover:underline"
+        target={href.startsWith('http') ? '_blank' : undefined}
+        rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+      >
+        {content}
+      </a>
+    );
+  }
+  return content;
+})}

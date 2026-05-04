@@ -1,0 +1,213 @@
+---
+/**
+ * Render a Notion block tree (the array produced by fetchPageBlocks) as HTML.
+ *
+ * Block coverage matches what we actually produce when importing from
+ * WordPress — paragraphs, headings, lists, quotes, dividers, images,
+ * tables, and a few extras for forward compatibility (callouts, toggles).
+ * Unknown block types fall back to a debug comment so we notice them
+ * without breaking the page.
+ */
+import NotionRichText from './NotionRichText.astro';
+
+interface Props {
+  blocks: any[];
+}
+
+const { blocks } = Astro.props;
+
+// Group consecutive list items so they share a single <ul>/<ol> wrapper.
+// Notion returns each list item as a sibling; HTML expects them nested.
+type Group =
+  | { kind: 'block'; block: any }
+  | { kind: 'ul'; items: any[] }
+  | { kind: 'ol'; items: any[] };
+
+function groupBlocks(arr: any[]): Group[] {
+  const out: Group[] = [];
+  for (const block of arr ?? []) {
+    if (block.type === 'bulleted_list_item') {
+      const last = out[out.length - 1];
+      if (last && last.kind === 'ul') last.items.push(block);
+      else out.push({ kind: 'ul', items: [block] });
+    } else if (block.type === 'numbered_list_item') {
+      const last = out[out.length - 1];
+      if (last && last.kind === 'ol') last.items.push(block);
+      else out.push({ kind: 'ol', items: [block] });
+    } else {
+      out.push({ kind: 'block', block });
+    }
+  }
+  return out;
+}
+
+const groups = groupBlocks(blocks);
+
+// Notion table blocks store rows as children; pre-extract for cleaner template.
+function tableRows(block: any): any[] {
+  return (block.children ?? []).filter((c: any) => c.type === 'table_row');
+}
+---
+
+{groups.map((group) => {
+  if (group.kind === 'ul') {
+    return (
+      <ul class="list-disc ps-6 my-4 space-y-1">
+        {group.items.map((b) => (
+          <li>
+            <NotionRichText richText={b.bulleted_list_item.rich_text} />
+            {b.children && b.children.length > 0 && (
+              <Astro.self blocks={b.children} />
+            )}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+  if (group.kind === 'ol') {
+    return (
+      <ol class="list-decimal ps-6 my-4 space-y-1">
+        {group.items.map((b) => (
+          <li>
+            <NotionRichText richText={b.numbered_list_item.rich_text} />
+            {b.children && b.children.length > 0 && (
+              <Astro.self blocks={b.children} />
+            )}
+          </li>
+        ))}
+      </ol>
+    );
+  }
+
+  const block = group.block;
+
+  switch (block.type) {
+    case 'paragraph':
+      return (
+        <p class="my-4 leading-relaxed">
+          <NotionRichText richText={block.paragraph.rich_text} />
+        </p>
+      );
+    case 'heading_1':
+      return (
+        <h1 class="text-3xl font-bold mt-8 mb-3">
+          <NotionRichText richText={block.heading_1.rich_text} />
+        </h1>
+      );
+    case 'heading_2':
+      return (
+        <h2 class="text-2xl font-bold mt-6 mb-3">
+          <NotionRichText richText={block.heading_2.rich_text} />
+        </h2>
+      );
+    case 'heading_3':
+      return (
+        <h3 class="text-xl font-bold mt-5 mb-2">
+          <NotionRichText richText={block.heading_3.rich_text} />
+        </h3>
+      );
+    case 'quote':
+      return (
+        <blockquote class="border-s-4 border-maxam-gray-300 ps-4 italic my-4">
+          <NotionRichText richText={block.quote.rich_text} />
+        </blockquote>
+      );
+    case 'divider':
+      return <hr class="my-8 border-maxam-gray-100" />;
+    case 'image': {
+      const img = block.image;
+      const url = img.type === 'external' ? img.external.url : img.file?.url;
+      const caption = img.caption?.[0]?.plain_text;
+      if (!url) return null;
+      return (
+        <figure class="my-6">
+          <img src={url} alt={caption ?? ''} class="rounded-lg max-w-full h-auto" loading="lazy" />
+          {caption && <figcaption class="text-sm text-maxam-gray-500 mt-2 text-center">{caption}</figcaption>}
+        </figure>
+      );
+    }
+    case 'table': {
+      const rows = tableRows(block);
+      if (rows.length === 0) return null;
+      const hasColumnHeader = block.table?.has_column_header;
+      const headerRow = hasColumnHeader ? rows[0] : null;
+      const bodyRows = hasColumnHeader ? rows.slice(1) : rows;
+      return (
+        <div class="overflow-x-auto my-6">
+          <table class="w-full text-sm border-collapse">
+            {headerRow && (
+              <thead class="bg-maxam-gray-100">
+                <tr>
+                  {headerRow.table_row.cells.map((cell: any[]) => (
+                    <th class="border border-maxam-gray-300 px-3 py-2 text-start font-semibold">
+                      <NotionRichText richText={cell} />
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+            )}
+            <tbody>
+              {bodyRows.map((row: any) => (
+                <tr>
+                  {row.table_row.cells.map((cell: any[]) => (
+                    <td class="border border-maxam-gray-300 px-3 py-2 align-top">
+                      <NotionRichText richText={cell} />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    }
+    case 'callout': {
+      const icon = block.callout?.icon?.emoji ?? '💡';
+      return (
+        <div class="my-4 p-4 bg-maxam-gray-100 rounded-lg flex items-start gap-3">
+          <span class="text-xl shrink-0" aria-hidden="true">{icon}</span>
+          <div>
+            <NotionRichText richText={block.callout.rich_text} />
+            {block.children && block.children.length > 0 && (
+              <Astro.self blocks={block.children} />
+            )}
+          </div>
+        </div>
+      );
+    }
+    case 'toggle':
+      return (
+        <details class="my-4 border border-maxam-gray-100 rounded-lg p-3">
+          <summary class="cursor-pointer font-medium">
+            <NotionRichText richText={block.toggle.rich_text} />
+          </summary>
+          {block.children && block.children.length > 0 && (
+            <div class="mt-3">
+              <Astro.self blocks={block.children} />
+            </div>
+          )}
+        </details>
+      );
+    case 'code':
+      return (
+        <pre class="my-4 p-4 bg-maxam-gray-100 rounded text-sm overflow-x-auto">
+          <code><NotionRichText richText={block.code.rich_text} plain /></code>
+        </pre>
+      );
+    case 'column_list':
+      return (
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+          {(block.children ?? []).map((col: any) => (
+            <div>
+              <Astro.self blocks={col.children ?? []} />
+            </div>
+          ))}
+        </div>
+      );
+    default:
+      // Unknown block — emit an HTML comment so we can spot it in dev
+      // without breaking the page. Add handlers as needed.
+      return null;
+  }
+})}

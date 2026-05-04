@@ -9,7 +9,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "sync": "tsx scripts/sync-from-notion.ts",
+    "sync:fast": "tsx scripts/sync-from-notion.ts --without-blocks"
   },
   "dependencies": {
     "@rollup/rollup-win32-x64-msvc": "^4.59.0",
@@ -19,7 +21,14 @@
     "mysql2": "^3.19.1"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.2.1",
-    "tailwindcss": "^4.2.1"
+    "@notionhq/client": "^5.20.0",
+    "@tailwindcss/vite": "4.2.1",
+    "dotenv": "^17.4.2",
+    "parse5": "^8.0.1",
+    "tailwindcss": "4.2.1",
+    "tsx": "^4.20.6"
+  },
+  "optionalDependencies": {
+    "@rolldown/binding-win32-x64-msvc": "1.0.0-rc.17"
   }
 }

@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import NotionBlocks from '../../../components/NotionBlocks.astro';
+import type { Locale } from '../../../types';
+import { locales, t, localePath } from '../../../lib/i18n';
+import { getAllArticles, getArticleBySlug, getArticleBlocks } from '../../../lib/data';
+
+export function getStaticPaths() {
+  const paths: Array<{ params: { locale: string; slug: string } }> = [];
+  for (const locale of locales) {
+    for (const article of getAllArticles(locale as Locale)) {
+      // External "in the news" coverage points off-site, no detail page needed.
+      if (article.externalUrl) continue;
+      paths.push({ params: { locale, slug: article.slug } });
+    }
+  }
+  return paths;
+}
+
+const { locale, slug } = Astro.params as { locale: Locale; slug: string };
+const article = getArticleBySlug(locale, slug);
+
+if (!article) {
+  return Astro.redirect(localePath(locale, '/resources'));
+}
+
+const blocks = getArticleBlocks(locale, slug);
+
+const dateFormatted = article.date
+  ? new Date(article.date).toLocaleDateString(
+      locale === 'ar-ae' ? 'ar' : locale === 'zh-hant' ? 'zh-Hant' : 'en',
+      { year: 'numeric', month: 'long', day: 'numeric' }
+    )
+  : '';
+
+const typeLabel = t(locale, `resources.type.${article.type}`) || article.type;
+---
+
+<BaseLayout locale={locale} title={article.title}>
+  <article class="max-w-3xl mx-auto px-4 py-10">
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-maxam-gray-500 mb-6">
+      <a href={localePath(locale, '/resources')} class="hover:text-maxam-blue">{t(locale, 'nav.resources')}</a>
+      <span class="mx-2">/</span>
+      <span class="text-maxam-black font-medium">{article.title}</span>
+    </nav>
+
+    <!-- Header -->
+    <header class="mb-8">
+      <div class="flex items-center gap-3 text-sm text-maxam-gray-500 mb-3">
+        <span class="bg-maxam-blue text-maxam-white text-xs font-medium px-2 py-0.5 rounded">
+          {typeLabel}
+        </span>
+        {article.date && <time datetime={article.date}>{dateFormatted}</time>}
+      </div>
+
+      <h1 class="text-4xl font-bold text-maxam-black leading-tight">{article.title}</h1>
+
+      {article.excerpt && (
+        <p class="text-lg text-maxam-gray-700 mt-4 leading-relaxed">{article.excerpt}</p>
+      )}
+    </header>
+
+    {article.featuredImage && (
+      <figure class="mb-8">
+        <img src={article.featuredImage} alt={article.title} class="w-full rounded-lg" loading="lazy" />
+      </figure>
+    )}
+
+    <!-- Body -->
+    <section class="prose-content">
+      <NotionBlocks blocks={blocks} />
+    </section>
+
+    <!-- Back link -->
+    <div class="mt-12 pt-6 border-t border-maxam-gray-100">
+      <a
+        href={localePath(locale, '/resources')}
+        class="text-maxam-blue font-medium hover:underline"
+      >
+        <span class="inline-block rtl:scale-x-[-1]" aria-hidden="true">←</span> {t(locale, 'nav.resources')}
+      </a>
+    </div>
+  </article>
+</BaseLayout>
