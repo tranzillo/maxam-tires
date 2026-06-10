@@ -1,0 +1,48 @@
+---
+/**
+ * RubberTextarea — multi-line text input atom, same recessed-well language
+ * as RubberInput.
+ */
+interface Props {
+  name?: string;
+  id?: string;
+  placeholder?: string;
+  rows?: number;
+  required?: boolean;
+  disabled?: boolean;
+  readonly?: boolean;
+  full?: boolean;
+  error?: boolean;
+  class?: string;
+}
+
+const {
+  name,
+  id,
+  placeholder,
+  rows = 4,
+  required = false,
+  disabled = false,
+  readonly = false,
+  full = true,
+  error = false,
+  class: className,
+} = Astro.props;
+
+const dataAttrs: Record<string, string | boolean> = {};
+if (full) dataAttrs['data-full'] = true;
+if (error) dataAttrs['data-error'] = true;
+---
+
+<textarea
+  name={name}
+  id={id}
+  placeholder={placeholder}
+  rows={rows}
+  required={required}
+  disabled={disabled}
+  readonly={readonly}
+  aria-invalid={error || undefined}
+  class:list={['rubber-textarea', className]}
+  {...dataAttrs}
+/>

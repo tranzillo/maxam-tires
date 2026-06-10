@@ -1,0 +1,105 @@
+/*
+ * SpecViewer — the product spec table (header row + one visible data row).
+ *
+ * Markup lives in: src/components/ui/SpecViewer.astro
+ *
+ * The size dropdown that drives which row shows lives separately in
+ * SpecSizeSelector (up by Features); this is just the table. Raised card
+ * surface, hairline border, chamfer; scrolls horizontally on narrow
+ * screens to keep wide tables aligned.
+ */
+
+.spec-viewer {
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-edge);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  isolation: isolate;
+  position: relative;
+  scroll-margin-top: 6rem; /* offset for sticky header when "See Specs" jumps here */
+}
+
+.spec-viewer::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: var(--edge-highlight-top);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Table (header row + one data row) ────────────────────────────
+ * Scrolls horizontally on narrow viewports so wide tables (12–15 cols)
+ * keep their column alignment instead of wrapping. */
+.spec-viewer__scroll {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-edge-strong) transparent;
+}
+.spec-viewer__scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.spec-viewer__scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-edge-strong) 60%, transparent);
+  border-radius: 999px;
+}
+
+.spec-viewer__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Header row — sunken surface to differentiate it from the white body.
+ * Labels are top-aligned across every column (vertical-align: top), so
+ * headers with a unit sub-line and headers without both keep their label
+ * on the same top line. No filler elements — the table row equalizes
+ * cell heights and top-alignment does the rest. */
+.spec-viewer__table thead th {
+  text-align: start;
+  vertical-align: top;
+  padding: 0.75rem 1rem;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--color-edge-strong);
+  background: var(--color-surface-sunken);
+  box-shadow: inset 0 2px 3px rgba(31, 29, 26, 0.06);
+}
+
+.spec-viewer__th-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-maxam-black);
+}
+
+/* Unit sub-label — only rendered when the column has a unit. */
+.spec-viewer__th-unit {
+  display: block;
+  margin-top: 1px;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-maxam-gray-500);
+}
+
+/* The single visible data row. */
+.spec-viewer__table tbody tr[hidden] {
+  display: none;
+}
+
+.spec-viewer__table tbody td {
+  padding: 0.875rem 1rem;
+  white-space: nowrap;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-maxam-gray-900);
+}
+
+/* Size column reads as the row's anchor — slightly bolder. */
+.spec-viewer__cell--size {
+  font-weight: 800;
+  color: var(--color-maxam-black);
+}

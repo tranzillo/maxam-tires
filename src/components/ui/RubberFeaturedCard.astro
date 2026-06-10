@@ -1,0 +1,87 @@
+---
+/**
+ * RubberFeaturedCard — compact 16:9 rubbermorphism card for the mega nav.
+ *
+ * Mirrors RubberProductCard's language (industry-tinted text panel, hard
+ * overlap, molded chip) but in a landscape aspect for the "Featured" slot
+ * inside the mega nav drawer. Supports both products and articles, like
+ * the original FeaturedCard.
+ *
+ * Composition:
+ *  - Image fills the full 16:9 frame
+ *  - Text panel hard-overlaps the bottom ~55%, slightly inset from the edges
+ *  - Industry chip (products) or type chip (articles) sits at the top of
+ *    the panel as a small molded plate
+ *  - Title sits below the chip
+ *  - Light variant only — the mega nav is a light overlay surface
+ */
+import type { Tire, Article, Locale } from '../../types';
+import { t, localePath } from '../../lib/i18n';
+
+interface Props {
+  locale: Locale;
+  product?: Tire;
+  article?: Article;
+}
+
+const { locale, product, article } = Astro.props;
+
+let href = '';
+let title = '';
+let image: string | undefined;
+let chipLabel: string | null = null;
+let chipColor: string | null = null;
+let industryColor: string | null = null;
+
+if (product) {
+  const primaryIndustry = product.industries[0];
+  href = primaryIndustry
+    ? localePath(locale, `/products/${primaryIndustry.slug}/${product.slug}`)
+    : localePath(locale, `/products/${product.slug}`);
+  title = product.title;
+  image = product.featuredImage;
+  if (primaryIndustry) {
+    chipLabel = primaryIndustry.name;
+    chipColor = primaryIndustry.color;
+    industryColor = primaryIndustry.color;
+  }
+} else if (article) {
+  href = article.externalUrl || article.fileUrl || localePath(locale, `/resources/${article.slug}`);
+  title = article.title;
+  image = article.featuredImage;
+  chipLabel = t(locale, `resources.type.${article.type}`);
+  // Articles don't have an industry on this surface; fall back to brand blue.
+  chipColor = null;
+}
+---
+
+{(product || article) && (
+  <a
+    href={href}
+    class="rubber-featured"
+    style={industryColor ? `--industry-color:${industryColor}` : ''}
+  >
+    <div class="rubber-featured__image-frame">
+      {image ? (
+        <img
+          src={image}
+          alt={title}
+          loading="lazy"
+          class="rubber-featured__image"
+        />
+      ) : (
+        <div class="rubber-featured__image-placeholder">{title}</div>
+      )}
+    </div>
+
+    <div class="rubber-featured__panel">
+      {chipLabel && (
+        <span class="rubber-featured__chip">
+          <span class="rubber-featured__chip-dot" aria-hidden="true"></span>
+          {chipLabel}
+        </span>
+      )}
+      <h4 class="rubber-featured__title">{title}</h4>
+    </div>
+  </a>
+)}

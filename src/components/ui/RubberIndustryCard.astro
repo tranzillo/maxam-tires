@@ -1,0 +1,38 @@
+---
+/*
+ * RubberIndustryCard — image-led card matching the homepage promo cards.
+ *
+ * Layout: full-bleed industry photo, with a single industry-colored chip
+ * at the bottom-left as the CTA. The chip carries the industry's name
+ * and color — it IS the action ("go to the industry hub"). No separate
+ * heading text on the card; the chip is both the label and the link.
+ *
+ * If a hero image isn't available, fall back to a soft industry-color
+ * gradient so the card still reads as a tile.
+ */
+import type { Industry, Locale } from '../../types';
+import RubberChip from './RubberChip.astro';
+
+interface Props {
+  industry: Industry;
+  locale: Locale;
+  class?: string;
+}
+
+const { industry, locale, class: className } = Astro.props;
+const href = `/${locale}/products/${industry.slug}/`;
+---
+
+<a
+  href={href}
+  class:list={['industry-card', className]}
+  style={`--industry-color:${industry.color};${industry.heroImage ? `background-image:url('${industry.heroImage}');` : ''}`}
+  aria-label={industry.name}
+>
+  {!industry.heroImage && <span class="industry-card__fallback" aria-hidden="true"></span>}
+  <div class="industry-card__chip">
+    <RubberChip variant="industry" size="lg" color={industry.color}>
+      {industry.name}
+    </RubberChip>
+  </div>
+</a>

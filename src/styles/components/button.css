@@ -1,0 +1,172 @@
+/*
+ * RubberButton — the canonical button atom for the rubbermorphism system.
+ *
+ * Markup lives in: src/components/ui/RubberButton.astro
+ *
+ * Single base declaration plus per-axis tweaks via data-* attribute selectors.
+ * Variants: primary (brand-blue solid), secondary (neutral raised plate),
+ * ghost (transparent, fills on hover). Sizes: sm/md/lg via data-size.
+ * `data-full` stretches to 100% width. Picks up --industry-color from
+ * surrounding context for local color identity. Includes chamfer top
+ * highlight (::before), focus-visible outline, disabled state, and
+ * prefers-reduced-motion handling.
+ */
+  /* ── Base ────────────────────────────────────────────────────────
+   * Common layout for every variant + size. Variant- and size-specific
+   * tokens live in attribute selectors below so we get a single base
+   * declaration and per-axis tweaks.                                  */
+  .rubber-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: inherit;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid var(--btn-border, var(--color-edge));
+    border-radius: var(--radius-tight);
+    background: var(--btn-bg, var(--color-surface-overlay));
+    color: var(--btn-color, var(--color-maxam-black));
+    box-shadow: var(--btn-shadow, var(--shadow-card));
+    transition:
+      background var(--duration-fast) var(--ease-rubber),
+      color var(--duration-fast) var(--ease-rubber),
+      border-color var(--duration-fast) var(--ease-rubber),
+      box-shadow var(--duration-fast) var(--ease-rubber);
+    position: relative;
+    isolation: isolate;
+    white-space: nowrap;
+  }
+
+  /* Chamfer highlight on the top edge — only on raised variants. */
+  .rubber-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: var(--edge-highlight-top);
+    pointer-events: none;
+    border-radius: var(--radius-tight) var(--radius-tight) 0 0;
+    opacity: var(--btn-highlight-opacity, 1);
+  }
+
+  .rubber-btn[data-full] {
+    width: 100%;
+  }
+
+  /* ── Sizes ──────────────────────────────────────────────────────  */
+  .rubber-btn[data-size='sm'] {
+    padding: 4px 12px;
+    font-size: 12px;
+    min-height: 28px;
+  }
+  .rubber-btn[data-size='md'] {
+    padding: 8px 16px;
+    font-size: var(--font-size-sm);
+    min-height: 40px;
+  }
+  .rubber-btn[data-size='lg'] {
+    padding: 12px 22px;
+    font-size: var(--font-size-base);
+    min-height: 48px;
+  }
+
+  /* ── Variant: secondary (default) ────────────────────────────────
+   * Neutral raised plate. Light surface, edge, top highlight, soft shadow.
+   * On hover, gains a subtle blue tint. Active/pressed sinks in.        */
+  .rubber-btn[data-variant='secondary'] {
+    --btn-bg: var(--color-surface-overlay);
+    --btn-border: var(--color-edge);
+    --btn-color: var(--color-maxam-black);
+    --btn-shadow: var(--shadow-card);
+  }
+  .rubber-btn[data-variant='secondary']:hover:not(:disabled):not([aria-disabled='true']) {
+    --btn-bg: color-mix(in srgb, var(--industry-color, var(--color-maxam-blue)) 5%, var(--color-surface-overlay));
+    --btn-border: color-mix(in srgb, var(--industry-color, var(--color-maxam-blue)) 22%, var(--color-edge));
+    --btn-shadow: var(--shadow-card-hover);
+  }
+  .rubber-btn[data-variant='secondary']:active:not(:disabled):not([aria-disabled='true']) {
+    --btn-bg: color-mix(in srgb, var(--industry-color, var(--color-maxam-blue)) 12%, var(--color-surface-sunken));
+    --btn-border: color-mix(in srgb, var(--industry-color, var(--color-maxam-blue)) 30%, var(--color-edge-strong));
+    --btn-color: color-mix(in srgb, var(--industry-color, var(--color-maxam-blue)) 80%, var(--color-maxam-black));
+    --btn-shadow:
+      inset 0 2px 4px -1px color-mix(in srgb, var(--industry-color, var(--color-maxam-blue)) 30%, rgba(31, 29, 26, 0.18)),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.5);
+    --btn-highlight-opacity: 0;
+  }
+
+  /* ── Variant: primary ────────────────────────────────────────────
+   * Brand-blue solid. Strong actionable. White chamfer on top, deeper
+   * brand color on the body, even stronger on hover. Active state
+   * compresses the surface into a darker sunken well.                  */
+  .rubber-btn[data-variant='primary'] {
+    --btn-bg: var(--industry-color, var(--color-maxam-blue));
+    --btn-border: color-mix(in srgb, var(--industry-color, var(--color-maxam-blue)) 60%, var(--color-maxam-black));
+    --btn-color: #ffffff;
+    --btn-shadow:
+      0 1px 0 0 color-mix(in srgb, var(--industry-color, var(--color-maxam-blue)) 50%, var(--color-maxam-black)),
+      0 4px 12px -2px color-mix(in srgb, var(--industry-color, var(--color-maxam-blue)) 35%, transparent);
+  }
+  .rubber-btn[data-variant='primary']::before {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 100%);
+  }
+  .rubber-btn[data-variant='primary']:hover:not(:disabled):not([aria-disabled='true']) {
+    --btn-bg: color-mix(in srgb, var(--industry-color, var(--color-maxam-blue)) 90%, var(--color-maxam-black));
+    --btn-shadow:
+      0 1px 0 0 color-mix(in srgb, var(--industry-color, var(--color-maxam-blue)) 45%, var(--color-maxam-black)),
+      0 8px 16px -2px color-mix(in srgb, var(--industry-color, var(--color-maxam-blue)) 45%, transparent);
+  }
+  .rubber-btn[data-variant='primary']:active:not(:disabled):not([aria-disabled='true']) {
+    --btn-bg: color-mix(in srgb, var(--industry-color, var(--color-maxam-blue)) 75%, var(--color-maxam-black));
+    --btn-shadow:
+      inset 0 3px 6px -1px rgba(0, 0, 0, 0.35),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.15);
+    --btn-highlight-opacity: 0;
+  }
+
+  /* ── Variant: ghost ──────────────────────────────────────────────
+   * No fill, no border, no shadow at rest. Hover fills with a faint
+   * tint and gains a hairline border to read as a discrete surface
+   * coming into focus.                                                 */
+  .rubber-btn[data-variant='ghost'] {
+    --btn-bg: transparent;
+    --btn-border: transparent;
+    --btn-color: var(--color-maxam-gray-700);
+    --btn-shadow: none;
+    --btn-highlight-opacity: 0;
+  }
+  .rubber-btn[data-variant='ghost']:hover:not(:disabled):not([aria-disabled='true']) {
+    --btn-bg: color-mix(in srgb, var(--industry-color, var(--color-maxam-blue)) 6%, var(--color-surface-overlay));
+    --btn-border: var(--color-edge);
+    --btn-color: var(--color-maxam-black);
+    --btn-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.7) inset,
+      0 1px 2px 0 rgba(31, 29, 26, 0.06);
+    --btn-highlight-opacity: 1;
+  }
+  .rubber-btn[data-variant='ghost']:active:not(:disabled):not([aria-disabled='true']) {
+    --btn-bg: color-mix(in srgb, var(--industry-color, var(--color-maxam-blue)) 12%, var(--color-surface-sunken));
+    --btn-shadow: var(--shadow-inset-deep);
+    --btn-highlight-opacity: 0;
+  }
+
+  /* ── Disabled state ──────────────────────────────────────────────  */
+  .rubber-btn:disabled,
+  .rubber-btn[aria-disabled='true'] {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  /* ── Focus-visible: always-on indicator regardless of variant ───  */
+  .rubber-btn:focus-visible {
+    outline: 2px solid var(--industry-color, var(--color-maxam-blue));
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rubber-btn {
+      transition: none !important;
+    }
+  }

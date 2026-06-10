@@ -1,0 +1,85 @@
+---
+/**
+ * RubberChip — small categorical label / pill atom.
+ *
+ * Replaces the 8 ad-hoc badge / pill styles in the audit (IndustryBadge,
+ * article type label, application tag, filter pill, active filter chip, etc).
+ *
+ * Variants:
+ *   - industry : color-driven, with a molded dot + tinted background.
+ *                Pass `color` prop or inherit --industry-color from parent.
+ *   - category : neutral category label (e.g. "News", "Blog"). Uppercase.
+ *   - filter   : interactive pill, supports `active` state. Has hover.
+ *   - neutral  : plain inset label, no color. Used for application tags etc.
+ *
+ * Sizes:
+ *   - sm : compact (used inside cards, mega nav featured)
+ *   - md : default (used in filter bars, page chrome)
+ *
+ * Render-as:
+ *   - default <span> for static labels
+ *   - <a> if href is passed (filter pills that link)
+ *   - <button> if onClick semantics implied via `interactive` (not literally
+ *     wired up here — design system doesn't ship handlers, the consumer adds
+ *     data attrs for client-side filter JS)
+ *
+ * `dismissable` adds an inline "x" button when set, used for active-filter chips.
+ */
+type Variant = 'industry' | 'category' | 'filter' | 'neutral' | 'solid';
+type Size = 'sm' | 'md' | 'lg';
+
+interface Props {
+  variant?: Variant;
+  size?: Size;
+  /** For industry variant. Hex color. Falls back to --industry-color or maxam-blue. */
+  color?: string;
+  /** For filter variant. Renders pressed-in if true. */
+  active?: boolean;
+  /** For filter variant. Renders as <a> if set. */
+  href?: string;
+  /** Add a dismiss x button (active filter chips, etc). */
+  dismissable?: boolean;
+  /** Render with as a button instead of a span — picks up keyboard semantics. */
+  interactive?: boolean;
+  class?: string;
+}
+
+const {
+  variant = 'neutral',
+  size = 'md',
+  color,
+  active = false,
+  href,
+  dismissable = false,
+  interactive = false,
+  class: className,
+} = Astro.props;
+
+const Tag = href ? 'a' : interactive ? 'button' : 'span';
+
+const dataAttrs: Record<string, string | boolean> = {
+  'data-variant': variant,
+  'data-size': size,
+};
+if (active) dataAttrs['data-active'] = true;
+
+// Industry variant uses an inline style fallback so consumers without a
+// surrounding --industry-color custom property still get correct theming.
+const styleAttr = color ? `--chip-color:${color}` : undefined;
+---
+
+<Tag
+  href={href}
+  type={!href && interactive ? 'button' : undefined}
+  class:list={['rubber-chip', className]}
+  style={styleAttr}
+  {...dataAttrs}
+>
+  {variant === 'industry' && (
+    <span class="rubber-chip__dot" aria-hidden="true"></span>
+  )}
+  <slot />
+  {dismissable && (
+    <span class="rubber-chip__dismiss" aria-hidden="true">×</span>
+  )}
+</Tag>

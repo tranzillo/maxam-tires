@@ -1,0 +1,55 @@
+---
+/**
+ * RubberDocumentCard — compact tile for PDF documents (product sheets,
+ * brochures, catalogs). Used in two places:
+ *  1. Product detail "Documents" section (associated downloads)
+ *  2. Resource center page mixed with articles
+ *
+ * Composition: a small molded document mark on the left, then metadata
+ * stacked on the right. Click anywhere on the card → opens PDF in new
+ * tab. The mark uses the same recessed-plate vocabulary as RubberPlate
+ * with a "PDF" stamp drawn on it.
+ */
+import type { Document, Locale } from '../../types';
+import { t } from '../../lib/i18n';
+import RubberChip from './RubberChip.astro';
+
+interface Props {
+  document: Document;
+  locale: Locale;
+  class?: string;
+}
+
+const { document: doc, locale, class: className } = Astro.props;
+
+// Map our internal type labels to user-facing translations.
+const typeLabel =
+  doc.type === 'product-sheet' ? t(locale, 'resources.type.product-sheet') :
+  doc.type === 'brochure' ? t(locale, 'resources.type.brochure') :
+  doc.type;
+---
+
+<a
+  href={doc.fileUrl}
+  class:list={['rubber-document', className]}
+  target="_blank"
+  rel="noopener noreferrer"
+  download=""
+>
+  <div class="rubber-document__mark" aria-hidden="true">
+    <span class="rubber-document__mark-label">PDF</span>
+  </div>
+
+  <div class="rubber-document__body">
+    <div class="rubber-document__meta">
+      <RubberChip variant="category" size="sm">{typeLabel}</RubberChip>
+    </div>
+    <h3 class="rubber-document__title">{doc.title}</h3>
+    <span class="rubber-document__cta">
+      {t(locale, 'resources.download')}
+      <svg class="rubber-document__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M5 20h14"/>
+      </svg>
+    </span>
+  </div>
+</a>

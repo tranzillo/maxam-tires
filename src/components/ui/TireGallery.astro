@@ -1,0 +1,175 @@
+---
+/*
+ * TireGallery — product image gallery for the tire detail page.
+ *
+ * Layout: a large "featured" image card on top; below it a thumb strip
+ * listing EVERY image. The featured image is the first thumb, selected
+ * by default. Clicking a thumb swaps the featured image (inline browse).
+ * Clicking the featured image opens the full-size lightbox.
+ *
+ * The thumb strip is the same width as the featured card (both are
+ * 100% of the gallery column) and scrolls horizontally when the thumbs
+ * exceed that width — so the layout reads identically for 2 images or
+ * 20, and never stretches past the featured image above it.
+ *
+ * Images preserve aspect ratio (object-fit: contain) on the white card
+ * surface so product shots are never cropped. Each image is a card
+ * (raised surface, hairline border, chamfer, shadow) matching the
+ * product / industry cards.
+ *
+ * Edge case: a single image shows only the featured card — no strip.
+ */
+interface Props {
+  images: string[];
+  alt: string;
+}
+
+const { images, alt } = Astro.props;
+const [featured] = images;
+const hasMultiple = images.length > 1;
+---
+
+{featured && (
+  <div class="tire-gallery" data-gallery>
+    <!-- Hidden manifest of every image URL, read by the lightbox script. -->
+    <script type="application/json" data-gallery-images set:html={JSON.stringify(images)}></script>
+
+    <!-- Featured image. Click → lightbox at the currently-selected index. -->
+    <button
+      type="button"
+      class="tire-gallery__featured tire-gallery__card"
+      data-gallery-featured
+      aria-label={`${alt} — view full size`}
+    >
+      <img src={featured} alt={alt} class="tire-gallery__img" data-gallery-featured-img loading="eager" />
+    </button>
+
+    <!-- Thumb strip: every image; first is selected. Scrolls if it
+         overflows the featured width above. Hidden for a single image. -->
+    {hasMultiple && (
+      <div class="tire-gallery__thumbs-viewport">
+        <ul class="tire-gallery__thumbs" role="listbox" aria-label="Product images">
+          {images.map((src, i) => (
+            <li class="tire-gallery__thumb-item">
+              <button
+                type="button"
+                class="tire-gallery__thumb tire-gallery__card"
+                data-gallery-thumb={i}
+                aria-selected={i === 0 ? 'true' : 'false'}
+                aria-label={`${alt} — image ${i + 1}`}
+              >
+                <img src={src} alt={`${alt} — image ${i + 1}`} class="tire-gallery__img" loading="lazy" />
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+)}
+
+<!-- Modal / lightbox. One per page; reused by every gallery. -->
+<div class="tire-lightbox" data-lightbox hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button type="button" class="tire-lightbox__close" data-lightbox-close aria-label="Close">&times;</button>
+  <button type="button" class="tire-lightbox__nav tire-lightbox__nav--prev" data-lightbox-prev aria-label="Previous image">&lsaquo;</button>
+  <figure class="tire-lightbox__figure">
+    <img class="tire-lightbox__img" data-lightbox-img src="" alt="" />
+  </figure>
+  <button type="button" class="tire-lightbox__nav tire-lightbox__nav--next" data-lightbox-next aria-label="Next image">&rsaquo;</button>
+</div>
+
+<script>
+  /* Gallery behaviour, per gallery on the page:
+   *   - Thumb click → swaps the featured image inline and marks the
+   *     thumb selected (browse without leaving the page).
+   *   - Featured click → opens the shared lightbox at the selected index.
+   * The lightbox (one per page) handles prev/next, arrow keys, Esc, and
+   * click-outside, and reports its index back so the featured image and
+   * thumb selection stay in sync after closing. */
+  const lightbox = document.querySelector<HTMLElement>('[data-lightbox]');
+  if (lightbox) {
+    const lbImg = lightbox.querySelector<HTMLImageElement>('[data-lightbox-img]')!;
+    const prevBtn = lightbox.querySelector<HTMLButtonElement>('[data-lightbox-prev]')!;
+    const nextBtn = lightbox.querySelector<HTMLButtonElement>('[data-lightbox-next]')!;
+
+    // The gallery whose images the lightbox is currently showing, so we
+    // can sync the featured image + thumb selection back on navigate/close.
+    let activeGallery: HTMLElement | null = null;
+    let images: string[] = [];
+    let index = 0;
+
+    // ── Inline gallery: select an image (swap featured + thumb state) ──
+    function selectImage(gallery: HTMLElement, i: number) {
+      const featuredImg = gallery.querySelector<HTMLImageElement>('[data-gallery-featured-img]');
+      const thumbs = gallery.querySelectorAll<HTMLButtonElement>('[data-gallery-thumb]');
+      const thumb = thumbs[i];
+      if (!thumb) return;
+      const src = thumb.querySelector('img')?.src;
+      if (featuredImg && src) featuredImg.src = src;
+      thumbs.forEach((t, j) => t.setAttribute('aria-selected', j === i ? 'true' : 'false'));
+    }
+
+    function selectedIndex(gallery: HTMLElement): number {
+      const thumbs = [...gallery.querySelectorAll<HTMLButtonElement>('[data-gallery-thumb]')];
+      const i = thumbs.findIndex((t) => t.getAttribute('aria-selected') === 'true');
+      return i === -1 ? 0 : i;
+    }
+
+    document.querySelectorAll<HTMLElement>('[data-gallery]').forEach((gallery) => {
+      // Thumb click → swap featured inline.
+      gallery.querySelectorAll<HTMLButtonElement>('[data-gallery-thumb]').forEach((thumb) => {
+        thumb.addEventListener('click', () =>
+          selectImage(gallery, Number(thumb.dataset.galleryThumb))
+        );
+      });
+      // Featured click → open lightbox at the selected index.
+      gallery
+        .querySelector<HTMLButtonElement>('[data-gallery-featured]')
+        ?.addEventListener('click', () => open(gallery, selectedIndex(gallery)));
+    });
+
+    // ── Lightbox ──────────────────────────────────────────────────────
+    function show(i: number) {
+      if (images.length === 0) return;
+      index = (i + images.length) % images.length;
+      lbImg.src = images[index];
+      const single = images.length <= 1;
+      prevBtn.hidden = single;
+      nextBtn.hidden = single;
+      // Keep the inline gallery in sync with what the lightbox shows.
+      if (activeGallery) selectImage(activeGallery, index);
+    }
+
+    function open(galleryEl: HTMLElement, startIndex: number) {
+      activeGallery = galleryEl;
+      const manifest = galleryEl.querySelector<HTMLElement>('[data-gallery-images]');
+      images = manifest ? JSON.parse(manifest.textContent || '[]') : [];
+      show(startIndex);
+      lightbox!.hidden = false;
+      lightbox!.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      lightbox!.hidden = true;
+      lightbox!.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    prevBtn.addEventListener('click', () => show(index - 1));
+    nextBtn.addEventListener('click', () => show(index + 1));
+    lightbox.querySelector('[data-lightbox-close]')!.addEventListener('click', close);
+
+    // Click on the backdrop (not the image/arrows) closes.
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) close();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (lightbox!.hidden) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') show(index - 1);
+      else if (e.key === 'ArrowRight') show(index + 1);
+    });
+  }
+</script>

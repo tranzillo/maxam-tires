@@ -1,0 +1,45 @@
+---
+/**
+ * RubberBreadcrumb — replaces the 3 inline breadcrumb implementations
+ * with a single component.
+ *
+ * Renders a horizontal row of crumbs separated by a chevron. The last
+ * item is always the current page (non-linked, semibold). All linked
+ * items inherit the brand-blue hover treatment.
+ *
+ * Items prop:
+ *   [
+ *     { label: 'Products', href: '/en/products' },
+ *     { label: 'Construction Tires', href: '/en/products/construction-tires' },
+ *     { label: 'MS909' }   // last item, no href = current page
+ *   ]
+ */
+interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: Crumb[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb" class:list={['rubber-breadcrumb', className]}>
+  <ol class="rubber-breadcrumb__list">
+    {items.map((crumb, i) => (
+      <li class="rubber-breadcrumb__item">
+        {crumb.href ? (
+          <a href={crumb.href} class="rubber-breadcrumb__link">{crumb.label}</a>
+        ) : (
+          <span class="rubber-breadcrumb__current" aria-current="page">{crumb.label}</span>
+        )}
+        {i < items.length - 1 && (
+          <span class="rubber-breadcrumb__separator rtl:scale-x-[-1]" aria-hidden="true">/</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>

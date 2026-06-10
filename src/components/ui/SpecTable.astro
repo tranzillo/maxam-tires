@@ -69,46 +69,6 @@ const dataRows = table.rows.slice(2);
   </table>
 </div>
 
-<style>
-  .spec-table-wrapper {
-    position: relative;
-  }
-
-  .spec-table {
-    min-width: max-content;
-  }
-
-  .spec-table th,
-  .spec-table td {
-    min-width: 60px;
-  }
-
-  /* Sticky first column */
-  .sticky-col {
-    position: sticky;
-    inset-inline-start: 0;
-    min-width: 100px;
-  }
-
-  /* Shadow hint on the sticky column when scrolled */
-  .spec-table-wrapper::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    inset-inline-start: 100px;
-    bottom: 0;
-    width: 8px;
-    pointer-events: none;
-    background: linear-gradient(to right, rgba(0,0,0,0.06), transparent);
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
-  .spec-table-wrapper.is-scrolled::after {
-    opacity: 1;
-  }
-</style>
-
 <script>
   document.querySelectorAll<HTMLElement>('.spec-table-wrapper').forEach((wrapper) => {
     wrapper.addEventListener('scroll', () => {

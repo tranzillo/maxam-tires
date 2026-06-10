@@ -84,6 +84,31 @@ export interface Article {
   fileUrl?: string;
 }
 
+/** Customer testimonial — single quote with byline. */
+export interface Testimonial {
+  id: string;
+  slug: string;
+  /** Internal title (Notion page name); not usually shown to readers. */
+  title: string;
+  quote: string;
+  authorName?: string;
+  authorTitle?: string;
+  authorCompany?: string;
+}
+
+/** Industry event (trade show, expo, etc) with a date window. */
+export interface Event {
+  id: string;
+  slug: string;
+  title: string;
+  /** ISO date string (YYYY-MM-DD). */
+  startDate?: string;
+  endDate?: string;
+  featuredImage?: string;
+  location?: string;
+  href?: string;
+}
+
 /** Supported locale codes */
 export type Locale = 'en' | 'ar-ae' | 'zh-hant';
 

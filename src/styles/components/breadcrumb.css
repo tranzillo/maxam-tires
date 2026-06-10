@@ -1,0 +1,62 @@
+/*
+ * RubberBreadcrumb — horizontal row of crumbs separated by a chevron.
+ *
+ * Markup lives in: src/components/ui/RubberBreadcrumb.astro
+ *
+ * Wraps to multiple lines if needed. Links use gray-500 with a brand-blue
+ * hover and focus-visible outline; the current page (no href) renders as
+ * semibold black non-linked text. Separator is muted gray and inherits an
+ * RTL mirror via the rtl:scale-x-[-1] utility on the markup. Transitions
+ * are suppressed under prefers-reduced-motion.
+ */
+  .rubber-breadcrumb__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-maxam-gray-500);
+  }
+
+  .rubber-breadcrumb__item {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .rubber-breadcrumb__link {
+    color: var(--color-maxam-gray-500);
+    text-decoration: none;
+    padding: 4px 0;
+    transition: color var(--duration-fast) var(--ease-rubber);
+  }
+
+  .rubber-breadcrumb__link:hover {
+    color: var(--color-maxam-blue);
+  }
+
+  .rubber-breadcrumb__link:focus-visible {
+    outline: 2px solid var(--color-maxam-blue);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  .rubber-breadcrumb__current {
+    color: var(--color-maxam-black);
+    font-weight: 600;
+  }
+
+  .rubber-breadcrumb__separator {
+    display: inline-block;
+    margin: 0 8px;
+    color: var(--color-maxam-gray-300);
+    user-select: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rubber-breadcrumb__link {
+      transition: none !important;
+    }
+  }

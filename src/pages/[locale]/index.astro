@@ -1,72 +1,214 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Hero from '../../components/ui/Hero.astro';
 import Section from '../../components/ui/Section.astro';
-import ContentGrid from '../../components/ui/ContentGrid.astro';
-import IndustryCard from '../../components/ui/IndustryCard.astro';
-import ProductCard from '../../components/ui/ProductCard.astro';
-import ArticleCard from '../../components/ui/ArticleCard.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import Grid from '../../components/ui/Grid.astro';
+import RubberIndustryCard from '../../components/ui/RubberIndustryCard.astro';
+import RubberProductCard from '../../components/ui/RubberProductCard.astro';
+import RubberArticleCard from '../../components/ui/RubberArticleCard.astro';
+import RubberTestimonialCard from '../../components/ui/RubberTestimonialCard.astro';
+import RubberButton from '../../components/ui/RubberButton.astro';
+import RubberChip from '../../components/ui/RubberChip.astro';
+import RubberInput from '../../components/ui/RubberInput.astro';
 import type { Locale } from '../../types';
 import { locales, t, localePath } from '../../lib/i18n';
-import { getAllIndustries, getFeaturedProducts, getRecentArticles } from '../../lib/data';
+import {
+  getAllIndustries,
+  getProductBySlug,
+  getFeaturedProducts,
+  getRecentArticles,
+  getAllTestimonials,
+  getPageContent,
+  getPagePromos,
+  pageText,
+} from '../../lib/data';
 
 export function getStaticPaths() {
   return locales.map((locale) => ({ params: { locale } }));
 }
 
 const { locale } = Astro.params as { locale: Locale };
-const industries = getAllIndustries(locale);
-const featuredProducts = getFeaturedProducts(locale, 4);
+
+// Page-bound content (hero / sustainability / newsletter copy + the promo
+// pair) comes from the Notion-pipeline snapshot via the Pages content type.
+const homePage = getPageContent(locale, 'home');
+const promoCards = getPagePromos(locale, 'home');
+
+// Collection content (industries, products, articles, testimonials) flows
+// through the same pipeline as the rest of the site.
+// Rubber Tracks lives in the promo card so it isn't duplicated as a tile.
+const industries = getAllIndustries(locale).filter((i) => i.slug !== 'rubber-tracks');
+
+const wpFeaturedSlugs = ['agrixtra-85', 'ms453', 'ms600', 'ms709'];
+const wpPicked = wpFeaturedSlugs
+  .map((s) => getProductBySlug(locale, s))
+  .filter((p): p is NonNullable<typeof p> => !!p);
+const featuredProducts =
+  wpPicked.length === wpFeaturedSlugs.length ? wpPicked : getFeaturedProducts(locale, 4);
+
 const recentArticles = getRecentArticles(locale, 3);
+
+const testimonials = getAllTestimonials(locale)
+  .filter((tt) => tt.quote && tt.quote.length > 0)
+  .slice(0, 3);
 ---
 
 <BaseLayout locale={locale}>
-  <!-- Hero -->
-  <Hero heading={t(locale, 'home.hero_heading')} subheading={t(locale, 'home.hero_subheading')}>
-    <a
-      href={localePath(locale, '/products')}
-      class="inline-block bg-maxam-white text-maxam-black font-semibold px-6 py-3 rounded hover:bg-maxam-gray-100 transition-colors text-sm"
-    >
-      {t(locale, 'home.hero_cta')}
-    </a>
-  </Hero>
-
-  <!-- Industries grid -->
-  <Section>
-    <ContentGrid columns={3}>
-      {industries.map((industry) => (
-        <IndustryCard industry={industry} locale={locale} />
-      ))}
-    </ContentGrid>
-  </Section>
-
-  <!-- Featured products -->
+  <!-- 1. HERO — full-bleed background image, content in container -->
   <Section
-    heading={t(locale, 'home.featured_heading')}
-    viewAllHref={localePath(locale, '/products')}
-    viewAllLabel={t(locale, 'home.featured_view_all')}
-    background="gray"
+    background="image"
+    backgroundImage={pageText(homePage, 'hero.background_image', '/images/hero-home.jpg')}
+    backgroundPosition={pageText(homePage, 'hero.background_position', 'center bottom')}
+    overlay="blue-lr"
+    vertical="xlg"
   >
-    <ContentGrid columns={4}>
-      {featuredProducts.map((tire) => (
-        <ProductCard tire={tire} locale={locale} />
-      ))}
-    </ContentGrid>
+    <div class="hero-content">
+      <h1 class="hero-heading">
+        <span class="hero-lead">{pageText(homePage, 'hero.lead')}</span>
+        <span class="hero-punch">{pageText(homePage, 'hero.heading')}</span>
+      </h1>
+      <p class="hero-description">{pageText(homePage, 'hero.description')}</p>
+      <div class="hero-actions">
+        <RubberButton variant="primary" size="lg" href={localePath(locale, pageText(homePage, 'hero.cta_href', '/products'))}>
+          {pageText(homePage, 'hero.cta_label')}
+        </RubberButton>
+      </div>
+    </div>
   </Section>
 
-  <!-- Recent resources -->
-  {recentArticles.length > 0 && (
-    <Section
-      heading={t(locale, 'home.resources_heading')}
-      subheading={t(locale, 'home.resources_subheading')}
-      viewAllHref={localePath(locale, '/resources')}
-      viewAllLabel={t(locale, 'home.resources_view_all')}
-    >
-      <ContentGrid columns={3}>
-        {recentArticles.map((article) => (
-          <ArticleCard article={article} locale={locale} />
+  <!-- INDUSTRIES — promos in a 2-col grid, then industries in a 3-col 3x3 -->
+  <Section vertical="lg">
+    <Grid cols={2} gap="md">
+      {promoCards.map((card) => (
+        <a
+          class="promo-card"
+          href={localePath(locale, card.ctaHref)}
+          style={`background-image:url('${card.image}');background-position:${card.imagePosition};`}
+        >
+          <span class="promo-card__overlay" aria-hidden="true"></span>
+          {card.tag && (
+            <span class="promo-card__tag">
+              <RubberChip variant="solid" size="sm">{card.tag}</RubberChip>
+            </span>
+          )}
+          <div class="promo-card__body">
+            <h2 class="promo-card__heading">{card.heading}</h2>
+            <p class="promo-card__description">{card.description}</p>
+            <RubberChip variant="category" size="lg">{card.ctaLabel}</RubberChip>
+          </div>
+        </a>
+      ))}
+    </Grid>
+    <div class="industries-spacer"></div>
+    <Grid cols={3} gap="md">
+      {industries.map((industry) => (
+        <RubberIndustryCard industry={industry} locale={locale} />
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- 3. TESTIMONIALS — sunken bg, 3-up Grid -->
+  {testimonials.length > 0 && (
+    <Section background="sunken" vertical="lg">
+      <SectionHeader
+        heading={t(locale, 'home.testimonials.heading')}
+        viewAllHref={localePath(locale, '/testimonials')}
+        viewAllLabel={t(locale, 'home.testimonials.view_all')}
+      />
+      <Grid cols={3} gap="md">
+        {testimonials.map((testimonial) => (
+          <RubberTestimonialCard testimonial={testimonial} />
         ))}
-      </ContentGrid>
+      </Grid>
     </Section>
   )}
+
+  <!-- 4. FEATURED PRODUCTS — 4-up Grid in a normal Section -->
+  <Section vertical="lg">
+    <SectionHeader
+      heading={t(locale, 'home.featured_heading')}
+      viewAllHref={localePath(locale, '/products')}
+      viewAllLabel={t(locale, 'home.featured_view_all')}
+    />
+    <Grid cols={4} gap="md">
+      {featuredProducts.map((tire) => (
+        <RubberProductCard tire={tire} locale={locale} />
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- 5. SUSTAINABILITY — full-bleed bg image, content in container, 2-col layout -->
+  <Section
+    background="image"
+    backgroundImage={pageText(homePage, 'sustainability.background_image', '/images/bg-sustainability.jpg')}
+    overlay="dark"
+    vertical="xlg"
+  >
+    <div class="strip-2col">
+      <div class="strip-2col__lead">
+        <h2 class="strip-heading">{pageText(homePage, 'sustainability.heading')}</h2>
+        <div>
+          <RubberButton
+            variant="primary"
+            size="lg"
+            href={localePath(locale, pageText(homePage, 'sustainability.cta_href', '/sustainability'))}
+          >
+            {pageText(homePage, 'sustainability.cta_label')}
+          </RubberButton>
+        </div>
+      </div>
+      <div class="strip-2col__body">
+        <p class="strip-lead" set:html={pageText(homePage, 'sustainability.lead')} />
+        <p class="strip-body" set:html={pageText(homePage, 'sustainability.body')} />
+      </div>
+    </div>
+  </Section>
+
+  <!-- 6. RESOURCE CENTER — sunken bg, 3-up Grid -->
+  {recentArticles.length > 0 && (
+    <Section background="sunken" vertical="lg">
+      <SectionHeader
+        heading={t(locale, 'home.resources_heading')}
+        subheading={t(locale, 'home.resources_lead')}
+        viewAllHref={localePath(locale, '/resources')}
+        viewAllLabel={t(locale, 'home.resources_view_all')}
+      />
+      <Grid cols={3} gap="md">
+        {recentArticles.map((article) => (
+          <RubberArticleCard article={article} locale={locale} />
+        ))}
+      </Grid>
+    </Section>
+  )}
+
+  <!-- 7. NEWSLETTER CTA — full-bleed bg image, centered content in container -->
+  <Section
+    background="image"
+    backgroundImage={pageText(homePage, 'newsletter.background_image', '/images/bg-newsletter.jpg')}
+    overlay="blue-full"
+    vertical="xlg"
+  >
+    <div class="cta-centered">
+      <h2 class="cta-heading">{pageText(homePage, 'newsletter.heading')}</h2>
+      <p class="cta-description">{pageText(homePage, 'newsletter.description')}</p>
+      <form class="cta-form" data-static-form>
+        <label class="sr-only" for="newsletter-email">
+          {pageText(homePage, 'newsletter.email_label')}
+        </label>
+        <div class="cta-form__input">
+          <RubberInput
+            id="newsletter-email"
+            type="email"
+            name="email"
+            placeholder={pageText(homePage, 'newsletter.email_label')}
+            required
+            autocomplete="email"
+          />
+        </div>
+        <RubberButton type="submit" variant="primary" size="lg">
+          {pageText(homePage, 'newsletter.submit_label')}
+        </RubberButton>
+      </form>
+    </div>
+  </Section>
 </BaseLayout>

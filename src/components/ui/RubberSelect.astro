@@ -1,0 +1,50 @@
+---
+/**
+ * RubberSelect — native <select> styled to match RubberInput's recessed well.
+ *
+ * Native select dropdowns are stubborn cross-browser; we restyle the closed
+ * state (which we control) and accept the browser's native open menu.
+ * A custom chevron is layered on top via background-image so we don't have
+ * to manage popover positioning ourselves.
+ *
+ * Options are passed in the default slot.
+ */
+interface Props {
+  name?: string;
+  id?: string;
+  required?: boolean;
+  disabled?: boolean;
+  full?: boolean;
+  error?: boolean;
+  ariaLabel?: string;
+  class?: string;
+}
+
+const {
+  name,
+  id,
+  required = false,
+  disabled = false,
+  full = true,
+  error = false,
+  ariaLabel,
+  class: className,
+} = Astro.props;
+
+const dataAttrs: Record<string, string | boolean> = {};
+if (full) dataAttrs['data-full'] = true;
+if (error) dataAttrs['data-error'] = true;
+---
+
+<select
+  name={name}
+  id={id}
+  required={required}
+  disabled={disabled}
+  aria-label={ariaLabel}
+  aria-invalid={error || undefined}
+  class:list={['rubber-select', className]}
+  {...dataAttrs}
+>
+  <slot />
+</select>

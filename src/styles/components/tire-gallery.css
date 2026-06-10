@@ -1,0 +1,239 @@
+/*
+ * TireGallery — product image gallery + lightbox.
+ *
+ * Markup lives in: src/components/ui/TireGallery.astro
+ *
+ * Featured image card on top; below it a thumb strip listing EVERY
+ * image, with the first selected by default. Clicking a thumb swaps the
+ * featured image; clicking the featured image opens the lightbox.
+ *
+ * The thumb strip viewport is exactly as wide as the featured card
+ * (both are 100% of the gallery column) and scrolls horizontally when
+ * the thumbs overflow it — so the strip never stretches past the
+ * featured image and the layout reads the same for 2 images or 20.
+ *
+ * Images use object-fit: contain so product shots keep their aspect
+ * ratio against the white card surface.
+ */
+
+.tire-gallery {
+  display: grid;
+  grid-template-columns: 1fr; /* one column → strip width == featured width */
+  gap: 8px;
+}
+
+/* ── Card shell (shared by featured + thumbs) ─────────────────────── */
+.tire-gallery__card {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-surface-overlay);
+  border: 1px solid var(--color-edge);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  isolation: isolate;
+  padding: 0;
+  cursor: zoom-in;
+  transition: box-shadow var(--duration-base) var(--ease-rubber);
+}
+
+.tire-gallery__card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.tire-gallery__card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: var(--edge-highlight-top);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.tire-gallery__card:focus-visible {
+  outline: 2px solid var(--color-maxam-blue);
+  outline-offset: 2px;
+}
+
+/* ── Featured ─────────────────────────────────────────────────────── */
+.tire-gallery__featured {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+/* ── Thumb strip ───────────────────────────────────────────────────
+ * The viewport is the scroll container. It is a grid item in the single
+ * column, so its width equals the featured card above it. min-width: 0
+ * lets it actually shrink to the column (grid items default to min-
+ * content width, which would otherwise let the inner list push it wider
+ * than the featured image). Overflowing thumbs scroll horizontally. */
+.tire-gallery__thumbs-viewport {
+  min-width: 0;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-edge-strong) transparent;
+}
+
+.tire-gallery__thumbs-viewport::-webkit-scrollbar {
+  height: 6px;
+}
+.tire-gallery__thumbs-viewport::-webkit-scrollbar-track {
+  background: transparent;
+}
+.tire-gallery__thumbs-viewport::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-edge-strong) 60%, transparent);
+  border-radius: 999px;
+}
+
+.tire-gallery__thumbs {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: max-content; /* lay thumbs out at full width so they scroll */
+  scroll-snap-type: x proximity;
+}
+
+.tire-gallery__thumb-item {
+  flex: 0 0 auto;
+}
+
+/* Thumbs are a fixed size so the strip is consistent regardless of how
+ * many images exist; the viewport scrolls when they overflow it. */
+.tire-gallery__thumb {
+  width: 180px;
+  aspect-ratio: 1 / 1;
+  scroll-snap-align: start;
+  cursor: pointer;
+}
+
+/* Selected thumb — the image currently shown as featured. Reads as a
+ * pressed-in, brand-tinted well to match the rest of the system. */
+.tire-gallery__thumb[aria-selected='true'] {
+  border-color: var(--color-maxam-blue);
+  box-shadow:
+    0 0 0 1px var(--color-maxam-blue),
+    var(--shadow-card);
+  cursor: default;
+}
+
+.tire-gallery__thumb[aria-selected='true']::before {
+  display: none; /* drop the chamfer highlight so the selected ring reads clean */
+}
+
+/* ── Image fill (contain preserves aspect ratio) ──────────────────── */
+.tire-gallery__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+/* ── Lightbox / modal ─────────────────────────────────────────────── */
+.tire-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-floating);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: rgba(15, 14, 12, 0.88);
+  backdrop-filter: blur(2px);
+}
+
+.tire-lightbox[hidden] {
+  display: none;
+}
+
+.tire-lightbox__figure {
+  margin: 0;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tire-lightbox__img {
+  max-width: min(1100px, 92vw);
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: var(--radius-card);
+  background: var(--color-surface-overlay);
+}
+
+/* Close + nav controls — molded round buttons on the dark backdrop. */
+.tire-lightbox__close,
+.tire-lightbox__nav {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-maxam-white);
+  border-radius: 999px;
+  cursor: pointer;
+  line-height: 1;
+  transition: background var(--duration-fast) var(--ease-rubber);
+}
+
+.tire-lightbox__close:hover,
+.tire-lightbox__nav:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.tire-lightbox__close:focus-visible,
+.tire-lightbox__nav:focus-visible {
+  outline: 2px solid var(--color-maxam-white);
+  outline-offset: 2px;
+}
+
+.tire-lightbox__close {
+  top: clamp(1rem, 3vw, 2rem);
+  inset-inline-end: clamp(1rem, 3vw, 2rem);
+  width: 44px;
+  height: 44px;
+  font-size: 28px;
+}
+
+.tire-lightbox__nav {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  font-size: 32px;
+}
+
+.tire-lightbox__nav--prev {
+  inset-inline-start: clamp(0.5rem, 2vw, 1.5rem);
+}
+.tire-lightbox__nav--next {
+  inset-inline-end: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+.tire-lightbox__nav[hidden] {
+  display: none;
+}
+
+/* RTL: flip the chevron glyphs so prev/next read correctly. */
+[dir='rtl'] .tire-lightbox__nav--prev,
+[dir='rtl'] .tire-lightbox__nav--next {
+  transform: translateY(-50%) scaleX(-1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tire-gallery__card,
+  .tire-lightbox__close,
+  .tire-lightbox__nav {
+    transition: none !important;
+  }
+  .tire-lightbox {
+    backdrop-filter: none;
+  }
+}

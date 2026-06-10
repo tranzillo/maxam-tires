@@ -46,6 +46,93 @@
 
   /* Container */
   --container-max: 1280px;
+
+  /* ── Rubbermorphism: physical layering system ─────────────────────
+   * Light from upper-left. Surfaces are stacked physical layers with
+   * directional shadows and chamfered edge highlights. Subtle, not
+   * skeuomorphic — the language informs how light falls and how layers
+   * meet, not the rendering of materials. */
+
+  /* Page palette — warm off-white that gives surfaces something to lift off. */
+  --color-surface-page: #f3f1ec;       /* page background */
+  --color-surface-raised: #fafaf6;     /* card / first elevation */
+  --color-surface-overlay: #ffffff;    /* second elevation (text card over image) */
+  --color-surface-sunken: #e8e6e0;     /* recessed wells, filter sidebars */
+  --color-surface-deep: #1f1d1a;       /* deepest surface — used for embedded image areas */
+
+  /* Edge — hairline borders define each layer's silhouette. */
+  --color-edge: rgba(31, 29, 26, 0.12);
+  --color-edge-strong: rgba(31, 29, 26, 0.24);
+
+  /* Elevation: stacked z-index hierarchy. */
+  --z-surface: 1;
+  --z-card: 10;
+  --z-card-content: 20;     /* text card overlapping image inside a card */
+  --z-overlay: 100;         /* mega nav, drawers */
+  --z-floating: 1000;       /* toasts, modals */
+
+  /* Shadow system — single light source from top-left, short and directional.
+   * Each shadow combines a tight contact shadow + a softer cast shadow. */
+  --shadow-surface: 0 1px 0 0 rgba(31, 29, 26, 0.04);
+  --shadow-card:
+    0 1px 1px rgba(31, 29, 26, 0.06),
+    0 4px 12px -2px rgba(31, 29, 26, 0.08);
+  --shadow-card-hover:
+    0 1px 1px rgba(31, 29, 26, 0.08),
+    0 12px 24px -4px rgba(31, 29, 26, 0.12);
+  --shadow-card-content:
+    0 1px 1px rgba(31, 29, 26, 0.08),
+    0 6px 12px -3px rgba(31, 29, 26, 0.14);
+  --shadow-overlay:
+    0 2px 4px rgba(31, 29, 26, 0.06),
+    0 20px 40px -8px rgba(31, 29, 26, 0.16);
+
+  /* Embedded shadow — for recessed elements (badges, buttons "pressed into" a surface). */
+  --shadow-inset:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 0 rgba(31, 29, 26, 0.08);
+  --shadow-inset-deep:
+    inset 0 1px 2px rgba(31, 29, 26, 0.12);
+
+  /* Edge highlight — used on the top edge of raised surfaces to simulate
+   * light catching a chamfered edge. Apply as a 1px-tall top border-image. */
+  --edge-highlight-top: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+  --edge-shadow-bottom: linear-gradient(0deg, rgba(31, 29, 26, 0.08) 0%, rgba(31, 29, 26, 0) 100%);
+
+  /* Radius — tire-block geometry: small, consistent, not pillowy. */
+  --radius-tight: 4px;
+  --radius-card: 6px;
+  --radius-pill: 999px;
+
+  /* Motion — damped, like pressing into rubber. */
+  --ease-rubber: cubic-bezier(0.32, 0.72, 0.34, 1);
+  --ease-press: cubic-bezier(0.4, 0, 0.6, 1);
+  --duration-fast: 120ms;
+  --duration-base: 220ms;
+  --duration-slow: 400ms;
+
+  /* Parallax travel limits — keep small enough to feel like depth, not animation. */
+  --parallax-card: 8px;       /* max travel for card-scoped cursor parallax */
+  --parallax-image: 12px;     /* image layer travels slightly more than text layer */
+}
+
+/* ──────────────────────────────────────────────────────────────────
+ * Page gutter — the horizontal padding for full-bleed pages (products
+ * page, header bar) that don't use the centered `.section__container`.
+ *
+ * Below the container width it matches the standard container gutter
+ * (clamp(1rem, 4vw, 2rem)) so these pages line up with the rest of the
+ * site. Once the viewport exceeds the container, the gutter grows with
+ * the viewport so content doesn't sprawl edge-to-edge on wide monitors.
+ * ────────────────────────────────────────────────────────────────── */
+:root {
+  --page-gutter: clamp(1rem, 4vw, 2rem);
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --page-gutter: 8vw;
+  }
 }
 
 /* Base resets */
@@ -89,3 +176,45 @@ body {
   font-family: system-ui, -apple-system, 'Segoe UI', 'Noto Sans SC', 'PingFang SC', sans-serif;
   line-height: 1.8;
 }
+
+/* ──────────────────────────────────────────────────────────────────
+ * Component styles. Each shared atom / molecule has its own stylesheet
+ * imported here, so layout / atom CSS lives in one auditable place
+ * rather than scattered across component-scoped <style> blocks.
+ * ────────────────────────────────────────────────────────────────── */
+@import './components/section.css';
+@import './components/grid.css';
+@import './components/product-card.css';
+@import './components/article-card.css';
+@import './components/industry-card.css';
+@import './components/testimonial-card.css';
+@import './components/featured-card.css';
+@import './components/breadcrumb.css';
+@import './components/button.css';
+@import './components/chip.css';
+@import './components/event-card.css';
+@import './components/document-card.css';
+@import './components/office-card.css';
+@import './components/plate.css';
+@import './components/section-header.css';
+@import './components/spec-table.css';
+@import './components/input.css';
+@import './components/select.css';
+@import './components/textarea.css';
+@import './components/field.css';
+@import './components/filter-sidebar.css';
+@import './components/footer.css';
+@import './components/header.css';
+@import './components/tire-gallery.css';
+@import './components/spec-viewer.css';
+@import './components/spec-selector.css';
+
+/* ──────────────────────────────────────────────────────────────────
+ * Page styles. Each page imports its own stylesheet here so all CSS
+ * loads from one entry point and we can audit page-bound styling in
+ * one place per page.
+ * ────────────────────────────────────────────────────────────────── */
+@import './pages/home.css';
+@import './pages/products.css';
+@import './pages/tire.css';
+

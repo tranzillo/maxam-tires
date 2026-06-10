@@ -1,0 +1,124 @@
+/*
+ * Section — the page section primitive.
+ *
+ * Markup lives in: src/components/ui/Section.astro
+ *
+ * Every page block on the site is a `.section`. The outer element handles
+ * the background (color, image, optional tinted overlay) and runs full
+ * bleed. The inner `.section__container` holds the content, capped at
+ * `--container-max` so every section's content lines up on the same edge.
+ *
+ * Tokens consumed (defined in global.css):
+ *   --color-surface-page    page bg
+ *   --color-surface-sunken  cream-darker bg for visual contrast
+ *   --color-surface-deep    matte dark bg for image wells
+ *   --color-maxam-white     fg color on dark backgrounds
+ *   --color-maxam-blue      brand blue for tinted overlays
+ *   --container-max         content-column max-width (1280px)
+ *
+ * Variants:
+ *   .section--bg-{page|sunken|deep|image}
+ *   .section--overlay-{dark|blue-lr|blue-full}   (only meaningful with bg-image)
+ *   .section--v-{none|md|lg|xlg}                 vertical padding scale
+ */
+
+.section {
+  position: relative;
+  isolation: isolate;
+}
+
+/* ── Backgrounds ───────────────────────────────────────────────────── */
+.section--bg-page {
+  background: var(--color-surface-page);
+}
+
+.section--bg-sunken {
+  background: var(--color-surface-sunken);
+}
+
+.section--bg-deep {
+  background-color: var(--color-surface-deep);
+  color: var(--color-maxam-white);
+}
+
+.section--bg-image {
+  background-color: var(--color-surface-deep);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--color-maxam-white);
+}
+
+/* ── Overlay tints over a bg image ─────────────────────────────────
+ * Three named tints. Used to keep text legible on an image and to
+ * establish the section's mood at a glance.
+ *
+ * blue-lr:  brand-blue gradient, dark on the leading edge, fades
+ *           transparent on the trailing edge. Used by hero.
+ * dark:     neutral dark gradient. Used by content-heavy strips
+ *           (e.g. sustainability) where the brand blue would compete
+ *           with the message.
+ * blue-full: full brand-blue wash. Used when color carries the
+ *           section's CTA energy (e.g. newsletter).
+ */
+.section__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.section--overlay-dark .section__overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.78) 0%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+}
+
+.section--overlay-blue-lr .section__overlay {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-maxam-blue) 90%, black) 0%,
+    color-mix(in srgb, var(--color-maxam-blue) 65%, transparent) 45%,
+    color-mix(in srgb, var(--color-maxam-blue) 0%, transparent) 82%
+  );
+}
+
+[dir='rtl'] .section--overlay-blue-lr .section__overlay {
+  background: linear-gradient(
+    -90deg,
+    color-mix(in srgb, var(--color-maxam-blue) 90%, black) 0%,
+    color-mix(in srgb, var(--color-maxam-blue) 65%, transparent) 45%,
+    color-mix(in srgb, var(--color-maxam-blue) 0%, transparent) 82%
+  );
+}
+
+.section--overlay-blue-full .section__overlay {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-maxam-blue) 88%, black) 0%,
+    color-mix(in srgb, var(--color-maxam-blue) 55%, black) 100%
+  );
+  opacity: 0.92;
+}
+
+/* ── Inner content container ──────────────────────────────────────────
+ * Real centered max-width with a fixed inline padding floor. Works
+ * regardless of whether the outer section is 100vw or some nested
+ * width — the content column is bounded by `--container-max` and the
+ * padding clamp. */
+.section__container {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+}
+
+/* ── Vertical padding scale ───────────────────────────────────────────
+ * One source of truth for section spacing. Adjust here and every
+ * section across the site picks it up. */
+.section--v-none .section__container { padding-block: 0; }
+.section--v-md   .section__container { padding-block: clamp(3rem, 6vw, 5rem); }
+.section--v-lg   .section__container { padding-block: clamp(4rem, 8vw, 7rem); }
+.section--v-xlg  .section__container { padding-block: clamp(5rem, 11vw, 9rem); }

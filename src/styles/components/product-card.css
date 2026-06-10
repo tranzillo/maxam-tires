@@ -1,0 +1,206 @@
+/*
+ * RubberProductCard — stacked-layer product card with industry-tinted text panel hard-overlapping a full-bleed image.
+ *
+ * Markup lives in: src/components/ui/RubberProductCard.astro
+ *
+ * Variants:
+ *   .rubber-card--light — default warm off-white surface variant.
+ *   .rubber-card--dark  — near-black surface variant with inverted contrast.
+ * Each variant only overrides the --card-* tokens; structural rules are shared.
+ * The text panel and industry chip both blend the per-instance --industry-color
+ * (set as an inline style on the root) with the surface base via color-mix.
+ * Includes top-edge chamfer highlight, CTA arrow hover translate, and a
+ * prefers-reduced-motion fallback.
+ */
+  /* ── Surface variables (overridden per variant) ──────────────────
+   * Each variant just overrides these tokens — everything else stays
+   * shared. Adding a new variant later is a one-block change.        */
+  .rubber-card--light {
+    --card-bg: var(--color-surface-raised);
+    --card-frame-bg: var(--color-surface-sunken);
+    --card-panel-base: var(--color-surface-overlay);
+    --card-panel-tint: 6%;            /* industry color blend on panel */
+    --card-panel-border-tint: 18%;
+    --card-chip-tint: 14%;
+    --card-chip-border-tint: 26%;
+    --card-chip-text-tint: 70%;       /* of industry color, rest is darken */
+    --card-chip-text-base: var(--color-maxam-black);
+    --card-title-color: var(--color-maxam-black);
+    --card-subheading-color: var(--color-maxam-gray-500);
+    --card-cta-tint: 75%;
+    --card-cta-base: var(--color-maxam-black);
+    --card-placeholder-color: var(--color-maxam-gray-500);
+  }
+
+  .rubber-card--dark {
+    --card-bg: #1f1d1a;                 /* deep matte — the surface-deep token */
+    --card-frame-bg: #15140f;
+    --card-panel-base: #2a2825;
+    --card-panel-tint: 14%;
+    --card-panel-border-tint: 30%;
+    --card-chip-tint: 22%;
+    --card-chip-border-tint: 36%;
+    --card-chip-text-tint: 100%;        /* industry color shows full on dark */
+    --card-chip-text-base: #ffffff;
+    --card-title-color: #f5f3ef;
+    --card-subheading-color: #9b958a;
+    --card-cta-tint: 90%;
+    --card-cta-base: #ffffff;
+    --card-placeholder-color: #6b665d;
+  }
+
+  /* ── Card container ──────────────────────────────────────────────
+   * Establishes the stacking context, the silhouette, and the surface
+   * underneath. No padding — children align to the frame.            */
+  .rubber-card {
+    position: relative;
+    display: block;
+    background: var(--card-bg);
+    border: 1px solid var(--color-edge);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow var(--duration-base) var(--ease-rubber);
+    aspect-ratio: 3 / 4;
+    isolation: isolate;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .rubber-card:hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* Top edge highlight — chamfered edge catching upper-left light. */
+  .rubber-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: var(--edge-highlight-top);
+    pointer-events: none;
+    z-index: 50;
+  }
+
+  /* ── Image frame & layer ────────────────────────────────────────  */
+  .rubber-card__image-frame {
+    position: absolute;
+    inset: 0;
+    z-index: var(--z-card);
+    overflow: hidden;
+  }
+
+  .rubber-card__image-layer {
+    position: absolute;
+    inset: 0;
+    margin-block-end: 4em;
+  }
+
+  .rubber-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: contrast(1.05);
+  }
+
+  .rubber-card__image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--card-placeholder-color);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+  }
+
+  /* ── Text panel ──────────────────────────────────────────────────
+   * Sibling layer floating over the bottom of the image. Hard overlap.
+   * Industry color washes the panel via color-mix at tints defined
+   * by the variant.                                                   */
+  .rubber-card__panel {
+    position: absolute;
+    inset-inline: 12px;
+    bottom: 12px;
+    z-index: var(--z-card-content);
+    background: color-mix(
+      in srgb,
+      var(--industry-color, var(--color-maxam-blue)) var(--card-panel-tint),
+      var(--card-panel-base)
+    );
+    border: 1px solid color-mix(
+      in srgb,
+      var(--industry-color, var(--color-maxam-blue)) var(--card-panel-border-tint),
+      var(--color-edge)
+    );
+    border-radius: var(--radius-tight);
+    padding: 8px 16px 6px;
+    box-shadow: var(--shadow-card-content);
+  }
+
+  /* Panel top edge highlight. */
+  .rubber-card__panel::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: var(--edge-highlight-top);
+    pointer-events: none;
+  }
+
+  /* ── Industry chip wrapper ───────────────────────────────────────
+   * The chip itself is the shared `<RubberChip variant="industry">`
+   * atom — its styling lives in chip.css. This wrapper only positions
+   * the chip in the upper-left of the image frame, occupying the
+   * negative space around the tire photo. */
+  .rubber-card__chip {
+    position: absolute;
+    top: 6px;
+    inset-inline-start: 12px;
+    z-index: var(--z-card-content);
+  }
+
+  /* ── Typography on the panel ──────────────────────────────────── */
+  .rubber-card__title {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--card-title-color);
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  .rubber-card__subheading {
+    font-size: var(--font-size-sm);
+    color: var(--card-subheading-color);
+  }
+
+  .rubber-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: color-mix(
+      in srgb,
+      var(--industry-color, var(--color-maxam-blue)) var(--card-cta-tint),
+      var(--card-cta-base)
+    );
+  }
+
+  .rubber-card__cta-arrow {
+    display: inline-block;
+    transition: transform var(--duration-base) var(--ease-rubber);
+  }
+
+  .rubber-card:hover .rubber-card__cta-arrow {
+    transform: translateX(3px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rubber-card,
+    .rubber-card__cta-arrow {
+      transition: none !important;
+    }
+  }

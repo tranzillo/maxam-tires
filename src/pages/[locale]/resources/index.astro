@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import ArticleCard from '../../../components/ui/ArticleCard.astro';
+import RubberArticleCard from '../../../components/ui/RubberArticleCard.astro';
 import type { Locale } from '../../../types';
 import { locales, t } from '../../../lib/i18n';
 import { getAllResources, getAllIndustries } from '../../../lib/data';
@@ -70,7 +70,7 @@ const articleTypes = [
       {articles
         .sort((a, b) => b.date.localeCompare(a.date))
         .map((article) => (
-          <ArticleCard article={article} locale={locale} showFilterData={true} />
+          <RubberArticleCard article={article} locale={locale} showFilterData={true} />
         ))
       }
     </div>

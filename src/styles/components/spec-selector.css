@@ -1,0 +1,114 @@
+/*
+ * SpecSizeSelector — the size picker placed in the tire page info column
+ * (below Features). Drives the spec table further down the page.
+ *
+ * Markup lives in: src/components/ui/SpecSizeSelector.astro
+ *
+ * Layout: count label · dropdown (with floating "Tire Size" label) ·
+ * "See Specs" jump link, on one row (wraps on narrow widths).
+ */
+
+.spec-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* Top row: count on the leading edge, "See Specs" on the trailing edge. */
+.spec-selector__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* "N Sizes Available" — bold lead-in. */
+.spec-selector__count {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-maxam-black);
+}
+
+/* The dropdown field with a floating label above the value. */
+.spec-selector__field {
+  position: relative;
+}
+
+.spec-selector__field-label {
+  position: absolute;
+  top: 6px;
+  inset-inline-start: 14px;
+  z-index: 1;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-maxam-gray-500);
+  pointer-events: none;
+}
+
+.spec-selector__select-wrap {
+  position: relative;
+}
+
+.spec-selector__select {
+  appearance: none;
+  width: 100%;
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-maxam-black);
+  background: var(--color-surface-sunken);
+  border: 1px solid var(--color-edge-strong);
+  border-radius: var(--radius-tight);
+  /* Extra top padding leaves room for the floating label. */
+  padding: 22px 40px 8px 14px;
+  cursor: pointer;
+  box-shadow:
+    inset 0 1px 2px rgba(31, 29, 26, 0.08),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.spec-selector__select:focus-visible {
+  outline: 2px solid var(--color-maxam-blue);
+  outline-offset: 2px;
+}
+
+.spec-selector__chevron {
+  position: absolute;
+  inset-inline-end: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--color-maxam-gray-500);
+  pointer-events: none;
+}
+.spec-selector__chevron svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* "↓ See Specs" jump link — uses the industry accent color. */
+.spec-selector__see {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--industry-color, var(--color-maxam-blue));
+  white-space: nowrap;
+}
+
+.spec-selector__see:hover {
+  text-decoration: underline;
+}
+
+.spec-selector__see-arrow {
+  display: inline-block;
+}

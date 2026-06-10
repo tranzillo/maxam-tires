@@ -1,0 +1,41 @@
+/*
+ * RubberField — form-row primitive that wraps a label, an input slot, and
+ * optional hint/error messages.
+ *
+ * Markup lives in: src/components/ui/RubberField.astro
+ *
+ * Vertical stack (label / control / message) with consistent 6px gap.
+ * Elements: .rubber-field (container), .rubber-field__label, .rubber-field__required
+ * (the red asterisk for required fields), .rubber-field__hint (muted helper text),
+ * .rubber-field__error (red alert message that replaces the hint when present).
+ */
+.rubber-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rubber-field__label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-maxam-gray-700);
+  letter-spacing: -0.005em;
+}
+
+.rubber-field__required {
+  color: #c83232;
+  margin-inline-start: 2px;
+}
+
+.rubber-field__hint {
+  font-size: 12px;
+  color: var(--color-maxam-gray-500);
+  line-height: 1.4;
+}
+
+.rubber-field__error {
+  font-size: 12px;
+  color: #c83232;
+  font-weight: 600;
+  line-height: 1.4;
+}

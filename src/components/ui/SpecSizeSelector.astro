@@ -1,0 +1,86 @@
+---
+/*
+ * SpecSizeSelector — the size picker that drives the spec table.
+ *
+ * Placed in the tire page's info column (below Features). Shows the
+ * count of available sizes, the size dropdown, and a "See Specs" link
+ * that smooth-scrolls down to the spec table.
+ *
+ * The dropdown's selection controls which row the SpecTable shows; the
+ * two are wired by a shared script (data-spec-controller / data-spec-table
+ * keyed by the same id). One selector → one table.
+ */
+import type { ProductSpecs } from '../../lib/data';
+
+interface Props {
+  specs: ProductSpecs;
+  /** Localized labels. */
+  sizeLabel: string;
+  countLabel: string; // e.g. "{count} Sizes Available"
+  seeSpecsLabel: string;
+  /** Anchor id of the spec table to scroll to + control. */
+  target: string;
+}
+
+const { specs, sizeLabel, countLabel, seeSpecsLabel, target } = Astro.props;
+
+const count = specs.variants.length;
+const countText = countLabel.replace('{count}', String(count));
+
+const sizeCounts = new Map<string, number>();
+for (const v of specs.variants) sizeCounts.set(v.size, (sizeCounts.get(v.size) ?? 0) + 1);
+function optionLabel(variant: (typeof specs.variants)[number]): string {
+  if ((sizeCounts.get(variant.size) ?? 0) <= 1) return variant.size;
+  const distinguishing = variant.fields.find((f) => /compound|tread/i.test(f.label));
+  return distinguishing ? `${variant.size} — ${distinguishing.value}` : variant.size;
+}
+---
+
+<div class="spec-selector" data-spec-controller={target}>
+  <div class="spec-selector__top">
+    <p class="spec-selector__count">{countText}</p>
+    <a class="spec-selector__see" href={`#${target}`} data-spec-see>
+      <span class="spec-selector__see-arrow" aria-hidden="true">↓</span>
+      {seeSpecsLabel}
+    </a>
+  </div>
+
+  <div class="spec-selector__field">
+    <label class="spec-selector__field-label" for={`spec-size-${target}`}>{sizeLabel}</label>
+    <div class="spec-selector__select-wrap">
+      <select id={`spec-size-${target}`} class="spec-selector__select" data-spec-select>
+        {specs.variants.map((v, i) => (
+          <option value={i}>{optionLabel(v)}</option>
+        ))}
+      </select>
+      <span class="spec-selector__chevron" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </span>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* Wire each size selector to its spec table (matched by id), and make
+   * "See Specs" smooth-scroll. */
+  document.querySelectorAll<HTMLElement>('[data-spec-controller]').forEach((ctrl) => {
+    const targetId = ctrl.dataset.specController!;
+    const table = document.getElementById(targetId);
+    const select = ctrl.querySelector<HTMLSelectElement>('[data-spec-select]');
+    if (!table || !select) return;
+
+    const rows = table.querySelectorAll<HTMLElement>('[data-spec-row]');
+    function showRow(idx: string) {
+      rows.forEach((r) => { r.hidden = r.dataset.specRow !== idx; });
+    }
+    select.addEventListener('change', () => showRow(select.value));
+
+    const see = ctrl.querySelector<HTMLAnchorElement>('[data-spec-see]');
+    see?.addEventListener('click', (e) => {
+      e.preventDefault();
+      table.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>

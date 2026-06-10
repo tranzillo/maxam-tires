@@ -1,0 +1,202 @@
+/*
+ * Products page (Product Search).
+ *
+ * Markup lives in: src/pages/[locale]/products/index.astro
+ *
+ * Page intentionally breaks out of the standard container — the tire
+ * grid and the sidebar use the full viewport width to surface as much
+ * imagery and as many products as possible. Pagination is gone; every
+ * matching tire renders at once.
+ *
+ * Layout:
+ *   .products-page                  full-bleed page wrapper, small inline pad
+ *     .products-page__heading       big hero-punch H1 ("PRODUCT SEARCH")
+ *     .products-page__body          flex row: sidebar | grid area
+ *       .products-page__remote      sticky TV-remote sidebar (250px wide)
+ *       .products-page__grid-area   flex-1 grid area with results + chips
+ */
+
+.products-page {
+  padding-block: clamp(2rem, 6vw, 4rem);
+  padding-inline: var(--page-gutter);
+}
+
+/* Breadcrumb above the industry-hub viewer — same horizontal gutter as
+ * the viewer so it lines up, with its own top/bottom spacing. */
+.products-breadcrumb {
+  padding-block: 1.5rem 0;
+  padding-inline: var(--page-gutter);
+}
+
+/* ── Hero header ───────────────────────────────────────────────────
+ * Full-bleed banner above the viewer on both the products index and
+ * each industry hub. Image bg + tinted overlay; H1 on the leading
+ * edge, count inline on the trailing edge.
+ *
+ * Two overlay treatments:
+ *   - default (no data-overlay attr): neutral dark gradient.
+ *     Used by /products.
+ *   - data-overlay="industry": tinted with --products-hero-overlay-color
+ *     (set inline via style on industry hub pages from the industry color).
+ */
+.products-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--color-surface-deep);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--color-maxam-white);
+}
+
+.products-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.products-hero[data-overlay='industry'] .products-hero__overlay {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--products-hero-overlay-color, var(--color-maxam-blue)) 88%, black) 0%,
+    color-mix(in srgb, var(--products-hero-overlay-color, var(--color-maxam-blue)) 55%, black) 100%
+  );
+}
+
+.products-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-block: clamp(2rem, 6vw, 4rem);
+  padding-inline: var(--page-gutter);
+}
+
+.products-hero__heading {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-maxam-white);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  margin-inline-start: -0.04em;
+}
+
+[dir='rtl'] .products-hero__heading {
+  margin-inline-start: 0;
+}
+
+.products-hero__count {
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.78);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+/* Legacy in-page header (kept so any other consumer doesn't break — the
+ * hero block above replaced these on the products + industry hub pages). */
+.products-page__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.products-page__heading {
+  margin: 0;
+  font-size: clamp(2.5rem, 3vw, 4rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-maxam-black);
+  margin-inline-start: -0.04em;
+}
+
+[dir='rtl'] .products-page__heading {
+  margin-inline-start: 0;
+}
+
+.products-page__count {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: var(--color-maxam-gray-500);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.products-page__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .products-page__body {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+}
+
+/* ── Grid area ──────────────────────────────────────────────────── */
+.products-page__grid-area {
+  flex: 1;
+  min-width: 0; /* allow flex children to shrink */
+}
+
+/* Active filter chips row, above the grid. Hidden when empty so the
+ * grid hugs the top of its column on first paint. */
+.products-page__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.products-page__chips:empty {
+  display: none;
+}
+
+/* The tire grid. Tight gap to maximize imagery. Each column count holds
+ * across a wide range so tires stay larger before another column kicks
+ * in. Scale: 1 → 2 → 3 → 4 → 5 → 6, with each step roughly +400-500px. */
+.products-page__grid {
+  display: grid;
+  gap: 6px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .products-page__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1000px) {
+  .products-page__grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1500px) {
+  .products-page__grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (min-width: 1900px) {
+  .products-page__grid { grid-template-columns: repeat(5, 1fr); }
+}
+@media (min-width: 2300px) {
+  .products-page__grid { grid-template-columns: repeat(6, 1fr); }
+}
+
+.products-page__empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--color-maxam-gray-500);
+  font-size: var(--font-size-base);
+}

@@ -1,0 +1,151 @@
+/*
+ * RubberFeaturedCard — compact 16:9 rubbermorphism card for the mega-nav featured slot.
+ *
+ * Markup lives in: src/components/ui/RubberFeaturedCard.astro
+ *
+ * Mirrors RubberProductCard's stacked-layer language (industry-tinted text
+ * panel hard-overlapping a full-bleed image, molded chip with dot) in a
+ * landscape 16:9 frame sized for the mega-nav drawer. Supports both products
+ * and articles — products pass --industry-color inline to drive the panel /
+ * chip color-mix wash; articles fall back to brand blue. Light variant only;
+ * 2-line title clamp keeps panel height predictable.
+ */
+  .rubber-featured {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 9;
+    background: var(--color-surface-overlay);
+    border: 1px solid var(--color-edge);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow var(--duration-base) var(--ease-rubber);
+    color: inherit;
+    text-decoration: none;
+    isolation: isolate;
+  }
+
+  .rubber-featured:hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* Top edge highlight — chamfer. */
+  .rubber-featured::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: var(--edge-highlight-top);
+    pointer-events: none;
+    z-index: 50;
+  }
+
+  /* Image fills the whole frame. */
+  .rubber-featured__image-frame {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: var(--color-surface-sunken);
+  }
+
+  .rubber-featured__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: contrast(1.05);
+  }
+
+  .rubber-featured__image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-maxam-gray-500);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    padding: 0 8px;
+    text-align: center;
+  }
+
+  /* Text panel — bottom-aligned with industry-tinted wash. */
+  .rubber-featured__panel {
+    position: absolute;
+    inset-inline: 8px;
+    bottom: 8px;
+    z-index: var(--z-card-content);
+    background: color-mix(
+      in srgb,
+      var(--industry-color, var(--color-maxam-blue)) 6%,
+      var(--color-surface-overlay)
+    );
+    border: 1px solid color-mix(
+      in srgb,
+      var(--industry-color, var(--color-maxam-blue)) 18%,
+      var(--color-edge)
+    );
+    border-radius: var(--radius-tight);
+    padding: 8px 10px 9px;
+    box-shadow: var(--shadow-card-content);
+  }
+
+  .rubber-featured__panel::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: var(--edge-highlight-top);
+    pointer-events: none;
+  }
+
+  /* Compact molded chip — same language as RubberProductCard but smaller. */
+  .rubber-featured__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: color-mix(
+      in srgb,
+      var(--industry-color, var(--color-maxam-blue)) 70%,
+      var(--color-maxam-black)
+    );
+    background: color-mix(
+      in srgb,
+      var(--industry-color, var(--color-maxam-blue)) 14%,
+      var(--color-surface-overlay)
+    );
+    border: 1px solid color-mix(
+      in srgb,
+      var(--industry-color, var(--color-maxam-blue)) 26%,
+      var(--color-edge)
+    );
+    border-radius: var(--radius-pill);
+    padding: 2px 8px 2px 6px;
+    box-shadow: var(--shadow-inset);
+  }
+
+  .rubber-featured__chip-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--industry-color, var(--color-maxam-blue));
+    box-shadow: var(--shadow-inset-deep);
+  }
+
+  .rubber-featured__title {
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    color: var(--color-maxam-black);
+    margin-top: 5px;
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+    /* Clamp to 2 lines so the panel height stays predictable. */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }

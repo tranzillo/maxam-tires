@@ -1,6 +1,6 @@
 {
-  "syncedAt": "2026-05-04T13:05:55.301Z",
-  "withBlocks": true,
+  "syncedAt": "2026-06-10T15:56:08.524Z",
+  "withBlocks": false,
   "counts": {
     "industries": 30,
     "applications": 165,
@@ -9,6 +9,8 @@
     "articles": 972,
     "documents": 390,
     "testimonials": 21,
-    "events": 6
+    "events": 6,
+    "pages": 3,
+    "pagePromos": 6
   }
 }

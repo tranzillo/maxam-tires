@@ -15,6 +15,8 @@ import type {
   Article,
   ArticleType,
   Document as Doc,
+  Testimonial,
+  Event,
   Locale,
 } from '../types';
 
@@ -24,6 +26,13 @@ import industriesJson from '../data/notion-content/industries.json';
 import applicationsJson from '../data/notion-content/applications.json';
 import tireTypesJson from '../data/notion-content/tire-types.json';
 import documentsJson from '../data/notion-content/documents.json';
+import testimonialsJson from '../data/notion-content/testimonials.json';
+import eventsJson from '../data/notion-content/events.json';
+import pagesJson from '../data/notion-content/pages.json';
+import pagePromosJson from '../data/notion-content/page-promos.json';
+import productSpecsEn from '../data/notion-content/product-specs.en.json';
+import productSpecsArAe from '../data/notion-content/product-specs.ar-ae.json';
+import productSpecsZhHant from '../data/notion-content/product-specs.zh-hant.json';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -111,12 +120,67 @@ interface DocumentRow {
   industries?: string[];
 }
 
+interface TestimonialRow {
+  pageId: string;
+  wpId: number | null;
+  trid: number | null;
+  language: string;
+  title: string;
+  slug: string;
+  quote: string;
+  authorName: string;
+  authorTitle: string;
+  authorCompany: string;
+}
+
+interface EventRow {
+  pageId: string;
+  wpId: number | null;
+  trid: number | null;
+  language: string;
+  title: string;
+  slug: string;
+  startDate: string | null;
+  endDate: string | null;
+  featuredImage: string | null;
+}
+
+interface PageRow {
+  pageId: string;
+  trid: number | null;
+  language: string;
+  title: string;
+  slug: string;
+  content: Record<string, string>;
+  translationIds: string[];
+}
+
+interface PagePromoRow {
+  promoId: string;
+  pageId: string;
+  trid: number | null;
+  language: string;
+  order: number;
+  tag: string | null;
+  heading: string;
+  description: string;
+  ctaLabel: string;
+  ctaHref: string;
+  image: string | null;
+  imagePosition: string;
+  translationIds: string[];
+}
+
 const products = productsJson as ProductRow[];
 const articles = articlesJson as ArticleRow[];
 const industries = industriesJson as TaxonomyRow[];
 const applications = applicationsJson as TaxonomyRow[];
 const tireTypes = tireTypesJson as TaxonomyRow[];
 const documents = documentsJson as DocumentRow[];
+const testimonials = testimonialsJson as TestimonialRow[];
+const events = eventsJson as EventRow[];
+const pages = pagesJson as PageRow[];
+const pagePromos = pagePromosJson as PagePromoRow[];
 
 // ── Per-locale slug → row indexes (built once, reused everywhere) ──────
 
@@ -364,6 +428,50 @@ export function getAllDocuments(locale: Locale): Article[] {
     .map((d) => documentToArticle(d, locale));
 }
 
+/** Documents as Document domain objects (with native fileUrl/type),
+ *  for callers that want to render a RubberDocumentCard. */
+export function getAllRawDocuments(locale: Locale): Doc[] {
+  return documents
+    .filter((d) => d.language === locale)
+    .map(toDocument);
+}
+
+// ── Testimonial queries ─────────────────────────────────────────────────
+
+function toTestimonial(t: TestimonialRow): Testimonial {
+  return {
+    id: t.slug,
+    slug: t.slug,
+    title: t.title,
+    quote: t.quote,
+    authorName: t.authorName || undefined,
+    authorTitle: t.authorTitle || undefined,
+    authorCompany: t.authorCompany || undefined,
+  };
+}
+
+export function getAllTestimonials(locale: Locale): Testimonial[] {
+  return testimonials.filter((t) => t.language === locale).map(toTestimonial);
+}
+
+// ── Event queries ───────────────────────────────────────────────────────
+
+function toEvent(e: EventRow, locale: Locale): Event {
+  return {
+    id: e.slug,
+    slug: e.slug,
+    title: e.title,
+    startDate: e.startDate ?? undefined,
+    endDate: e.endDate ?? undefined,
+    featuredImage: e.featuredImage ?? undefined,
+    href: `/${locale}/resources/${e.slug}`,
+  };
+}
+
+export function getAllEvents(locale: Locale): Event[] {
+  return events.filter((e) => e.language === locale).map((e) => toEvent(e, locale));
+}
+
 // ── Unified resource feed ──────────────────────────────────────────────
 
 /**
@@ -396,4 +504,109 @@ export function getAllRatings(): number[] {
   const set = new Set<number>();
   for (const p of products) if (p.rating !== null) set.add(p.rating);
   return [...set].sort((a, b) => a - b);
+}
+
+// ── Pages (bespoke per-route content) ──────────────────────────────────
+
+export interface PageContent {
+  /** ISO slug of the page (e.g. "home"). */
+  slug: string;
+  /** Locale this content was loaded for. */
+  language: string;
+  /** Flat key-value content map; see RawPage docs in fetchers.ts. */
+  content: Record<string, string>;
+}
+
+export interface PagePromo {
+  order: number;
+  tag: string | null;
+  heading: string;
+  description: string;
+  ctaLabel: string;
+  ctaHref: string;
+  image: string | null;
+  imagePosition: string;
+}
+
+/**
+ * Look up a single content key with an optional fallback. Returns the empty
+ * string if the key is missing — callers can decide whether to render or
+ * suppress that piece of UI.
+ */
+export function pageText(page: PageContent | undefined, key: string, fallback = ''): string {
+  if (!page) return fallback;
+  return page.content[key] ?? fallback;
+}
+
+/**
+ * Get the bespoke content record for a page, in the requested locale.
+ * Returns undefined if no record exists for that (locale, slug).
+ */
+export function getPageContent(locale: Locale, slug: string): PageContent | undefined {
+  const row = pages.find((p) => p.language === locale && p.slug === slug);
+  if (!row) return undefined;
+  return {
+    slug: row.slug,
+    language: row.language,
+    content: row.content,
+  };
+}
+
+/**
+ * Get the promo cards owned by a page, in the requested locale, sorted by order.
+ * Page is identified by its slug (which is locale-stable) so callers don't
+ * need to know about pageIds.
+ */
+export function getPagePromos(locale: Locale, pageSlug: string): PagePromo[] {
+  // Resolve the page record to its pageId so we can match promos by relation.
+  const page = pages.find((p) => p.language === locale && p.slug === pageSlug);
+  if (!page) return [];
+  return pagePromos
+    .filter((promo) => promo.language === locale && promo.pageId === page.pageId)
+    .sort((a, b) => a.order - b.order)
+    .map((promo) => ({
+      order: promo.order,
+      tag: promo.tag,
+      heading: promo.heading,
+      description: promo.description,
+      ctaLabel: promo.ctaLabel,
+      ctaHref: promo.ctaHref,
+      image: promo.image,
+      imagePosition: promo.imagePosition,
+    }));
+}
+
+// ── Product specs (per-product structured spec table) ──────────────────
+
+export interface SpecField {
+  label: string;
+  value: string;
+  unit: string | null;
+}
+
+export interface SpecVariant {
+  size: string;
+  fields: SpecField[];
+}
+
+export interface ProductSpecs {
+  headers: string[];
+  units: (string | null)[];
+  variants: SpecVariant[];
+}
+
+const productSpecsByLocale: Record<Locale, Record<string, ProductSpecs>> = {
+  en: productSpecsEn as Record<string, ProductSpecs>,
+  'ar-ae': productSpecsArAe as Record<string, ProductSpecs>,
+  'zh-hant': productSpecsZhHant as Record<string, ProductSpecs>,
+};
+
+/**
+ * Structured spec table for a product, in the requested locale.
+ * Each variant is one selectable spec row (a size, possibly with a
+ * tread-compound qualifier); measurement fields carry both units.
+ * Returns undefined if the product has no spec table.
+ */
+export function getProductSpecs(locale: Locale, slug: string): ProductSpecs | undefined {
+  return productSpecsByLocale[locale]?.[slug];
 }

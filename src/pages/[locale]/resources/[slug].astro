@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import NotionBlocks from '../../../components/NotionBlocks.astro';
+import RubberBreadcrumb from '../../../components/ui/RubberBreadcrumb.astro';
+import RubberChip from '../../../components/ui/RubberChip.astro';
+import RubberButton from '../../../components/ui/RubberButton.astro';
 import type { Locale } from '../../../types';
 import { locales, t, localePath } from '../../../lib/i18n';
 import { getAllArticles, getArticleBySlug, getArticleBlocks } from '../../../lib/data';
@@ -39,19 +42,20 @@ const typeLabel = t(locale, `resources.type.${article.type}`) || article.type;
 <BaseLayout locale={locale} title={article.title}>
   <article class="max-w-3xl mx-auto px-4 py-10">
     <!-- Breadcrumb -->
-    <nav class="text-sm text-maxam-gray-500 mb-6">
-      <a href={localePath(locale, '/resources')} class="hover:text-maxam-blue">{t(locale, 'nav.resources')}</a>
-      <span class="mx-2">/</span>
-      <span class="text-maxam-black font-medium">{article.title}</span>
-    </nav>
+    <div class="mb-6">
+      <RubberBreadcrumb items={[
+        { label: t(locale, 'nav.resources'), href: localePath(locale, '/resources') },
+        { label: article.title },
+      ]} />
+    </div>
 
     <!-- Header -->
     <header class="mb-8">
-      <div class="flex items-center gap-3 text-sm text-maxam-gray-500 mb-3">
-        <span class="bg-maxam-blue text-maxam-white text-xs font-medium px-2 py-0.5 rounded">
-          {typeLabel}
-        </span>
-        {article.date && <time datetime={article.date}>{dateFormatted}</time>}
+      <div class="flex items-center gap-3 mb-3">
+        <RubberChip variant="category" size="sm">{typeLabel}</RubberChip>
+        {article.date && (
+          <time class="text-sm text-maxam-gray-500" datetime={article.date}>{dateFormatted}</time>
+        )}
       </div>
 
       <h1 class="text-4xl font-bold text-maxam-black leading-tight">{article.title}</h1>
@@ -73,13 +77,11 @@ const typeLabel = t(locale, `resources.type.${article.type}`) || article.type;
     </section>
 
     <!-- Back link -->
-    <div class="mt-12 pt-6 border-t border-maxam-gray-100">
-      <a
-        href={localePath(locale, '/resources')}
-        class="text-maxam-blue font-medium hover:underline"
-      >
-        <span class="inline-block rtl:scale-x-[-1]" aria-hidden="true">←</span> {t(locale, 'nav.resources')}
-      </a>
+    <div class="mt-12 pt-6 border-t border-[var(--color-edge)]">
+      <RubberButton variant="ghost" size="md" href={localePath(locale, '/resources')}>
+        <span class="inline-block rtl:scale-x-[-1] me-1" aria-hidden="true">←</span>
+        {t(locale, 'nav.resources')}
+      </RubberButton>
     </div>
   </article>
 </BaseLayout>

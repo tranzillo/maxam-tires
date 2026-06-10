@@ -1,0 +1,368 @@
+---
+/**
+ * RubberHeader — rubbermorphism version of the site header.
+ *
+ * Design choices:
+ *  - Header is a light raised surface that sits on the warm page background
+ *    (not the previous dark band). Hairline border + soft contact shadow
+ *    define the bottom edge; chamfered top highlight gives the upper edge
+ *    a sense of light catching.
+ *  - Logo uses the inline MAXAM wordmark SVG (currentColor) in brand blue.
+ *  - Nav triggers are pill-shaped molded surfaces — they lift slightly on
+ *    hover and press in (inset shadow) when active/open.
+ *  - Mega nav panel is a second elevation: opaque overlay with its own
+ *    panel shadow, dropped below the header like a drawer on a workbench.
+ *  - Industry color dots in the mega nav get the same inset-shadow chip
+ *    treatment as the RubberProductCard chip dot, so they read as molded.
+ *  - Sticky positioning preserved.
+ *
+ * Original Header.astro remains in place — this is a parallel prototype
+ * shown in the design gallery for review before site-wide swap.
+ */
+import type { Locale, ArticleType } from '../../types';
+import { t, localePath } from '../../lib/i18n';
+import { getAllIndustries, getFeaturedProducts, getRecentArticles } from '../../lib/data';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import RubberFeaturedCard from '../ui/RubberFeaturedCard.astro';
+import MaxamLogo from '../ui/MaxamLogo.astro';
+import RubberPlate from '../ui/RubberPlate.astro';
+import RubberChip from '../ui/RubberChip.astro';
+import RubberButton from '../ui/RubberButton.astro';
+
+interface Props {
+  locale: Locale;
+  /** Disable sticky positioning — useful in the design gallery preview. */
+  sticky?: boolean;
+  /**
+   * Surface tone for the top bar. `light` (default) is a raised cream
+   * surface; `dark` is a deep matte surface that anchors a colored hero
+   * below it. The mega-nav panel stays light in both variants — its
+   * job is to be a workbench drawer of content.
+   */
+  variant?: 'light' | 'dark';
+}
+
+const { locale, sticky = true, variant = 'light' } = Astro.props;
+
+const industries = getAllIndustries(locale);
+const featuredProduct = getFeaturedProducts(locale, 1)[0];
+const featuredArticle = getRecentArticles(locale, 1)[0];
+const resourceTypes: ArticleType[] = ['blog', 'news', 'event', 'product-sheet', 'brochure'];
+---
+
+<header class:list={['rubber-header', `rubber-header--${variant}`, sticky && 'rubber-header--sticky']}>
+  <div class="rubber-header__bar flex items-center justify-between">
+    <!-- Logo -->
+    <a
+      href={localePath(locale, '/')}
+      class="rubber-header__logo-link"
+      aria-label="MAXAM home"
+    >
+      <MaxamLogo
+        class={variant === 'dark' ? 'h-5 md:h-6 text-maxam-white' : 'h-5 md:h-6 text-maxam-blue'}
+        label="MAXAM"
+      />
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-1.5" aria-label="Primary">
+      <button
+        class="rubber-nav-trigger"
+        data-panel="products"
+        aria-expanded="false"
+      >
+        {t(locale, 'nav.products')}
+        <svg class="rubber-nav-trigger__chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      <button
+        class="rubber-nav-trigger"
+        data-panel="resources"
+        aria-expanded="false"
+      >
+        {t(locale, 'nav.resources')}
+        <svg class="rubber-nav-trigger__chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      <a href={localePath(locale, '/contact')} class="rubber-nav-link">
+        {t(locale, 'nav.contact')}
+      </a>
+
+      <a
+        href="http://b2b.maxamtire.com/"
+        class="rubber-nav-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {t(locale, 'nav.dealer_login')}
+        <svg class="rubber-nav-link__external" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14 5h5v5M19 5l-7 7M5 5h6v2H7v10h10v-4h2v6H5V5z" />
+        </svg>
+      </a>
+
+      <div class="ms-2 ps-3 border-s border-[var(--color-edge)]">
+        <LanguageSwitcher locale={locale} currentPath={Astro.url.pathname} />
+      </div>
+    </nav>
+
+    <!-- Mobile menu button — hidden at md+ via scoped CSS (Tailwind's
+         md:hidden was being overridden by the .rubber-nav-trigger rule). -->
+    <button
+      data-mobile-toggle
+      class="rubber-mobile-toggle"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- ─── Products mega nav panel ─── -->
+  <div data-panel="products" class="rubber-mega-panel hidden" role="region" aria-label="Products menu">
+    <div class="rubber-mega-panel__inner max-w-[var(--container-max)] mx-auto px-4 py-8 flex gap-10">
+      <div class="flex-1 flex flex-col gap-4">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <RubberPlate as="h3" size="xs">{t(locale, 'home.industries_heading')}</RubberPlate>
+          <RubberButton variant="ghost" size="sm" href={localePath(locale, '/products')}>
+            {t(locale, 'nav.all_products')}
+            <span aria-hidden="true" class="inline-block rtl:scale-x-[-1] ms-1">&rarr;</span>
+          </RubberButton>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          {industries.map((ind) => (
+            <RubberChip
+              variant="industry"
+              size="lg"
+              color={ind.color}
+              href={localePath(locale, `/products/${ind.slug}/`)}
+            >
+              {ind.name}
+            </RubberChip>
+          ))}
+        </div>
+      </div>
+
+      {featuredProduct && (
+        <div class="w-64 shrink-0 flex flex-col gap-3">
+          <RubberPlate as="h3" size="xs">{t(locale, 'nav.featured')}</RubberPlate>
+          <RubberFeaturedCard locale={locale} product={featuredProduct} />
+        </div>
+      )}
+    </div>
+  </div>
+
+  <!-- ─── Resources mega nav panel ─── -->
+  <div data-panel="resources" class="rubber-mega-panel hidden" role="region" aria-label="Resources menu">
+    <div class="rubber-mega-panel__inner max-w-[var(--container-max)] mx-auto px-4 py-8 flex gap-10">
+      <div class="flex-1 flex flex-col gap-4">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <RubberPlate as="h3" size="xs">{t(locale, 'resources.title')}</RubberPlate>
+          <RubberButton variant="ghost" size="sm" href={localePath(locale, '/resources')}>
+            {t(locale, 'nav.all_resources')}
+            <span aria-hidden="true" class="inline-block rtl:scale-x-[-1] ms-1">&rarr;</span>
+          </RubberButton>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          {resourceTypes.map((type) => (
+            <RubberChip
+              variant="category"
+              size="lg"
+              href={`${localePath(locale, '/resources')}?type=${type}`}
+            >
+              {t(locale, `resources.type.${type}`)}
+            </RubberChip>
+          ))}
+        </div>
+      </div>
+
+      {featuredArticle && (
+        <div class="w-64 shrink-0 flex flex-col gap-3">
+          <RubberPlate as="h3" size="xs">{t(locale, 'nav.featured')}</RubberPlate>
+          <RubberFeaturedCard locale={locale} article={featuredArticle} />
+        </div>
+      )}
+    </div>
+  </div>
+
+  <!-- ─── Mobile menu ─── -->
+  <nav data-mobile-menu class="rubber-mobile-menu md:hidden hidden" aria-label="Mobile navigation">
+    <div class="px-4 py-4 space-y-1">
+      <!-- Products section (expandable) -->
+      <div>
+        <button class="rubber-mobile-section-toggle" aria-expanded="false" data-target="[data-mobile-products]">
+          {t(locale, 'nav.products')}
+          <svg class="w-4 h-4 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div data-mobile-products class="hidden ps-3 pb-3 space-y-3">
+          <RubberButton variant="ghost" size="sm" full href={localePath(locale, '/products')}>
+            {t(locale, 'nav.all_products')}
+          </RubberButton>
+          <div class="flex flex-wrap gap-2">
+            {industries.map((ind) => (
+              <RubberChip
+                variant="industry"
+                size="lg"
+                color={ind.color}
+                href={localePath(locale, `/products/${ind.slug}/`)}
+              >
+                {ind.name}
+              </RubberChip>
+            ))}
+          </div>
+          {featuredProduct && (
+            <div class="pt-1">
+              <RubberFeaturedCard locale={locale} product={featuredProduct} />
+            </div>
+          )}
+        </div>
+      </div>
+
+      <!-- Resources section (expandable) -->
+      <div>
+        <button class="rubber-mobile-section-toggle" aria-expanded="false" data-target="[data-mobile-resources]">
+          {t(locale, 'nav.resources')}
+          <svg class="w-4 h-4 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div data-mobile-resources class="hidden ps-3 pb-3 space-y-3">
+          <RubberButton variant="ghost" size="sm" full href={localePath(locale, '/resources')}>
+            {t(locale, 'nav.all_resources')}
+          </RubberButton>
+          <div class="flex flex-wrap gap-2">
+            {resourceTypes.map((type) => (
+              <RubberChip
+                variant="category"
+                size="lg"
+                href={`${localePath(locale, '/resources')}?type=${type}`}
+              >
+                {t(locale, `resources.type.${type}`)}
+              </RubberChip>
+            ))}
+          </div>
+          {featuredArticle && (
+            <div class="pt-1">
+              <RubberFeaturedCard locale={locale} article={featuredArticle} />
+            </div>
+          )}
+        </div>
+      </div>
+
+      <a href={localePath(locale, '/contact')} class="rubber-nav-link block py-2.5">
+        {t(locale, 'nav.contact')}
+      </a>
+
+      <a
+        href="http://b2b.maxamtire.com/"
+        class="rubber-nav-link block py-2.5"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {t(locale, 'nav.dealer_login')}
+        <svg class="rubber-nav-link__external" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14 5h5v5M19 5l-7 7M5 5h6v2H7v10h10v-4h2v6H5V5z" />
+        </svg>
+      </a>
+
+      <div class="pt-3 mt-2 border-t border-[var(--color-edge)]">
+        <LanguageSwitcher locale={locale} currentPath={Astro.url.pathname} />
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  /**
+   * Wire up every RubberHeader on the page. The gallery renders multiple
+   * instances side-by-side, so we iterate over all of them and scope
+   * panel/menu lookups to each header. Mega-nav panels are looked up
+   * BY ID (panel id from data-panel attr) but only within the same header's
+   * subtree, so duplicate IDs across instances don't cross-wire.
+   */
+  type Init = (header: HTMLElement) => void;
+
+  const initHeader: Init = (header) => {
+    if (header.dataset.rubberHeaderInit === '1') return;
+    header.dataset.rubberHeaderInit = '1';
+
+    const triggers = header.querySelectorAll<HTMLButtonElement>('.rubber-nav-trigger[data-panel]');
+    const panels = header.querySelectorAll<HTMLElement>('.rubber-mega-panel');
+
+    function closeAllPanels() {
+      panels.forEach((p) => p.classList.add('hidden'));
+      triggers.forEach((t) => t.setAttribute('aria-expanded', 'false'));
+    }
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const panelName = trigger.dataset.panel!;
+        // Scope to this header instance — galleries may render multiple
+        // headers on one page and we want each to control only its own panels.
+        const panel = header.querySelector<HTMLElement>(`.rubber-mega-panel[data-panel="${panelName}"]`);
+        if (!panel) return;
+        const isOpen = !panel.classList.contains('hidden');
+
+        closeAllPanels();
+        if (!isOpen) {
+          panel.classList.remove('hidden');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (!header.contains(target)) {
+        closeAllPanels();
+        return;
+      }
+      if (!target.closest('.rubber-mega-panel') && !target.closest('.rubber-nav-trigger[data-panel]')) {
+        closeAllPanels();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeAllPanels();
+    });
+
+    panels.forEach((panel) => {
+      panel.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => closeAllPanels());
+      });
+    });
+
+    // Mobile menu — scope by querying inside the header
+    const mobileToggle = header.querySelector<HTMLButtonElement>('[data-mobile-toggle]');
+    const mobileMenu = header.querySelector<HTMLElement>('[data-mobile-menu]');
+
+    mobileToggle?.addEventListener('click', () => {
+      const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+      mobileToggle.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu?.classList.toggle('hidden');
+    });
+
+    header.querySelectorAll<HTMLButtonElement>('.rubber-mobile-section-toggle').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const targetSelector = btn.dataset.target!;
+        const target = header.querySelector<HTMLElement>(targetSelector);
+        if (!target) return;
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        target.classList.toggle('hidden');
+        const svg = btn.querySelector('svg');
+        svg?.classList.toggle('rotate-180');
+      });
+    });
+  };
+
+  document.querySelectorAll<HTMLElement>('.rubber-header').forEach(initHeader);
+</script>

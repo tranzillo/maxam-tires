@@ -1,0 +1,48 @@
+/*
+ * Grid — the column-grid primitive.
+ *
+ * Markup lives in: src/components/ui/Grid.astro
+ *
+ * Lays children out in a column grid with a single locked gap scale.
+ * Always responsive — column count collapses at narrow viewports so a
+ * 4-col grid becomes a 2-col grid at sm, and a 1-col stack at xs.
+ *
+ * Variants:
+ *   .grid--cols-{1|2|3|4}    column count at the lg breakpoint
+ *   .grid--gap-{none|sm|md|lg}  gutter scale
+ *
+ * Responsive breakpoints (locked here, not configurable per consumer):
+ *   < 640px            : all grids stack to 1 column
+ *   640px ≤ w < 1024px : 2-col grids stay 2; 3- and 4-col grids drop to 2
+ *   ≥ 1024px           : each grid hits its requested column count
+ */
+
+.grid {
+  display: grid;
+  width: 100%;
+}
+
+/* Default: single column on small viewports. */
+.grid--cols-1,
+.grid--cols-2,
+.grid--cols-3,
+.grid--cols-4 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .grid--cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid--cols-3 { grid-template-columns: repeat(2, 1fr); }
+  .grid--cols-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .grid--cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid--cols-4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Gap scale. */
+.grid--gap-none { gap: 0; }
+.grid--gap-sm   { gap: 0.5rem; }
+.grid--gap-md   { gap: 1.5rem; }
+.grid--gap-lg   { gap: 2.5rem; }

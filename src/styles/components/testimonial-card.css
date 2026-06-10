@@ -1,0 +1,105 @@
+/*
+ * RubberTestimonialCard — quote card with stamped quote-mark plate and bottom byline.
+ *
+ * Markup lives in: src/components/ui/RubberTestimonialCard.astro
+ *
+ * Composition: an oversized molded quote-mark plate anchors the upper-left
+ * (recessed inset shadow + bottom highlight, treated like a stamped serial
+ * plate from heavy equipment), the quote text reads as italic body, and a
+ * bordered byline footer sits at the bottom with name + title/company. RTL
+ * mirrors the quote glyph. No hover state — testimonials are static prose.
+ */
+  .rubber-testimonial {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 32px 28px 24px;
+    background: var(--color-surface-overlay);
+    border: 1px solid var(--color-edge);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    isolation: isolate;
+    margin: 0; /* reset <figure> default */
+  }
+
+  /* Top chamfer. */
+  .rubber-testimonial::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: var(--edge-highlight-top);
+    pointer-events: none;
+  }
+
+  /* Oversized quote mark — sits inset from the upper-left corner,
+   * treated as a stamped plate with recessed inset shadow + bottom
+   * highlight. The mark itself is the glyph; the plate around it is
+   * built by the box-shadow + background. */
+  .rubber-testimonial__quote-mark {
+    position: absolute;
+    top: -10px;
+    inset-inline-start: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-surface-sunken);
+    border: 1px solid var(--color-edge-strong);
+    border-radius: var(--radius-tight);
+    box-shadow:
+      inset 0 1px 1px rgba(31, 29, 26, 0.06),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.5),
+      0 1px 2px rgba(31, 29, 26, 0.04);
+    color: color-mix(in srgb, var(--color-maxam-blue) 60%, var(--color-maxam-gray-700));
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1;
+    /* Pull glyph up so it sits visually centered (quote mark sits at top
+     * of its bounding box by default). */
+    padding-top: 18px;
+    z-index: 10;
+  }
+
+  /* RTL — mirror the quote mark glyph and reposition. */
+  [dir='rtl'] .rubber-testimonial__quote-mark {
+    transform: scaleX(-1);
+  }
+
+  /* Quote text — slightly larger than body, slight italic for "voice." */
+  .rubber-testimonial__quote {
+    font-size: var(--font-size-lg);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--color-maxam-gray-900);
+    line-height: 1.5;
+    margin: 24px 0 0 0; /* push down past the floating quote mark */
+    /* Use proper quotation marks visually via the floating mark; this
+     * is plain prose. */
+  }
+
+  /* Byline — molded plate treatment at the bottom, like a name tag. */
+  .rubber-testimonial__byline {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-edge);
+    margin-top: auto;
+  }
+
+  .rubber-testimonial__byline-name {
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    color: var(--color-maxam-black);
+    letter-spacing: -0.005em;
+  }
+
+  .rubber-testimonial__byline-org {
+    font-size: 12px;
+    color: var(--color-maxam-gray-500);
+    line-height: 1.3;
+  }

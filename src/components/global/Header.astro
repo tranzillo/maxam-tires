@@ -5,6 +5,7 @@ import { getAllIndustries, getFeaturedProducts, getRecentArticles } from '../../
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import MegaNav from './MegaNav.astro';
 import FeaturedCard from '../ui/FeaturedCard.astro';
+import MaxamLogo from '../ui/MaxamLogo.astro';
 
 interface Props {
   locale: Locale;
@@ -21,8 +22,8 @@ const resourceTypes: ArticleType[] = ['blog', 'news', 'event', 'product-sheet', 
 <header class="bg-maxam-black text-maxam-white sticky top-0 z-50 relative">
   <div class="max-w-[var(--container-max)] mx-auto px-4 flex items-center justify-between h-16">
     <!-- Logo -->
-    <a href={localePath(locale, '/')} class="flex items-center gap-2 font-bold text-xl tracking-tight">
-      MAXAM
+    <a href={localePath(locale, '/')} class="flex items-center gap-2" aria-label="MAXAM home">
+      <MaxamLogo class="h-5 text-maxam-white" label="MAXAM" />
     </a>
 
     <!-- Desktop nav -->

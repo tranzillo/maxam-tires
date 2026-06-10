@@ -1,0 +1,71 @@
+---
+/**
+ * RubberButton — the canonical button atom for the rubbermorphism system.
+ *
+ * Renders as a <button> by default, or as <a> when `href` is provided.
+ * Surface treatment matches the design language: hairline edge, chamfered
+ * top highlight, contact shadow, sunken inset on press. Inherits
+ * --industry-color when present (e.g. inside a card or industry hub) so a
+ * single Button instance picks up local color identity without prop wiring.
+ *
+ * Variants:
+ *   - primary   : brand-blue filled solid, white text. Strong actionable.
+ *   - secondary : panel surface with edge, dark text. Default for most CTAs.
+ *   - ghost     : transparent rest, fills on hover. Low-emphasis.
+ *
+ * Sizes:
+ *   - sm : compact (28px tall)
+ *   - md : default (40px tall)
+ *   - lg : prominent (48px tall)
+ *
+ * Active/pressed state is the same inset treatment as the open nav trigger.
+ * Disabled state is desaturated + cursor-not-allowed; no hover lift.
+ *
+ * Slot for content — typically text, optionally with an icon span.
+ */
+type Variant = 'primary' | 'secondary' | 'ghost';
+type Size = 'sm' | 'md' | 'lg';
+
+interface Props {
+  href?: string;
+  variant?: Variant;
+  size?: Size;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  /** Visual full-width — useful inside narrow forms or panels. */
+  full?: boolean;
+  /** Optional aria-label when content is icon-only. */
+  ariaLabel?: string;
+  class?: string;
+}
+
+const {
+  href,
+  variant = 'secondary',
+  size = 'md',
+  type = 'button',
+  disabled = false,
+  full = false,
+  ariaLabel,
+  class: className,
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+const dataAttrs: Record<string, string | boolean> = {
+  'data-variant': variant,
+  'data-size': size,
+};
+if (full) dataAttrs['data-full'] = true;
+if (disabled && href) dataAttrs['aria-disabled'] = 'true';
+---
+
+<Tag
+  href={href}
+  type={!href ? type : undefined}
+  disabled={!href ? disabled || undefined : undefined}
+  aria-label={ariaLabel}
+  class:list={['rubber-btn', className]}
+  {...dataAttrs}
+>
+  <slot />
+</Tag>

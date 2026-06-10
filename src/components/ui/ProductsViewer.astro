@@ -1,0 +1,475 @@
+---
+/*
+ * ProductsViewer — the full-bleed sidebar + grid + client-side filter
+ * shared by /products and /products/[industry] pages.
+ *
+ * The page is always rendered as the same layout: TV-remote filter
+ * sidebar on the left, dense responsive tire grid on the right, count
+ * inline next to the page heading (rendered by the parent page).
+ *
+ * Props:
+ *   tires            — array of Tire to show (parent has already scoped
+ *                      this to e.g. one industry, or passes all tires).
+ *   industries       — every industry option to offer in the Industry
+ *                      filter group. Ignored when `hideIndustryFilter`.
+ *   applications     — every application option.
+ *   sizes / ratings  — every size / rating option.
+ *   hideIndustryFilter
+ *                    — true on industry hub pages: drop the Industry
+ *                      group from the sidebar entirely (the page is
+ *                      already scoped to one industry).
+ *   countTargetId    — id of the <span> on the page header that should
+ *                      be updated with the current filtered count.
+ *                      Pages own where the count lives in the layout.
+ */
+import RubberProductCard from './RubberProductCard.astro';
+import { t } from '../../lib/i18n';
+import type { Locale, Tire, Industry, Application } from '../../types';
+
+interface Props {
+  locale: Locale;
+  tires: Tire[];
+  industries: Industry[];
+  applications: Application[];
+  sizes: string[];
+  ratings: number[];
+  countTargetId: string;
+  /**
+   * Hide the Industry filter group entirely. Used by industry hub pages
+   * where the page route already locks the industry.
+   */
+  hideIndustryFilter?: boolean;
+}
+
+const {
+  locale,
+  tires,
+  industries,
+  applications,
+  sizes,
+  ratings,
+  countTargetId,
+  hideIndustryFilter = false,
+} = Astro.props;
+---
+
+<!-- Mobile filter toggle -->
+<button
+  id="mobile-filter-toggle"
+  class="md:hidden flex items-center gap-2 mb-4 px-4 py-2 bg-maxam-blue text-maxam-white rounded-full text-sm font-semibold"
+  aria-expanded="false"
+  aria-controls="filter-sidebar"
+>
+  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+  </svg>
+  {t(locale, 'products.filter.show')}
+</button>
+
+<div id="filter-overlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden"></div>
+
+<div class="products-page__body">
+  <!-- Filters sidebar / TV remote -->
+  <aside
+    id="filter-sidebar"
+    class="filter-sidebar w-full fixed inset-y-0 start-0 z-50 md:relative md:inset-auto md:z-auto transition-transform duration-300"
+    data-open="false"
+  >
+    <button
+      id="filter-close"
+      class="md:hidden mb-2 self-end text-sm text-maxam-gray-500 hover:text-maxam-black px-4 pt-3"
+    >
+      {t(locale, 'products.filter.close')} &times;
+    </button>
+
+    <div class="filter-sidebar__head">
+      <div class="filter-sidebar__display">
+        <input
+          type="text"
+          id="product-search"
+          placeholder={t(locale, 'products.search_placeholder')}
+          class="filter-sidebar__display-input"
+        />
+      </div>
+      <div class="filter-sidebar__clear">
+        <button id="clear-filters" type="button" class="rubber-chip" data-variant="category" data-size="md">
+          {t(locale, 'products.filter.clear')}
+        </button>
+      </div>
+    </div>
+
+    <div class="filter-sidebar__body">
+      {!hideIndustryFilter && (
+        <div class="filter-sidebar__group" data-group="industry">
+          <h3 class="filter-sidebar__heading">
+            <span>{t(locale, 'products.filter.industry')}</span>
+          </h3>
+          <div class="filter-sidebar__list">
+            {industries.map((ind) => (
+              <label class="filter-row">
+                <input type="checkbox" class="filter-row__input filter-checkbox" data-filter="industry" data-value={ind.id} />
+                <span class="filter-row__dot" style={`--filter-dot-color:${ind.color}`}></span>
+                <span class="filter-row__label">{ind.name}</span>
+                <span class="filter-row__count filter-count" data-count-for={`industry:${ind.id}`}></span>
+              </label>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div class="filter-sidebar__group" data-group="application" data-collapsed="false">
+        <h3 class="filter-sidebar__heading">
+          <span>{t(locale, 'products.filter.application')}</span>
+          <button type="button" class="filter-sidebar__toggle" data-toggle-group="application" aria-expanded="true" aria-label="Toggle Application filters"></button>
+        </h3>
+        <div class="filter-sidebar__list">
+          {applications.map((app) => (
+            <label class="filter-row">
+              <input type="checkbox" class="filter-row__input filter-checkbox" data-filter="application" data-value={app.id} />
+              <span class="filter-row__dot"></span>
+              <span class="filter-row__label">{app.name}</span>
+              <span class="filter-row__count filter-count" data-count-for={`application:${app.id}`}></span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <div class="filter-sidebar__group" data-group="size" data-collapsed="false">
+        <h3 class="filter-sidebar__heading">
+          <span>{t(locale, 'products.filter.size')}</span>
+          <button type="button" class="filter-sidebar__toggle" data-toggle-group="size" aria-expanded="true" aria-label="Toggle Size filters"></button>
+        </h3>
+        <div class="filter-sidebar__list">
+          {sizes.map((size) => (
+            <label class="filter-row">
+              <input type="checkbox" class="filter-row__input filter-checkbox" data-filter="size" data-value={size} />
+              <span class="filter-row__dot"></span>
+              <span class="filter-row__label">{size}</span>
+              <span class="filter-row__count filter-count" data-count-for={`size:${size}`}></span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      {ratings.length > 0 && (
+        <div class="filter-sidebar__group" data-group="rating" data-collapsed="false">
+          <h3 class="filter-sidebar__heading">
+            <span>{t(locale, 'products.filter.rating')}</span>
+            <button type="button" class="filter-sidebar__toggle" data-toggle-group="rating" aria-expanded="true" aria-label="Toggle Rating filters"></button>
+          </h3>
+          <div class="filter-sidebar__list">
+            {ratings.map((rating) => (
+              <label class="filter-row">
+                <input type="checkbox" class="filter-row__input filter-checkbox" data-filter="rating" data-value={String(rating)} />
+                <span class="filter-row__dot"></span>
+                <span class="filter-row__label" aria-label={`${rating} of 5`}>{'★'.repeat(rating)}{'☆'.repeat(5 - rating)}</span>
+                <span class="filter-row__count filter-count" data-count-for={`rating:${rating}`}></span>
+              </label>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </aside>
+
+  <!-- Product grid area -->
+  <div class="products-page__grid-area">
+    <div id="active-chips" class="products-page__chips"></div>
+
+    <div id="product-grid" class="products-page__grid">
+      {tires.map((tire) => (
+        <RubberProductCard tire={tire} locale={locale} showFilterData={true} />
+      ))}
+    </div>
+
+    <p id="no-results" class="products-page__empty hidden">
+      {t(locale, 'products.no_results')}
+    </p>
+  </div>
+</div>
+
+<!-- Filter metadata for client-side friendly names -->
+<script
+  is:inline
+  type="application/json"
+  id="filter-meta"
+  set:html={JSON.stringify({
+    industry: Object.fromEntries(industries.map(i => [i.id, i.name])),
+    application: Object.fromEntries(applications.map(a => [a.id, a.name])),
+    rating: Object.fromEntries(ratings.map(r => [String(r), '★'.repeat(r) + '☆'.repeat(5 - r)])),
+    labels: {
+      industry: t(locale, 'products.filter.industry'),
+      application: t(locale, 'products.filter.application'),
+      size: t(locale, 'products.filter.size'),
+      rating: t(locale, 'products.filter.rating'),
+    },
+    resultsTemplate: t(locale, 'products.results_count'),
+    countTargetId,
+  })}
+/>
+
+<script>
+  /* Products viewer — client-side filter + URL sync. No pagination. */
+  const checkboxes = document.querySelectorAll<HTMLInputElement>('.filter-checkbox');
+  const searchInput = document.getElementById('product-search') as HTMLInputElement;
+  const allCards = Array.from(document.querySelectorAll<HTMLElement>('.product-card'));
+  const noResults = document.getElementById('no-results')!;
+  const chipsContainer = document.getElementById('active-chips')!;
+  const clearBtn = document.getElementById('clear-filters')!;
+  const filterSidebar = document.getElementById('filter-sidebar')!;
+  const filterOverlay = document.getElementById('filter-overlay')!;
+  const mobileToggle = document.getElementById('mobile-filter-toggle')!;
+  const filterClose = document.getElementById('filter-close')!;
+
+  const meta = JSON.parse(document.getElementById('filter-meta')!.textContent!);
+  const resultsCountEl = document.getElementById(meta.countTargetId);
+
+  let filteredCards: HTMLElement[] = [];
+  let debounceTimer: ReturnType<typeof setTimeout> | null = null;
+  let isInitializing = false;
+
+  function parseURL(): { filters: Record<string, string[]>; q: string } {
+    const params = new URLSearchParams(window.location.search);
+    const filters: Record<string, string[]> = {};
+    for (const key of ['industry', 'application', 'size', 'rating']) {
+      const val = params.get(key);
+      if (val) filters[key] = val.split(',').filter(Boolean);
+    }
+    return { filters, q: params.get('q') || '' };
+  }
+
+  function syncURL(method: 'push' | 'replace' = 'push') {
+    const params = new URLSearchParams();
+    const active = getActiveFilters();
+    for (const [key, values] of Object.entries(active)) {
+      if (values.size > 0) params.set(key, [...values].join(','));
+    }
+    const q = searchInput.value.trim();
+    if (q) params.set('q', q);
+    const search = params.toString();
+    const url = window.location.pathname + (search ? '?' + search : '');
+    if (method === 'push') history.pushState(null, '', url);
+    else history.replaceState(null, '', url);
+  }
+
+  function getActiveFilters(): Record<string, Set<string>> {
+    const active: Record<string, Set<string>> = {};
+    checkboxes.forEach((cb) => {
+      if (cb.checked) {
+        const key = cb.dataset.filter!;
+        if (!active[key]) active[key] = new Set();
+        active[key].add(cb.dataset.value!);
+      }
+    });
+    return active;
+  }
+
+  function cardMatchesFilters(card: HTMLElement, active: Record<string, Set<string>>, query: string): boolean {
+    if (query && !card.dataset.search?.includes(query)) return false;
+    for (const [key, values] of Object.entries(active)) {
+      if (key === 'rating') {
+        const cardRating = card.dataset.rating ?? '';
+        if (![...values].some((v) => v === cardRating)) return false;
+      } else {
+        const attr = key === 'industry' ? 'industries' : key === 'application' ? 'applications' : key + 's';
+        const cardValues = (card.dataset[attr] ?? '').split(',');
+        if (![...values].some((v) => cardValues.includes(v))) return false;
+      }
+    }
+    return true;
+  }
+
+  function applyFilters() {
+    const active = getActiveFilters();
+    const query = searchInput.value.toLowerCase().trim();
+    filteredCards = allCards.filter((card) => cardMatchesFilters(card, active, query));
+
+    const visibleSet = new Set(filteredCards);
+    allCards.forEach((card) => {
+      card.style.display = visibleSet.has(card) ? '' : 'none';
+    });
+
+    if (resultsCountEl) {
+      resultsCountEl.textContent = meta.resultsTemplate.replace('{count}', String(filteredCards.length));
+    }
+    noResults.classList.toggle('hidden', filteredCards.length > 0);
+
+    renderChips(active);
+    updateFilterCounts(active, query);
+
+    if (!isInitializing) {
+      syncURL('push');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  function updateFilterCounts(active: Record<string, Set<string>>, query: string) {
+    const groupLists = document.querySelectorAll<HTMLElement>('.filter-sidebar__list');
+
+    groupLists.forEach((list) => {
+      const rows = Array.from(list.querySelectorAll<HTMLElement>('.filter-row'));
+
+      const rowsWithCount = rows.map((row) => {
+        const input = row.querySelector<HTMLInputElement>('.filter-row__input')!;
+        const group = input.dataset.filter!;
+        const value = input.dataset.value!;
+        const otherActive = { ...active };
+        delete otherActive[group];
+
+        let count = 0;
+        for (const card of allCards) {
+          if (!cardMatchesFilters(card, otherActive, query)) continue;
+          if (group === 'rating') {
+            if (card.dataset.rating === value) count++;
+          } else {
+            const attr = group === 'industry' ? 'industries' : group === 'application' ? 'applications' : group + 's';
+            const cardValues = (card.dataset[attr] ?? '').split(',');
+            if (cardValues.includes(value)) count++;
+          }
+        }
+
+        const countSpan = row.querySelector<HTMLElement>('.filter-row__count');
+        if (countSpan) countSpan.textContent = count > 0 ? `(${count})` : '';
+
+        // Industry rows stay visible regardless of count so the user can
+        // always pivot to any industry. Other groups hide rows that
+        // would return zero results (unless the row is currently checked).
+        const isChecked = input.checked;
+        const alwaysVisible = group === 'industry';
+        row.style.display = !alwaysVisible && count === 0 && !isChecked ? 'none' : '';
+
+        return { row, count, isChecked };
+      });
+
+      // Sort by count desc only — selected rows stay in place by count,
+      // not pinned to the top (avoids the jarring jump when you tick).
+      rowsWithCount.sort((a, b) => b.count - a.count);
+      for (const { row } of rowsWithCount) list.appendChild(row);
+    });
+  }
+
+  function renderChips(active: Record<string, Set<string>>) {
+    chipsContainer.innerHTML = '';
+    const q = searchInput.value.trim();
+    if (q) {
+      addChip(`"${q}"`, () => {
+        searchInput.value = '';
+        applyFilters();
+      });
+    }
+    for (const [group, values] of Object.entries(active)) {
+      const groupLabel = meta.labels[group] || group;
+      const nameMap = meta[group] || {};
+      for (const val of values) {
+        const displayName = nameMap[val] || val;
+        addChip(`${groupLabel}: ${displayName}`, () => {
+          const cb = document.querySelector<HTMLInputElement>(
+            `.filter-checkbox[data-filter="${group}"][data-value="${val}"]`
+          );
+          if (cb) cb.checked = false;
+          applyFilters();
+        });
+      }
+    }
+  }
+
+  function addChip(label: string, onRemove: () => void) {
+    const chip = document.createElement('button');
+    chip.className = 'rubber-chip';
+    chip.setAttribute('data-variant', 'category');
+    chip.setAttribute('data-size', 'sm');
+    chip.innerHTML = `${escapeHtml(label)} <span aria-hidden="true">&times;</span>`;
+    chip.setAttribute('aria-label', `Remove filter: ${label}`);
+    chip.addEventListener('click', onRemove);
+    chipsContainer.appendChild(chip);
+  }
+
+  function escapeHtml(s: string): string {
+    const div = document.createElement('div');
+    div.textContent = s;
+    return div.innerHTML;
+  }
+
+  function openDrawer() {
+    filterSidebar.dataset.open = 'true';
+    filterOverlay.classList.remove('hidden');
+    mobileToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    filterSidebar.dataset.open = 'false';
+    filterOverlay.classList.add('hidden');
+    mobileToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  mobileToggle.addEventListener('click', openDrawer);
+  filterClose.addEventListener('click', closeDrawer);
+  filterOverlay.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !filterOverlay.classList.contains('hidden')) closeDrawer();
+  });
+
+  checkboxes.forEach((cb) => cb.addEventListener('change', () => applyFilters()));
+
+  searchInput.addEventListener('input', () => {
+    if (debounceTimer) clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      applyFilters();
+      syncURL('replace');
+    }, 300);
+  });
+
+  clearBtn.addEventListener('click', () => {
+    checkboxes.forEach((cb) => (cb.checked = false));
+    searchInput.value = '';
+    applyFilters();
+  });
+
+  document.querySelectorAll<HTMLButtonElement>('.filter-sidebar__toggle').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const group = btn.closest<HTMLElement>('.filter-sidebar__group');
+      if (!group) return;
+      const isCollapsed = group.dataset.collapsed === 'true';
+      group.dataset.collapsed = String(!isCollapsed);
+      btn.setAttribute('aria-expanded', String(isCollapsed));
+    });
+  });
+
+  /* ── Sidebar height ──────────────────────────────────────────────
+   * Sidebar is position: sticky, which sidesteps pure-CSS height
+   * matching to its flex sibling. Measure the grid section and cap the
+   * sidebar at min(viewport, grid). ResizeObserver re-runs when the
+   * grid mutates (filters applied, images loaded, viewport resized). */
+  const gridArea = document.querySelector<HTMLElement>('.products-page__grid-area');
+  function syncSidebarHeight() {
+    if (!gridArea) return;
+    const viewportCap = window.innerHeight - 6 * 16; // mirrors `calc(100vh - 6rem)`
+    filterSidebar.style.maxHeight = Math.min(viewportCap, gridArea.offsetHeight) + 'px';
+    // Flip the visibility gate so CSS reveals the sidebar after measure.
+    filterSidebar.dataset.measured = 'true';
+  }
+  window.addEventListener('resize', syncSidebarHeight);
+  if (typeof ResizeObserver !== 'undefined' && gridArea) {
+    new ResizeObserver(syncSidebarHeight).observe(gridArea);
+  }
+  syncSidebarHeight();
+
+  window.addEventListener('popstate', () => initFromURL());
+
+  function initFromURL() {
+    isInitializing = true;
+    const { filters, q } = parseURL();
+    checkboxes.forEach((cb) => {
+      const group = cb.dataset.filter!;
+      const value = cb.dataset.value!;
+      cb.checked = !!filters[group]?.includes(value);
+    });
+    searchInput.value = q;
+    applyFilters();
+    isInitializing = false;
+  }
+
+  initFromURL();
+</script>

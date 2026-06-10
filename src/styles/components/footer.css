@@ -1,0 +1,57 @@
+/*
+ * Footer — site footer surface, headings, links, and bottom copyright bar.
+ *
+ * Markup lives in: src/components/global/Footer.astro
+ *
+ * Deep matte "ground" plane that anchors the bottom of the otherwise warm
+ * and light page. Faint top-edge highlight echoes the chamfer treatment used
+ * on raised elements above. Provides the dark surface (.rubber-footer),
+ * uppercase column headings, muted gray links that brighten to white on
+ * hover, the centered bottom copyright bar, and prefers-reduced-motion.
+ */
+  /* Footer stays dark — it anchors the bottom of a page that's otherwise
+   * warm and light. Treated as the "ground" of the design language: a
+   * deep matte surface with a faint top-edge highlight echoing the
+   * chamfer treatment used on raised elements above.                  */
+  .rubber-footer {
+    position: relative;
+    background: var(--color-surface-deep);
+    color: var(--color-maxam-gray-300);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 -1px 0 0 rgba(31, 29, 26, 0.1),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .rubber-footer__heading {
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+  }
+
+  .rubber-footer__link {
+    color: var(--color-maxam-gray-300);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-rubber);
+  }
+  .rubber-footer__link:hover {
+    color: #ffffff;
+  }
+
+  .rubber-footer__bottom {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 12px;
+    text-align: center;
+    color: var(--color-maxam-gray-500);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rubber-footer__link {
+      transition: none !important;
+    }
+  }

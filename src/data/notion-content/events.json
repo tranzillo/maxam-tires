@@ -1,17 +1,5 @@
 [
   {
-    "pageId": "35634d6d-7cea-8126-a8ba-fd153de7b87a",
-    "wpId": 39566,
-    "trid": 96078,
-    "language": "en",
-    "title": "ReMA 2026",
-    "slug": "rema-2026",
-    "startDate": "2026-04-13",
-    "endDate": "2026-04-16",
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/IMG_0956_BrandRemoved.png",
-    "translationIds": []
-  },
-  {
     "pageId": "35634d6d-7cea-8173-9335-cac58c77463f",
     "wpId": 39028,
     "trid": 96026,
@@ -36,15 +24,15 @@
     "translationIds": []
   },
   {
-    "pageId": "35634d6d-7cea-8191-a9d7-cf8bebab1c63",
-    "wpId": 39699,
-    "trid": 96095,
+    "pageId": "35634d6d-7cea-81b9-a41c-c9c3821f8d9f",
+    "wpId": 39074,
+    "trid": 96035,
     "language": "en",
-    "title": "Northeastern Loggers' Expo 2026",
-    "slug": "ne-loggers-expo-2026",
-    "startDate": "2026-04-13",
-    "endDate": "2026-04-16",
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2026/03/markus-spiske-Y-YaTBtNzKo-unsplash.jpg",
+    "title": "CONEXPO-CON/AGG 2026",
+    "slug": "conexpo-con-agg-2026",
+    "startDate": "2026-03-03",
+    "endDate": "2026-03-07",
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2026/01/ConExpo26_eventimageheader_v2.jpg",
     "translationIds": []
   },
   {
@@ -60,15 +48,27 @@
     "translationIds": []
   },
   {
-    "pageId": "35634d6d-7cea-81b9-a41c-c9c3821f8d9f",
-    "wpId": 39074,
-    "trid": 96035,
+    "pageId": "35634d6d-7cea-8126-a8ba-fd153de7b87a",
+    "wpId": 39566,
+    "trid": 96078,
     "language": "en",
-    "title": "CONEXPO-CON/AGG 2026",
-    "slug": "conexpo-con-agg-2026",
-    "startDate": "2026-03-03",
-    "endDate": "2026-03-07",
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2026/01/ConExpo26_eventimageheader_v2.jpg",
+    "title": "ReMA 2026",
+    "slug": "rema-2026",
+    "startDate": "2026-04-13",
+    "endDate": "2026-04-16",
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/IMG_0956_BrandRemoved.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "35634d6d-7cea-8191-a9d7-cf8bebab1c63",
+    "wpId": 39699,
+    "trid": 96095,
+    "language": "en",
+    "title": "Northeastern Loggers' Expo 2026",
+    "slug": "ne-loggers-expo-2026",
+    "startDate": "2026-04-13",
+    "endDate": "2026-04-16",
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2026/03/markus-spiske-Y-YaTBtNzKo-unsplash.jpg",
     "translationIds": []
   }
 ]

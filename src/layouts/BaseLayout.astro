@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import Header from '../components/global/Header.astro';
+import RubberHeader from '../components/global/RubberHeader.astro';
 import Footer from '../components/global/Footer.astro';
 import type { Locale } from '../types';
 import { t, getDir, getLang } from '../lib/i18n';
@@ -24,11 +24,12 @@ const pageDescription = description ?? t(locale, 'site.description');
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={pageDescription} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <title>{pageTitle}</title>
   </head>
-  <body class="min-h-screen flex flex-col bg-maxam-white text-maxam-gray-900">
-    <Header locale={locale} />
+  <body class="min-h-screen flex flex-col text-maxam-gray-900" style="background: var(--color-surface-page);">
+    <RubberHeader locale={locale} variant="dark" />
     <main class="flex-1">
       <slot />
     </main>

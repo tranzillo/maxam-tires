@@ -1,0 +1,110 @@
+[
+  {
+    "promoId": "37b34d6d-7cea-814d-901c-f889dfae8d74",
+    "pageId": "37b34d6d-7cea-81f3-ad13-e937e2be107e",
+    "trid": 100102,
+    "language": "zh-hant",
+    "order": 2,
+    "tag": "全新推出",
+    "heading": "橡膠履帶",
+    "description": "使用 MAXAM 的橡膠履帶升級您的施工設備。",
+    "ctaLabel": "探索橡膠履帶",
+    "ctaHref": "/products/rubber-tracks",
+    "image": "/images/promo-rubber-tracks.jpg",
+    "imagePosition": "center bottom",
+    "translationIds": [
+      "37b34d6d-7cea-8174-bc67-c68ab7735cc2",
+      "37b34d6d-7cea-81e7-86e0-fb9aabb1d8c2"
+    ]
+  },
+  {
+    "promoId": "37b34d6d-7cea-8188-951d-e54492db29f5",
+    "pageId": "37b34d6d-7cea-81f3-ad13-e937e2be107e",
+    "trid": 100101,
+    "language": "zh-hant",
+    "order": 1,
+    "tag": null,
+    "heading": "找到您的抓地力",
+    "description": "以最佳價值享受最前沿的牽引技術。",
+    "ctaLabel": "探索產品",
+    "ctaHref": "/products",
+    "image": "/images/promo-find-your-grip.png",
+    "imagePosition": "center",
+    "translationIds": [
+      "37b34d6d-7cea-810f-8e41-f033efcc4ad2",
+      "37b34d6d-7cea-8168-80ec-e5102e9cee01"
+    ]
+  },
+  {
+    "promoId": "37b34d6d-7cea-81e7-86e0-fb9aabb1d8c2",
+    "pageId": "37b34d6d-7cea-815b-aba8-cab7b202ef2d",
+    "trid": 100102,
+    "language": "ar-ae",
+    "order": 2,
+    "tag": "جديد",
+    "heading": "الجنازير المطاطية",
+    "description": "حدّث معدات البناء الخاصة بك مع الجنازير المطاطية من ماكسام.",
+    "ctaLabel": "استكشف الجنازير المطاطية",
+    "ctaHref": "/products/rubber-tracks",
+    "image": "/images/promo-rubber-tracks.jpg",
+    "imagePosition": "center bottom",
+    "translationIds": [
+      "37b34d6d-7cea-8174-bc67-c68ab7735cc2",
+      "37b34d6d-7cea-814d-901c-f889dfae8d74"
+    ]
+  },
+  {
+    "promoId": "37b34d6d-7cea-8168-80ec-e5102e9cee01",
+    "pageId": "37b34d6d-7cea-815b-aba8-cab7b202ef2d",
+    "trid": 100101,
+    "language": "ar-ae",
+    "order": 1,
+    "tag": null,
+    "heading": "اعثر على القبضة المناسبة",
+    "description": "استفد من أحدث تقنيات الجر بأفضل قيمة.",
+    "ctaLabel": "استكشف المنتجات",
+    "ctaHref": "/products",
+    "image": "/images/promo-find-your-grip.png",
+    "imagePosition": "center",
+    "translationIds": [
+      "37b34d6d-7cea-810f-8e41-f033efcc4ad2",
+      "37b34d6d-7cea-8188-951d-e54492db29f5"
+    ]
+  },
+  {
+    "promoId": "37b34d6d-7cea-8174-bc67-c68ab7735cc2",
+    "pageId": "37b34d6d-7cea-81ca-b4d6-fbb1d26328db",
+    "trid": 100102,
+    "language": "en",
+    "order": 2,
+    "tag": "Introducing",
+    "heading": "Rubber Tracks",
+    "description": "Upgrade your construction equipment with MAXAM's rubber tracks.",
+    "ctaLabel": "Explore Rubber Tracks",
+    "ctaHref": "/products/rubber-tracks",
+    "image": "/images/promo-rubber-tracks.jpg",
+    "imagePosition": "center bottom",
+    "translationIds": [
+      "37b34d6d-7cea-81e7-86e0-fb9aabb1d8c2",
+      "37b34d6d-7cea-814d-901c-f889dfae8d74"
+    ]
+  },
+  {
+    "promoId": "37b34d6d-7cea-810f-8e41-f033efcc4ad2",
+    "pageId": "37b34d6d-7cea-81ca-b4d6-fbb1d26328db",
+    "trid": 100101,
+    "language": "en",
+    "order": 1,
+    "tag": null,
+    "heading": "Find Your Grip",
+    "description": "Take advantage of the most cutting-edge traction technology at the best value.",
+    "ctaLabel": "Explore Products",
+    "ctaHref": "/products",
+    "image": "/images/promo-find-your-grip.png",
+    "imagePosition": "center",
+    "translationIds": [
+      "37b34d6d-7cea-8168-80ec-e5102e9cee01",
+      "37b34d6d-7cea-8188-951d-e54492db29f5"
+    ]
+  }
+]

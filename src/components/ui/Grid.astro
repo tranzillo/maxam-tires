@@ -1,0 +1,24 @@
+---
+/*
+ * Grid — the column-grid primitive.
+ *
+ * Pure markup. All styles live in src/styles/components/grid.css
+ * (loaded globally via global.css). Class names emitted here match
+ * the rules in that file.
+ *
+ * Variants (see grid.css for behavior + breakpoints):
+ *   cols  1 | 2 | 3 | 4         column count at the lg breakpoint
+ *   gap   'none' | 'sm' | 'md' | 'lg'   gutter scale
+ */
+interface Props {
+  cols?: 1 | 2 | 3 | 4;
+  gap?: 'none' | 'sm' | 'md' | 'lg';
+  class?: string;
+}
+
+const { cols = 3, gap = 'md', class: className } = Astro.props;
+---
+
+<div class:list={['grid', `grid--cols-${cols}`, `grid--gap-${gap}`, className]}>
+  <slot />
+</div>

@@ -1,0 +1,101 @@
+---
+/**
+ * RubberArticleCard — article card in rubbermorphism language.
+ *
+ * Same stacked-layer structure as RubberProductCard but proportioned for
+ * editorial content: 4:3 image fills the top, text panel hard-overlaps the
+ * bottom and contains type chip + date + title + excerpt. No industry color
+ * tinting on the panel since articles don't carry one — neutral overlay
+ * surface with a category chip carries the type identity instead.
+ *
+ * Article routing:
+ *  - product-sheet/brochure → file download (target=_blank)
+ *  - in-the-news with externalUrl → external link
+ *  - everything else → internal /resources/<slug>
+ */
+import type { Article, Locale } from '../../types';
+import { t } from '../../lib/i18n';
+import RubberChip from './RubberChip.astro';
+
+interface Props {
+  article: Article;
+  locale: Locale;
+  /** Adds data-* attributes for client-side filter JS on resource page. */
+  showFilterData?: boolean;
+  class?: string;
+}
+
+const { article, locale, showFilterData = false, class: className } = Astro.props;
+
+const isDownload = article.type === 'product-sheet' || article.type === 'brochure';
+const isExternal = !!article.externalUrl;
+const href = isExternal
+  ? article.externalUrl!
+  : isDownload && article.fileUrl
+    ? article.fileUrl
+    : `/${locale}/resources/${article.slug}`;
+const typeLabel = t(locale, `resources.type.${article.type}`);
+const actionLabel = isDownload ? t(locale, 'resources.download') : t(locale, 'resources.read_more');
+
+const dateFormatted = article.date
+  ? new Date(article.date).toLocaleDateString(
+      locale === 'ar-ae' ? 'ar' : locale === 'zh-hant' ? 'zh-Hant' : 'en',
+      { year: 'numeric', month: 'short', day: 'numeric' }
+    )
+  : '';
+
+const externalAttrs = isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+const filterAttrs = showFilterData
+  ? {
+      'data-type': article.type,
+      'data-industries': article.industries.map((i) => i.id).join(','),
+      'data-title': article.title.toLowerCase(),
+    }
+  : {};
+---
+
+<a
+  href={href}
+  class:list={[
+    'rubber-article',
+    showFilterData && 'article-card', // legacy hook for the resources filter JS
+    className,
+  ]}
+  {...externalAttrs}
+  {...filterAttrs}
+>
+  <div class="rubber-article__image-frame">
+    {article.featuredImage ? (
+      <img
+        src={article.featuredImage}
+        alt={article.title}
+        loading="lazy"
+        class="rubber-article__image"
+      />
+    ) : (
+      <div class="rubber-article__image-placeholder">
+        {isDownload ? 'PDF' : article.title}
+      </div>
+    )}
+  </div>
+
+  <div class="rubber-article__panel">
+    <div class="rubber-article__meta">
+      <RubberChip variant="category" size="sm">{typeLabel}</RubberChip>
+      {dateFormatted && (
+        <time class="rubber-article__date" datetime={article.date}>{dateFormatted}</time>
+      )}
+    </div>
+
+    <h3 class="rubber-article__title">{article.title}</h3>
+
+    {article.excerpt && (
+      <p class="rubber-article__excerpt">{article.excerpt}</p>
+    )}
+
+    <span class="rubber-article__cta">
+      {actionLabel}
+      <span aria-hidden="true" class="rubber-article__cta-arrow rtl:scale-x-[-1]">&rarr;</span>
+    </span>
+  </div>
+</a>

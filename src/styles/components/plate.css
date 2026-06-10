@@ -1,0 +1,38 @@
+/*
+ * RubberPlate — small molded label plate (engraved-nameplate eyebrow).
+ *
+ * Markup lives in: src/components/ui/RubberPlate.astro
+ *
+ * Recessed treatment via inset shadows (tiny top inner shadow + bottom
+ * inner highlight) so it reads as "stamped into the surface". Two sizes
+ * via data-size: xs (10px, mega nav labels, card captions) and sm (12px,
+ * section eyebrows).
+ */
+  .rubber-plate {
+    display: inline-block;
+    font-family: inherit;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-maxam-gray-700);
+    background: var(--color-surface-sunken);
+    border: 1px solid var(--color-edge);
+    border-radius: var(--radius-tight);
+    /* Recessed treatment: tiny top inner shadow + bottom inner highlight.
+     * Reads as "stamped into the surface" rather than printed on top. */
+    box-shadow:
+      inset 0 1px 1px rgba(31, 29, 26, 0.06),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.5);
+    line-height: 1;
+  }
+
+  .rubber-plate[data-size='xs'] {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    padding: 4px 9px;
+  }
+
+  .rubber-plate[data-size='sm'] {
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    padding: 5px 11px;
+  }

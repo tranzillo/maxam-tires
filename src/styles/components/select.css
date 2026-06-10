@@ -1,0 +1,74 @@
+/*
+ * RubberSelect — native <select> styled to match RubberInput's recessed well.
+ *
+ * Markup lives in: src/components/ui/RubberSelect.astro
+ *
+ * Restyles the closed state (which we control) and accepts the browser's
+ * native open menu. A custom chevron is layered on top via background-image
+ * so we avoid managing popover positioning ourselves. Chevron flips side
+ * under [dir='rtl']. Modifiers: [data-full] for full-width, [data-error]
+ * for red-tinted error state.
+ */
+.rubber-select {
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  color: var(--color-maxam-black);
+  background-color: var(--color-surface-sunken);
+  /* Chevron drawn as inline SVG, positioned right (or left in RTL). */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%234a4a4a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M19 9l-7 7-7-7'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  border: 1px solid var(--color-edge-strong);
+  border-radius: var(--radius-tight);
+  padding: 9px 36px 9px 12px;
+  box-shadow:
+    inset 0 2px 3px -1px rgba(31, 29, 26, 0.10),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.7);
+  transition:
+    border-color var(--duration-fast) var(--ease-rubber),
+    background-color var(--duration-fast) var(--ease-rubber),
+    box-shadow var(--duration-fast) var(--ease-rubber);
+  cursor: pointer;
+}
+
+[dir='rtl'] .rubber-select {
+  background-position: left 12px center;
+  padding: 9px 12px 9px 36px;
+}
+
+.rubber-select[data-full] {
+  display: block;
+  width: 100%;
+}
+
+.rubber-select:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--color-maxam-blue) 25%, var(--color-edge-strong));
+}
+
+.rubber-select:focus {
+  outline: none;
+  background-color: var(--color-surface-overlay);
+  border-color: var(--color-maxam-blue);
+  box-shadow:
+    inset 0 2px 3px -1px rgba(31, 29, 26, 0.06),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.7),
+    0 0 0 3px color-mix(in srgb, var(--color-maxam-blue) 20%, transparent);
+}
+
+.rubber-select:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.rubber-select[data-error] {
+  border-color: #c83232;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rubber-select {
+    transition: none !important;
+  }
+}

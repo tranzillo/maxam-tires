@@ -1,13 +1,19 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
-import Hero from '../../../../components/ui/Hero.astro';
+import ProductsViewer from '../../../../components/ui/ProductsViewer.astro';
 import Section from '../../../../components/ui/Section.astro';
-import ContentGrid from '../../../../components/ui/ContentGrid.astro';
-import ProductCard from '../../../../components/ui/ProductCard.astro';
-import ArticleCard from '../../../../components/ui/ArticleCard.astro';
+import SectionHeader from '../../../../components/ui/SectionHeader.astro';
+import Grid from '../../../../components/ui/Grid.astro';
+import RubberArticleCard from '../../../../components/ui/RubberArticleCard.astro';
+import RubberBreadcrumb from '../../../../components/ui/RubberBreadcrumb.astro';
 import type { Locale } from '../../../../types';
 import { locales, t, localePath } from '../../../../lib/i18n';
-import { getAllIndustries, getIndustryBySlug, getProductsByIndustry, getArticlesByIndustry, getAllApplications } from '../../../../lib/data';
+import {
+  getAllIndustries,
+  getIndustryBySlug,
+  getProductsByIndustry,
+  getArticlesByIndustry,
+} from '../../../../lib/data';
 
 export function getStaticPaths() {
   const industries = getAllIndustries('en');
@@ -27,81 +33,82 @@ if (!industry) {
   return Astro.redirect(localePath(locale, '/products'));
 }
 
-const products = getProductsByIndustry(locale, industrySlug);
+const tires = getProductsByIndustry(locale, industrySlug);
 const articles = getArticlesByIndustry(locale, industrySlug).slice(0, 6);
-const allApplications = getAllApplications(locale);
+const allIndustries = getAllIndustries(locale);
 
-// Group products by application
-const applicationGroups: Array<{ name: string; products: typeof products }> = [];
-const ungrouped: typeof products = [];
+// The Industry filter group is hidden on this page (the route already
+// scopes the industry), so we only need to surface the application /
+// size / rating options that this industry's tires actually have.
+const apps = new Map<string, { id: string; slug: string; name: string }>();
+const sizes = new Set<string>();
+const ratings = new Set<number>();
+for (const tire of tires) {
+  for (const app of tire.applications) apps.set(app.id, app);
+  for (const s of tire.sizes) sizes.add(s);
+  if (tire.rating != null) ratings.add(tire.rating);
+}
+const industryApplications = [...apps.values()];
+const industrySizes = [...sizes].sort();
+const industryRatings = [...ratings].sort((a, b) => a - b);
 
-for (const product of products) {
-  if (product.applications.length === 0) {
-    ungrouped.push(product);
-    continue;
-  }
-  for (const app of product.applications) {
-    let group = applicationGroups.find((g) => g.name === app.name);
-    if (!group) {
-      group = { name: app.name, products: [] };
-      applicationGroups.push(group);
-    }
-    if (!group.products.some((p) => p.id === product.id)) {
-      group.products.push(product);
-    }
-  }
-}
-if (ungrouped.length > 0) {
-  applicationGroups.push({ name: t(locale, 'industry.products_heading'), products: ungrouped });
-}
+// Bg image for the hero — use the industry's hero image if it has one,
+// otherwise fall back to the shared products hero.
+const heroBg = industry.heroImage ?? '/images/hero-home.jpg';
 ---
 
 <BaseLayout locale={locale} title={industry.name}>
-  <!-- Hero -->
-  <Hero heading={industry.name} subheading={industry.description} overlayColor={industry.color}>
-    <a
-      href={localePath(locale, '/products')}
-      class="inline-block bg-maxam-white text-maxam-black font-semibold px-6 py-3 rounded hover:bg-maxam-gray-100 transition-colors text-sm"
-    >
-      {t(locale, 'industry.view_all_products')}
-    </a>
-  </Hero>
+  <!-- Hero header: matches /products page hero. Industry color overlay. -->
+  <section
+    class="products-hero"
+    style={`background-image:url('${heroBg}');--products-hero-overlay-color:${industry.color};`}
+    data-overlay="industry"
+  >
+    <div class="products-hero__overlay" aria-hidden="true"></div>
+    <div class="products-hero__inner">
+      <h1 class="products-hero__heading">{industry.name}</h1>
+      <span id="results-count" class="products-hero__count"></span>
+    </div>
+  </section>
 
-  <!-- Breadcrumb -->
-  <div class="max-w-[var(--container-max)] mx-auto px-4 pt-6">
-    <nav class="text-sm text-maxam-gray-500">
-      <a href={localePath(locale, '/')} class="hover:text-maxam-blue">{t(locale, 'nav.home')}</a>
-      <span class="mx-2">/</span>
-      <a href={localePath(locale, '/products')} class="hover:text-maxam-blue">{t(locale, 'nav.products')}</a>
-      <span class="mx-2">/</span>
-      <span class="text-maxam-black font-medium">{industry.name}</span>
-    </nav>
+  <!-- Breadcrumb — uses the page gutter so it aligns with the viewer below. -->
+  <div class="products-breadcrumb">
+    <RubberBreadcrumb items={[
+      { label: t(locale, 'nav.home'), href: localePath(locale, '/') },
+      { label: t(locale, 'nav.products'), href: localePath(locale, '/products') },
+      { label: industry.name },
+    ]} />
   </div>
 
-  <!-- Products grouped by application -->
-  {applicationGroups.map((group) => (
-    <Section heading={group.name}>
-      <ContentGrid columns={3}>
-        {group.products.map((tire) => (
-          <ProductCard tire={tire} locale={locale} accentColor={industry.color} />
-        ))}
-      </ContentGrid>
-    </Section>
-  ))}
+  <!-- Tire viewer — same component as /products. Industry filter group
+       is hidden here since the route already scopes the industry. -->
+  <div class="products-page" style={`--industry-color:${industry.color}`}>
+    <ProductsViewer
+      locale={locale}
+      tires={tires}
+      industries={allIndustries}
+      applications={industryApplications}
+      sizes={industrySizes}
+      ratings={industryRatings}
+      hideIndustryFilter={true}
+      countTargetId="results-count"
+    />
+  </div>
 
-  <!-- Related resources -->
+  <!-- Related resources — kept; tire-only pages don't always have enough
+       imagery for some industries, the articles add context + depth. -->
   {articles.length > 0 && (
-    <Section
-      heading={t(locale, 'industry.resources_heading')}
-      viewAllHref={`/${locale}/resources/?industry=${industry.id}`}
-      viewAllLabel={t(locale, 'common.view_all')}
-      background="gray"
-    >
-      <ContentGrid columns={3}>
+    <Section background="sunken">
+      <SectionHeader
+        heading={t(locale, 'industry.resources_heading')}
+        viewAllHref={`/${locale}/resources/?industry=${industry.id}`}
+        viewAllLabel={t(locale, 'common.view_all')}
+      />
+      <Grid cols={3} gap="md">
         {articles.map((article) => (
-          <ArticleCard article={article} locale={locale} />
+          <RubberArticleCard article={article} locale={locale} />
         ))}
-      </ContentGrid>
+      </Grid>
     </Section>
   )}
 </BaseLayout>

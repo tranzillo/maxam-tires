@@ -1,0 +1,95 @@
+[
+  {
+    "pageId": "37b34d6d-7cea-81f3-ad13-e937e2be107e",
+    "trid": 100001,
+    "language": "zh-hant",
+    "title": "首頁",
+    "slug": "home",
+    "content": {
+      "sustainability.heading": "可持續輪胎開發",
+      "hero.background_image": "/images/hero-home.jpg",
+      "sustainability.lead": "瞭解我們如何以最大輪胎壽命、無與倫比的性能和革命性的配方技術，徹底改變配方技術的性能與耐用性。",
+      "sustainability.cta_href": "/sustainability",
+      "hero.description": "憑藉可靠的輪胎品質、卓越的性能和無與倫比的客戶服務，助您完成最艱巨的任務。",
+      "sustainability.body": "EcoPoint<sup>3</sup> 技術是綠色低碳輪胎開發的突破性進展，從原材料選擇、製造到產品生命週期，同時顯著降低燃油消耗和碳排放。",
+      "sustainability.background_image": "/images/bg-sustainability.jpg",
+      "hero.cta_href": "/products",
+      "newsletter.email_label": "電子郵件地址",
+      "newsletter.background_image": "/images/bg-newsletter.jpg",
+      "hero.lead": "使命",
+      "sustainability.cta_label": "瞭解更多",
+      "newsletter.submit_label": "訂閱",
+      "hero.heading": "必達",
+      "newsletter.description": "訂閱我們的電子報，將最新消息、產品資訊和獨家內容直接發送到您的收件匣。",
+      "newsletter.heading": "加入我們的網絡",
+      "hero.cta_label": "為何選擇 MAXAM？",
+      "hero.background_position": "center bottom"
+    },
+    "translationIds": [
+      "37b34d6d-7cea-81ca-b4d6-fbb1d26328db",
+      "37b34d6d-7cea-815b-aba8-cab7b202ef2d"
+    ]
+  },
+  {
+    "pageId": "37b34d6d-7cea-815b-aba8-cab7b202ef2d",
+    "trid": 100001,
+    "language": "ar-ae",
+    "title": "الرئيسية",
+    "slug": "home",
+    "content": {
+      "sustainability.heading": "تطوير الإطارات المستدامة",
+      "hero.background_image": "/images/hero-home.jpg",
+      "sustainability.lead": "تعرّف على كيفية إحداثنا ثورة في أداء وكفاءة تكنولوجيا التركيب، مع تحقيق أقصى عمر للإطار وأداء لا مثيل له وتركيب تطوري.",
+      "sustainability.cta_href": "/sustainability",
+      "hero.description": "بفضل جودة الإطارات الموثوقة وأدائها العالي وخدمة العملاء التي لا مثيل لها، ندفعك لإنجاز أصعب المهام.",
+      "sustainability.body": "تكنولوجيا EcoPoint<sup>3</sup> هي طفرة في تطوير الإطارات الخضراء منخفضة الكربون، بدءاً من اختيار المواد الخام والتصنيع وحتى دورة حياة المنتج، مع تقليل استهلاك الوقود وانبعاثات الكربون بشكل كبير.",
+      "sustainability.background_image": "/images/bg-sustainability.jpg",
+      "hero.cta_href": "/products",
+      "newsletter.email_label": "البريد الإلكتروني",
+      "newsletter.background_image": "/images/bg-newsletter.jpg",
+      "hero.lead": "ننجز",
+      "sustainability.cta_label": "اعرف المزيد",
+      "newsletter.submit_label": "اشترك",
+      "hero.heading": "المهمة",
+      "newsletter.description": "اشترك في نشرتنا الإخبارية لتصلك أحدث الأخبار والعروض والمحتوى الحصري مباشرةً إلى بريدك الإلكتروني.",
+      "newsletter.heading": "انضم إلى شبكتنا",
+      "hero.cta_label": "لماذا ماكسام؟",
+      "hero.background_position": "center bottom"
+    },
+    "translationIds": [
+      "37b34d6d-7cea-81ca-b4d6-fbb1d26328db",
+      "37b34d6d-7cea-81f3-ad13-e937e2be107e"
+    ]
+  },
+  {
+    "pageId": "37b34d6d-7cea-81ca-b4d6-fbb1d26328db",
+    "trid": 100001,
+    "language": "en",
+    "title": "Home",
+    "slug": "home",
+    "content": {
+      "sustainability.heading": "Sustainable Tire Development",
+      "hero.background_image": "/images/hero-home.jpg",
+      "sustainability.lead": "Learn how we are revolutionizing the performance and durability of compounding technology, with maximum tire life, unrivaled performance, and evolutionary compounding.",
+      "sustainability.cta_href": "/sustainability",
+      "hero.description": "With reliable tire quality, performance, and unmatched customer service, we propel you to complete even the toughest jobs.",
+      "sustainability.body": "EcoPoint<sup>3</sup> technology is a breakthrough in green and low-carbon tire development, from the selection of raw materials, manufacturing, and product life cycle, while significantly reducing fuel consumption and carbon emissions.",
+      "sustainability.background_image": "/images/bg-sustainability.jpg",
+      "hero.cta_href": "/products",
+      "newsletter.email_label": "Email Address",
+      "newsletter.background_image": "/images/bg-newsletter.jpg",
+      "hero.lead": "Get the Job",
+      "sustainability.cta_label": "Learn More",
+      "newsletter.submit_label": "Subscribe",
+      "hero.heading": "Done",
+      "newsletter.description": "Subscribe to our newsletter to get the latest news, product offerings, and exclusive content straight in your inbox.",
+      "newsletter.heading": "Join Our Network",
+      "hero.cta_label": "Why Maxam?",
+      "hero.background_position": "center"
+    },
+    "translationIds": [
+      "37b34d6d-7cea-815b-aba8-cab7b202ef2d",
+      "37b34d6d-7cea-81f3-ad13-e937e2be107e"
+    ]
+  }
+]

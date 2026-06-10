@@ -1,0 +1,119 @@
+---
+/**
+ * RubberProductCard — prototype of the new rubbermorphism product card.
+ *
+ * Design vocabulary:
+ *  - Image fills the entire card frame, tire is cropped tight (no whitespace gutters).
+ *  - Text panel is a sibling layer floating over the bottom ~40% of the image.
+ *  - Hard overlap: text panel is opaque, partially hides the tire — that's the point.
+ *  - Layered shadow: image has its own subtle shadow into the surface; text panel
+ *    has a stronger directional shadow showing it's lifted off the image plane.
+ *  - Industry chip and panel both wash the card in a soft industry-colored tint
+ *    via color-mix, keeping the card identity quiet but recognizable.
+ *
+ * Variant: `light` (default) renders on warm off-white surfaces; `dark` renders
+ * on near-black surfaces with inverted contrast, for side-by-side comparison.
+ *
+ * Original ProductCard left in place — this is an alternate, not a replacement.
+ */
+import type { Tire, Locale } from '../../types';
+import { t } from '../../lib/i18n';
+import RubberChip from './RubberChip.astro';
+
+interface Props {
+  tire: Tire;
+  locale: Locale;
+  variant?: 'light' | 'dark';
+  /** Emit data-* attributes the products list filter script reads. */
+  showFilterData?: boolean;
+}
+
+const { tire, locale, variant = 'light', showFilterData = false } = Astro.props;
+const detailHref = tire.industries.length > 0
+  ? `/${locale}/products/${tire.industries[0].slug}/${tire.slug}`
+  : `/${locale}/products/${tire.slug}`;
+const industry = tire.industries[0];
+
+// The legacy filter script on the products page targets `.product-card` and
+// reads these data-* attributes off it. `data-search` is a pre-built
+// lowercase haystack containing every text field a user might search for
+// (title, subheading, industries, applications, tire type, sizes); the
+// filter script does a single substring match against it.
+const searchHaystack = showFilterData
+  ? [
+      tire.title,
+      tire.subheading ?? '',
+      ...tire.industries.map((i) => i.name),
+      ...tire.applications.map((a) => a.name),
+      tire.tireType?.name ?? '',
+      ...tire.sizes,
+    ]
+      .filter(Boolean)
+      .join(' ')
+      .toLowerCase()
+  : '';
+
+const filterAttrs = showFilterData
+  ? {
+      'data-industries': tire.industries.map((i) => i.id).join(','),
+      'data-applications': tire.applications.map((a) => a.id).join(','),
+      'data-sizes': tire.sizes.join(','),
+      'data-rating': String(tire.rating ?? 0),
+      'data-title': tire.title.toLowerCase(),
+      'data-search': searchHaystack,
+    }
+  : {};
+---
+
+<a
+  href={detailHref}
+  class:list={[
+    'rubber-card',
+    `rubber-card--${variant}`,
+    showFilterData && 'product-card', // legacy hook for the filter JS
+  ]}
+  style={industry ? `--industry-color:${industry.color}` : ''}
+  {...filterAttrs}
+>
+  <!-- Image layer: tire fills the frame. Industry chip floats in the
+       upper-left of the image (negative space around the tire) so it
+       lives outside the text panel and uses the photography's empty
+       area as canvas. -->
+  <div class="rubber-card__image-frame">
+    {industry && (
+      <div class="rubber-card__chip">
+        <RubberChip variant="industry" size="sm" color={industry.color}>
+          {industry.name}
+        </RubberChip>
+      </div>
+    )}
+    <div class="rubber-card__image-layer">
+      {tire.featuredImage ? (
+        <img
+          src={tire.featuredImage}
+          alt={tire.title}
+          loading="lazy"
+          class="rubber-card__image"
+        />
+      ) : (
+        <div class="rubber-card__image-placeholder">
+          {tire.title}
+        </div>
+      )}
+    </div>
+  </div>
+
+  <!-- Text panel: sibling layer that hard-overlaps the bottom of the image -->
+  <div class="rubber-card__panel">
+    <h3 class="rubber-card__title">{tire.title}</h3>
+    {tire.subheading && (
+      <p class="rubber-card__subheading">{tire.subheading}</p>
+    )}
+
+    <span class="rubber-card__cta">
+      {t(locale, 'products.learn_more')}
+      <span aria-hidden="true" class="rubber-card__cta-arrow rtl:scale-x-[-1]">&rarr;</span>
+    </span>
+  </div>
+</a>
+

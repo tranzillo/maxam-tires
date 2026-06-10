@@ -1,0 +1,190 @@
+/*
+ * RubberChip — small categorical label / pill atom.
+ *
+ * Markup lives in: src/components/ui/RubberChip.astro
+ *
+ * Replaces the various ad-hoc badge / pill styles (IndustryBadge,
+ * article type label, application tag, filter pill, active filter chip).
+ * Variants via data-variant: industry (color-driven with dot), category
+ * (neutral uppercase), solid (filled brand color on dark surfaces), filter
+ * (interactive with hover + data-active pressed state), neutral (plain
+ * inset). Sizes sm/md via data-size. Includes a dismiss "x" sub-element
+ * for active-filter chips, focus-visible outline, and reduced-motion
+ * handling.
+ */
+  /* ── Base ────────────────────────────────────────────────────────  */
+  .rubber-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: inherit;
+    font-weight: 700;
+    letter-spacing: 1em;
+    text-decoration: none;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--chip-border, var(--color-edge));
+    background: var(--chip-bg, var(--color-surface-overlay));
+    color: var(--chip-color-fg, var(--color-maxam-gray-700));
+    box-shadow: var(--chip-shadow, var(--shadow-inset));
+    transition:
+      background var(--duration-fast) var(--ease-rubber),
+      color var(--duration-fast) var(--ease-rubber),
+      border-color var(--duration-fast) var(--ease-rubber),
+      box-shadow var(--duration-fast) var(--ease-rubber);
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  /* ── Sizes ──────────────────────────────────────────────────────
+   * Three sizes, used like heading levels: chip is to its container what
+   * h1/h2/h3 is to a section. `sm` = meta-detail inside a card (h3-ish),
+   * `md` = section sub-label (h2-ish), `lg` = primary chip used as a
+   * standalone action or top-level nav target (h1-ish).
+   *
+   * Bumping a value here updates every chip of that size sitewide. */
+  .rubber-chip[data-size='sm'] {
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    padding: 3px 9px;
+  }
+  .rubber-chip[data-size='md'] {
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    padding: 5px 12px;
+  }
+  .rubber-chip[data-size='lg'] {
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    padding: 10px 20px;
+    gap: 10px;
+  }
+  .rubber-chip[data-size='lg'] .rubber-chip__dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* ── Variant: industry ──────────────────────────────────────────
+   * Color-driven. Tinted background, tinted border, slightly darkened
+   * industry color for text, full color dot. Same vocabulary as the
+   * RubberProductCard chip.                                          */
+  .rubber-chip[data-variant='industry'] {
+    text-transform: uppercase;
+    --_color: var(--chip-color, var(--industry-color, var(--color-maxam-blue)));
+    --chip-bg: color-mix(in srgb, var(--_color) 14%, var(--color-surface-overlay));
+    --chip-border: color-mix(in srgb, var(--_color) 26%, var(--color-edge));
+    --chip-color-fg: color-mix(in srgb, var(--_color) 70%, var(--color-maxam-black));
+  }
+
+  .rubber-chip__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--_color, var(--industry-color, var(--color-maxam-blue)));
+    box-shadow:
+      inset 0 1px 1px rgba(31, 29, 26, 0.2),
+      0 0 0 1px rgba(31, 29, 26, 0.08);
+    flex-shrink: 0;
+  }
+  .rubber-chip[data-size='md'] .rubber-chip__dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  /* ── Variant: category ──────────────────────────────────────────
+   * Neutral uppercase label. Used for article types, document types,
+   * other non-color-driven categorical labels.                       */
+  .rubber-chip[data-variant='category'] {
+    text-transform: uppercase;
+    --chip-bg: var(--color-surface-sunken);
+    --chip-border: var(--color-edge);
+    --chip-color-fg: var(--color-maxam-gray-700);
+  }
+
+  /* ── Variant: solid ─────────────────────────────────────────────
+   * Solid-color molded label. Background is the passed color (default
+   * brand blue), text is white, with the same molded chip shadow as
+   * other variants. Used for labels on dark surfaces where a tinted
+   * chip would be low-contrast — e.g. "INTRODUCING" tag on a promo
+   * card over a dark image well.                                      */
+  .rubber-chip[data-variant='solid'] {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    --_color: var(--chip-color, var(--color-maxam-blue));
+    --chip-bg: var(--_color);
+    --chip-border: color-mix(in srgb, var(--_color) 60%, black);
+    --chip-color-fg: var(--color-maxam-white);
+    --chip-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+      0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  /* ── Variant: filter ────────────────────────────────────────────
+   * Interactive. Rest state is a quiet rounded edge. Hover lifts to
+   * the surface-overlay treatment. Active state is the pressed-in
+   * brand-blue treatment from the nav trigger.                       */
+  .rubber-chip[data-variant='filter'] {
+    cursor: pointer;
+    --chip-bg: transparent;
+    --chip-border: var(--color-edge);
+    --chip-color-fg: var(--color-maxam-gray-700);
+    --chip-shadow: none;
+  }
+  .rubber-chip[data-variant='filter']:hover {
+    --chip-bg: color-mix(in srgb, var(--color-maxam-blue) 5%, var(--color-surface-overlay));
+    --chip-color-fg: var(--color-maxam-black);
+    --chip-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.7) inset,
+      0 1px 2px 0 rgba(31, 29, 26, 0.06);
+  }
+  .rubber-chip[data-variant='filter'][data-active] {
+    --chip-bg: color-mix(in srgb, var(--color-maxam-blue) 14%, var(--color-surface-sunken));
+    --chip-border: color-mix(in srgb, var(--color-maxam-blue) 36%, var(--color-edge-strong));
+    --chip-color-fg: var(--color-maxam-blue);
+    --chip-shadow:
+      inset 0 2px 4px -1px color-mix(in srgb, var(--color-maxam-blue) 30%, rgba(31, 29, 26, 0.18)),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.5);
+  }
+
+  /* ── Variant: neutral ───────────────────────────────────────────
+   * Plain inset label. No uppercase. Used for application tags
+   * and other static non-color labels.                              */
+  .rubber-chip[data-variant='neutral'] {
+    --chip-bg: var(--color-surface-sunken);
+    --chip-border: var(--color-edge);
+    --chip-color-fg: var(--color-maxam-gray-700);
+    font-weight: 500;
+  }
+
+  /* ── Dismiss button (active filter chip x) ──────────────────────  */
+  .rubber-chip__dismiss {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    margin-inline-start: 2px;
+    margin-inline-end: -2px;
+    border-radius: 999px;
+    background: rgba(31, 29, 26, 0.06);
+    color: var(--color-maxam-gray-700);
+    font-size: 14px;
+    line-height: 1;
+    transition: background var(--duration-fast) var(--ease-rubber);
+  }
+  .rubber-chip:hover .rubber-chip__dismiss {
+    background: rgba(31, 29, 26, 0.14);
+  }
+
+  /* ── Focus / a11y ───────────────────────────────────────────────  */
+  .rubber-chip:focus-visible {
+    outline: 2px solid var(--color-maxam-blue);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rubber-chip,
+    .rubber-chip__dismiss {
+      transition: none !important;
+    }
+  }

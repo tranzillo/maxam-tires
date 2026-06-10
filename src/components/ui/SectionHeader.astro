@@ -1,0 +1,44 @@
+---
+/*
+ * RubberSectionHeader — the section title row.
+ *
+ * Renders the heading + optional subheading on the leading side, and
+ * an optional "view all" link on the trailing side, in one consistent
+ * layout. Drop it inside any RubberSection above the section content.
+ *
+ * Uses semantic <h2> by default. Override with `as` if you need a
+ * different level.
+ */
+interface Props {
+  heading: string;
+  subheading?: string;
+  viewAllHref?: string;
+  viewAllLabel?: string;
+  as?: 'h1' | 'h2' | 'h3';
+  class?: string;
+}
+
+const {
+  heading,
+  subheading,
+  viewAllHref,
+  viewAllLabel,
+  as: HeadingTag = 'h2',
+  class: className,
+} = Astro.props;
+---
+
+<header class:list={['rubber-section-header', className]}>
+  <div class="rubber-section-header__lead">
+    <HeadingTag class="rubber-section-header__heading">{heading}</HeadingTag>
+    {subheading && (
+      <p class="rubber-section-header__subheading">{subheading}</p>
+    )}
+  </div>
+  {viewAllHref && viewAllLabel && (
+    <a href={viewAllHref} class="rubber-section-header__view-all">
+      {viewAllLabel}
+      <span aria-hidden="true" class="rubber-section-header__arrow rtl:scale-x-[-1]">&rarr;</span>
+    </a>
+  )}
+</header>

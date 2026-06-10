@@ -1,0 +1,68 @@
+---
+/**
+ * RubberOfficeCard — a regional office location card for the contact page.
+ *
+ * Structure: region-color dot + region name as the header, company name as
+ * a subtitle, then one or more location addresses with optional labels
+ * (e.g. "Memphis"), and one or more phone numbers as molded blue links.
+ *
+ * The region color (e.g. #092479 for NA, #0077c8 for EU) is used as a
+ * subtle accent — applied through --industry-color so the same color-mix
+ * cascade works on the dot and any nested buttons.
+ */
+interface Location {
+  label?: string;
+  address: string;
+}
+
+interface OfficeData {
+  region: string;
+  color: string;
+  company: string;
+  locations: Location[];
+  phones: string[];
+}
+
+interface Props {
+  office: OfficeData;
+  class?: string;
+}
+
+const { office, class: className } = Astro.props;
+---
+
+<article
+  class:list={['rubber-office', className]}
+  style={`--industry-color:${office.color}`}
+>
+  <header class="rubber-office__header">
+    <span class="rubber-office__dot" aria-hidden="true"></span>
+    <h3 class="rubber-office__region">{office.region}</h3>
+  </header>
+
+  <p class="rubber-office__company">{office.company}</p>
+
+  <div class="rubber-office__locations">
+    {office.locations.map((loc) => (
+      <div class="rubber-office__location">
+        {loc.label && <p class="rubber-office__location-label">{loc.label}</p>}
+        <p class="rubber-office__location-address">{loc.address}</p>
+      </div>
+    ))}
+  </div>
+
+  {office.phones.length > 0 && (
+    <ul class="rubber-office__phones">
+      {office.phones.map((phone) => (
+        <li>
+          <a
+            href={`tel:${phone.replace(/[\s()\-+]/g, '')}`}
+            class="rubber-office__phone"
+          >
+            {phone}
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+</article>

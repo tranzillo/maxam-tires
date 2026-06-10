@@ -1,0 +1,49 @@
+/*
+ * SpecTable — multi-column tire spec table with horizontal scroll.
+ *
+ * Markup lives in: src/components/ui/SpecTable.astro
+ *
+ * The first column is sticky (inset-inline-start) so spec labels remain
+ * visible while the user scrolls through size/load columns. A right-edge
+ * shadow hint fades in via the `.is-scrolled` modifier (toggled by the
+ * inline script in the component) once the wrapper has been scrolled past
+ * its starting position. Header / unit-row background colors are applied
+ * inline via the `industryColor` prop, not in this stylesheet.
+ */
+.spec-table-wrapper {
+  position: relative;
+}
+
+.spec-table {
+  min-width: max-content;
+}
+
+.spec-table th,
+.spec-table td {
+  min-width: 60px;
+}
+
+/* Sticky first column */
+.sticky-col {
+  position: sticky;
+  inset-inline-start: 0;
+  min-width: 100px;
+}
+
+/* Shadow hint on the sticky column when scrolled */
+.spec-table-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  inset-inline-start: 100px;
+  bottom: 0;
+  width: 8px;
+  pointer-events: none;
+  background: linear-gradient(to right, rgba(0,0,0,0.06), transparent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.spec-table-wrapper.is-scrolled::after {
+  opacity: 1;
+}

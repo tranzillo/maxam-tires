@@ -1,6 +1,7 @@
 ---
 import type { Locale } from '../../types';
 import { t, localePath } from '../../lib/i18n';
+import MaxamLogo from '../ui/MaxamLogo.astro';
 
 interface Props {
   locale: Locale;
@@ -11,27 +12,27 @@ const year = new Date().getFullYear();
 const copyright = t(locale, 'footer.copyright').replace('{year}', String(year));
 ---
 
-<footer class="bg-maxam-black text-maxam-gray-300 mt-auto">
+<footer class="rubber-footer mt-auto">
   <div class="max-w-[var(--container-max)] mx-auto px-4 py-12">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- Brand -->
       <div>
-        <a href={localePath(locale, '/')} class="text-maxam-white font-bold text-xl">
-          MAXAM
+        <a href={localePath(locale, '/')} class="inline-flex items-center" aria-label="MAXAM home">
+          <MaxamLogo class="h-7 text-maxam-white" label="MAXAM" />
         </a>
-        <p class="mt-3 text-sm leading-relaxed">
+        <p class="mt-3 text-sm leading-relaxed text-maxam-gray-300">
           {t(locale, 'site.description')}
         </p>
       </div>
 
       <!-- Products links -->
       <div>
-        <h3 class="text-maxam-white font-semibold text-sm uppercase tracking-wider mb-3">
+        <h3 class="rubber-footer__heading">
           {t(locale, 'footer.products')}
         </h3>
         <ul class="space-y-2 text-sm">
           <li>
-            <a href={localePath(locale, '/products')} class="hover:text-maxam-white transition-colors">
+            <a href={localePath(locale, '/products')} class="rubber-footer__link">
               {t(locale, 'nav.products')}
             </a>
           </li>
@@ -40,17 +41,17 @@ const copyright = t(locale, 'footer.copyright').replace('{year}', String(year));
 
       <!-- Navigation -->
       <div>
-        <h3 class="text-maxam-white font-semibold text-sm uppercase tracking-wider mb-3">
+        <h3 class="rubber-footer__heading">
           {t(locale, 'nav.contact')}
         </h3>
         <ul class="space-y-2 text-sm">
           <li>
-            <a href={localePath(locale, '/contact')} class="hover:text-maxam-white transition-colors">
+            <a href={localePath(locale, '/contact')} class="rubber-footer__link">
               {t(locale, 'nav.contact')}
             </a>
           </li>
           <li>
-            <a href={localePath(locale, '/resources')} class="hover:text-maxam-white transition-colors">
+            <a href={localePath(locale, '/resources')} class="rubber-footer__link">
               {t(locale, 'nav.resources')}
             </a>
           </li>
@@ -58,7 +59,7 @@ const copyright = t(locale, 'footer.copyright').replace('{year}', String(year));
       </div>
     </div>
 
-    <div class="border-t border-maxam-gray-700 mt-8 pt-6 text-sm text-center">
+    <div class="rubber-footer__bottom">
       {copyright}
     </div>
   </div>

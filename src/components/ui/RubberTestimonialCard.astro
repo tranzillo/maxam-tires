@@ -1,0 +1,53 @@
+---
+/**
+ * RubberTestimonialCard — quote card for customer testimonials.
+ *
+ * Composition: an oversized molded quote mark anchors the upper-left,
+ * the quote text reads as the body, and an author byline plate sits at
+ * the bottom. No image — testimonials carry voice, not visuals.
+ *
+ * The quote mark is treated like a stamped serial-number plate from
+ * equipment — recessed, hairline-bordered, with the inset shadow that
+ * makes it feel like it's been pressed into the card surface.
+ */
+interface Quote {
+  quote: string;
+  authorName?: string;
+  authorTitle?: string;
+  authorCompany?: string;
+}
+
+interface Props {
+  testimonial: Quote;
+  class?: string;
+}
+
+const { testimonial, class: className } = Astro.props;
+
+// Build the byline. Author title is the relationship ("Operations Manager"),
+// company is the org. We render them on separate lines if both exist.
+const hasByline = !!(testimonial.authorName || testimonial.authorTitle || testimonial.authorCompany);
+---
+
+<figure class:list={['rubber-testimonial', className]}>
+  <span class="rubber-testimonial__quote-mark" aria-hidden="true">&ldquo;</span>
+
+  <blockquote class="rubber-testimonial__quote">
+    {testimonial.quote}
+  </blockquote>
+
+  {hasByline && (
+    <figcaption class="rubber-testimonial__byline">
+      {testimonial.authorName && (
+        <span class="rubber-testimonial__byline-name">{testimonial.authorName}</span>
+      )}
+      {(testimonial.authorTitle || testimonial.authorCompany) && (
+        <span class="rubber-testimonial__byline-org">
+          {testimonial.authorTitle}
+          {testimonial.authorTitle && testimonial.authorCompany && <span aria-hidden="true">, </span>}
+          {testimonial.authorCompany}
+        </span>
+      )}
+    </figcaption>
+  )}
+</figure>

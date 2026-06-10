@@ -1,23 +1,25 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import NotionBlocks from '../../../../components/NotionBlocks.astro';
+import TireGallery from '../../../../components/ui/TireGallery.astro';
+import SpecViewer from '../../../../components/ui/SpecViewer.astro';
+import SpecSizeSelector from '../../../../components/ui/SpecSizeSelector.astro';
+import RubberBreadcrumb from '../../../../components/ui/RubberBreadcrumb.astro';
+import RubberChip from '../../../../components/ui/RubberChip.astro';
+import RubberButton from '../../../../components/ui/RubberButton.astro';
+import RubberDocumentCard from '../../../../components/ui/RubberDocumentCard.astro';
 import type { Locale } from '../../../../types';
 import { locales, t, localePath } from '../../../../lib/i18n';
-import { getAllProducts, getProductBySlug, getProductBlocks } from '../../../../lib/data';
+import { getAllProducts, getProductBySlug, getProductBlocks, getProductSpecs } from '../../../../lib/data';
 
 export function getStaticPaths() {
   const paths: Array<{ params: { locale: string; industry: string; slug: string } }> = [];
   for (const locale of locales) {
     const products = getAllProducts(locale as Locale);
     for (const tire of products) {
-      // A product without an industry has no canonical URL; skip rather than crash.
       if (tire.industries.length === 0) continue;
       paths.push({
-        params: {
-          locale,
-          industry: tire.industries[0].slug,
-          slug: tire.slug,
-        },
+        params: { locale, industry: tire.industries[0].slug, slug: tire.slug },
       });
     }
   }
@@ -33,97 +35,171 @@ if (!tire) {
 
 const primaryIndustry = tire.industries[0];
 const blocks = getProductBlocks(locale, slug);
+const specs = getProductSpecs(locale, slug);
+
+// ── Split the Notion block stream into three parts ─────────────────
+//   1. images    → pulled out for the gallery column
+//   2. lead      → description + Features, shown in the info column
+//   3. specs     → the spec section (heading + table), full-width below
+//
+// The split is STRUCTURE-based, not heading-text based, so it works
+// in every locale (the headings are translated — "Specifications",
+// "المواصفات", "技術規格" — and English-string matching broke RTL/CJK).
+//
+// Rules, derived from how WP exported these tire bodies:
+//   - The spec section is the `table` block plus the heading directly
+//     before it; everything from that heading onward is "specs".
+//   - The gallery heading is the heading directly before the first
+//     image block; it's dropped (images move to the gallery column).
+function isHeading(b: any): boolean {
+  return typeof b?.type === 'string' && b.type.startsWith('heading');
+}
+function blockImageUrl(b: any): string | null {
+  if (b?.type !== 'image') return null;
+  const img = b.image ?? {};
+  return img.url ?? img.external?.url ?? img.file?.url ?? null;
+}
+
+// Locate the structural boundaries by index.
+const firstTableIdx = blocks.findIndex((b) => b?.type === 'table');
+const firstImageIdx = blocks.findIndex((b) => blockImageUrl(b) !== null);
+
+// Spec section starts at the heading right before the first table
+// (fall back to the table itself if no heading precedes it).
+let specsStartIdx = -1;
+if (firstTableIdx !== -1) {
+  specsStartIdx = firstTableIdx;
+  if (specsStartIdx > 0 && isHeading(blocks[specsStartIdx - 1])) specsStartIdx -= 1;
+}
+
+// Gallery heading = heading immediately before the first image.
+const galleryHeadingIdx =
+  firstImageIdx > 0 && isHeading(blocks[firstImageIdx - 1]) ? firstImageIdx - 1 : -1;
+
+const galleryFromBlocks: string[] = [];
+let leadBlocks: any[] = [];
+let specsBlocks: any[] = [];
+
+// When structured specs exist, the SpecViewer replaces the raw spec
+// table, so we drop the whole Specifications section from the blocks.
+const hasStructuredSpecs = !!specs;
+
+blocks.forEach((b, i) => {
+  const imgUrl = blockImageUrl(b);
+  if (imgUrl) {
+    galleryFromBlocks.push(imgUrl);
+    return;
+  }
+  if (i === galleryHeadingIdx) return; // drop the redundant gallery heading
+
+  const inSpecs = specsStartIdx !== -1 && i >= specsStartIdx;
+  if (inSpecs) {
+    if (!hasStructuredSpecs) specsBlocks.push(b);
+  } else {
+    leadBlocks.push(b);
+  }
+});
+
+// Featured image first, then block images, de-duplicated by URL.
+const galleryImages = [
+  ...(tire.featuredImage ? [tire.featuredImage] : []),
+  ...galleryFromBlocks,
+].filter((url, i, arr) => arr.indexOf(url) === i);
 ---
 
 <BaseLayout locale={locale} title={tire.title}>
-  <article class="max-w-[var(--container-max)] mx-auto px-4 py-10">
-    <!-- Breadcrumb -->
-    <nav class="text-sm text-maxam-gray-500 mb-6">
-      <a href={localePath(locale, '/products')} class="hover:text-maxam-blue">{t(locale, 'nav.products')}</a>
-      <span class="mx-2">/</span>
-      <a href={localePath(locale, `/products/${primaryIndustry.slug}`)} class="hover:text-maxam-blue">
-        {primaryIndustry.name}
-      </a>
-      <span class="mx-2">/</span>
-      <span class="text-maxam-black font-medium">{tire.title}</span>
-    </nav>
-
-    <!-- Hero -->
-    <header class="mb-10">
-      <!-- Industry badges -->
-      <div class="flex flex-wrap gap-2 mb-3">
-        {tire.industries.map((ind) => (
-          <span
-            class="text-xs text-maxam-white px-3 py-1 rounded-full font-medium"
-            style={`background:${ind.color}`}
-          >
-            {ind.name}
-          </span>
-        ))}
-      </div>
-
-      <h1 class="text-4xl font-bold text-maxam-black">{tire.title}</h1>
-      {tire.subheading && (
-        <p class="text-xl text-maxam-gray-500 mt-1">{tire.subheading}</p>
-      )}
-
-      <!-- Application icons -->
-      {tire.applications.length > 0 && (
-        <div class="flex flex-wrap gap-3 mt-4 text-sm text-maxam-gray-700">
-          {tire.applications.map((app) => (
-            <span class="bg-maxam-gray-100 px-3 py-1 rounded">{app.name}</span>
-          ))}
-        </div>
-      )}
-    </header>
-
-    <!-- Body: description, features, spec table, gallery — all from Notion blocks. -->
-    <section class="mb-10 prose-content">
-      <NotionBlocks blocks={blocks} />
-    </section>
-
-    <!-- CTA -->
-    <div class="mb-10">
-      <a
-        href={localePath(locale, '/contact')}
-        class="inline-block bg-maxam-blue text-maxam-white font-semibold px-6 py-3 rounded hover:bg-maxam-blue-dark transition-colors"
-      >
-        {t(locale, 'product.get_in_touch')}
-      </a>
+  <article class="tire-page" style={`--industry-color:${primaryIndustry.color}`}>
+    <div class="tire-page__breadcrumb">
+      <RubberBreadcrumb items={[
+        { label: t(locale, 'nav.products'), href: localePath(locale, '/products') },
+        { label: primaryIndustry.name, href: localePath(locale, `/products/${primaryIndustry.slug}`) },
+        { label: tire.title },
+      ]} />
     </div>
 
-    <!-- Documents (PDF downloads from Notion Documents DB) -->
+    <!-- 2-column hero: info (left) + gallery (right) -->
+    <div class="tire-page__hero">
+      <div class="tire-page__info">
+        <div class="tire-page__chips">
+          {tire.industries.map((ind) => (
+            <RubberChip variant="industry" size="md" color={ind.color}>{ind.name}</RubberChip>
+          ))}
+        </div>
+
+        <h1 class="tire-page__title">{tire.title}</h1>
+        {tire.subheading && <p class="tire-page__subheading">{tire.subheading}</p>}
+
+        {tire.applications.length > 0 && (
+          <div class="tire-page__applications">
+            {tire.applications.map((app) => (
+              <RubberChip variant="neutral" size="sm">{app.name}</RubberChip>
+            ))}
+          </div>
+        )}
+
+        <!-- Description + Features (Notion blocks before Specifications) -->
+        <div class="tire-page__lead prose-content">
+          <NotionBlocks blocks={leadBlocks} />
+        </div>
+
+        <!-- Size selector — drives the spec table below; "See Specs" jumps to it. -->
+        {specs && (
+          <SpecSizeSelector
+            specs={specs}
+            sizeLabel={t(locale, 'product.size_select')}
+            countLabel={t(locale, 'product.sizes_available')}
+            seeSpecsLabel={t(locale, 'product.see_specs')}
+            target="tire-specs"
+          />
+        )}
+      </div>
+
+      <!-- Gallery: featured image + thumb column -->
+      <TireGallery images={galleryImages} alt={tire.title} />
+    </div>
+
+    <!-- Specifications (full width). Structured spec table when we have
+         normalized spec data; otherwise fall back to the raw block table. -->
+    {specs ? (
+      <section class="tire-page__section">
+        <h2 class="tire-page__section-heading">{t(locale, 'product.specifications')}</h2>
+        <SpecViewer specs={specs} id="tire-specs" />
+      </section>
+    ) : (
+      specsBlocks.length > 0 && (
+        <section class="tire-page__section prose-content">
+          <NotionBlocks blocks={specsBlocks} />
+        </section>
+      )
+    )}
+
+    <!-- CTA -->
+    <div class="tire-page__section">
+      <RubberButton variant="primary" size="lg" href={localePath(locale, '/contact')}>
+        {t(locale, 'product.get_in_touch')}
+      </RubberButton>
+    </div>
+
+    <!-- Documents -->
     {tire.documents.length > 0 && (
-      <section class="mb-10">
-        <h2 class="text-2xl font-bold text-maxam-black mb-4">
+      <section class="tire-page__section">
+        <h2 class="tire-page__section-heading">
           {t(locale, 'product.documents') || 'Documents'}
         </h2>
-        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div class="tire-page__docs-grid">
           {tire.documents.map((doc) => (
-            <li>
-              <a
-                href={doc.fileUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="block border border-maxam-gray-100 rounded-lg p-4 hover:border-maxam-blue transition-colors"
-              >
-                <div class="text-xs uppercase tracking-wide text-maxam-gray-500 mb-1">{doc.type}</div>
-                <div class="font-medium">{doc.title}</div>
-              </a>
-            </li>
+            <RubberDocumentCard document={doc} locale={locale} />
           ))}
-        </ul>
+        </div>
       </section>
     )}
 
     <!-- Back link -->
-    <div class="mt-12 pt-6 border-t border-maxam-gray-100">
-      <a
-        href={localePath(locale, '/products')}
-        class="text-maxam-blue font-medium hover:underline"
-      >
-        <span class="inline-block rtl:scale-x-[-1]" aria-hidden="true">←</span> {t(locale, 'product.back')}
-      </a>
+    <div class="tire-page__back">
+      <RubberButton variant="ghost" size="md" href={localePath(locale, '/products')}>
+        <span class="inline-block rtl:scale-x-[-1] me-1" aria-hidden="true">←</span>
+        {t(locale, 'product.back')}
+      </RubberButton>
     </div>
   </article>
 </BaseLayout>

@@ -43,6 +43,10 @@ interface NotionIds {
   eventsDataSourceId: string;
   documentsDataSourceId: string;
   testimonialsDataSourceId: string;
+  /** Bespoke per-page marketing content (homepage hero, sustainability strip, etc). */
+  pagesDataSourceId?: string;
+  /** Repeating promo cards owned by a Page (e.g. the homepage "Find Your Grip" / "Rubber Tracks" cards). */
+  pagePromosDataSourceId?: string;
 }
 
 /**

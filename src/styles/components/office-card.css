@@ -1,0 +1,120 @@
+/*
+ * RubberOfficeCard — regional office location card for the contact page.
+ *
+ * Markup lives in: src/components/ui/RubberOfficeCard.astro
+ *
+ * Composition: a region-color dot + region name header, company subtitle,
+ * one or more labeled location addresses, and a list of phone numbers
+ * anchored to the bottom (so phone rows align across grid siblings). The
+ * region accent flows in via the `--industry-color` custom property set
+ * inline on the article element — the dot and phone links color-mix off it.
+ */
+.rubber-office {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px 20px 20px;
+  background: var(--color-surface-overlay);
+  border: 1px solid var(--color-edge);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  isolation: isolate;
+}
+
+/* Top chamfer highlight. */
+.rubber-office::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: var(--edge-highlight-top);
+  pointer-events: none;
+}
+
+.rubber-office__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Color dot using the molded chip-dot treatment for consistency. */
+.rubber-office__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--industry-color, var(--color-maxam-blue));
+  box-shadow:
+    inset 0 1px 2px rgba(31, 29, 26, 0.18),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.18),
+    0 0 0 1px rgba(31, 29, 26, 0.08);
+  flex-shrink: 0;
+}
+
+.rubber-office__region {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-maxam-black);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.rubber-office__company {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-maxam-gray-700);
+  line-height: 1.3;
+}
+
+.rubber-office__locations {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.rubber-office__location-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-maxam-gray-500);
+  margin-bottom: 2px;
+}
+
+.rubber-office__location-address {
+  font-size: var(--font-size-sm);
+  color: var(--color-maxam-gray-700);
+  line-height: 1.45;
+  white-space: pre-line;
+}
+
+.rubber-office__phones {
+  list-style: none;
+  padding: 12px 0 0 0;
+  margin: auto 0 0 0; /* anchor to bottom so cards in a grid have aligned phone rows */
+  border-top: 1px solid var(--color-edge);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rubber-office__phone {
+  display: inline-flex;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: color-mix(in srgb, var(--industry-color, var(--color-maxam-blue)) 75%, var(--color-maxam-black));
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-rubber);
+}
+
+.rubber-office__phone:hover {
+  color: var(--industry-color, var(--color-maxam-blue));
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rubber-office__phone {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,64 @@
+/*
+ * RubberIndustryCard — image-led tile with the industry chip as the CTA.
+ *
+ * Markup lives in: src/components/ui/RubberIndustryCard.astro
+ *
+ * 4:3 aspect, pre-tinted industry hero photo as background, no overlay
+ * panel, no overlay text. The card contains a single industry-colored
+ * chip at the bottom-left — the chip IS the action. When no hero image
+ * is set the .industry-card__fallback layer renders a soft industry-
+ * color radial so the card still reads as a color-coded tile.
+ *
+ * Hover lifts the card 2px. Honors prefers-reduced-motion.
+ */
+.industry-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+  aspect-ratio: 2/1;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  background-color: var(--color-surface-deep);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: var(--radius-card);
+  text-decoration: none;
+  color: var(--color-maxam-white);
+  transition: transform var(--duration-base) var(--ease-rubber);
+}
+
+.industry-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Fallback for industries without a hero image — soft industry-color
+ * radial so the card has the same color reading as the photo variant. */
+.industry-card__fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(
+    circle at 30% 20%,
+    color-mix(in srgb, var(--industry-color, var(--color-maxam-blue)) 60%, black) 0%,
+    color-mix(in srgb, var(--industry-color, var(--color-maxam-blue)) 40%, black) 70%,
+    color-mix(in srgb, var(--industry-color, var(--color-maxam-blue)) 25%, black) 100%
+  );
+}
+
+/* Chip wrapper — positions the chip relative to the card. The chip
+ * itself owns its size and color via its own variant/size props. */
+.industry-card__chip {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-self: flex-start;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .industry-card {
+    transition: none !important;
+  }
+}

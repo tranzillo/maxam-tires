@@ -1,0 +1,34 @@
+---
+/**
+ * RubberPlate — a small molded label plate, like an engraved nameplate on
+ * industrial equipment. Used for section labels, eyebrow text, kicker
+ * captions, or anywhere a small uppercase label needs to read as embedded
+ * in the surface rather than floating on it.
+ *
+ * Originally inlined in the mega-nav section labels; pulled out as a
+ * reusable atom for consistency across the system.
+ *
+ * Sizes:
+ *   - xs : 10px (mega nav labels, card captions)
+ *   - sm : 12px (section eyebrows)
+ *
+ * Renders as a <p>, <span>, <h2>, or any tag via the `as` prop — defaults
+ * to <p> for semantic safety. Pass `as="h2"` or similar when this plate
+ * is being used as an actual section heading.
+ */
+type Size = 'xs' | 'sm';
+type Tag = 'p' | 'span' | 'div' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+interface Props {
+  as?: Tag;
+  size?: Size;
+  class?: string;
+}
+
+const { as: Tag = 'p', size = 'xs', class: className } = Astro.props;
+const dataAttrs = { 'data-size': size };
+---
+
+<Tag class:list={['rubber-plate', className]} {...dataAttrs}>
+  <slot />
+</Tag>

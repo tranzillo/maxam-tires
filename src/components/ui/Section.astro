@@ -1,33 +1,64 @@
 ---
+/*
+ * Section — the page section primitive.
+ *
+ * Pure markup. All styles live in src/styles/components/section.css
+ * (loaded globally via global.css). Class names emitted here match
+ * the rules in that file.
+ *
+ * Structure:
+ *   <section>                              full-bleed outer pane
+ *     [optional overlay div]
+ *     <div class="section__container">     centered max-width content column
+ *       <slot />
+ *     </div>
+ *   </section>
+ *
+ * Content always sits inside the container. Backgrounds always bleed.
+ *
+ * Variants (see section.css for what each one renders):
+ *   vertical    'none' | 'md' | 'lg' | 'xlg'         vertical padding scale
+ *   background  'page' | 'sunken' | 'deep' | 'image' surface bg
+ *   overlay     'none' | 'dark' | 'blue-lr' | 'blue-full'  tint over bg image
+ *   as          'section' | 'div'                    rendered tag (use 'div' if nested)
+ */
 interface Props {
-  heading?: string;
-  subheading?: string;
-  viewAllHref?: string;
-  viewAllLabel?: string;
-  background?: 'white' | 'gray';
+  vertical?: 'none' | 'md' | 'lg' | 'xlg';
+  background?: 'page' | 'sunken' | 'deep' | 'image';
+  backgroundImage?: string;
+  backgroundPosition?: string;
+  overlay?: 'none' | 'dark' | 'blue-lr' | 'blue-full';
+  as?: 'section' | 'div';
   class?: string;
 }
 
-const { heading, subheading, viewAllHref, viewAllLabel, background = 'white', class: className } = Astro.props;
+const {
+  vertical = 'md',
+  background = 'page',
+  backgroundImage,
+  backgroundPosition = 'center',
+  overlay = 'none',
+  as: Tag = 'section',
+  class: className,
+} = Astro.props;
 
-const bgClass = background === 'gray' ? 'bg-maxam-gray-100' : '';
+const bgStyle = backgroundImage
+  ? `background-image:url('${backgroundImage}');background-position:${backgroundPosition};`
+  : '';
 ---
 
-<section class:list={['py-16', bgClass, className]}>
-  <div class="max-w-[var(--container-max)] mx-auto px-4">
-    {(heading || viewAllHref) && (
-      <div class="flex items-end justify-between mb-8 gap-4">
-        <div>
-          {heading && <h2 class="text-2xl md:text-3xl font-bold text-maxam-black">{heading}</h2>}
-          {subheading && <p class="text-maxam-gray-500 mt-2 max-w-2xl">{subheading}</p>}
-        </div>
-        {viewAllHref && viewAllLabel && (
-          <a href={viewAllHref} class="text-sm font-semibold text-maxam-blue hover:underline shrink-0">
-            {viewAllLabel} <span class="inline-block rtl:scale-x-[-1]" aria-hidden="true">&rarr;</span>
-          </a>
-        )}
-      </div>
-    )}
+<Tag
+  class:list={[
+    'section',
+    `section--bg-${background}`,
+    `section--v-${vertical}`,
+    overlay !== 'none' && `section--overlay-${overlay}`,
+    className,
+  ]}
+  style={bgStyle}
+>
+  {overlay !== 'none' && <div class="section__overlay" aria-hidden="true"></div>}
+  <div class="section__container">
     <slot />
   </div>
-</section>
+</Tag>

@@ -1,0 +1,355 @@
+/*
+ * Filter sidebar — products page (and any future filtered list).
+ *
+ * Markup lives in: src/pages/[locale]/products/index.astro
+ *
+ * Visual model: a rubber TV remote. The whole sidebar is the remote
+ * body — raised cream surface, hairline border, chamfer top, soft
+ * shadow.
+ *
+ * Layout:
+ *   .filter-sidebar
+ *     .filter-sidebar__head      — pinned: LCD search + clear chip
+ *     .filter-sidebar__body      — scrolls: stacked filter groups
+ *       .filter-sidebar__group   — Industry (always open) / Application
+ *                                  / Size / Rating (collapsible via +/−)
+ *         .filter-sidebar__heading
+ *         .filter-sidebar__list
+ *           .filter-row (× N)
+ *
+ * Row states (inverted from earlier — off = raised, on = depressed):
+ *   - default (off)  : raised (chamfer top + soft shadow), hollow dot
+ *   - hover/active   : pressing in — dropped one level
+ *   - checked (on)   : fully pressed in — depressed, dot lit
+ *
+ * Native <input type="checkbox"> is visually hidden but kept in the DOM
+ * for keyboard/screen-reader behavior. The `__dot` reacts via
+ * `.filter-row:has(input:checked)`.
+ */
+
+/* ── Remote shell ───────────────────────────────────────────────── */
+.filter-sidebar {
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-edge-strong);
+  border-radius: calc(var(--radius-card) * 2);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.5) inset,
+    0 1px 2px rgba(31, 29, 26, 0.06),
+    0 8px 24px -8px rgba(31, 29, 26, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  isolation: isolate;
+  /* Stay invisible until the height-sync script runs once. Prevents
+   * the "render tall → shrink" flash. The script flips
+   * data-measured="true" on first measure. */
+  visibility: hidden;
+}
+
+.filter-sidebar[data-measured='true'] {
+  visibility: visible;
+}
+
+@media (min-width: 768px) {
+  .filter-sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 5rem;
+    /* Natural height = head + body content. The JS in ProductsViewer
+     * sets a JS `max-height` to min(viewport - 6rem, grid area height)
+     * so the sidebar is capped on long pages but shrinks to fit its
+     * own content when content is smaller than either cap. */
+    align-self: flex-start;
+    max-height: calc(100vh - 6rem);
+  }
+}
+
+/* ── Pinned head (search + clear) ────────────────────────────────
+ * Stays put at the top of the remote as the body scrolls below it.
+ * Subtle bottom shadow separates the head from the scrolling area. */
+.filter-sidebar__head {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: var(--color-surface-raised);
+  border-bottom: 1px solid var(--color-edge);
+  box-shadow: 0 4px 8px -4px rgba(31, 29, 26, 0.08);
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Scrollable body ─────────────────────────────────────────────
+ * Holds the filter groups. Sizes to its content so the sidebar
+ * collapses to the height of search + clear + groups; only scrolls
+ * when constrained by the JS-set max-height (i.e. when grid or
+ * viewport caps the sidebar below its natural content height). */
+.filter-sidebar__body {
+  min-height: 0;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.filter-sidebar__body::-webkit-scrollbar {
+  width: 6px;
+}
+.filter-sidebar__body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.filter-sidebar__body::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-edge-strong) 60%, transparent);
+  border-radius: 999px;
+}
+.filter-sidebar__body::-webkit-scrollbar-thumb:hover {
+  background: var(--color-edge-strong);
+}
+.filter-sidebar__body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-edge-strong) transparent;
+}
+
+/* ── LCD display (search input wrapper) ──────────────────────── */
+.filter-sidebar__display {
+  position: relative;
+  background: var(--color-surface-sunken);
+  border-radius: var(--radius-tight) var(--radius-tight) 0 0;
+  padding: 8px 10px;
+  box-shadow:
+    inset 0 2px 3px rgba(0, 0, 0, 0.45),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.04),
+    0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.filter-sidebar__display::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    rgba(168, 230, 200, 0.05) 0%,
+    rgba(168, 230, 200, 0) 50%
+  );
+  pointer-events: none;
+}
+
+.filter-sidebar__display-input {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  font-family: 'JetBrains Mono', 'Courier New', ui-monospace, monospace;
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.04em;
+}
+
+.filter-sidebar__display-input::placeholder {
+  font-family: inherit;
+  letter-spacing: 0.04em;
+}
+
+/* ── Clear chip wrapper ──────────────────────────────────────────
+ * Left-aligned so the chip sits flush with the section content below. */
+.filter-sidebar__clear {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 1em 0.75em;
+  box-shadow: var(--shadow-card-content);
+}
+
+/* ── Group ───────────────────────────────────────────────────────  */
+.filter-sidebar__group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-sidebar__heading {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-maxam-gray-500);
+  padding-inline: 4px;
+}
+
+/* +/− collapse toggle next to a section heading. Renders a "+" by
+ * default; flips to "−" when the group is open (data-collapsed="false"). */
+.filter-sidebar__toggle {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface-sunken);
+  border: 1px solid var(--color-edge);
+  border-radius: var(--radius-tight);
+  color: var(--color-maxam-gray-700);
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(31, 29, 26, 0.05);
+  transition: background var(--duration-fast) var(--ease-rubber);
+}
+
+.filter-sidebar__toggle::before {
+  content: '−';
+}
+
+.filter-sidebar__group[data-collapsed='true'] .filter-sidebar__toggle::before {
+  content: '+';
+}
+
+.filter-sidebar__toggle:hover {
+  background: color-mix(in srgb, var(--color-maxam-blue) 5%, var(--color-surface-sunken));
+  color: var(--color-maxam-black);
+}
+
+.filter-sidebar__toggle:focus-visible {
+  outline: 2px solid var(--color-maxam-blue);
+  outline-offset: 1px;
+}
+
+/* Collapsed: hide the list. */
+.filter-sidebar__group[data-collapsed='true'] .filter-sidebar__list {
+  display: none;
+}
+
+/* List of rows. */
+.filter-sidebar__list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ── The button row ──────────────────────────────────────────────── */
+
+/* OFF state (default): raised — chamfered top + soft outer shadow.
+ * Reads as "pressable", sitting up off the sidebar surface. */
+.filter-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 12px;
+  background: var(--color-surface-overlay);
+  border: 1px solid var(--color-edge);
+  border-radius: var(--radius-tight);
+  font-size: var(--font-size-sm);
+  color: var(--color-maxam-gray-700);
+  cursor: pointer;
+  user-select: none;
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.6) inset,
+    0 -1px 0 0 rgba(31, 29, 26, 0.04) inset,
+    0 1px 2px rgba(31, 29, 26, 0.06);
+  transition:
+    background var(--duration-fast) var(--ease-rubber),
+    box-shadow var(--duration-fast) var(--ease-rubber),
+    color var(--duration-fast) var(--ease-rubber);
+}
+
+/* Press affordance (mid-motion): user is hovering or actively pressing.
+ * Drops one level toward depressed but isn't there yet. */
+.filter-row:hover,
+.filter-row:active {
+  background: color-mix(in srgb, var(--color-maxam-blue) 3%, var(--color-surface-overlay));
+  color: var(--color-maxam-black);
+  box-shadow:
+    inset 0 1px 2px rgba(31, 29, 26, 0.1),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* ON state (checked): fully depressed into the sidebar surface. Deeper
+ * inset shadow, slight blue tint, dot lit. */
+.filter-row:has(input:checked) {
+  color: var(--color-maxam-black);
+  font-weight: 600;
+  background: color-mix(in srgb, var(--color-maxam-blue) 10%, var(--color-surface-sunken));
+  border-color: color-mix(in srgb, var(--color-maxam-blue) 28%, var(--color-edge-strong));
+  box-shadow:
+    inset 0 2px 4px rgba(31, 29, 26, 0.2),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.filter-row:has(input:focus-visible) {
+  outline: 2px solid var(--color-maxam-blue);
+  outline-offset: 2px;
+}
+
+/* Hidden native input. */
+.filter-row__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+}
+
+/* Indicator dot. */
+.filter-row__dot {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--filter-dot-color, var(--color-maxam-gray-500));
+  opacity: 0.4;
+  box-shadow:
+    inset 0 1px 1px rgba(31, 29, 26, 0.3),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+  transition:
+    opacity var(--duration-fast) var(--ease-rubber),
+    box-shadow var(--duration-fast) var(--ease-rubber);
+}
+
+.filter-row:has(input:checked) .filter-row__dot {
+  opacity: 1;
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.2),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.25),
+    0 0 0 2px color-mix(in srgb, var(--filter-dot-color, var(--color-maxam-blue)) 25%, transparent);
+}
+
+/* Label + count. */
+.filter-row__label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.filter-row__count {
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--color-maxam-gray-500);
+  font-variant-numeric: tabular-nums;
+}
+
+.filter-row:has(input:checked) .filter-row__count {
+  color: var(--color-maxam-gray-700);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filter-row,
+  .filter-row__dot,
+  .filter-sidebar__toggle {
+    transition: none !important;
+  }
+}

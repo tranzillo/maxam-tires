@@ -1,27 +1,40 @@
 [
   {
-    "pageId": "35534d6d-7cea-810c-b429-ddfc02d384e4",
-    "trid": 95441,
-    "language": "en",
-    "name": "Rubber Tracks",
-    "slug": "rubber-tracks",
+    "pageId": "35534d6d-7cea-8121-bfaa-db93dc5f5df8",
+    "trid": 590,
+    "language": "zh-hant",
+    "name": "非公路轮胎",
+    "slug": "off-the-road-tires",
     "color": "#0077c8",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/OTR-01.jpg",
     "translationIds": [
-      "35534d6d-7cea-818f-90c6-ced65522f481",
-      "35534d6d-7cea-81f1-a4f0-d66d29557c51"
+      "35534d6d-7cea-8191-a6e5-fdbcb2d482b4",
+      "35534d6d-7cea-812c-b777-fe29ff920041"
     ]
   },
   {
-    "pageId": "35534d6d-7cea-8114-a850-c2bdc474dce1",
-    "trid": 587,
-    "language": "en",
-    "name": "Forestry Tires",
-    "slug": "forestry-tires",
-    "color": "#dcb127",
-    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/forestry-bg-01-min.jpg",
+    "pageId": "35534d6d-7cea-81d6-aa6e-cd55f592eb61",
+    "trid": 589,
+    "language": "zh-hant",
+    "name": "矿用轮胎",
+    "slug": "mining-tires",
+    "color": "#65686d",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/mining-02.jpg",
     "translationIds": [
-      "35534d6d-7cea-81e9-bb59-e7ae679d90db",
-      "35534d6d-7cea-811e-bf8b-e47bf0d3ab2c"
+      "35534d6d-7cea-8193-a922-d38658c5ec95",
+      "35534d6d-7cea-81b4-96ac-db8aafdb30b7"
+    ]
+  },
+  {
+    "pageId": "35534d6d-7cea-81f1-a4f0-d66d29557c51",
+    "trid": 95441,
+    "language": "zh-hant",
+    "name": "橡胶履带",
+    "slug": "rubber-tracks-zh-hant",
+    "color": "#0077c8",
+    "translationIds": [
+      "35534d6d-7cea-810c-b429-ddfc02d384e4",
+      "35534d6d-7cea-818f-90c6-ced65522f481"
     ]
   },
   {
@@ -38,68 +51,16 @@
     ]
   },
   {
-    "pageId": "35534d6d-7cea-8121-bfaa-db93dc5f5df8",
-    "trid": 590,
-    "language": "zh-hant",
-    "name": "非公路轮胎",
-    "slug": "off-the-road-tires",
-    "color": "#0077c8",
-    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/OTR-01.jpg",
-    "translationIds": [
-      "35534d6d-7cea-8191-a6e5-fdbcb2d482b4",
-      "35534d6d-7cea-812c-b777-fe29ff920041"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-812c-b777-fe29ff920041",
-    "trid": 590,
-    "language": "ar-ae",
-    "name": "إطارات الطرق الوعرة",
-    "slug": "off-the-road-tires",
-    "color": "#0077c8",
-    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/OTR-01.jpg",
-    "translationIds": [
-      "35534d6d-7cea-8191-a6e5-fdbcb2d482b4",
-      "35534d6d-7cea-8121-bfaa-db93dc5f5df8"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-8149-ba9b-c55c0ebfea93",
-    "trid": 584,
-    "language": "ar-ae",
-    "name": "إطارات الطرق الوعرة (OTR) المصمتة (الصلبة)",
-    "slug": "solid-otr-tires",
-    "color": "#092479",
-    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/solid-OTR-01.jpg",
-    "translationIds": [
-      "35534d6d-7cea-819d-9613-d2c8f2e61add",
-      "35534d6d-7cea-81f6-8b3e-cb2c7d508274"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-8151-8e7e-e5b3c64b4cc0",
-    "trid": 591,
-    "language": "zh-hant",
-    "name": "地下采矿轮胎",
-    "slug": "underground-mining-tires",
-    "color": "#000000",
-    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/underground-mining-01.jpg",
-    "translationIds": [
-      "35534d6d-7cea-81f4-ab29-e841d4738715",
-      "35534d6d-7cea-81b9-ba0d-fc76f5e8a2c7"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-8167-9f06-d0ae6ee328d3",
+    "pageId": "35534d6d-7cea-81c3-8247-d9b764bf220a",
     "trid": 586,
-    "language": "en",
-    "name": "Construction Tires",
+    "language": "zh-hant",
+    "name": "建筑业用胎",
     "slug": "construction-tires",
     "color": "#f79425",
     "bgImage": "https://maxamtire.com/wp-content/uploads/2025/02/construction-product-page_features-benes-background-1.png",
     "translationIds": [
-      "35534d6d-7cea-81c4-a285-c6d5b6418ee4",
-      "35534d6d-7cea-81c3-8247-d9b764bf220a"
+      "35534d6d-7cea-8167-9f06-d0ae6ee328d3",
+      "35534d6d-7cea-81c4-a285-c6d5b6418ee4"
     ]
   },
   {
@@ -116,6 +77,57 @@
     ]
   },
   {
+    "pageId": "35534d6d-7cea-81f6-8b3e-cb2c7d508274",
+    "trid": 584,
+    "language": "zh-hant",
+    "name": "实心 OTR 轮胎",
+    "slug": "solid-otr-tires",
+    "color": "#092479",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/solid-OTR-01.jpg",
+    "translationIds": [
+      "35534d6d-7cea-819d-9613-d2c8f2e61add",
+      "35534d6d-7cea-8149-ba9b-c55c0ebfea93"
+    ]
+  },
+  {
+    "pageId": "35534d6d-7cea-8151-8e7e-e5b3c64b4cc0",
+    "trid": 591,
+    "language": "zh-hant",
+    "name": "地下采矿轮胎",
+    "slug": "underground-mining-tires",
+    "color": "#000000",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/underground-mining-01.jpg",
+    "translationIds": [
+      "35534d6d-7cea-81f4-ab29-e841d4738715",
+      "35534d6d-7cea-81b9-ba0d-fc76f5e8a2c7"
+    ]
+  },
+  {
+    "pageId": "35534d6d-7cea-81d1-a564-c02591cd86c5",
+    "trid": 585,
+    "language": "zh-hant",
+    "name": "农用轮胎",
+    "slug": "agricultural-tractor-tires",
+    "color": "#009042",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/agriculture-02.jpg",
+    "translationIds": [
+      "35534d6d-7cea-81ae-b6ea-c7c91195dcde",
+      "35534d6d-7cea-81d4-9940-e05aaa4a9bd7"
+    ]
+  },
+  {
+    "pageId": "35534d6d-7cea-81d7-9bc9-e1e5b5a39c0c",
+    "trid": 95247,
+    "language": "zh-hant",
+    "name": "TBR 轮胎",
+    "slug": "tbr-tires-zh-hant",
+    "color": "#0077c8",
+    "translationIds": [
+      "35534d6d-7cea-81d3-b091-ea5b9c00c026",
+      "35534d6d-7cea-81bd-a925-fd6ee16bac48"
+    ]
+  },
+  {
     "pageId": "35534d6d-7cea-818f-90c6-ced65522f481",
     "trid": 95441,
     "language": "ar-ae",
@@ -128,16 +140,169 @@
     ]
   },
   {
-    "pageId": "35534d6d-7cea-8190-942c-dd8c4330e333",
+    "pageId": "35534d6d-7cea-81f6-83e1-c2f51290284c",
     "trid": 588,
-    "language": "en",
-    "name": "Industrial & Forklift Tires",
+    "language": "ar-ae",
+    "name": "الإطارات الصناعية",
     "slug": "industrial-forklift-tires",
     "color": "#9e0b0f",
     "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/material-handling-02.jpg",
     "translationIds": [
-      "35534d6d-7cea-81f6-83e1-c2f51290284c",
+      "35534d6d-7cea-8190-942c-dd8c4330e333",
       "35534d6d-7cea-816f-9346-fdc2ae52a529"
+    ]
+  },
+  {
+    "pageId": "35534d6d-7cea-81d4-9940-e05aaa4a9bd7",
+    "trid": 585,
+    "language": "ar-ae",
+    "name": "الإطارات الزراعية",
+    "slug": "agricultural-tires",
+    "color": "#009042",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/agriculture-02.jpg",
+    "translationIds": [
+      "35534d6d-7cea-81ae-b6ea-c7c91195dcde",
+      "35534d6d-7cea-81d1-a564-c02591cd86c5"
+    ]
+  },
+  {
+    "pageId": "35534d6d-7cea-81e9-bb59-e7ae679d90db",
+    "trid": 587,
+    "language": "ar-ae",
+    "name": "إطارات الغابات",
+    "slug": "forestry-tires",
+    "color": "#dcb127",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/forestry-bg-01-min.jpg",
+    "translationIds": [
+      "35534d6d-7cea-8114-a850-c2bdc474dce1",
+      "35534d6d-7cea-811e-bf8b-e47bf0d3ab2c"
+    ]
+  },
+  {
+    "pageId": "35534d6d-7cea-8149-ba9b-c55c0ebfea93",
+    "trid": 584,
+    "language": "ar-ae",
+    "name": "إطارات الطرق الوعرة (OTR) المصمتة (الصلبة)",
+    "slug": "solid-otr-tires",
+    "color": "#092479",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/solid-OTR-01.jpg",
+    "translationIds": [
+      "35534d6d-7cea-819d-9613-d2c8f2e61add",
+      "35534d6d-7cea-81f6-8b3e-cb2c7d508274"
+    ]
+  },
+  {
+    "pageId": "35534d6d-7cea-812c-b777-fe29ff920041",
+    "trid": 590,
+    "language": "ar-ae",
+    "name": "إطارات الطرق الوعرة",
+    "slug": "off-the-road-tires",
+    "color": "#0077c8",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/OTR-01.jpg",
+    "translationIds": [
+      "35534d6d-7cea-8191-a6e5-fdbcb2d482b4",
+      "35534d6d-7cea-8121-bfaa-db93dc5f5df8"
+    ]
+  },
+  {
+    "pageId": "35534d6d-7cea-81bd-a925-fd6ee16bac48",
+    "trid": 95247,
+    "language": "ar-ae",
+    "name": "إطارات الشاحنات، والحافلات، والإطارات الشعاعية (TBR)",
+    "slug": "tbr-ar-ae",
+    "color": "#0077c8",
+    "translationIds": [
+      "35534d6d-7cea-81d3-b091-ea5b9c00c026",
+      "35534d6d-7cea-81d7-9bc9-e1e5b5a39c0c"
+    ]
+  },
+  {
+    "pageId": "35534d6d-7cea-81b9-ba0d-fc76f5e8a2c7",
+    "trid": 591,
+    "language": "ar-ae",
+    "name": "إطارات التعدين تحت الأرض",
+    "slug": "underground-mining-tires",
+    "color": "#000000",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/underground-mining-01.jpg",
+    "translationIds": [
+      "35534d6d-7cea-81f4-ab29-e841d4738715",
+      "35534d6d-7cea-8151-8e7e-e5b3c64b4cc0"
+    ]
+  },
+  {
+    "pageId": "35534d6d-7cea-81b4-96ac-db8aafdb30b7",
+    "trid": 589,
+    "language": "ar-ae",
+    "name": "إطارات التعدين",
+    "slug": "mining-tires",
+    "color": "#65686d",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/mining-02.jpg",
+    "translationIds": [
+      "35534d6d-7cea-8193-a922-d38658c5ec95",
+      "35534d6d-7cea-81d6-aa6e-cd55f592eb61"
+    ]
+  },
+  {
+    "pageId": "35534d6d-7cea-81c4-a285-c6d5b6418ee4",
+    "trid": 586,
+    "language": "ar-ae",
+    "name": "إطارات الإنشاءات",
+    "slug": "construction-tires",
+    "color": "#f79425",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2025/02/construction-product-page_features-benes-background-1.png",
+    "translationIds": [
+      "35534d6d-7cea-8167-9f06-d0ae6ee328d3",
+      "35534d6d-7cea-81c3-8247-d9b764bf220a"
+    ]
+  },
+  {
+    "pageId": "35534d6d-7cea-81f4-ab29-e841d4738715",
+    "trid": 591,
+    "language": "en",
+    "name": "Underground Mining Tires",
+    "slug": "underground-mining-tires",
+    "color": "#000000",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/underground-mining-01.jpg",
+    "translationIds": [
+      "35534d6d-7cea-81b9-ba0d-fc76f5e8a2c7",
+      "35534d6d-7cea-8151-8e7e-e5b3c64b4cc0"
+    ]
+  },
+  {
+    "pageId": "35534d6d-7cea-81d3-b091-ea5b9c00c026",
+    "trid": 95247,
+    "language": "en",
+    "name": "Truck and Bus Radial Tires",
+    "slug": "tbr-tires",
+    "color": "#0077c8",
+    "translationIds": [
+      "35534d6d-7cea-81bd-a925-fd6ee16bac48",
+      "35534d6d-7cea-81d7-9bc9-e1e5b5a39c0c"
+    ]
+  },
+  {
+    "pageId": "35534d6d-7cea-819d-9613-d2c8f2e61add",
+    "trid": 584,
+    "language": "en",
+    "name": "Solid OTR Tires",
+    "slug": "solid-otr-tires",
+    "color": "#092479",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/solid-OTR-01.jpg",
+    "translationIds": [
+      "35534d6d-7cea-8149-ba9b-c55c0ebfea93",
+      "35534d6d-7cea-81f6-8b3e-cb2c7d508274"
+    ]
+  },
+  {
+    "pageId": "35534d6d-7cea-810c-b429-ddfc02d384e4",
+    "trid": 95441,
+    "language": "en",
+    "name": "Rubber Tracks",
+    "slug": "rubber-tracks",
+    "color": "#0077c8",
+    "translationIds": [
+      "35534d6d-7cea-818f-90c6-ced65522f481",
+      "35534d6d-7cea-81f1-a4f0-d66d29557c51"
     ]
   },
   {
@@ -167,16 +332,42 @@
     ]
   },
   {
-    "pageId": "35534d6d-7cea-819d-9613-d2c8f2e61add",
-    "trid": 584,
+    "pageId": "35534d6d-7cea-8190-942c-dd8c4330e333",
+    "trid": 588,
     "language": "en",
-    "name": "Solid OTR Tires",
-    "slug": "solid-otr-tires",
-    "color": "#092479",
-    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/solid-OTR-01.jpg",
+    "name": "Industrial & Forklift Tires",
+    "slug": "industrial-forklift-tires",
+    "color": "#9e0b0f",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/material-handling-02.jpg",
     "translationIds": [
-      "35534d6d-7cea-8149-ba9b-c55c0ebfea93",
-      "35534d6d-7cea-81f6-8b3e-cb2c7d508274"
+      "35534d6d-7cea-81f6-83e1-c2f51290284c",
+      "35534d6d-7cea-816f-9346-fdc2ae52a529"
+    ]
+  },
+  {
+    "pageId": "35534d6d-7cea-8114-a850-c2bdc474dce1",
+    "trid": 587,
+    "language": "en",
+    "name": "Forestry Tires",
+    "slug": "forestry-tires",
+    "color": "#dcb127",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/forestry-bg-01-min.jpg",
+    "translationIds": [
+      "35534d6d-7cea-81e9-bb59-e7ae679d90db",
+      "35534d6d-7cea-811e-bf8b-e47bf0d3ab2c"
+    ]
+  },
+  {
+    "pageId": "35534d6d-7cea-8167-9f06-d0ae6ee328d3",
+    "trid": 586,
+    "language": "en",
+    "name": "Construction Tires",
+    "slug": "construction-tires",
+    "color": "#f79425",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2025/02/construction-product-page_features-benes-background-1.png",
+    "translationIds": [
+      "35534d6d-7cea-81c4-a285-c6d5b6418ee4",
+      "35534d6d-7cea-81c3-8247-d9b764bf220a"
     ]
   },
   {
@@ -190,197 +381,6 @@
     "translationIds": [
       "35534d6d-7cea-81d4-9940-e05aaa4a9bd7",
       "35534d6d-7cea-81d1-a564-c02591cd86c5"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81b4-96ac-db8aafdb30b7",
-    "trid": 589,
-    "language": "ar-ae",
-    "name": "إطارات التعدين",
-    "slug": "mining-tires",
-    "color": "#65686d",
-    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/mining-02.jpg",
-    "translationIds": [
-      "35534d6d-7cea-8193-a922-d38658c5ec95",
-      "35534d6d-7cea-81d6-aa6e-cd55f592eb61"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81b9-ba0d-fc76f5e8a2c7",
-    "trid": 591,
-    "language": "ar-ae",
-    "name": "إطارات التعدين تحت الأرض",
-    "slug": "underground-mining-tires",
-    "color": "#000000",
-    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/underground-mining-01.jpg",
-    "translationIds": [
-      "35534d6d-7cea-81f4-ab29-e841d4738715",
-      "35534d6d-7cea-8151-8e7e-e5b3c64b4cc0"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81bd-a925-fd6ee16bac48",
-    "trid": 95247,
-    "language": "ar-ae",
-    "name": "إطارات الشاحنات، والحافلات، والإطارات الشعاعية (TBR)",
-    "slug": "tbr-ar-ae",
-    "color": "#0077c8",
-    "translationIds": [
-      "35534d6d-7cea-81d3-b091-ea5b9c00c026",
-      "35534d6d-7cea-81d7-9bc9-e1e5b5a39c0c"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81c3-8247-d9b764bf220a",
-    "trid": 586,
-    "language": "zh-hant",
-    "name": "建筑业用胎",
-    "slug": "construction-tires",
-    "color": "#f79425",
-    "bgImage": "https://maxamtire.com/wp-content/uploads/2025/02/construction-product-page_features-benes-background-1.png",
-    "translationIds": [
-      "35534d6d-7cea-8167-9f06-d0ae6ee328d3",
-      "35534d6d-7cea-81c4-a285-c6d5b6418ee4"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81c4-a285-c6d5b6418ee4",
-    "trid": 586,
-    "language": "ar-ae",
-    "name": "إطارات الإنشاءات",
-    "slug": "construction-tires",
-    "color": "#f79425",
-    "bgImage": "https://maxamtire.com/wp-content/uploads/2025/02/construction-product-page_features-benes-background-1.png",
-    "translationIds": [
-      "35534d6d-7cea-8167-9f06-d0ae6ee328d3",
-      "35534d6d-7cea-81c3-8247-d9b764bf220a"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81d1-a564-c02591cd86c5",
-    "trid": 585,
-    "language": "zh-hant",
-    "name": "农用轮胎",
-    "slug": "agricultural-tractor-tires",
-    "color": "#009042",
-    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/agriculture-02.jpg",
-    "translationIds": [
-      "35534d6d-7cea-81ae-b6ea-c7c91195dcde",
-      "35534d6d-7cea-81d4-9940-e05aaa4a9bd7"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81d3-b091-ea5b9c00c026",
-    "trid": 95247,
-    "language": "en",
-    "name": "Truck and Bus Radial Tires",
-    "slug": "tbr-tires",
-    "color": "#0077c8",
-    "translationIds": [
-      "35534d6d-7cea-81bd-a925-fd6ee16bac48",
-      "35534d6d-7cea-81d7-9bc9-e1e5b5a39c0c"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81d4-9940-e05aaa4a9bd7",
-    "trid": 585,
-    "language": "ar-ae",
-    "name": "الإطارات الزراعية",
-    "slug": "agricultural-tires",
-    "color": "#009042",
-    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/agriculture-02.jpg",
-    "translationIds": [
-      "35534d6d-7cea-81ae-b6ea-c7c91195dcde",
-      "35534d6d-7cea-81d1-a564-c02591cd86c5"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81d6-aa6e-cd55f592eb61",
-    "trid": 589,
-    "language": "zh-hant",
-    "name": "矿用轮胎",
-    "slug": "mining-tires",
-    "color": "#65686d",
-    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/mining-02.jpg",
-    "translationIds": [
-      "35534d6d-7cea-8193-a922-d38658c5ec95",
-      "35534d6d-7cea-81b4-96ac-db8aafdb30b7"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81d7-9bc9-e1e5b5a39c0c",
-    "trid": 95247,
-    "language": "zh-hant",
-    "name": "TBR 轮胎",
-    "slug": "tbr-tires-zh-hant",
-    "color": "#0077c8",
-    "translationIds": [
-      "35534d6d-7cea-81d3-b091-ea5b9c00c026",
-      "35534d6d-7cea-81bd-a925-fd6ee16bac48"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81e9-bb59-e7ae679d90db",
-    "trid": 587,
-    "language": "ar-ae",
-    "name": "إطارات الغابات",
-    "slug": "forestry-tires",
-    "color": "#dcb127",
-    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/forestry-bg-01-min.jpg",
-    "translationIds": [
-      "35534d6d-7cea-8114-a850-c2bdc474dce1",
-      "35534d6d-7cea-811e-bf8b-e47bf0d3ab2c"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81f1-a4f0-d66d29557c51",
-    "trid": 95441,
-    "language": "zh-hant",
-    "name": "橡胶履带",
-    "slug": "rubber-tracks-zh-hant",
-    "color": "#0077c8",
-    "translationIds": [
-      "35534d6d-7cea-810c-b429-ddfc02d384e4",
-      "35534d6d-7cea-818f-90c6-ced65522f481"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81f4-ab29-e841d4738715",
-    "trid": 591,
-    "language": "en",
-    "name": "Underground Mining Tires",
-    "slug": "underground-mining-tires",
-    "color": "#000000",
-    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/underground-mining-01.jpg",
-    "translationIds": [
-      "35534d6d-7cea-81b9-ba0d-fc76f5e8a2c7",
-      "35534d6d-7cea-8151-8e7e-e5b3c64b4cc0"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81f6-83e1-c2f51290284c",
-    "trid": 588,
-    "language": "ar-ae",
-    "name": "الإطارات الصناعية",
-    "slug": "industrial-forklift-tires",
-    "color": "#9e0b0f",
-    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/material-handling-02.jpg",
-    "translationIds": [
-      "35534d6d-7cea-8190-942c-dd8c4330e333",
-      "35534d6d-7cea-816f-9346-fdc2ae52a529"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81f6-8b3e-cb2c7d508274",
-    "trid": 584,
-    "language": "zh-hant",
-    "name": "实心 OTR 轮胎",
-    "slug": "solid-otr-tires",
-    "color": "#092479",
-    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/solid-OTR-01.jpg",
-    "translationIds": [
-      "35534d6d-7cea-819d-9613-d2c8f2e61add",
-      "35534d6d-7cea-8149-ba9b-c55c0ebfea93"
     ]
   }
 ]

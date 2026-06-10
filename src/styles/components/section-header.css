@@ -1,0 +1,77 @@
+/*
+ * SectionHeader — section title row with optional subheading and "view all" link.
+ *
+ * Markup lives in: src/components/ui/SectionHeader.astro
+ *
+ * Stacks vertically on mobile and switches to a two-column space-between
+ * layout at >=640px. Heading uses a fluid clamp() size. The "view all"
+ * link expands its gap on hover for a subtle interaction cue, which is
+ * disabled under prefers-reduced-motion.
+ */
+  .rubber-section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .rubber-section-header {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  .rubber-section-header__lead {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  .rubber-section-header__heading {
+    margin: 0;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    color: inherit;
+  }
+
+  .rubber-section-header__subheading {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: inherit;
+    opacity: 0.7;
+    max-width: 60ch;
+  }
+
+  .rubber-section-header__view-all {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-maxam-blue);
+    text-decoration: none;
+    transition: gap var(--duration-fast) var(--ease-rubber);
+  }
+
+  .rubber-section-header__view-all:hover {
+    gap: 0.6rem;
+  }
+
+  .rubber-section-header__arrow {
+    display: inline-block;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rubber-section-header__view-all {
+      transition: none;
+    }
+  }

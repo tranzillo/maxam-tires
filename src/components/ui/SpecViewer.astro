@@ -1,0 +1,54 @@
+---
+/*
+ * SpecViewer — the product spec table: header row + ALL data rows
+ * rendered (one visible at a time). Which row shows is controlled by a
+ * SpecSizeSelector elsewhere on the page, matched by `id`.
+ *
+ * Keeps the real table structure (header row, aligned columns) and
+ * scrolls horizontally on narrow screens so wide tables (12–15 columns)
+ * keep their integrity. Measurement columns show a unit sub-label under
+ * the header; cell values carry both units already.
+ */
+import type { ProductSpecs } from '../../lib/data';
+
+interface Props {
+  specs: ProductSpecs;
+  /** Anchor id; the matching SpecSizeSelector targets this. */
+  id: string;
+}
+
+const { specs, id } = Astro.props;
+const headers = specs.headers;
+const units = specs.units;
+
+function variantCells(variant: (typeof specs.variants)[number]): string[] {
+  const byLabel = new Map(variant.fields.map((f) => [f.label, f.value]));
+  return headers.map((h, i) => (i === 0 ? variant.size : byLabel.get(h) ?? ''));
+}
+---
+
+<div class="spec-viewer" id={id}>
+  <div class="spec-viewer__scroll">
+    <table class="spec-viewer__table">
+      <thead>
+        <tr>
+          {headers.map((h, i) => (
+            <th scope="col">
+              <span class="spec-viewer__th-label">{h}</span>
+              {units[i] && <span class="spec-viewer__th-unit">{units[i]}</span>}
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {specs.variants.map((v, i) => (
+          <tr data-spec-row={i} hidden={i !== 0}>
+            {variantCells(v).map((cell, ci) => (
+              <td class:list={[ci === 0 && 'spec-viewer__cell--size']}>{cell || '—'}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>

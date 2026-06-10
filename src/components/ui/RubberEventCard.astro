@@ -1,0 +1,94 @@
+---
+/**
+ * RubberEventCard — date-prominent card for trade shows and events.
+ *
+ * Composition: a large recessed date plate on the left (month + day),
+ * then title + date range + location stacked on the right. The date
+ * plate is the visual anchor — events are time-bound, so the date is
+ * the primary identifier.
+ *
+ * For events with a featured image, a thin colored band along the top
+ * pulls from the image's dominant color (or brand blue fallback). The
+ * image itself is optional — the date carries the card.
+ */
+import type { Locale } from '../../types';
+
+interface EventLike {
+  title: string;
+  /** ISO date string. */
+  startDate?: string | null;
+  /** ISO date string. Optional — single-day events skip end. */
+  endDate?: string | null;
+  /** Optional location text, drawn separately from title. */
+  location?: string;
+  href?: string;
+}
+
+interface Props {
+  event: EventLike;
+  locale: Locale;
+  class?: string;
+}
+
+const { event, locale, class: className } = Astro.props;
+
+// Parse the start date into month abbreviation + day number. Locale-aware.
+function parseDate(iso?: string | null) {
+  if (!iso) return { month: '', day: '', valid: false };
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return { month: '', day: '', valid: false };
+  const intlLocale = locale === 'ar-ae' ? 'ar' : locale === 'zh-hant' ? 'zh-Hant' : 'en';
+  const month = d.toLocaleDateString(intlLocale, { month: 'short' });
+  const day = d.toLocaleDateString(intlLocale, { day: 'numeric' });
+  return { month, day, valid: true };
+}
+
+const start = parseDate(event.startDate);
+const end = parseDate(event.endDate);
+
+// Build the date range string shown alongside the title.
+const intlLocale = locale === 'ar-ae' ? 'ar' : locale === 'zh-hant' ? 'zh-Hant' : 'en';
+let dateRange = '';
+if (event.startDate) {
+  const startD = new Date(event.startDate);
+  const startFmt = startD.toLocaleDateString(intlLocale, { month: 'short', day: 'numeric', year: 'numeric' });
+  if (event.endDate && event.endDate !== event.startDate) {
+    const endD = new Date(event.endDate);
+    const sameMonth = startD.getMonth() === endD.getMonth() && startD.getFullYear() === endD.getFullYear();
+    const endFmt = endD.toLocaleDateString(
+      intlLocale,
+      sameMonth ? { day: 'numeric' } : { month: 'short', day: 'numeric', year: 'numeric' }
+    );
+    dateRange = `${startFmt} – ${endFmt}`;
+  } else {
+    dateRange = startFmt;
+  }
+}
+
+const Tag = event.href ? 'a' : 'div';
+---
+
+<Tag
+  href={event.href}
+  class:list={['rubber-event', className]}
+>
+  <div class="rubber-event__date" aria-hidden={start.valid ? undefined : 'true'}>
+    {start.valid && (
+      <>
+        <span class="rubber-event__date-month">{start.month}</span>
+        <span class="rubber-event__date-day">{start.day}</span>
+      </>
+    )}
+  </div>
+
+  <div class="rubber-event__body">
+    <h3 class="rubber-event__title">{event.title}</h3>
+    {(dateRange || event.location) && (
+      <p class="rubber-event__meta">
+        {dateRange}
+        {dateRange && event.location && <span aria-hidden="true"> · </span>}
+        {event.location}
+      </p>
+    )}
+  </div>
+</Tag>

@@ -111,6 +111,57 @@ export interface RawEvent {
   blocks?: any[];
 }
 
+/**
+ * A "Page" record holds bespoke per-route marketing content (the homepage
+ * hero copy, the sustainability strip copy, etc) that doesn't fit into a
+ * structured collection like Products or Articles.
+ *
+ * One record per (slug, language). Translation siblings are linked via
+ * `trid` like every other content type. The free-form `content` field is a
+ * flat key-value map so we can add new sections to a page without changing
+ * the snapshot schema.
+ */
+export interface RawPage {
+  pageId: string;
+  trid: number | null;
+  language: string;
+  title: string;
+  slug: string;
+  /**
+   * Flat key-value content map. Keys are dot-separated paths matching the
+   * shape the page template expects, e.g.:
+   *   "hero.lead", "hero.heading", "hero.description", "hero.cta_label",
+   *   "hero.cta_href", "hero.background_image",
+   *   "sustainability.heading", "sustainability.lead", ...
+   * The template reads via `content[key]` with a default fallback.
+   */
+  content: Record<string, string>;
+  translationIds: string[];
+}
+
+/**
+ * A promo card belongs to a Page (relation by pageId). Used today for the
+ * homepage's "Find Your Grip" / "Rubber Tracks" pair, but reusable for any
+ * page that wants a small set of card-shaped CTAs.
+ */
+export interface RawPagePromo {
+  promoId: string;
+  /** Owning Page record's pageId. */
+  pageId: string;
+  trid: number | null;
+  language: string;
+  /** Sort order within the page. */
+  order: number;
+  tag: string | null;
+  heading: string;
+  description: string;
+  ctaLabel: string;
+  ctaHref: string;
+  image: string | null;
+  imagePosition: string;
+  translationIds: string[];
+}
+
 // ── Sizes are stored as a comma-separated text field. Split it. ────────
 function parseSizes(s: string): string[] {
   if (!s) return [];
@@ -275,4 +326,69 @@ export async function fetchEvents({ withBlocks = false } = {}): Promise<RawEvent
     rows.push(row);
   }
   return rows;
+}
+
+/**
+ * Pages — bespoke per-route marketing content (homepage hero, sustainability
+ * strip, newsletter copy). Sourced from the Notion "Pages" database; the sync
+ * script treats a missing config or empty result as a hard error rather than
+ * silently serving stale snapshot content. Returns [] only when
+ * `pagesDataSourceId` isn't configured (sync then errors on that condition).
+ */
+export async function fetchPages(): Promise<RawPage[]> {
+  const ids = getNotionIds();
+  if (!ids.pagesDataSourceId) return [];
+  const pages = await queryAllPages(ids.pagesDataSourceId);
+  return pages.map((p: any) => {
+    const props = p.properties;
+    // Editorial enters content as one rich-text property per key; key names
+    // contain a dot (e.g. "hero.lead", "sustainability.body") so we collect
+    // any property whose name follows that convention.
+    const content: Record<string, string> = {};
+    for (const key of Object.keys(props)) {
+      if (!key.includes('.')) continue;
+      const val = getRichText(props, key) || getUrl(props, key) || '';
+      if (val) content[key] = val;
+    }
+    return {
+      pageId: p.id,
+      trid: getNumber(props, 'Translation Group'),
+      language: getSelect(props, 'Language') ?? 'en',
+      title: getTitle(props, 'Name'),
+      slug: getRichText(props, 'Slug'),
+      content,
+      translationIds: getRelationIds(props, 'Translations'),
+    } as RawPage;
+  });
+}
+
+/**
+ * Page Promos — repeating card content owned by a Page (the homepage
+ * "Find Your Grip" / "Rubber Tracks" cards). Sourced from the Notion
+ * "Page Promos" database. Returns [] only when `pagePromosDataSourceId`
+ * isn't configured; the sync script errors on that condition.
+ */
+export async function fetchPagePromos(): Promise<RawPagePromo[]> {
+  const ids = getNotionIds();
+  if (!ids.pagePromosDataSourceId) return [];
+  const pages = await queryAllPages(ids.pagePromosDataSourceId);
+  return pages.map((p: any) => {
+    const props = p.properties;
+    const pageRel = getRelationIds(props, 'Page');
+    return {
+      promoId: p.id,
+      pageId: pageRel[0] ?? '',
+      trid: getNumber(props, 'Translation Group'),
+      language: getSelect(props, 'Language') ?? 'en',
+      order: getNumber(props, 'Order') ?? 0,
+      tag: getRichText(props, 'Tag') || null,
+      heading: getRichText(props, 'Heading') || '',
+      description: getRichText(props, 'Description') || '',
+      ctaLabel: getRichText(props, 'CTA Label') || '',
+      ctaHref: getRichText(props, 'CTA Href') || '',
+      image: getUrl(props, 'Image'),
+      imagePosition: getRichText(props, 'Image Position') || 'center',
+      translationIds: getRelationIds(props, 'Translations'),
+    } as RawPagePromo;
+  });
 }

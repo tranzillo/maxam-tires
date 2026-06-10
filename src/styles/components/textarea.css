@@ -1,0 +1,69 @@
+/*
+ * RubberTextarea — multi-line text input atom using the same recessed-well
+ * language as RubberInput.
+ *
+ * Markup lives in: src/components/ui/RubberTextarea.astro
+ *
+ * Identical visual treatment to RubberInput (inset top shadow, focus ring,
+ * disabled/error states), with `resize: vertical` and a min-height floor so
+ * the field always shows multiple lines. Modifiers: [data-full] for
+ * full-width, [data-error] for red-tinted error state.
+ */
+.rubber-textarea {
+  appearance: none;
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  color: var(--color-maxam-black);
+  background: var(--color-surface-sunken);
+  border: 1px solid var(--color-edge-strong);
+  border-radius: var(--radius-tight);
+  padding: 9px 12px;
+  box-shadow:
+    inset 0 2px 3px -1px rgba(31, 29, 26, 0.10),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.7);
+  transition:
+    border-color var(--duration-fast) var(--ease-rubber),
+    background var(--duration-fast) var(--ease-rubber),
+    box-shadow var(--duration-fast) var(--ease-rubber);
+  resize: vertical;
+  min-height: 80px;
+}
+
+.rubber-textarea[data-full] {
+  display: block;
+  width: 100%;
+}
+
+.rubber-textarea::placeholder {
+  color: var(--color-maxam-gray-500);
+}
+
+.rubber-textarea:hover:not(:disabled):not([readonly]) {
+  border-color: color-mix(in srgb, var(--color-maxam-blue) 25%, var(--color-edge-strong));
+}
+
+.rubber-textarea:focus {
+  outline: none;
+  background: var(--color-surface-overlay);
+  border-color: var(--color-maxam-blue);
+  box-shadow:
+    inset 0 2px 3px -1px rgba(31, 29, 26, 0.06),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.7),
+    0 0 0 3px color-mix(in srgb, var(--color-maxam-blue) 20%, transparent);
+}
+
+.rubber-textarea:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.rubber-textarea[data-error] {
+  border-color: #c83232;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rubber-textarea {
+    transition: none !important;
+  }
+}
