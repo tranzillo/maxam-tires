@@ -1,0 +1,150 @@
+/*
+ * Resources index (Resource Center).
+ *
+ * Markup lives in: src/pages/[locale]/resources/index.astro
+ *
+ * Centered container with two rows of filter pills (type + industry), a
+ * results count, a responsive card grid, and client-side pagination. All
+ * client-toggled state uses `.is-active` / the `hidden` attribute — no
+ * runtime utility-class injection.
+ */
+
+.resources-page {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  padding-block: 2.5rem 4rem;
+}
+
+.resources-page__title {
+  margin-bottom: 2rem;
+}
+
+/* ── Filter pills (round, gray, light up when active) ─────────────── */
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.filter-pills--secondary {
+  margin-bottom: 2rem;
+}
+
+.filter-pill {
+  padding: 0.375rem 1rem;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-maxam-gray-700);
+  background: transparent;
+  border: 1px solid var(--color-edge-strong);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease-rubber),
+    border-color var(--duration-fast) var(--ease-rubber),
+    background var(--duration-fast) var(--ease-rubber);
+}
+.filter-pill--sm {
+  padding: 0.25rem 0.75rem;
+  font-size: var(--font-size-xs);
+}
+
+.filter-pill:hover {
+  color: var(--color-maxam-blue);
+  border-color: var(--color-maxam-blue);
+}
+
+.filter-pill.is-active {
+  color: var(--color-maxam-white);
+  background: var(--color-maxam-blue);
+  border-color: var(--color-maxam-blue);
+}
+
+.filter-pill:focus-visible {
+  outline: 2px solid var(--color-maxam-blue);
+  outline-offset: 2px;
+}
+
+/* ── Results count ────────────────────────────────────────────────── */
+.resources-page__count-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.resources-page__count {
+  font-size: var(--font-size-sm);
+  color: var(--color-maxam-gray-500);
+}
+
+/* ── Card grid ────────────────────────────────────────────────────── */
+.resources-page__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 640px) {
+  .resources-page__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .resources-page__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.resources-page__empty {
+  text-align: center;
+  color: var(--color-maxam-gray-500);
+  padding-block: 3rem;
+}
+.resources-page__empty[hidden] {
+  display: none;
+}
+
+/* ── Pagination ───────────────────────────────────────────────────── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+.pagination[hidden] {
+  display: none;
+}
+
+.pagination__numbers {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.pagination__btn,
+.pagination__num {
+  padding: 0.375rem 0.75rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-maxam-gray-700);
+  background: transparent;
+  border: 1px solid var(--color-edge-strong);
+  border-radius: var(--radius-tight);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-rubber);
+}
+.pagination__btn:hover:not(:disabled),
+.pagination__num:hover {
+  background: var(--color-surface-sunken);
+}
+.pagination__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination__num.is-active {
+  color: var(--color-maxam-white);
+  background: var(--color-maxam-blue);
+  border-color: var(--color-maxam-blue);
+}
+
+.pagination__ellipsis {
+  padding: 0.375rem 0.5rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-maxam-gray-500);
+}

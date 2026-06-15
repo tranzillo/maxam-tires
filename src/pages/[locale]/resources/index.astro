@@ -25,48 +25,39 @@ const articleTypes = [
 ---
 
 <BaseLayout locale={locale} title={t(locale, 'resources.title')}>
-  <section class="max-w-[var(--container-max)] mx-auto px-4 py-10">
-    <h1 class="text-3xl font-bold text-maxam-black mb-8">
+  <section class="resources-page">
+    <h1 class="resources-page__title heading heading--lg">
       {t(locale, 'resources.title')}
     </h1>
 
     <!-- Type filter pills -->
-    <div class="flex flex-wrap gap-2 mb-4">
+    <div class="filter-pills">
       {articleTypes.map((type) => (
-        <button
-          class="type-filter-btn px-4 py-1.5 text-sm rounded-full border border-maxam-gray-300 hover:border-maxam-blue hover:text-maxam-blue transition-colors"
-          data-type={type.key}
-        >
+        <button class="filter-pill type-filter-btn" data-type={type.key}>
           {type.label}
         </button>
       ))}
     </div>
 
     <!-- Industry filter pills -->
-    <div class="flex flex-wrap gap-2 mb-8">
-      <button
-        class="industry-filter-btn px-3 py-1 text-xs rounded-full border border-maxam-gray-300 hover:border-maxam-blue transition-colors"
-        data-industry="all"
-      >
+    <div class="filter-pills filter-pills--secondary">
+      <button class="filter-pill filter-pill--sm industry-filter-btn" data-industry="all">
         {t(locale, 'resources.filter.all')}
       </button>
       {industries.map((ind) => (
-        <button
-          class="industry-filter-btn px-3 py-1 text-xs rounded-full border border-maxam-gray-300 hover:border-maxam-blue transition-colors"
-          data-industry={ind.id}
-        >
+        <button class="filter-pill filter-pill--sm industry-filter-btn" data-industry={ind.id}>
           {ind.name}
         </button>
       ))}
     </div>
 
     <!-- Results count -->
-    <div class="flex items-center justify-between mb-4">
-      <span id="results-count" class="text-sm text-maxam-gray-500"></span>
+    <div class="resources-page__count-row">
+      <span id="results-count" class="resources-page__count"></span>
     </div>
 
     <!-- Article grid -->
-    <div id="article-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div id="article-grid" class="resources-page__grid">
       {articles
         .sort((a, b) => b.date.localeCompare(a.date))
         .map((article) => (
@@ -76,18 +67,18 @@ const articleTypes = [
     </div>
 
     <!-- Pagination -->
-    <nav id="pagination" class="hidden items-center justify-center gap-2 mt-8" aria-label="Pagination">
-      <button id="page-prev" class="px-3 py-1.5 text-sm border border-maxam-gray-300 rounded hover:bg-maxam-gray-100 disabled:opacity-40 disabled:cursor-not-allowed">
+    <nav id="pagination" class="pagination" hidden aria-label="Pagination">
+      <button id="page-prev" class="pagination__btn">
         {t(locale, 'products.pagination.prev')}
       </button>
-      <div id="page-numbers" class="flex gap-1"></div>
-      <button id="page-next" class="px-3 py-1.5 text-sm border border-maxam-gray-300 rounded hover:bg-maxam-gray-100 disabled:opacity-40 disabled:cursor-not-allowed">
+      <div id="page-numbers" class="pagination__numbers"></div>
+      <button id="page-next" class="pagination__btn">
         {t(locale, 'products.pagination.next')}
       </button>
     </nav>
 
     <!-- No results -->
-    <p id="no-results" class="hidden text-center text-maxam-gray-500 py-12">
+    <p id="no-results" class="resources-page__empty" hidden>
       {t(locale, 'resources.no_results')}
     </p>
   </section>
@@ -145,14 +136,12 @@ const articleTypes = [
     });
 
     resultsCountEl.textContent = meta.resultsTemplate.replace('{count}', String(filteredCards.length));
-    noResults.classList.toggle('hidden', filteredCards.length > 0);
+    noResults.hidden = filteredCards.length > 0;
 
     if (totalPages <= 1) {
-      paginationNav.classList.add('hidden');
-      paginationNav.classList.remove('flex');
+      paginationNav.hidden = true;
     } else {
-      paginationNav.classList.remove('hidden');
-      paginationNav.classList.add('flex');
+      paginationNav.hidden = false;
       renderPaginationButtons(totalPages);
     }
   }
@@ -166,16 +155,17 @@ const articleTypes = [
     for (const p of range) {
       if (p === '...') {
         const el = document.createElement('span');
-        el.className = 'px-2 py-1.5 text-sm text-maxam-gray-500';
+        el.className = 'pagination__ellipsis';
         el.textContent = '...';
         pageNumbers.appendChild(el);
       } else {
         const btn = document.createElement('button');
-        btn.className = `px-3 py-1.5 text-sm border rounded ${
-          p === currentPage ? 'bg-maxam-blue text-maxam-white border-maxam-blue' : 'border-maxam-gray-300 hover:bg-maxam-gray-100'
-        }`;
+        btn.className = 'pagination__num';
+        if (p === currentPage) {
+          btn.classList.add('is-active');
+          btn.setAttribute('aria-current', 'page');
+        }
         btn.textContent = String(p);
-        if (p === currentPage) btn.setAttribute('aria-current', 'page');
         btn.addEventListener('click', () => { currentPage = p as number; renderPage(); syncURL(); });
         pageNumbers.appendChild(btn);
       }
@@ -219,16 +209,10 @@ const articleTypes = [
 
   function updateButtonStates() {
     typeBtns.forEach((btn) => {
-      const isActive = btn.dataset.type === activeType;
-      btn.classList.toggle('bg-maxam-blue', isActive);
-      btn.classList.toggle('text-maxam-white', isActive);
-      btn.classList.toggle('border-maxam-blue', isActive);
+      btn.classList.toggle('is-active', btn.dataset.type === activeType);
     });
     industryBtns.forEach((btn) => {
-      const isActive = btn.dataset.industry === activeIndustry;
-      btn.classList.toggle('bg-maxam-blue', isActive);
-      btn.classList.toggle('text-maxam-white', isActive);
-      btn.classList.toggle('border-maxam-blue', isActive);
+      btn.classList.toggle('is-active', btn.dataset.industry === activeIndustry);
     });
   }
 

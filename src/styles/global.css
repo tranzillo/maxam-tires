@@ -133,6 +133,10 @@
  * wrappers); don't consume them inside narrower boxes.
  * ────────────────────────────────────────────────────────────────── */
 :root {
+  /* Narrower centered column for long-form reading (article bodies) — prose
+     reads best at ~70 chars, well under the 1280px site container. */
+  --reading-max: 48rem;
+
   /* Standard gutter for container blocks (also used by .section__container). */
   --gutter: clamp(1rem, 4vw, 2rem);
   /* Distance from viewport edge to the centered container's content edge. */
@@ -255,4 +259,6 @@ body {
 @import './pages/home.css';
 @import './pages/products.css';
 @import './pages/tire.css';
+@import './pages/resource-detail.css';
+@import './pages/resources.css';
 

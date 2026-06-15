@@ -1,0 +1,71 @@
+/*
+ * Article / resource detail page.
+ *
+ * Markup lives in: src/pages/[locale]/resources/[slug].astro
+ *
+ * A long-form reading page: a narrower centered reading column (not the full
+ * 1280px container — long prose reads better at ~70 chars) with the breadcrumb,
+ * header (type chip + date + title + excerpt), featured image, the Notion body
+ * (styled by prose-content.css), and a back link.
+ */
+
+.article-page {
+  /* Narrower reading column than the site container — `--reading-max` is the
+   * one place this width is defined. Same gutter as everything else. */
+  max-width: var(--reading-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  padding-block: 2.5rem 4rem;
+}
+
+.article-page__breadcrumb {
+  margin-bottom: 1.5rem;
+}
+
+.article-page__header {
+  margin-bottom: 2rem;
+}
+
+.article-page__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.article-page__date {
+  font-size: var(--font-size-sm);
+  color: var(--color-maxam-gray-500);
+}
+
+/* Title + excerpt use the shared `.heading` scale; these add page-local
+ * tweaks only (the excerpt reads as body-weight lead text, not a heading). */
+.article-page__excerpt {
+  margin-top: 1rem;
+  color: var(--color-maxam-gray-700);
+  max-width: 60ch;
+}
+
+.article-page__figure {
+  margin: 0 0 2rem;
+}
+.article-page__figure img {
+  width: 100%;
+  border-radius: var(--radius-card);
+  display: block;
+}
+
+.article-page__back {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-edge);
+}
+
+/* Back arrow — mirrors in RTL (replaces the rtl:scale-x-[-1] utility). */
+.article-page__back-arrow {
+  display: inline-block;
+  margin-inline-end: 0.25rem;
+}
+[dir='rtl'] .article-page__back-arrow {
+  transform: scaleX(-1);
+}
