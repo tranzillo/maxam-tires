@@ -3,7 +3,7 @@ import '../styles/global.css';
 import RubberHeader from '../components/global/RubberHeader.astro';
 import Footer from '../components/global/Footer.astro';
 import type { Locale } from '../types';
-import { t, getDir, getLang } from '../lib/i18n';
+import { t, getDir, getLang, locales, localePath, defaultLocale } from '../lib/i18n';
 
 interface Props {
   locale: Locale;
@@ -16,6 +16,14 @@ const dir = getDir(locale);
 const lang = getLang(locale);
 const pageTitle = title ? `${title} | ${t(locale, 'site.title')}` : t(locale, 'site.title');
 const pageDescription = description ?? t(locale, 'site.description');
+
+// hreflang alternates. Every locale shares the same path segments (URLs are
+// canonicalized to English slugs), so the locale-stripped tail maps cleanly to
+// each locale's equivalent page. x-default points at the default locale.
+const segments = Astro.url.pathname.split('/').filter(Boolean);
+if (locales.includes(segments[0] as Locale)) segments.shift();
+const tail = '/' + segments.join('/');
+const alternates = locales.map((loc) => ({ hreflang: getLang(loc), href: localePath(loc, tail) }));
 ---
 
 <!doctype html>
@@ -26,6 +34,10 @@ const pageDescription = description ?? t(locale, 'site.description');
     <meta name="description" content={pageDescription} />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    {alternates.map((alt) => (
+      <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={localePath(defaultLocale, tail)} />
     <title>{pageTitle}</title>
   </head>
   <body class="min-h-screen flex flex-col text-maxam-gray-900" style="background: var(--color-surface-page);">

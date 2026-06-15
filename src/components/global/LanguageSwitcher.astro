@@ -9,15 +9,24 @@ interface Props {
 
 const { locale, currentPath } = Astro.props;
 
-/** Replace the locale segment in a path. */
+/**
+ * Replace the leading locale segment of a path with the target locale.
+ * Path-only (no query/hash) — the client script re-derives the swap from
+ * window.location at click time so it preserves the live query string + hash
+ * (e.g. /products?industry=mining). After slug normalization every locale
+ * shares the same path segments, so the swapped path always resolves.
+ */
 function switchLocalePath(targetLocale: Locale, path: string): string {
-  // Strip current locale prefix and rebuild
   const segments = path.split('/').filter(Boolean);
-  if (locales.includes(segments[0] as Locale)) {
-    segments.shift();
-  }
+  if (locales.includes(segments[0] as Locale)) segments.shift();
   return `/${targetLocale}/${segments.join('/')}`;
 }
+
+const localeOptions = locales.map((loc) => ({
+  loc,
+  name: localeName(loc),
+  path: switchLocalePath(loc, currentPath),
+}));
 ---
 
 <div class="relative inline-block">
@@ -26,20 +35,24 @@ function switchLocalePath(targetLocale: Locale, path: string): string {
     class="bg-maxam-gray-900 text-maxam-gray-300 text-sm border border-maxam-gray-700 rounded px-2 py-1 cursor-pointer hover:text-maxam-white focus:outline-none focus:ring-1 focus:ring-maxam-blue"
     aria-label="Select language"
   >
-    {locales.map((loc) => (
-      <option
-        value={switchLocalePath(loc, currentPath)}
-        selected={loc === locale}
-      >
-        {localeName(loc)}
+    {localeOptions.map((opt) => (
+      <option value={opt.loc} data-path={opt.path} selected={opt.loc === locale}>
+        {opt.name}
       </option>
     ))}
   </select>
 </div>
 
 <script>
+  import { locales } from '../../lib/i18n';
+
   const select = document.getElementById('lang-select') as HTMLSelectElement | null;
   select?.addEventListener('change', () => {
-    window.location.href = select.value;
+    const target = select.value;
+    // Re-derive the swap from the LIVE url so query string + hash survive.
+    const segments = window.location.pathname.split('/').filter(Boolean);
+    if ((locales as readonly string[]).includes(segments[0])) segments.shift();
+    const path = '/' + [target, ...segments].join('/');
+    window.location.href = path + window.location.search + window.location.hash;
   });
 </script>
