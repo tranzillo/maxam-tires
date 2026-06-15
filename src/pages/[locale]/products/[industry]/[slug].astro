@@ -4,10 +4,10 @@ import NotionBlocks from '../../../../components/NotionBlocks.astro';
 import TireGallery from '../../../../components/ui/TireGallery.astro';
 import SpecViewer from '../../../../components/ui/SpecViewer.astro';
 import SpecSizeSelector from '../../../../components/ui/SpecSizeSelector.astro';
-import RubberBreadcrumb from '../../../../components/ui/RubberBreadcrumb.astro';
-import RubberChip from '../../../../components/ui/RubberChip.astro';
-import RubberButton from '../../../../components/ui/RubberButton.astro';
-import RubberDocumentCard from '../../../../components/ui/RubberDocumentCard.astro';
+import Breadcrumb from '../../../../components/ui/Breadcrumb.astro';
+import Chip from '../../../../components/ui/Chip.astro';
+import Button from '../../../../components/ui/Button.astro';
+import DocumentCard from '../../../../components/ui/DocumentCard.astro';
 import type { Locale } from '../../../../types';
 import { locales, t, localePath } from '../../../../lib/i18n';
 import { getAllProducts, getProductBySlug, getProductBlocks, getProductSpecs } from '../../../../lib/data';
@@ -111,7 +111,7 @@ const galleryImages = [
 <BaseLayout locale={locale} title={tire.title}>
   <article class="tire-page" style={industryVars(primaryIndustry.color)}>
     <div class="tire-page__breadcrumb">
-      <RubberBreadcrumb items={[
+      <Breadcrumb items={[
         { label: t(locale, 'nav.products'), href: localePath(locale, '/products') },
         { label: primaryIndustry.name, href: localePath(locale, `/products/${primaryIndustry.urlSlug}`) },
         { label: tire.title },
@@ -123,7 +123,7 @@ const galleryImages = [
       <div class="tire-page__info">
         <div class="tire-page__chips">
           {tire.industries.map((ind) => (
-            <RubberChip variant="industry" size="md" color={ind.color}>{ind.name}</RubberChip>
+            <Chip variant="industry" size="md" color={ind.color}>{ind.name}</Chip>
           ))}
         </div>
 
@@ -133,7 +133,7 @@ const galleryImages = [
         {tire.applications.length > 0 && (
           <div class="tire-page__applications">
             {tire.applications.map((app) => (
-              <RubberChip variant="neutral" size="sm">{app.name}</RubberChip>
+              <Chip variant="neutral" size="sm">{app.name}</Chip>
             ))}
           </div>
         )}
@@ -176,9 +176,9 @@ const galleryImages = [
 
     <!-- CTA -->
     <div class="tire-page__section">
-      <RubberButton variant="primary" size="lg" href={localePath(locale, '/contact')}>
+      <Button variant="primary" size="lg" href={localePath(locale, '/contact')}>
         {t(locale, 'product.get_in_touch')}
-      </RubberButton>
+      </Button>
     </div>
 
     <!-- Documents -->
@@ -189,7 +189,7 @@ const galleryImages = [
         </h2>
         <div class="tire-page__docs-grid">
           {tire.documents.map((doc) => (
-            <RubberDocumentCard document={doc} locale={locale} />
+            <DocumentCard document={doc} locale={locale} />
           ))}
         </div>
       </section>
@@ -197,10 +197,10 @@ const galleryImages = [
 
     <!-- Back link -->
     <div class="tire-page__back">
-      <RubberButton variant="ghost" size="md" href={localePath(locale, '/products')}>
+      <Button variant="ghost" size="md" href={localePath(locale, '/products')}>
         <span class="tire-page__back-arrow" aria-hidden="true">←</span>
         {t(locale, 'product.back')}
-      </RubberButton>
+      </Button>
     </div>
   </article>
 </BaseLayout>

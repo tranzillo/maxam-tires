@@ -13,7 +13,7 @@
  * handling.
  */
   /* ── Base ────────────────────────────────────────────────────────  */
-  .rubber-chip {
+  .chip {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -42,23 +42,23 @@
    * standalone action or top-level nav target (h1-ish).
    *
    * Bumping a value here updates every chip of that size sitewide. */
-  .rubber-chip[data-size='sm'] {
+  .chip[data-size='sm'] {
     font-size: 10px;
     letter-spacing: 0.04em;
     padding: 3px 9px;
   }
-  .rubber-chip[data-size='md'] {
+  .chip[data-size='md'] {
     font-size: 11px;
     letter-spacing: 0.03em;
     padding: 5px 12px;
   }
-  .rubber-chip[data-size='lg'] {
+  .chip[data-size='lg'] {
     font-size: 1rem;
     letter-spacing: 0.05em;
     padding: 10px 20px;
     gap: 10px;
   }
-  .rubber-chip[data-size='lg'] .rubber-chip__dot {
+  .chip[data-size='lg'] .chip__dot {
     width: 10px;
     height: 10px;
   }
@@ -67,7 +67,7 @@
    * Color-driven. Tinted background, tinted border, slightly darkened
    * industry color for text, full color dot. Same vocabulary as the
    * RubberProductCard chip.                                          */
-  .rubber-chip[data-variant='industry'] {
+  .chip[data-variant='industry'] {
     text-transform: uppercase;
     --_color: var(--chip-color, var(--industry-color, var(--color-maxam-blue)));
     --chip-bg: color-mix(in srgb, var(--_color) 14%, var(--color-surface-overlay));
@@ -75,7 +75,7 @@
     --chip-color-fg: color-mix(in srgb, var(--_color) 70%, var(--color-maxam-black));
   }
 
-  .rubber-chip__dot {
+  .chip__dot {
     width: 6px;
     height: 6px;
     border-radius: 999px;
@@ -85,7 +85,7 @@
       0 0 0 1px rgba(31, 29, 26, 0.08);
     flex-shrink: 0;
   }
-  .rubber-chip[data-size='md'] .rubber-chip__dot {
+  .chip[data-size='md'] .chip__dot {
     width: 7px;
     height: 7px;
   }
@@ -93,7 +93,7 @@
   /* ── Variant: category ──────────────────────────────────────────
    * Neutral uppercase label. Used for article types, document types,
    * other non-color-driven categorical labels.                       */
-  .rubber-chip[data-variant='category'] {
+  .chip[data-variant='category'] {
     text-transform: uppercase;
     --chip-bg: var(--color-surface-sunken);
     --chip-border: var(--color-edge);
@@ -106,7 +106,7 @@
    * other variants. Used for labels on dark surfaces where a tinted
    * chip would be low-contrast — e.g. "INTRODUCING" tag on a promo
    * card over a dark image well.                                      */
-  .rubber-chip[data-variant='solid'] {
+  .chip[data-variant='solid'] {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     --_color: var(--chip-color, var(--color-maxam-blue));
@@ -123,21 +123,21 @@
    * Interactive. Rest state is a quiet rounded edge. Hover lifts to
    * the surface-overlay treatment. Active state is the pressed-in
    * brand-blue treatment from the nav trigger.                       */
-  .rubber-chip[data-variant='filter'] {
+  .chip[data-variant='filter'] {
     cursor: pointer;
     --chip-bg: transparent;
     --chip-border: var(--color-edge);
     --chip-color-fg: var(--color-maxam-gray-700);
     --chip-shadow: none;
   }
-  .rubber-chip[data-variant='filter']:hover {
+  .chip[data-variant='filter']:hover {
     --chip-bg: color-mix(in srgb, var(--color-maxam-blue) 5%, var(--color-surface-overlay));
     --chip-color-fg: var(--color-maxam-black);
     --chip-shadow:
       0 1px 0 0 rgba(255, 255, 255, 0.7) inset,
       0 1px 2px 0 rgba(31, 29, 26, 0.06);
   }
-  .rubber-chip[data-variant='filter'][data-active] {
+  .chip[data-variant='filter'][data-active] {
     --chip-bg: color-mix(in srgb, var(--color-maxam-blue) 14%, var(--color-surface-sunken));
     --chip-border: color-mix(in srgb, var(--color-maxam-blue) 36%, var(--color-edge-strong));
     --chip-color-fg: var(--color-maxam-blue);
@@ -149,7 +149,7 @@
   /* ── Variant: neutral ───────────────────────────────────────────
    * Plain inset label. No uppercase. Used for application tags
    * and other static non-color labels.                              */
-  .rubber-chip[data-variant='neutral'] {
+  .chip[data-variant='neutral'] {
     --chip-bg: var(--color-surface-sunken);
     --chip-border: var(--color-edge);
     --chip-color-fg: var(--color-maxam-gray-700);
@@ -157,7 +157,7 @@
   }
 
   /* ── Dismiss button (active filter chip x) ──────────────────────  */
-  .rubber-chip__dismiss {
+  .chip__dismiss {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -172,19 +172,19 @@
     line-height: 1;
     transition: background var(--duration-fast) var(--ease-rubber);
   }
-  .rubber-chip:hover .rubber-chip__dismiss {
+  .chip:hover .chip__dismiss {
     background: rgba(31, 29, 26, 0.14);
   }
 
   /* ── Focus / a11y ───────────────────────────────────────────────  */
-  .rubber-chip:focus-visible {
+  .chip:focus-visible {
     outline: 2px solid var(--color-maxam-blue);
     outline-offset: 2px;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .rubber-chip,
-    .rubber-chip__dismiss {
+    .chip,
+    .chip__dismiss {
       transition: none !important;
     }
   }

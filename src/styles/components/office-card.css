@@ -9,7 +9,7 @@
  * region accent flows in via the `--industry-color` custom property set
  * inline on the article element — the dot and phone links color-mix off it.
  */
-.rubber-office {
+.office-card {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -23,7 +23,7 @@
 }
 
 /* Top chamfer highlight. */
-.rubber-office::before {
+.office-card::before {
   content: '';
   position: absolute;
   inset: 0 0 auto 0;
@@ -32,14 +32,14 @@
   pointer-events: none;
 }
 
-.rubber-office__header {
+.office-card__header {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
 /* Color dot using the molded chip-dot treatment for consistency. */
-.rubber-office__dot {
+.office-card__dot {
   width: 12px;
   height: 12px;
   border-radius: 999px;
@@ -51,7 +51,7 @@
   flex-shrink: 0;
 }
 
-.rubber-office__region {
+.office-card__region {
   font-size: var(--font-size-lg);
   font-weight: 700;
   color: var(--color-maxam-black);
@@ -59,21 +59,21 @@
   line-height: 1;
 }
 
-.rubber-office__company {
+.office-card__company {
   font-size: var(--font-size-sm);
   font-weight: 600;
   color: var(--color-maxam-gray-700);
   line-height: 1.3;
 }
 
-.rubber-office__locations {
+.office-card__locations {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding-top: 4px;
 }
 
-.rubber-office__location-label {
+.office-card__location-label {
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -82,14 +82,14 @@
   margin-bottom: 2px;
 }
 
-.rubber-office__location-address {
+.office-card__location-address {
   font-size: var(--font-size-sm);
   color: var(--color-maxam-gray-700);
   line-height: 1.45;
   white-space: pre-line;
 }
 
-.rubber-office__phones {
+.office-card__phones {
   list-style: none;
   padding: 12px 0 0 0;
   margin: auto 0 0 0; /* anchor to bottom so cards in a grid have aligned phone rows */
@@ -99,7 +99,7 @@
   gap: 4px;
 }
 
-.rubber-office__phone {
+.office-card__phone {
   display: inline-flex;
   font-size: var(--font-size-sm);
   font-weight: 600;
@@ -108,13 +108,13 @@
   transition: color var(--duration-fast) var(--ease-rubber);
 }
 
-.rubber-office__phone:hover {
+.office-card__phone:hover {
   color: var(--industry-color, var(--color-maxam-blue));
   text-decoration: underline;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rubber-office__phone {
+  .office-card__phone {
     transition: none !important;
   }
 }

@@ -22,7 +22,7 @@
  *                      be updated with the current filtered count.
  *                      Pages own where the count lives in the layout.
  */
-import RubberProductCard from './RubberProductCard.astro';
+import ProductCard from './ProductCard.astro';
 import { t } from '../../lib/i18n';
 import type { Locale, Tire, Industry, Application } from '../../types';
 
@@ -89,7 +89,7 @@ const {
         />
       </div>
       <div class="filter-sidebar__clear">
-        <button id="clear-filters" type="button" class="rubber-chip" data-variant="category" data-size="md">
+        <button id="clear-filters" type="button" class="chip" data-variant="category" data-size="md">
           {t(locale, 'products.filter.clear')}
         </button>
       </div>
@@ -175,7 +175,7 @@ const {
 
     <div id="product-grid" class="products-page__grid">
       {tires.map((tire) => (
-        <RubberProductCard tire={tire} locale={locale} showFilterData={true} />
+        <ProductCard tire={tire} locale={locale} showFilterData={true} />
       ))}
     </div>
 
@@ -372,7 +372,7 @@ const {
 
   function addChip(label: string, onRemove: () => void) {
     const chip = document.createElement('button');
-    chip.className = 'rubber-chip';
+    chip.className = 'chip';
     chip.setAttribute('data-variant', 'category');
     chip.setAttribute('data-size', 'sm');
     chip.innerHTML = `${escapeHtml(label)} <span aria-hidden="true">&times;</span>`;

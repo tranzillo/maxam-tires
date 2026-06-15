@@ -1,18 +1,18 @@
 ---
 /**
- * RubberDocumentCard — compact tile for PDF documents (product sheets,
+ * DocumentCard — compact tile for PDF documents (product sheets,
  * brochures, catalogs). Used in two places:
  *  1. Product detail "Documents" section (associated downloads)
  *  2. Resource center page mixed with articles
  *
  * Composition: a small molded document mark on the left, then metadata
  * stacked on the right. Click anywhere on the card → opens PDF in new
- * tab. The mark uses the same recessed-plate vocabulary as RubberPlate
+ * tab. The mark uses the same recessed-plate vocabulary as Plate
  * with a "PDF" stamp drawn on it.
  */
 import type { Document, Locale } from '../../types';
 import { t } from '../../lib/i18n';
-import RubberChip from './RubberChip.astro';
+import Chip from './Chip.astro';
 
 interface Props {
   document: Document;
@@ -31,23 +31,23 @@ const typeLabel =
 
 <a
   href={doc.fileUrl}
-  class:list={['rubber-document', className]}
+  class:list={['document-card', className]}
   target="_blank"
   rel="noopener noreferrer"
   download=""
 >
-  <div class="rubber-document__mark" aria-hidden="true">
-    <span class="rubber-document__mark-label">PDF</span>
+  <div class="document-card__mark" aria-hidden="true">
+    <span class="document-card__mark-label">PDF</span>
   </div>
 
-  <div class="rubber-document__body">
-    <div class="rubber-document__meta">
-      <RubberChip variant="category" size="sm">{typeLabel}</RubberChip>
+  <div class="document-card__body">
+    <div class="document-card__meta">
+      <Chip variant="category" size="sm">{typeLabel}</Chip>
     </div>
-    <h3 class="rubber-document__title">{doc.title}</h3>
-    <span class="rubber-document__cta">
+    <h3 class="document-card__title">{doc.title}</h3>
+    <span class="document-card__cta">
       {t(locale, 'resources.download')}
-      <svg class="rubber-document__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" aria-hidden="true">
+      <svg class="document-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M5 20h14"/>
       </svg>
     </span>

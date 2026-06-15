@@ -1,8 +1,8 @@
 ---
 /**
- * RubberFeaturedCard — compact 16:9 rubbermorphism card for the mega nav.
+ * FeaturedCard — compact 16:9 rubbermorphism card for the mega nav.
  *
- * Mirrors RubberProductCard's language (industry-tinted text panel, hard
+ * Mirrors ProductCard's language (industry-tinted text panel, hard
  * overlap, molded chip) but in a landscape aspect for the "Featured" slot
  * inside the mega nav drawer. Supports both products and articles, like
  * the original FeaturedCard.
@@ -59,30 +59,30 @@ if (product) {
 {(product || article) && (
   <a
     href={href}
-    class="rubber-featured"
+    class="featured-card"
     style={industryVars(industryColor)}
   >
-    <div class="rubber-featured__image-frame">
+    <div class="featured-card__image-frame">
       {image ? (
         <img
           src={image}
           alt={title}
           loading="lazy"
-          class="rubber-featured__image"
+          class="featured-card__image"
         />
       ) : (
-        <div class="rubber-featured__image-placeholder">{title}</div>
+        <div class="featured-card__image-placeholder">{title}</div>
       )}
     </div>
 
-    <div class="rubber-featured__panel">
+    <div class="featured-card__panel">
       {chipLabel && (
-        <span class="rubber-featured__chip">
-          <span class="rubber-featured__chip-dot" aria-hidden="true"></span>
+        <span class="featured-card__chip">
+          <span class="featured-card__chip-dot" aria-hidden="true"></span>
           {chipLabel}
         </span>
       )}
-      <h4 class="rubber-featured__title">{title}</h4>
+      <h4 class="featured-card__title">{title}</h4>
     </div>
   </a>
 )}

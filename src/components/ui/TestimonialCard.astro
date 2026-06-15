@@ -1,6 +1,6 @@
 ---
 /**
- * RubberTestimonialCard — quote card for customer testimonials.
+ * TestimonialCard — quote card for customer testimonials.
  *
  * Composition: an oversized molded quote mark anchors the upper-left,
  * the quote text reads as the body, and an author byline plate sits at
@@ -29,20 +29,20 @@ const { testimonial, class: className } = Astro.props;
 const hasByline = !!(testimonial.authorName || testimonial.authorTitle || testimonial.authorCompany);
 ---
 
-<figure class:list={['rubber-testimonial', className]}>
-  <span class="rubber-testimonial__quote-mark" aria-hidden="true">&ldquo;</span>
+<figure class:list={['testimonial-card', className]}>
+  <span class="testimonial-card__quote-mark" aria-hidden="true">&ldquo;</span>
 
-  <blockquote class="rubber-testimonial__quote">
+  <blockquote class="testimonial-card__quote">
     {testimonial.quote}
   </blockquote>
 
   {hasByline && (
-    <figcaption class="rubber-testimonial__byline">
+    <figcaption class="testimonial-card__byline">
       {testimonial.authorName && (
-        <span class="rubber-testimonial__byline-name">{testimonial.authorName}</span>
+        <span class="testimonial-card__byline-name">{testimonial.authorName}</span>
       )}
       {(testimonial.authorTitle || testimonial.authorCompany) && (
-        <span class="rubber-testimonial__byline-org">
+        <span class="testimonial-card__byline-org">
           {testimonial.authorTitle}
           {testimonial.authorTitle && testimonial.authorCompany && <span aria-hidden="true">, </span>}
           {testimonial.authorCompany}

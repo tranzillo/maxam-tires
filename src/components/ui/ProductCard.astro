@@ -1,6 +1,6 @@
 ---
 /**
- * RubberProductCard — prototype of the new rubbermorphism product card.
+ * ProductCard — prototype of the new rubbermorphism product card.
  *
  * Design vocabulary:
  *  - Image fills the entire card frame, tire is cropped tight (no whitespace gutters).
@@ -19,7 +19,7 @@
 import type { Tire, Locale } from '../../types';
 import { t } from '../../lib/i18n';
 import { industryVars } from '../../lib/style';
-import RubberChip from './RubberChip.astro';
+import Chip from './Chip.astro';
 
 interface Props {
   tire: Tire;
@@ -69,8 +69,8 @@ const filterAttrs = showFilterData
 <a
   href={detailHref}
   class:list={[
-    'rubber-card',
-    `rubber-card--${variant}`,
+    'product-card',
+    `product-card--${variant}`,
     showFilterData && 'product-card', // legacy hook for the filter JS
   ]}
   style={industryVars(industry?.color)}
@@ -80,24 +80,24 @@ const filterAttrs = showFilterData
        upper-left of the image (negative space around the tire) so it
        lives outside the text panel and uses the photography's empty
        area as canvas. -->
-  <div class="rubber-card__image-frame">
+  <div class="product-card__image-frame">
     {industry && (
-      <div class="rubber-card__chip">
-        <RubberChip variant="industry" size="sm" color={industry.color}>
+      <div class="product-card__chip">
+        <Chip variant="industry" size="sm" color={industry.color}>
           {industry.name}
-        </RubberChip>
+        </Chip>
       </div>
     )}
-    <div class="rubber-card__image-layer">
+    <div class="product-card__image-layer">
       {tire.featuredImage ? (
         <img
           src={tire.featuredImage}
           alt={tire.title}
           loading="lazy"
-          class="rubber-card__image"
+          class="product-card__image"
         />
       ) : (
-        <div class="rubber-card__image-placeholder">
+        <div class="product-card__image-placeholder">
           {tire.title}
         </div>
       )}
@@ -105,15 +105,15 @@ const filterAttrs = showFilterData
   </div>
 
   <!-- Text panel: sibling layer that hard-overlaps the bottom of the image -->
-  <div class="rubber-card__panel">
-    <h3 class="rubber-card__title">{tire.title}</h3>
+  <div class="product-card__panel">
+    <h3 class="product-card__title">{tire.title}</h3>
     {tire.subheading && (
-      <p class="rubber-card__subheading">{tire.subheading}</p>
+      <p class="product-card__subheading">{tire.subheading}</p>
     )}
 
-    <span class="rubber-card__cta">
+    <span class="product-card__cta">
       {t(locale, 'products.learn_more')}
-      <span aria-hidden="true" class="rubber-card__cta-arrow">&rarr;</span>
+      <span aria-hidden="true" class="product-card__cta-arrow">&rarr;</span>
     </span>
   </div>
 </a>

@@ -4,8 +4,8 @@ import ProductsViewer from '../../../../components/ui/ProductsViewer.astro';
 import Section from '../../../../components/ui/Section.astro';
 import SectionHeader from '../../../../components/ui/SectionHeader.astro';
 import Grid from '../../../../components/ui/Grid.astro';
-import RubberArticleCard from '../../../../components/ui/RubberArticleCard.astro';
-import RubberBreadcrumb from '../../../../components/ui/RubberBreadcrumb.astro';
+import ArticleCard from '../../../../components/ui/ArticleCard.astro';
+import Breadcrumb from '../../../../components/ui/Breadcrumb.astro';
 import type { Locale } from '../../../../types';
 import { locales, t, localePath } from '../../../../lib/i18n';
 import { industryVars } from '../../../../lib/style';
@@ -75,7 +75,7 @@ const heroBg = industry.heroImage ?? '/images/hero-home.jpg';
 
   <!-- Breadcrumb — uses the page gutter so it aligns with the viewer below. -->
   <div class="products-breadcrumb">
-    <RubberBreadcrumb items={[
+    <Breadcrumb items={[
       { label: t(locale, 'nav.home'), href: localePath(locale, '/') },
       { label: t(locale, 'nav.products'), href: localePath(locale, '/products') },
       { label: industry.name },
@@ -108,7 +108,7 @@ const heroBg = industry.heroImage ?? '/images/hero-home.jpg';
       />
       <Grid cols={3} gap="md">
         {articles.map((article) => (
-          <RubberArticleCard article={article} locale={locale} />
+          <ArticleCard article={article} locale={locale} />
         ))}
       </Grid>
     </Section>

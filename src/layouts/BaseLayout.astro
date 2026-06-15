@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import RubberHeader from '../components/global/RubberHeader.astro';
+import SiteHeader from '../components/global/SiteHeader.astro';
 import Footer from '../components/global/Footer.astro';
 import type { Locale } from '../types';
 import { t, getDir, getLang, locales, localePath, defaultLocale } from '../lib/i18n';
@@ -41,7 +41,7 @@ const alternates = locales.map((loc) => ({ hreflang: getLang(loc), href: localeP
     <title>{pageTitle}</title>
   </head>
   <body class="app-shell">
-    <RubberHeader locale={locale} variant="dark" />
+    <SiteHeader locale={locale} variant="dark" />
     <main class="app-shell__main">
       <slot />
     </main>

@@ -1,6 +1,6 @@
 ---
 /**
- * RubberField — wraps a form input with a label and optional hint/error
+ * Field — wraps a form input with a label and optional hint/error
  * messages. Use as the default form-row primitive — consumers slot the
  * actual Input/Select/Textarea inside.
  *
@@ -23,18 +23,18 @@ const hintId = hint ? `${inputId}-hint` : undefined;
 const errorId = error ? `${inputId}-error` : undefined;
 ---
 
-<div class:list={['rubber-field', className]}>
-  <label for={inputId} class="rubber-field__label">
+<div class:list={['field', className]}>
+  <label for={inputId} class="field__label">
     {label}
-    {required && <span class="rubber-field__required" aria-hidden="true">*</span>}
+    {required && <span class="field__required" aria-hidden="true">*</span>}
   </label>
 
   <slot {hintId} {errorId} />
 
   {hint && !error && (
-    <p id={hintId} class="rubber-field__hint">{hint}</p>
+    <p id={hintId} class="field__hint">{hint}</p>
   )}
   {error && (
-    <p id={errorId} class="rubber-field__error" role="alert">{error}</p>
+    <p id={errorId} class="field__error" role="alert">{error}</p>
   )}
 </div>

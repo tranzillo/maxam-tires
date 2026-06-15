@@ -17,7 +17,7 @@
    * hairline bottom border + soft directional shadow lift it off
    * the page. Chamfered top edge highlight just to remind the eye
    * it's a physical layer.                                          */
-  .rubber-header {
+  .site-header {
     position: relative;
     z-index: var(--z-overlay);
     background: var(--color-surface-raised);
@@ -26,13 +26,13 @@
     color: var(--color-maxam-black);
   }
 
-  .rubber-header--sticky {
+  .site-header--sticky {
     position: sticky;
     top: 0;
   }
 
   /* Top chamfer highlight. */
-  .rubber-header::before {
+  .site-header::before {
     content: '';
     position: absolute;
     inset: 0 0 auto 0;
@@ -41,7 +41,7 @@
     pointer-events: none;
   }
 
-  .rubber-header__bar {
+  .site-header__bar {
     position: relative;
     display: flex;
     align-items: center;
@@ -50,7 +50,7 @@
     padding-inline: var(--page-gutter);
   }
 
-  .rubber-header__logo-link {
+  .site-header__logo-link {
     display: inline-flex;
     align-items: center;
     text-decoration: none;
@@ -58,25 +58,25 @@
     transition: opacity var(--duration-fast) var(--ease-rubber);
   }
 
-  .rubber-header__logo-link:hover {
+  .site-header__logo-link:hover {
     opacity: 0.8;
   }
 
   /* Logo size + color (color follows the header variant). */
-  .rubber-header__logo {
+  .site-header__logo {
     height: 1.25rem;
     color: var(--color-maxam-blue);
   }
   @media (min-width: 768px) {
-    .rubber-header__logo { height: 1.5rem; }
+    .site-header__logo { height: 1.5rem; }
   }
 
   /* ── Desktop nav row — hidden below md, flex row above ───────────── */
-  .rubber-header__nav {
+  .site-header__nav {
     display: none;
   }
   @media (min-width: 768px) {
-    .rubber-header__nav {
+    .site-header__nav {
       display: flex;
       align-items: center;
       gap: 0.375rem;
@@ -84,18 +84,18 @@
   }
 
   /* Language-switcher cell — small leading divider. */
-  .rubber-header__lang {
+  .site-header__lang {
     margin-inline-start: 0.5rem;
     padding-inline-start: 0.75rem;
     border-inline-start: 1px solid var(--color-edge);
   }
 
   /* Inline directional arrow (→) — mirrors in RTL. */
-  .rubber-arrow {
+  .arrow {
     display: inline-block;
     margin-inline-start: 0.25rem;
   }
-  [dir='rtl'] .rubber-arrow {
+  [dir='rtl'] .arrow {
     transform: scaleX(-1);
   }
 
@@ -103,7 +103,7 @@
    * Sit flush with the header surface by default — no border, no
    * background. On hover they lift into a soft tinted pill. When
    * the controlled panel is open they press in (recessed shadow).  */
-  .rubber-nav-trigger {
+  .site-nav-trigger {
     display: inline-flex;
     align-items: center;
     gap: 4px;
@@ -122,7 +122,7 @@
       box-shadow var(--duration-fast) var(--ease-rubber);
   }
 
-  .rubber-nav-trigger:hover {
+  .site-nav-trigger:hover {
     color: var(--color-maxam-black);
     background: color-mix(in srgb, var(--color-maxam-blue) 5%, var(--color-surface-raised));
     border-color: var(--color-edge);
@@ -134,7 +134,7 @@
    * the surface plane) and a faint highlight at the bottom (light catching
    * the now-lower lip). This is the inverse of the chamfer treatment used
    * on raised elements. */
-  .rubber-nav-trigger[aria-expanded='true'] {
+  .site-nav-trigger[aria-expanded='true'] {
     color: var(--color-maxam-blue);
     background: color-mix(in srgb, var(--color-maxam-blue) 14%, var(--color-surface-sunken));
     border-color: color-mix(in srgb, var(--color-maxam-blue) 36%, var(--color-edge-strong));
@@ -143,23 +143,23 @@
       inset 0 -1px 0 0 rgba(255, 255, 255, 0.5);
   }
 
-  .rubber-nav-trigger:focus-visible {
+  .site-nav-trigger:focus-visible {
     outline: 2px solid var(--color-maxam-blue);
     outline-offset: 2px;
   }
 
-  .rubber-nav-trigger__chevron {
+  .site-nav-trigger__chevron {
     width: 12px;
     height: 12px;
     transition: transform var(--duration-base) var(--ease-rubber);
   }
 
-  .rubber-nav-trigger[aria-expanded='true'] .rubber-nav-trigger__chevron {
+  .site-nav-trigger[aria-expanded='true'] .site-nav-trigger__chevron {
     transform: rotate(180deg);
   }
 
   /* Plain link variant (Contact) — same shape language, no background. */
-  .rubber-nav-link {
+  .site-nav-link {
     display: inline-flex;
     align-items: center;
     font-size: var(--font-size-sm);
@@ -173,14 +173,14 @@
       background var(--duration-fast) var(--ease-rubber);
   }
 
-  .rubber-nav-link:hover {
+  .site-nav-link:hover {
     color: var(--color-maxam-black);
     background: color-mix(in srgb, var(--color-maxam-blue) 5%, var(--color-surface-raised));
   }
 
   /* Small external-link arrow inside nav links — sits beside the label
    * with a slight opacity so it reads as a hint, not as a chevron. */
-  .rubber-nav-link__external {
+  .site-nav-link__external {
     width: 11px;
     height: 11px;
     margin-inline-start: 4px;
@@ -189,10 +189,10 @@
   }
 
   /* ── Mobile menu toggle (hamburger) ─────────────────────────────
-   * Only visible below the md breakpoint. Kept off the .rubber-nav-trigger
+   * Only visible below the md breakpoint. Kept off the .site-nav-trigger
    * class because that class is also used by the desktop dropdown
    * triggers, and the scoped specificity was beating `md:hidden`. */
-  .rubber-mobile-toggle {
+  .mobile-nav-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -208,19 +208,19 @@
       border-color var(--duration-fast) var(--ease-rubber);
   }
 
-  .rubber-mobile-toggle__icon {
+  .mobile-nav-toggle__icon {
     width: 1.25rem;
     height: 1.25rem;
   }
 
-  .rubber-mobile-toggle:hover {
+  .mobile-nav-toggle:hover {
     color: var(--color-maxam-black);
     background: color-mix(in srgb, var(--color-maxam-blue) 5%, var(--color-surface-raised));
     border-color: var(--color-edge);
   }
 
   @media (min-width: 768px) {
-    .rubber-mobile-toggle {
+    .mobile-nav-toggle {
       display: none;
     }
   }
@@ -228,7 +228,7 @@
   /* ── Mega nav panel ─────────────────────────────────────────────
    * Second elevation: pops down below the header like a drawer
    * sliding out. Solid surface — hard occlusion, not see-through. */
-  .rubber-mega-panel {
+  .mega-nav-panel {
     position: absolute;
     inset-inline: 0;
     top: 100%;
@@ -240,7 +240,7 @@
 
   /* Top edge of the panel — a subtle shadow shows the panel emerging
    * from beneath the header rather than appearing in mid-air. */
-  .rubber-mega-panel::before {
+  .mega-nav-panel::before {
     content: '';
     position: absolute;
     inset: 0 0 auto 0;
@@ -249,13 +249,13 @@
     pointer-events: none;
   }
 
-  .rubber-mega-panel[hidden] {
+  .mega-nav-panel[hidden] {
     display: none;
   }
 
   /* Inner content column: same centered max-width + gutter as the rest of
    * the site, laid out as label/chips column + featured column. */
-  .rubber-mega-panel__inner {
+  .mega-nav-panel__inner {
     max-width: var(--container-max);
     margin-inline: auto;
     padding-inline: var(--gutter);
@@ -264,14 +264,14 @@
     gap: 2.5rem;
   }
 
-  .rubber-mega-panel__main {
+  .mega-nav-panel__main {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
 
-  .rubber-mega-panel__head {
+  .mega-nav-panel__head {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -279,13 +279,13 @@
     flex-wrap: wrap;
   }
 
-  .rubber-mega-panel__chips {
+  .mega-nav-panel__chips {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
   }
 
-  .rubber-mega-panel__featured {
+  .mega-nav-panel__featured {
     width: 16rem;
     flex-shrink: 0;
     display: flex;
@@ -295,72 +295,72 @@
 
   /* Section labels, color pins, and "All X" links are now provided by
    * the RubberPlate / RubberChip / RubberButton atoms — the inline
-   * .rubber-mega-link* and .rubber-mega-panel__label rules that used to
+   * .mega-nav-link* and .mega-nav-panel__label rules that used to
    * live here were removed when we migrated the markup. */
 
   /* ── Mobile menu ────────────────────────────────────────────────
    * Slides down on the same raised-surface base as the header. Only
    * present below the md breakpoint.                                  */
-  .rubber-mobile-menu {
+  .mobile-nav-menu {
     background: var(--color-surface-overlay);
     border-top: 1px solid var(--color-edge);
     box-shadow: var(--shadow-card);
   }
-  .rubber-mobile-menu[hidden] {
+  .mobile-nav-menu[hidden] {
     display: none;
   }
   @media (min-width: 768px) {
     /* Desktop uses the mega-nav; the mobile menu never shows. */
-    .rubber-mobile-menu { display: none !important; }
+    .mobile-nav-menu { display: none !important; }
   }
 
-  .rubber-mobile-menu__inner {
+  .mobile-nav-menu__inner {
     padding: 1rem var(--page-gutter);
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
   }
 
-  .rubber-mobile-section__body {
+  .mobile-nav-section__body {
     padding-inline-start: 0.75rem;
     padding-bottom: 0.75rem;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
   }
-  .rubber-mobile-section__body[hidden] {
+  .mobile-nav-section__body[hidden] {
     display: none;
   }
 
-  .rubber-mobile-section__chips {
+  .mobile-nav-section__chips {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
   }
 
   /* Mobile nav links (Contact, Dealer Login) — block rows. */
-  .rubber-mobile-link {
+  .mobile-nav-link {
     display: block;
     padding-block: 0.625rem;
   }
 
-  .rubber-mobile-menu__lang {
+  .mobile-nav-menu__lang {
     padding-top: 0.75rem;
     margin-top: 0.5rem;
     border-top: 1px solid var(--color-edge);
   }
 
   /* Mobile section chevron — rotates when its section is open. */
-  .rubber-mobile-section-toggle__chevron {
+  .mobile-nav-section-toggle__chevron {
     width: 1rem;
     height: 1rem;
     transition: transform var(--duration-base) var(--ease-rubber);
   }
-  .rubber-mobile-section-toggle[aria-expanded='true'] .rubber-mobile-section-toggle__chevron {
+  .mobile-nav-section-toggle[aria-expanded='true'] .mobile-nav-section-toggle__chevron {
     transform: rotate(180deg);
   }
 
-  .rubber-mobile-section-toggle {
+  .mobile-nav-section-toggle {
     width: 100%;
     display: flex;
     align-items: center;
@@ -376,12 +376,12 @@
     transition: background var(--duration-fast) var(--ease-rubber);
   }
 
-  .rubber-mobile-section-toggle:hover {
+  .mobile-nav-section-toggle:hover {
     background: var(--color-surface-sunken);
     color: var(--color-maxam-black);
   }
 
-  .rubber-mobile-section-toggle[aria-expanded='true'] {
+  .mobile-nav-section-toggle[aria-expanded='true'] {
     color: var(--color-maxam-blue);
     background: color-mix(in srgb, var(--color-maxam-blue) 6%, var(--color-surface-overlay));
   }
@@ -391,7 +391,7 @@
    * a dark hero below it without a contrast seam. The mega-nav panel
    * intentionally stays light — it's a drawer of content that pulls
    * out from beneath the bar. */
-  .rubber-header--dark {
+  .site-header--dark {
     background: var(--color-surface-deep);
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
     color: var(--color-maxam-white);
@@ -402,20 +402,20 @@
 
   /* Chamfer flips to a faint top highlight on the dark surface — same
    * idea (light catching the upper edge) but tuned for low contrast. */
-  .rubber-header--dark::before {
+  .site-header--dark::before {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
   }
 
   /* Logo goes white on the dark header bar. */
-  .rubber-header--dark .rubber-header__logo {
+  .site-header--dark .site-header__logo {
     color: var(--color-maxam-white);
   }
 
-  .rubber-header--dark .rubber-nav-trigger {
+  .site-header--dark .site-nav-trigger {
     color: var(--color-maxam-gray-300);
   }
 
-  .rubber-header--dark .rubber-nav-trigger:hover {
+  .site-header--dark .site-nav-trigger:hover {
     color: var(--color-maxam-white);
     background: rgba(255, 255, 255, 0.06);
     border-color: rgba(255, 255, 255, 0.12);
@@ -424,7 +424,7 @@
   /* Pressed-in state on dark: invert the chamfer convention. The well
    * is darker than the surface (deeper hole) with a blue tint to echo
    * the brand accent, plus a faint white bottom highlight. */
-  .rubber-header--dark .rubber-nav-trigger[aria-expanded='true'] {
+  .site-header--dark .site-nav-trigger[aria-expanded='true'] {
     color: var(--color-maxam-white);
     background: color-mix(in srgb, var(--color-maxam-blue) 28%, rgba(0, 0, 0, 0.5));
     border-color: color-mix(in srgb, var(--color-maxam-blue) 40%, rgba(255, 255, 255, 0.08));
@@ -433,35 +433,35 @@
       inset 0 -1px 0 0 rgba(255, 255, 255, 0.1);
   }
 
-  .rubber-header--dark .rubber-nav-link {
+  .site-header--dark .site-nav-link {
     color: var(--color-maxam-gray-300);
   }
 
-  .rubber-header--dark .rubber-nav-link:hover {
+  .site-header--dark .site-nav-link:hover {
     color: var(--color-maxam-white);
     background: rgba(255, 255, 255, 0.06);
   }
 
-  .rubber-header--dark .rubber-mobile-toggle {
+  .site-header--dark .mobile-nav-toggle {
     color: var(--color-maxam-gray-300);
   }
 
-  .rubber-header--dark .rubber-mobile-toggle:hover {
+  .site-header--dark .mobile-nav-toggle:hover {
     color: var(--color-maxam-white);
     background: rgba(255, 255, 255, 0.06);
     border-color: rgba(255, 255, 255, 0.12);
   }
 
   /* Divider before the language switcher needs a lighter rule on dark. */
-  .rubber-header--dark .border-s {
+  .site-header--dark .border-s {
     border-inline-start-color: rgba(255, 255, 255, 0.12) !important;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .rubber-nav-trigger,
-    .rubber-nav-trigger__chevron,
-    .rubber-nav-link,
-    .rubber-mobile-section-toggle {
+    .site-nav-trigger,
+    .site-nav-trigger__chevron,
+    .site-nav-link,
+    .mobile-nav-section-toggle {
       transition: none !important;
     }
   }

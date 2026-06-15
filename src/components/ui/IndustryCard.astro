@@ -1,6 +1,6 @@
 ---
 /*
- * RubberIndustryCard — image-led card matching the homepage promo cards.
+ * IndustryCard — image-led card matching the homepage promo cards.
  *
  * Layout: full-bleed industry photo, with a single industry-colored chip
  * at the bottom-left as the CTA. The chip carries the industry's name
@@ -11,7 +11,7 @@
  * gradient so the card still reads as a tile.
  */
 import type { Industry, Locale } from '../../types';
-import RubberChip from './RubberChip.astro';
+import Chip from './Chip.astro';
 import { industryVars } from '../../lib/style';
 
 interface Props {
@@ -32,8 +32,8 @@ const href = `/${locale}/products/${industry.urlSlug}/`;
 >
   {!industry.heroImage && <span class="industry-card__fallback" aria-hidden="true"></span>}
   <div class="industry-card__chip">
-    <RubberChip variant="industry" size="lg" color={industry.color}>
+    <Chip variant="industry" size="lg" color={industry.color}>
       {industry.name}
-    </RubberChip>
+    </Chip>
   </div>
 </a>

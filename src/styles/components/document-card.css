@@ -9,7 +9,7 @@
  * hover lifts the shadow and nudges the CTA arrow downward. The folded
  * corner mirrors under [dir='rtl'].
  */
-.rubber-document {
+.document-card {
   position: relative;
   display: flex;
   align-items: stretch;
@@ -25,12 +25,12 @@
   isolation: isolate;
 }
 
-.rubber-document:hover {
+.document-card:hover {
   box-shadow: var(--shadow-card-hover);
 }
 
 /* Top chamfer. */
-.rubber-document::before {
+.document-card::before {
   content: '';
   position: absolute;
   inset: 0 0 auto 0;
@@ -41,7 +41,7 @@
 
 /* The document "mark" — a small recessed plate with PDF stamped on it.
  * Square aspect, inset shadow, same molded language as RubberPlate. */
-.rubber-document__mark {
+.document-card__mark {
   flex-shrink: 0;
   width: 56px;
   height: 72px;
@@ -59,7 +59,7 @@
 
 /* Folded-corner detail in the upper-right — a triangle that suggests
  * "this is a paper document" without being a literal skeumorphic icon. */
-.rubber-document__mark::after {
+.document-card__mark::after {
   content: '';
   position: absolute;
   top: 0;
@@ -77,7 +77,7 @@
   border-top-right-radius: var(--radius-tight);
 }
 
-[dir='rtl'] .rubber-document__mark::after {
+[dir='rtl'] .document-card__mark::after {
   right: auto;
   left: 0;
   transform: scaleX(-1);
@@ -85,7 +85,7 @@
   border-top-left-radius: var(--radius-tight);
 }
 
-.rubber-document__mark-label {
+.document-card__mark-label {
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.06em;
@@ -93,7 +93,7 @@
 }
 
 /* Body — stacked metadata + title + cta. */
-.rubber-document__body {
+.document-card__body {
   flex: 1;
   min-width: 0;
   display: flex;
@@ -101,14 +101,14 @@
   gap: 6px;
 }
 
-.rubber-document__meta {
+.document-card__meta {
   display: flex;
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
 }
 
-.rubber-document__title {
+.document-card__title {
   font-size: var(--font-size-base);
   font-weight: 700;
   color: var(--color-maxam-black);
@@ -121,7 +121,7 @@
   overflow: hidden;
 }
 
-.rubber-document__cta {
+.document-card__cta {
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -131,19 +131,19 @@
   margin-top: auto;
 }
 
-.rubber-document__cta-icon {
+.document-card__cta-icon {
   width: 14px;
   height: 14px;
   transition: transform var(--duration-base) var(--ease-rubber);
 }
 
-.rubber-document:hover .rubber-document__cta-icon {
+.document-card:hover .document-card__cta-icon {
   transform: translateY(2px);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rubber-document,
-  .rubber-document__cta-icon {
+  .document-card,
+  .document-card__cta-icon {
     transition: none !important;
   }
 }

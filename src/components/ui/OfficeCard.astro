@@ -1,6 +1,6 @@
 ---
 /**
- * RubberOfficeCard — a regional office location card for the contact page.
+ * OfficeCard — a regional office location card for the contact page.
  *
  * Structure: region-color dot + region name as the header, company name as
  * a subtitle, then one or more location addresses with optional labels
@@ -34,32 +34,32 @@ const { office, class: className } = Astro.props;
 ---
 
 <article
-  class:list={['rubber-office', className]}
+  class:list={['office-card', className]}
   style={industryVars(office.color)}
 >
-  <header class="rubber-office__header">
-    <span class="rubber-office__dot" aria-hidden="true"></span>
-    <h3 class="rubber-office__region">{office.region}</h3>
+  <header class="office-card__header">
+    <span class="office-card__dot" aria-hidden="true"></span>
+    <h3 class="office-card__region">{office.region}</h3>
   </header>
 
-  <p class="rubber-office__company">{office.company}</p>
+  <p class="office-card__company">{office.company}</p>
 
-  <div class="rubber-office__locations">
+  <div class="office-card__locations">
     {office.locations.map((loc) => (
-      <div class="rubber-office__location">
-        {loc.label && <p class="rubber-office__location-label">{loc.label}</p>}
-        <p class="rubber-office__location-address">{loc.address}</p>
+      <div class="office-card__location">
+        {loc.label && <p class="office-card__location-label">{loc.label}</p>}
+        <p class="office-card__location-address">{loc.address}</p>
       </div>
     ))}
   </div>
 
   {office.phones.length > 0 && (
-    <ul class="rubber-office__phones">
+    <ul class="office-card__phones">
       {office.phones.map((phone) => (
         <li>
           <a
             href={`tel:${phone.replace(/[\s()\-+]/g, '')}`}
-            class="rubber-office__phone"
+            class="office-card__phone"
           >
             {phone}
           </a>

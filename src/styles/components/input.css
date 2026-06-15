@@ -8,7 +8,7 @@
  * border and ring while keeping its inset shadow so it still reads as recessed.
  * Modifiers: [data-full] for full-width, [data-error] for red-tinted error state.
  */
-.rubber-input {
+.input {
   appearance: none;
   font-family: inherit;
   font-size: var(--font-size-sm);
@@ -31,27 +31,27 @@
     box-shadow var(--duration-fast) var(--ease-rubber);
 }
 
-.rubber-input[data-full] {
+.input[data-full] {
   display: block;
   width: 100%;
 }
 
-/* lg — matches .rubber-btn[data-size='lg'] (newsletter input + Subscribe). */
-.rubber-input[data-size='lg'] {
+/* lg — matches .btn[data-size='lg'] (newsletter input + Subscribe). */
+.input[data-size='lg'] {
   min-height: var(--control-h-lg);
   font-size: var(--font-size-base);
   padding-inline: 14px;
 }
 
-.rubber-input::placeholder {
+.input::placeholder {
   color: var(--color-maxam-gray-500);
 }
 
-.rubber-input:hover:not(:disabled):not([readonly]) {
+.input:hover:not(:disabled):not([readonly]) {
   border-color: color-mix(in srgb, var(--color-maxam-blue) 25%, var(--color-edge-strong));
 }
 
-.rubber-input:focus {
+.input:focus {
   outline: none;
   background: var(--color-surface-overlay);
   border-color: var(--color-maxam-blue);
@@ -61,21 +61,21 @@
     0 0 0 3px color-mix(in srgb, var(--color-maxam-blue) 20%, transparent);
 }
 
-.rubber-input:disabled {
+.input:disabled {
   opacity: 0.55;
   cursor: not-allowed;
   background: color-mix(in srgb, var(--color-maxam-gray-300) 20%, var(--color-surface-sunken));
 }
 
-.rubber-input[readonly] {
+.input[readonly] {
   background: var(--color-surface-page);
   cursor: default;
 }
 
-.rubber-input[data-error] {
+.input[data-error] {
   border-color: #c83232;
 }
-.rubber-input[data-error]:focus {
+.input[data-error]:focus {
   border-color: #c83232;
   box-shadow:
     inset 0 2px 3px -1px rgba(31, 29, 26, 0.06),
@@ -84,7 +84,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rubber-input {
+  .input {
     transition: none !important;
   }
 }

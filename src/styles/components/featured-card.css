@@ -10,7 +10,7 @@
  * chip color-mix wash; articles fall back to brand blue. Light variant only;
  * 2-line title clamp keeps panel height predictable.
  */
-  .rubber-featured {
+  .featured-card {
     position: relative;
     display: block;
     aspect-ratio: 16 / 9;
@@ -25,12 +25,12 @@
     isolation: isolate;
   }
 
-  .rubber-featured:hover {
+  .featured-card:hover {
     box-shadow: var(--shadow-card-hover);
   }
 
   /* Top edge highlight — chamfer. */
-  .rubber-featured::before {
+  .featured-card::before {
     content: '';
     position: absolute;
     inset: 0 0 auto 0;
@@ -41,14 +41,14 @@
   }
 
   /* Image fills the whole frame. */
-  .rubber-featured__image-frame {
+  .featured-card__image-frame {
     position: absolute;
     inset: 0;
     overflow: hidden;
     background: var(--color-surface-sunken);
   }
 
-  .rubber-featured__image {
+  .featured-card__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -56,7 +56,7 @@
     filter: contrast(1.05);
   }
 
-  .rubber-featured__image-placeholder {
+  .featured-card__image-placeholder {
     width: 100%;
     height: 100%;
     display: flex;
@@ -70,7 +70,7 @@
   }
 
   /* Text panel — bottom-aligned with industry-tinted wash. */
-  .rubber-featured__panel {
+  .featured-card__panel {
     position: absolute;
     inset-inline: 8px;
     bottom: 8px;
@@ -90,7 +90,7 @@
     box-shadow: var(--shadow-card-content);
   }
 
-  .rubber-featured__panel::before {
+  .featured-card__panel::before {
     content: '';
     position: absolute;
     inset: 0 0 auto 0;
@@ -100,7 +100,7 @@
   }
 
   /* Compact molded chip — same language as RubberProductCard but smaller. */
-  .rubber-featured__chip {
+  .featured-card__chip {
     display: inline-flex;
     align-items: center;
     gap: 5px;
@@ -128,7 +128,7 @@
     box-shadow: var(--shadow-inset);
   }
 
-  .rubber-featured__chip-dot {
+  .featured-card__chip-dot {
     width: 6px;
     height: 6px;
     border-radius: 999px;
@@ -136,7 +136,7 @@
     box-shadow: var(--shadow-inset-deep);
   }
 
-  .rubber-featured__title {
+  .featured-card__title {
     font-size: var(--font-size-sm);
     font-weight: 700;
     color: var(--color-maxam-black);

@@ -9,7 +9,7 @@
  * under [dir='rtl']. Modifiers: [data-full] for full-width, [data-error]
  * for red-tinted error state.
  */
-.rubber-select {
+.select {
   appearance: none;
   -webkit-appearance: none;
   font-family: inherit;
@@ -34,21 +34,21 @@
   cursor: pointer;
 }
 
-[dir='rtl'] .rubber-select {
+[dir='rtl'] .select {
   background-position: left 12px center;
   padding: 9px 12px 9px 36px;
 }
 
-.rubber-select[data-full] {
+.select[data-full] {
   display: block;
   width: 100%;
 }
 
-.rubber-select:hover:not(:disabled) {
+.select:hover:not(:disabled) {
   border-color: color-mix(in srgb, var(--color-maxam-blue) 25%, var(--color-edge-strong));
 }
 
-.rubber-select:focus {
+.select:focus {
   outline: none;
   background-color: var(--color-surface-overlay);
   border-color: var(--color-maxam-blue);
@@ -58,17 +58,17 @@
     0 0 0 3px color-mix(in srgb, var(--color-maxam-blue) 20%, transparent);
 }
 
-.rubber-select:disabled {
+.select:disabled {
   opacity: 0.55;
   cursor: not-allowed;
 }
 
-.rubber-select[data-error] {
+.select[data-error] {
   border-color: #c83232;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rubber-select {
+  .select {
     transition: none !important;
   }
 }

@@ -248,7 +248,7 @@ body {
 }
 
 /* MAXAM wordmark — width auto-sizes from height; never shrinks in a flex row.
-   Color + height come from the consuming class (e.g. .rubber-header__logo). */
+   Color + height come from the consuming class (e.g. .site-header__logo). */
 .maxam-logo {
   flex-shrink: 0;
   width: auto;

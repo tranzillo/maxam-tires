@@ -9,7 +9,7 @@
  * bordered byline footer sits at the bottom with name + title/company. RTL
  * mirrors the quote glyph. No hover state — testimonials are static prose.
  */
-  .rubber-testimonial {
+  .testimonial-card {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -24,7 +24,7 @@
   }
 
   /* Top chamfer. */
-  .rubber-testimonial::before {
+  .testimonial-card::before {
     content: '';
     position: absolute;
     inset: 0 0 auto 0;
@@ -37,7 +37,7 @@
    * treated as a stamped plate with recessed inset shadow + bottom
    * highlight. The mark itself is the glyph; the plate around it is
    * built by the box-shadow + background. */
-  .rubber-testimonial__quote-mark {
+  .testimonial-card__quote-mark {
     position: absolute;
     top: -10px;
     inset-inline-start: 20px;
@@ -65,12 +65,12 @@
   }
 
   /* RTL — mirror the quote mark glyph and reposition. */
-  [dir='rtl'] .rubber-testimonial__quote-mark {
+  [dir='rtl'] .testimonial-card__quote-mark {
     transform: scaleX(-1);
   }
 
   /* Quote text — slightly larger than body, slight italic for "voice." */
-  .rubber-testimonial__quote {
+  .testimonial-card__quote {
     font-size: var(--font-size-lg);
     font-weight: 400;
     font-style: italic;
@@ -82,7 +82,7 @@
   }
 
   /* Byline — molded plate treatment at the bottom, like a name tag. */
-  .rubber-testimonial__byline {
+  .testimonial-card__byline {
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -91,14 +91,14 @@
     margin-top: auto;
   }
 
-  .rubber-testimonial__byline-name {
+  .testimonial-card__byline-name {
     font-size: var(--font-size-sm);
     font-weight: 700;
     color: var(--color-maxam-black);
     letter-spacing: -0.005em;
   }
 
-  .rubber-testimonial__byline-org {
+  .testimonial-card__byline-org {
     font-size: 12px;
     color: var(--color-maxam-gray-500);
     line-height: 1.3;

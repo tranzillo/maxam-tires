@@ -5,7 +5,7 @@
  *
  * Deep matte "ground" plane that anchors the bottom of the otherwise warm
  * and light page. Faint top-edge highlight echoes the chamfer treatment used
- * on raised elements above. Provides the dark surface (.rubber-footer),
+ * on raised elements above. Provides the dark surface (.site-footer),
  * uppercase column headings, muted gray links that brighten to white on
  * hover, the centered bottom copyright bar, and prefers-reduced-motion.
  */
@@ -13,7 +13,7 @@
    * warm and light. Treated as the "ground" of the design language: a
    * deep matte surface with a faint top-edge highlight echoing the
    * chamfer treatment used on raised elements above.                  */
-  .rubber-footer {
+  .site-footer {
     position: relative;
     margin-top: auto; /* sticky-footer push inside BaseLayout's flex column */
     background: var(--color-surface-deep);
@@ -78,7 +78,7 @@
     font-weight: 600;
   }
 
-  .footer-nav .rubber-footer__link {
+  .footer-nav .site-footer__link {
     display: inline-flex;
     align-items: center;
     gap: 4px;
@@ -90,16 +90,16 @@
     opacity: 0.7;
   }
 
-  .rubber-footer__link {
+  .site-footer__link {
     color: var(--color-maxam-gray-300);
     text-decoration: none;
     transition: color var(--duration-fast) var(--ease-rubber);
   }
-  .rubber-footer__link:hover {
+  .site-footer__link:hover {
     color: #ffffff;
   }
 
-  .rubber-footer__bottom {
+  .site-footer__bottom {
     margin-top: 32px;
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -109,7 +109,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .rubber-footer__link {
+    .site-footer__link {
       transition: none !important;
     }
   }

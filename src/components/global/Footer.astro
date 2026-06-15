@@ -19,7 +19,7 @@ const year = new Date().getFullYear();
 const copyright = t(locale, 'footer.copyright').replace('{year}', String(year));
 ---
 
-<footer class="rubber-footer">
+<footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-top">
       <!-- Brand -->
@@ -34,18 +34,18 @@ const copyright = t(locale, 'footer.copyright').replace('{year}', String(year));
 
       <!-- Top-level links — parity with the header nav -->
       <nav class="footer-nav">
-        <a href={localePath(locale, '/products')} class="rubber-footer__link">
+        <a href={localePath(locale, '/products')} class="site-footer__link">
           {t(locale, 'nav.products')}
         </a>
-        <a href={localePath(locale, '/resources')} class="rubber-footer__link">
+        <a href={localePath(locale, '/resources')} class="site-footer__link">
           {t(locale, 'nav.resources')}
         </a>
-        <a href={localePath(locale, '/contact')} class="rubber-footer__link">
+        <a href={localePath(locale, '/contact')} class="site-footer__link">
           {t(locale, 'nav.contact')}
         </a>
         <a
           href="http://b2b.maxamtire.com/"
-          class="rubber-footer__link"
+          class="site-footer__link"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -57,7 +57,7 @@ const copyright = t(locale, 'footer.copyright').replace('{year}', String(year));
       </nav>
     </div>
 
-    <div class="rubber-footer__bottom">
+    <div class="site-footer__bottom">
       {copyright}
     </div>
   </div>

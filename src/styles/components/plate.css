@@ -8,7 +8,7 @@
  * via data-size: xs (10px, mega nav labels, card captions) and sm (12px,
  * section eyebrows).
  */
-  .rubber-plate {
+  .plate {
     display: inline-block;
     font-family: inherit;
     font-weight: 700;
@@ -25,13 +25,13 @@
     line-height: 1;
   }
 
-  .rubber-plate[data-size='xs'] {
+  .plate[data-size='xs'] {
     font-size: 10px;
     letter-spacing: 0.08em;
     padding: 4px 9px;
   }
 
-  .rubber-plate[data-size='sm'] {
+  .plate[data-size='sm'] {
     font-size: 12px;
     letter-spacing: 0.06em;
     padding: 5px 11px;

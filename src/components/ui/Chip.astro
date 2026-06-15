@@ -1,6 +1,6 @@
 ---
 /**
- * RubberChip — small categorical label / pill atom.
+ * Chip — small categorical label / pill atom.
  *
  * Replaces the 8 ad-hoc badge / pill styles in the audit (IndustryBadge,
  * article type label, application tag, filter pill, active filter chip, etc).
@@ -71,15 +71,15 @@ const styleAttr = color ? `--chip-color:${color}` : undefined;
 <Tag
   href={href}
   type={!href && interactive ? 'button' : undefined}
-  class:list={['rubber-chip', className]}
+  class:list={['chip', className]}
   style={styleAttr}
   {...dataAttrs}
 >
   {variant === 'industry' && (
-    <span class="rubber-chip__dot" aria-hidden="true"></span>
+    <span class="chip__dot" aria-hidden="true"></span>
   )}
   <slot />
   {dismissable && (
-    <span class="rubber-chip__dismiss" aria-hidden="true">×</span>
+    <span class="chip__dismiss" aria-hidden="true">×</span>
   )}
 </Tag>

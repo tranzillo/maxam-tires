@@ -1,12 +1,12 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import RubberOfficeCard from '../../../components/ui/RubberOfficeCard.astro';
-import RubberField from '../../../components/ui/RubberField.astro';
-import RubberInput from '../../../components/ui/RubberInput.astro';
-import RubberSelect from '../../../components/ui/RubberSelect.astro';
-import RubberTextarea from '../../../components/ui/RubberTextarea.astro';
-import RubberButton from '../../../components/ui/RubberButton.astro';
-import RubberPlate from '../../../components/ui/RubberPlate.astro';
+import OfficeCard from '../../../components/ui/OfficeCard.astro';
+import Field from '../../../components/ui/Field.astro';
+import Input from '../../../components/ui/Input.astro';
+import Select from '../../../components/ui/Select.astro';
+import Textarea from '../../../components/ui/Textarea.astro';
+import Button from '../../../components/ui/Button.astro';
+import Plate from '../../../components/ui/Plate.astro';
 import type { Locale, ContentLanguage } from '../../../types';
 import { locales, t, contentLang } from '../../../lib/i18n';
 import { getAllIndustries } from '../../../lib/data';
@@ -82,7 +82,7 @@ const offices = [
       <!-- Left: Office locations -->
       <div class="contact-page__offices">
         <div class="contact-page__offices-label">
-          <RubberPlate as="h2" size="sm">{t(locale, 'contact.offices.heading')}</RubberPlate>
+          <Plate as="h2" size="sm">{t(locale, 'contact.offices.heading')}</Plate>
         </div>
         <p class="contact-page__offices-intro">
           {t(locale, 'contact.offices.subheading')}
@@ -90,7 +90,7 @@ const offices = [
 
         <div class="contact-page__offices-grid">
           {offices.map((office) => (
-            <RubberOfficeCard office={office} />
+            <OfficeCard office={office} />
           ))}
         </div>
       </div>
@@ -108,38 +108,38 @@ const offices = [
           </div>
 
           <form class="contact-form__body" data-static-form>
-            <RubberField inputId="contact-name" label={t(locale, 'contact.form.name')} required>
-              <RubberInput id="contact-name" name="name" required autocomplete="name" />
-            </RubberField>
+            <Field inputId="contact-name" label={t(locale, 'contact.form.name')} required>
+              <Input id="contact-name" name="name" required autocomplete="name" />
+            </Field>
 
-            <RubberField inputId="contact-email" label={t(locale, 'contact.form.email')} required>
-              <RubberInput id="contact-email" type="email" name="email" required autocomplete="email" />
-            </RubberField>
+            <Field inputId="contact-email" label={t(locale, 'contact.form.email')} required>
+              <Input id="contact-email" type="email" name="email" required autocomplete="email" />
+            </Field>
 
-            <RubberField inputId="contact-phone" label={t(locale, 'contact.form.phone')}>
-              <RubberInput id="contact-phone" type="tel" name="phone" autocomplete="tel" />
-            </RubberField>
+            <Field inputId="contact-phone" label={t(locale, 'contact.form.phone')}>
+              <Input id="contact-phone" type="tel" name="phone" autocomplete="tel" />
+            </Field>
 
-            <RubberField inputId="contact-company" label={t(locale, 'contact.form.company')}>
-              <RubberInput id="contact-company" name="company" autocomplete="organization" />
-            </RubberField>
+            <Field inputId="contact-company" label={t(locale, 'contact.form.company')}>
+              <Input id="contact-company" name="company" autocomplete="organization" />
+            </Field>
 
-            <RubberField inputId="contact-industry" label={t(locale, 'contact.form.industry')}>
-              <RubberSelect id="contact-industry" name="industry">
+            <Field inputId="contact-industry" label={t(locale, 'contact.form.industry')}>
+              <Select id="contact-industry" name="industry">
                 <option value="">{t(locale, 'contact.form.industry_placeholder')}</option>
                 {industries.map((ind) => (
                   <option value={ind.slug}>{ind.name}</option>
                 ))}
-              </RubberSelect>
-            </RubberField>
+              </Select>
+            </Field>
 
-            <RubberField inputId="contact-message" label={t(locale, 'contact.form.message')} required>
-              <RubberTextarea id="contact-message" name="message" rows={4} required />
-            </RubberField>
+            <Field inputId="contact-message" label={t(locale, 'contact.form.message')} required>
+              <Textarea id="contact-message" name="message" rows={4} required />
+            </Field>
 
-            <RubberButton type="submit" variant="primary" size="lg" full>
+            <Button type="submit" variant="primary" size="lg" full>
               {t(locale, 'contact.form.submit')}
-            </RubberButton>
+            </Button>
           </form>
         </div>
       </div>

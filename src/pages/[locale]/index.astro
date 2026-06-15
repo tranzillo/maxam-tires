@@ -3,12 +3,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Section from '../../components/ui/Section.astro';
 import SectionHeader from '../../components/ui/SectionHeader.astro';
 import Grid from '../../components/ui/Grid.astro';
-import RubberIndustryCard from '../../components/ui/RubberIndustryCard.astro';
-import RubberProductCard from '../../components/ui/RubberProductCard.astro';
-import RubberArticleCard from '../../components/ui/RubberArticleCard.astro';
-import RubberButton from '../../components/ui/RubberButton.astro';
-import RubberChip from '../../components/ui/RubberChip.astro';
-import RubberInput from '../../components/ui/RubberInput.astro';
+import IndustryCard from '../../components/ui/IndustryCard.astro';
+import ProductCard from '../../components/ui/ProductCard.astro';
+import ArticleCard from '../../components/ui/ArticleCard.astro';
+import Button from '../../components/ui/Button.astro';
+import Chip from '../../components/ui/Chip.astro';
+import Input from '../../components/ui/Input.astro';
 import type { Locale } from '../../types';
 import { locales, t, localePath } from '../../lib/i18n';
 import {
@@ -58,9 +58,9 @@ const recentArticles = getRecentArticles(locale, 3);
       </h1>
       <p class="hero-description">{pageText(homePage, 'hero.description')}</p>
       <div class="hero-actions">
-        <RubberButton variant="primary" size="lg" href={localePath(locale, pageText(homePage, 'hero.cta_href', '/products'))}>
+        <Button variant="primary" size="lg" href={localePath(locale, pageText(homePage, 'hero.cta_href', '/products'))}>
           {pageText(homePage, 'hero.cta_label')}
-        </RubberButton>
+        </Button>
       </div>
     </div>
   </Section>
@@ -77,13 +77,13 @@ const recentArticles = getRecentArticles(locale, 3);
           <span class="promo-card__overlay" aria-hidden="true"></span>
           {card.tag && (
             <span class="promo-card__tag">
-              <RubberChip variant="solid" size="sm">{card.tag}</RubberChip>
+              <Chip variant="solid" size="sm">{card.tag}</Chip>
             </span>
           )}
           <div class="promo-card__body">
             <h2 class="promo-card__heading">{card.heading}</h2>
             <p class="promo-card__description">{card.description}</p>
-            <RubberChip variant="category" size="lg">{card.ctaLabel}</RubberChip>
+            <Chip variant="category" size="lg">{card.ctaLabel}</Chip>
           </div>
         </a>
       ))}
@@ -97,7 +97,7 @@ const recentArticles = getRecentArticles(locale, 3);
     <ul class="industries-strip__track">
       {industries.map((industry) => (
         <li class="industries-strip__item">
-          <RubberIndustryCard industry={industry} locale={locale} />
+          <IndustryCard industry={industry} locale={locale} />
         </li>
       ))}
     </ul>
@@ -115,7 +115,7 @@ const recentArticles = getRecentArticles(locale, 3);
     <ul class="recent-products__grid">
       {featuredProducts.map((tire) => (
         <li class="recent-products__item">
-          <RubberProductCard tire={tire} locale={locale} />
+          <ProductCard tire={tire} locale={locale} />
         </li>
       ))}
     </ul>
@@ -132,13 +132,13 @@ const recentArticles = getRecentArticles(locale, 3);
       <div class="strip-2col__lead">
         <h2 class="strip-heading">{pageText(homePage, 'sustainability.heading')}</h2>
         <div>
-          <RubberButton
+          <Button
             variant="primary"
             size="lg"
             href={localePath(locale, pageText(homePage, 'sustainability.cta_href', '/sustainability'))}
           >
             {pageText(homePage, 'sustainability.cta_label')}
-          </RubberButton>
+          </Button>
         </div>
       </div>
       <div class="strip-2col__body">
@@ -159,7 +159,7 @@ const recentArticles = getRecentArticles(locale, 3);
       />
       <Grid cols={3} gap="md">
         {recentArticles.map((article) => (
-          <RubberArticleCard article={article} locale={locale} />
+          <ArticleCard article={article} locale={locale} />
         ))}
       </Grid>
     </Section>
@@ -180,7 +180,7 @@ const recentArticles = getRecentArticles(locale, 3);
           {pageText(homePage, 'newsletter.email_label')}
         </label>
         <div class="cta-form__input">
-          <RubberInput
+          <Input
             id="newsletter-email"
             type="email"
             name="email"
@@ -190,9 +190,9 @@ const recentArticles = getRecentArticles(locale, 3);
             size="lg"
           />
         </div>
-        <RubberButton type="submit" variant="primary" size="lg">
+        <Button type="submit" variant="primary" size="lg">
           {pageText(homePage, 'newsletter.submit_label')}
-        </RubberButton>
+        </Button>
       </form>
     </div>
   </Section>

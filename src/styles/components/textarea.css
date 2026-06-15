@@ -9,7 +9,7 @@
  * the field always shows multiple lines. Modifiers: [data-full] for
  * full-width, [data-error] for red-tinted error state.
  */
-.rubber-textarea {
+.textarea {
   appearance: none;
   font-family: inherit;
   font-size: var(--font-size-sm);
@@ -30,20 +30,20 @@
   min-height: 80px;
 }
 
-.rubber-textarea[data-full] {
+.textarea[data-full] {
   display: block;
   width: 100%;
 }
 
-.rubber-textarea::placeholder {
+.textarea::placeholder {
   color: var(--color-maxam-gray-500);
 }
 
-.rubber-textarea:hover:not(:disabled):not([readonly]) {
+.textarea:hover:not(:disabled):not([readonly]) {
   border-color: color-mix(in srgb, var(--color-maxam-blue) 25%, var(--color-edge-strong));
 }
 
-.rubber-textarea:focus {
+.textarea:focus {
   outline: none;
   background: var(--color-surface-overlay);
   border-color: var(--color-maxam-blue);
@@ -53,17 +53,17 @@
     0 0 0 3px color-mix(in srgb, var(--color-maxam-blue) 20%, transparent);
 }
 
-.rubber-textarea:disabled {
+.textarea:disabled {
   opacity: 0.55;
   cursor: not-allowed;
 }
 
-.rubber-textarea[data-error] {
+.textarea[data-error] {
   border-color: #c83232;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rubber-textarea {
+  .textarea {
     transition: none !important;
   }
 }

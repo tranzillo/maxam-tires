@@ -1,8 +1,8 @@
 ---
 /**
- * RubberArticleCard — article card in rubbermorphism language.
+ * ArticleCard — article card in rubbermorphism language.
  *
- * Same stacked-layer structure as RubberProductCard but proportioned for
+ * Same stacked-layer structure as ProductCard but proportioned for
  * editorial content: 4:3 image fills the top, text panel hard-overlaps the
  * bottom and contains type chip + date + title + excerpt. No industry color
  * tinting on the panel since articles don't carry one — neutral overlay
@@ -15,7 +15,7 @@
  */
 import type { Article, Locale } from '../../types';
 import { t } from '../../lib/i18n';
-import RubberChip from './RubberChip.astro';
+import Chip from './Chip.astro';
 
 interface Props {
   article: Article;
@@ -57,45 +57,45 @@ const filterAttrs = showFilterData
 <a
   href={href}
   class:list={[
-    'rubber-article',
+    'article-card',
     showFilterData && 'article-card', // legacy hook for the resources filter JS
     className,
   ]}
   {...externalAttrs}
   {...filterAttrs}
 >
-  <div class="rubber-article__image-frame">
+  <div class="article-card__image-frame">
     {article.featuredImage ? (
       <img
         src={article.featuredImage}
         alt={article.title}
         loading="lazy"
-        class="rubber-article__image"
+        class="article-card__image"
       />
     ) : (
-      <div class="rubber-article__image-placeholder">
+      <div class="article-card__image-placeholder">
         {isDownload ? 'PDF' : article.title}
       </div>
     )}
   </div>
 
-  <div class="rubber-article__panel">
-    <div class="rubber-article__meta">
-      <RubberChip variant="category" size="sm">{typeLabel}</RubberChip>
+  <div class="article-card__panel">
+    <div class="article-card__meta">
+      <Chip variant="category" size="sm">{typeLabel}</Chip>
       {dateFormatted && (
-        <time class="rubber-article__date" datetime={article.date}>{dateFormatted}</time>
+        <time class="article-card__date" datetime={article.date}>{dateFormatted}</time>
       )}
     </div>
 
-    <h3 class="rubber-article__title">{article.title}</h3>
+    <h3 class="article-card__title">{article.title}</h3>
 
     {article.excerpt && (
-      <p class="rubber-article__excerpt">{article.excerpt}</p>
+      <p class="article-card__excerpt">{article.excerpt}</p>
     )}
 
-    <span class="rubber-article__cta">
+    <span class="article-card__cta">
       {actionLabel}
-      <span aria-hidden="true" class="rubber-article__cta-arrow">&rarr;</span>
+      <span aria-hidden="true" class="article-card__cta-arrow">&rarr;</span>
     </span>
   </div>
 </a>

@@ -1,6 +1,6 @@
 ---
 /**
- * RubberInput — single-line text input atom.
+ * Input — single-line text input atom.
  *
  * Recessed-well treatment: the input sits BELOW the surface plane (inset
  * shadow at the top simulates the well's upper edge in shadow). This is
@@ -26,7 +26,7 @@ interface Props {
   /** Error state — red-tinted border + ring. */
   error?: boolean;
   /**
-   * Control height, shared scale with RubberButton (--control-h-*). Use
+   * Control height, shared scale with Button (--control-h-*). Use
    * the same size as an adjacent button so paired controls match height.
    */
   size?: 'md' | 'lg';
@@ -66,6 +66,6 @@ if (size !== 'md') dataAttrs['data-size'] = size;
   readonly={readonly}
   autocomplete={autocomplete}
   aria-invalid={error || undefined}
-  class:list={['rubber-input', className]}
+  class:list={['input', className]}
   {...dataAttrs}
 />

@@ -1,6 +1,6 @@
 ---
 /**
- * RubberPlate — a small molded label plate, like an engraved nameplate on
+ * Plate — a small molded label plate, like an engraved nameplate on
  * industrial equipment. Used for section labels, eyebrow text, kicker
  * captions, or anywhere a small uppercase label needs to read as embedded
  * in the surface rather than floating on it.
@@ -29,6 +29,6 @@ const { as: Tag = 'p', size = 'xs', class: className } = Astro.props;
 const dataAttrs = { 'data-size': size };
 ---
 
-<Tag class:list={['rubber-plate', className]} {...dataAttrs}>
+<Tag class:list={['plate', className]} {...dataAttrs}>
   <slot />
 </Tag>

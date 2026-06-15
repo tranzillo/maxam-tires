@@ -1,6 +1,6 @@
 ---
 /**
- * RubberBreadcrumb — replaces the 3 inline breadcrumb implementations
+ * Breadcrumb — replaces the 3 inline breadcrumb implementations
  * with a single component.
  *
  * Renders a horizontal row of crumbs separated by a chevron. The last
@@ -27,17 +27,17 @@ interface Props {
 const { items, class: className } = Astro.props;
 ---
 
-<nav aria-label="Breadcrumb" class:list={['rubber-breadcrumb', className]}>
-  <ol class="rubber-breadcrumb__list">
+<nav aria-label="Breadcrumb" class:list={['breadcrumb', className]}>
+  <ol class="breadcrumb__list">
     {items.map((crumb, i) => (
-      <li class="rubber-breadcrumb__item">
+      <li class="breadcrumb__item">
         {crumb.href ? (
-          <a href={crumb.href} class="rubber-breadcrumb__link">{crumb.label}</a>
+          <a href={crumb.href} class="breadcrumb__link">{crumb.label}</a>
         ) : (
-          <span class="rubber-breadcrumb__current" aria-current="page">{crumb.label}</span>
+          <span class="breadcrumb__current" aria-current="page">{crumb.label}</span>
         )}
         {i < items.length - 1 && (
-          <span class="rubber-breadcrumb__separator" aria-hidden="true">/</span>
+          <span class="breadcrumb__separator" aria-hidden="true">/</span>
         )}
       </li>
     ))}

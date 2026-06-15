@@ -4,8 +4,8 @@
  * Markup lives in: src/components/ui/RubberProductCard.astro
  *
  * Variants:
- *   .rubber-card--light — default warm off-white surface variant.
- *   .rubber-card--dark  — near-black surface variant with inverted contrast.
+ *   .product-card--light — default warm off-white surface variant.
+ *   .product-card--dark  — near-black surface variant with inverted contrast.
  * Each variant only overrides the --card-* tokens; structural rules are shared.
  * The text panel and industry chip both blend the per-instance --industry-color
  * (set as an inline style on the root) with the surface base via color-mix.
@@ -15,7 +15,7 @@
   /* ── Surface variables (overridden per variant) ──────────────────
    * Each variant just overrides these tokens — everything else stays
    * shared. Adding a new variant later is a one-block change.        */
-  .rubber-card--light {
+  .product-card--light {
     --card-bg: var(--color-surface-raised);
     --card-frame-bg: var(--color-surface-sunken);
     --card-panel-base: var(--color-surface-overlay);
@@ -32,7 +32,7 @@
     --card-placeholder-color: var(--color-maxam-gray-500);
   }
 
-  .rubber-card--dark {
+  .product-card--dark {
     --card-bg: #1f1d1a;                 /* deep matte — the surface-deep token */
     --card-frame-bg: #15140f;
     --card-panel-base: #2a2825;
@@ -52,7 +52,7 @@
   /* ── Card container ──────────────────────────────────────────────
    * Establishes the stacking context, the silhouette, and the surface
    * underneath. No padding — children align to the frame.            */
-  .rubber-card {
+  .product-card {
     position: relative;
     display: block;
     background: var(--card-bg);
@@ -67,12 +67,12 @@
     text-decoration: none;
   }
 
-  .rubber-card:hover {
+  .product-card:hover {
     box-shadow: var(--shadow-card-hover);
   }
 
   /* Top edge highlight — chamfered edge catching upper-left light. */
-  .rubber-card::before {
+  .product-card::before {
     content: '';
     position: absolute;
     inset: 0 0 auto 0;
@@ -83,20 +83,20 @@
   }
 
   /* ── Image frame & layer ────────────────────────────────────────  */
-  .rubber-card__image-frame {
+  .product-card__image-frame {
     position: absolute;
     inset: 0;
     z-index: var(--z-card);
     overflow: hidden;
   }
 
-  .rubber-card__image-layer {
+  .product-card__image-layer {
     position: absolute;
     inset: 0;
     margin-block-end: 4em;
   }
 
-  .rubber-card__image {
+  .product-card__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -104,7 +104,7 @@
     filter: contrast(1.05);
   }
 
-  .rubber-card__image-placeholder {
+  .product-card__image-placeholder {
     width: 100%;
     height: 100%;
     display: flex;
@@ -119,7 +119,7 @@
    * Sibling layer floating over the bottom of the image. Hard overlap.
    * Industry color washes the panel via color-mix at tints defined
    * by the variant.                                                   */
-  .rubber-card__panel {
+  .product-card__panel {
     position: absolute;
     inset-inline: 12px;
     bottom: 12px;
@@ -140,7 +140,7 @@
   }
 
   /* Panel top edge highlight. */
-  .rubber-card__panel::before {
+  .product-card__panel::before {
     content: '';
     position: absolute;
     inset: 0 0 auto 0;
@@ -154,7 +154,7 @@
    * atom — its styling lives in chip.css. This wrapper only positions
    * the chip in the upper-left of the image frame, occupying the
    * negative space around the tire photo. */
-  .rubber-card__chip {
+  .product-card__chip {
     position: absolute;
     top: 6px;
     inset-inline-start: 12px;
@@ -162,7 +162,7 @@
   }
 
   /* ── Typography on the panel ──────────────────────────────────── */
-  .rubber-card__title {
+  .product-card__title {
     font-size: var(--font-size-xl);
     font-weight: 700;
     color: var(--card-title-color);
@@ -171,12 +171,12 @@
     letter-spacing: -0.01em;
   }
 
-  .rubber-card__subheading {
+  .product-card__subheading {
     font-size: var(--font-size-sm);
     color: var(--card-subheading-color);
   }
 
-  .rubber-card__cta {
+  .product-card__cta {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -189,26 +189,26 @@
     );
   }
 
-  .rubber-card__cta-arrow {
+  .product-card__cta-arrow {
     display: inline-block;
     transition: transform var(--duration-base) var(--ease-rubber);
   }
 
-  .rubber-card:hover .rubber-card__cta-arrow {
+  .product-card:hover .product-card__cta-arrow {
     transform: translateX(3px);
   }
 
   /* RTL: mirror the arrow; hover still nudges in the reading direction. */
-  [dir='rtl'] .rubber-card__cta-arrow {
+  [dir='rtl'] .product-card__cta-arrow {
     transform: scaleX(-1);
   }
-  [dir='rtl'] .rubber-card:hover .rubber-card__cta-arrow {
+  [dir='rtl'] .product-card:hover .product-card__cta-arrow {
     transform: scaleX(-1) translateX(3px);
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .rubber-card,
-    .rubber-card__cta-arrow {
+    .product-card,
+    .product-card__cta-arrow {
       transition: none !important;
     }
   }

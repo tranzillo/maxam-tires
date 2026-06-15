@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import NotionBlocks from '../../../components/NotionBlocks.astro';
-import RubberBreadcrumb from '../../../components/ui/RubberBreadcrumb.astro';
-import RubberChip from '../../../components/ui/RubberChip.astro';
-import RubberButton from '../../../components/ui/RubberButton.astro';
+import Breadcrumb from '../../../components/ui/Breadcrumb.astro';
+import Chip from '../../../components/ui/Chip.astro';
+import Button from '../../../components/ui/Button.astro';
 import type { Locale } from '../../../types';
 import { locales, t, localePath } from '../../../lib/i18n';
 import { getAllArticles, getArticleBySlug, getArticleBlocks } from '../../../lib/data';
@@ -42,7 +42,7 @@ const typeLabel = t(locale, `resources.type.${article.type}`) || article.type;
 <BaseLayout locale={locale} title={article.title}>
   <article class="article-page">
     <div class="article-page__breadcrumb">
-      <RubberBreadcrumb items={[
+      <Breadcrumb items={[
         { label: t(locale, 'nav.resources'), href: localePath(locale, '/resources') },
         { label: article.title },
       ]} />
@@ -50,7 +50,7 @@ const typeLabel = t(locale, `resources.type.${article.type}`) || article.type;
 
     <header class="article-page__header">
       <div class="article-page__meta">
-        <RubberChip variant="category" size="sm">{typeLabel}</RubberChip>
+        <Chip variant="category" size="sm">{typeLabel}</Chip>
         {article.date && (
           <time class="article-page__date" datetime={article.date}>{dateFormatted}</time>
         )}
@@ -74,10 +74,10 @@ const typeLabel = t(locale, `resources.type.${article.type}`) || article.type;
     </section>
 
     <div class="article-page__back">
-      <RubberButton variant="ghost" size="md" href={localePath(locale, '/resources')}>
+      <Button variant="ghost" size="md" href={localePath(locale, '/resources')}>
         <span class="article-page__back-arrow" aria-hidden="true">←</span>
         {t(locale, 'nav.resources')}
-      </RubberButton>
+      </Button>
     </div>
   </article>
 </BaseLayout>

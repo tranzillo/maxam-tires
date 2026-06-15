@@ -1,6 +1,6 @@
 ---
 /**
- * RubberEventCard — date-prominent card for trade shows and events.
+ * EventCard — date-prominent card for trade shows and events.
  *
  * Composition: a large recessed date plate on the left (month + day),
  * then title + date range + location stacked on the right. The date
@@ -70,21 +70,21 @@ const Tag = event.href ? 'a' : 'div';
 
 <Tag
   href={event.href}
-  class:list={['rubber-event', className]}
+  class:list={['event-card', className]}
 >
-  <div class="rubber-event__date" aria-hidden={start.valid ? undefined : 'true'}>
+  <div class="event-card__date" aria-hidden={start.valid ? undefined : 'true'}>
     {start.valid && (
       <>
-        <span class="rubber-event__date-month">{start.month}</span>
-        <span class="rubber-event__date-day">{start.day}</span>
+        <span class="event-card__date-month">{start.month}</span>
+        <span class="event-card__date-day">{start.day}</span>
       </>
     )}
   </div>
 
-  <div class="rubber-event__body">
-    <h3 class="rubber-event__title">{event.title}</h3>
+  <div class="event-card__body">
+    <h3 class="event-card__title">{event.title}</h3>
     {(dateRange || event.location) && (
-      <p class="rubber-event__meta">
+      <p class="event-card__meta">
         {dateRange}
         {dateRange && event.location && <span aria-hidden="true"> · </span>}
         {event.location}

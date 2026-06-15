@@ -1,6 +1,6 @@
 ---
 /**
- * RubberSelect — native <select> styled to match RubberInput's recessed well.
+ * Select — native <select> styled to match Input's recessed well.
  *
  * Native select dropdowns are stubborn cross-browser; we restyle the closed
  * state (which we control) and accept the browser's native open menu.
@@ -43,7 +43,7 @@ if (error) dataAttrs['data-error'] = true;
   disabled={disabled}
   aria-label={ariaLabel}
   aria-invalid={error || undefined}
-  class:list={['rubber-select', className]}
+  class:list={['select', className]}
   {...dataAttrs}
 >
   <slot />

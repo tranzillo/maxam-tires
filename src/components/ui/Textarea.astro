@@ -1,7 +1,7 @@
 ---
 /**
- * RubberTextarea — multi-line text input atom, same recessed-well language
- * as RubberInput.
+ * Textarea — multi-line text input atom, same recessed-well language
+ * as Input.
  */
 interface Props {
   name?: string;
@@ -43,6 +43,6 @@ if (error) dataAttrs['data-error'] = true;
   disabled={disabled}
   readonly={readonly}
   aria-invalid={error || undefined}
-  class:list={['rubber-textarea', className]}
+  class:list={['textarea', className]}
   {...dataAttrs}
 />
