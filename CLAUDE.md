@@ -24,14 +24,14 @@ secure and finish what exists.** Order:
 1. ✅ **Session 1 — repo integrity (DONE 2026-06-13).** Branch
    `chore/repo-integrity`, pushed to origin. Not yet merged to `main` — open a PR.
 2. **Session 2 — this doc.** Make CLAUDE.md current (in progress / done).
-3. **Session 3 — decide the empty-locale question.** 6 front-end locales
-   (es/fr/it/ja/pt-pt/ru) are routable but their product/article content was
-   imported to Notion and **never synced into the snapshot** — so `/es/products/`
-   renders ZERO products. Either (a) finish syncing their content, or (b) reduce
-   emitted locales to those WITH content and fence the rest behind a flag.
-   **Do not keep shipping empty locales.**
-4. Then: LanguageSwitcher hreflang/trid resolution, `prose-content.css`, the
+3. ✅ **Session 3 — empty locales fixed (DONE 2026-06-13).** Synced
+   es/fr/it/ja/pt-pt/ru content into the snapshot: all 10 content languages now
+   have 117 products + native homepage Pages + product block bodies. Build
+   4467 → 5363 pages; every locale renders 123 product pages + native hero
+   (verified). Resources stayed English-only (no dupe regeneration).
+4. **Next:** LanguageSwitcher hreflang/trid resolution, `prose-content.css`, the
    Tailwind removal, the Rubber→semantic rename. (Original recovery phases.)
+   Also: open the PR for `chore/repo-integrity` and merge to `main`.
 
 **Principle: stop adding breadth. Commit and document what exists, then finish or
 fence the language port before any further expansion.**
@@ -190,10 +190,6 @@ a locale.
 
 ## Known issues / open loops (don't re-discover; map in docs/AUDIT-2026-06-13.md)
 
-- **6 locales ship EMPTY** (es/fr/it/ja/pt-pt/ru + aliases es-mx/fr-ca): products
-  + homepage Pages content were imported to Notion but the **snapshot was never
-  synced**, so `products.json`/`pages.json` only hold en/de/ar-ae/zh-hant. These
-  locales route but render zero products / blank hero. **Session 3 decision.**
 - **Product specs don't flow from Notion**: `product-specs.*.json` is built by
   `build-product-specs.ts` from the frozen WP export (`scripts/output/tires-*.json`).
   Editing specs in Notion changes nothing. Fix = a structured Specs Notion DB.
