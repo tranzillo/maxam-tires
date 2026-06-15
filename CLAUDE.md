@@ -210,12 +210,6 @@ a locale.
 - **Contact offices hardcoded** in `contact/index.astro` frontmatter (should be a
   Notion record). **Featured-product** logic and **homepage Pages content** for
   the 6 unsynced languages still incomplete.
-- **`[table content omitted]` in ~36 resource articles.** The WP→Notion HTML
-  converter (`scripts/html-to-notion.ts:276`) substitutes that literal text when
-  it hits a `<table>` it can't convert — so those articles lost their tables on
-  import, and the placeholder is now baked into the block sidecars. Fix: teach
-  the converter to emit a real Notion table block, then re-import + re-sync the
-  affected English articles. (Resources are English-only, so en only.)
 - **`/sustainability` dead-end CTA** on the homepage (page not built). Events sync
   but have no route.
 - **Images**: ~900 product/article images hotlink the live maxamtire.com —
@@ -223,6 +217,18 @@ a locale.
 - **The "three half-finished migrations" cluster is CLOSED** (2026-06-13):
   Tailwind removed (#1), Rubber→semantic rename done (#2), old-gen components +
   design gallery deleted. Styling is now one consistent semantic system.
+- **`[table content omitted]` is FIXED** (2026-06-15): the converter
+  (`scripts/html-to-notion.ts`) now emits real Notion table blocks via
+  `tableBlock()` instead of the placeholder. The originally-planned Notion
+  re-import was abandoned: the affected articles' sidecars came from an older
+  import and 34 of 36 no longer exist in the current Notion Articles DB, so a
+  round-trip was impossible. Instead `scripts/regen-article-table-sidecars.ts`
+  regenerates the affected `article-en-*.json` sidecars directly from the WP
+  extract (`scripts/output/articles-en.json` — the same source the article
+  snapshot was built from), normalizing tables to the reader's read-API shape
+  (rows at top-level `children`, not `table.children`). Verified: 0 placeholders
+  and 476 article dist pages render real `<table>`s. If articles are ever
+  re-imported into Notion proper, this regen becomes unnecessary.
 - **PR not merged**: the `chore/repo-integrity` branch (Session 1) is pushed but
   not merged to `main`.
 

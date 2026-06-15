@@ -257,8 +257,11 @@ function tableBlock(node: any): NotionBlock | null {
       table_width: width,
       has_column_header: hasColumnHeader,
       has_row_header: false,
+      // Row blocks live UNDER table.children when creating via the API
+      // (matches the working spec-table importer). The synced/read shape
+      // exposes them as block.children, which NotionBlocks.astro reads.
+      children,
     },
-    children,
   };
 }
 
