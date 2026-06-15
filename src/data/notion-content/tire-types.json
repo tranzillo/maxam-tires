@@ -1,5 +1,93 @@
 [
   {
+    "pageId": "38034d6d-7cea-81f1-af6c-c35ecbd0be56",
+    "trid": 13667,
+    "language": "de",
+    "name": "Vollgummi aufsteckbar",
+    "slug": "solid-press-on-de",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8129-ab93-c42bd9e6f37c",
+    "trid": 13672,
+    "language": "de",
+    "name": "Vollgummi",
+    "slug": "solid-resilient-de",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-814e-a9d4-c02717b49e83",
+    "trid": 13666,
+    "language": "de",
+    "name": "Vollgummi",
+    "slug": "solid-de",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81bd-8f7f-cde5b128b4ef",
+    "trid": 13673,
+    "language": "de",
+    "name": "Traktion",
+    "slug": "traction-de",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8168-b932-e087c5e3939b",
+    "trid": 13668,
+    "language": "de",
+    "name": "Schräg",
+    "slug": "bias-de",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-811c-8a58-c8fb6f46213d",
+    "trid": 13671,
+    "language": "de",
+    "name": "Radialreifen",
+    "slug": "radial-de",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-810e-ac48-c3163c03d10b",
+    "trid": 13664,
+    "language": "de",
+    "name": "LS2",
+    "slug": "ls2-de",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81b5-adc0-e69bd300482b",
+    "trid": 13670,
+    "language": "de",
+    "name": "HF4 Flotation",
+    "slug": "hf4-flotation-de",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-815c-9d71-daa2e9591348",
+    "trid": 95447,
+    "language": "de",
+    "name": "Gummi-Raupenketten",
+    "slug": "rubber-track-de",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-816b-94f8-cdc4312e0534",
+    "trid": 13665,
+    "language": "de",
+    "name": "Glatt",
+    "slug": "smooth-de",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8170-9b03-e7a40c5f130c",
+    "trid": 13663,
+    "language": "de",
+    "name": "Ganzstahlradial",
+    "slug": "all-steel-radial-de",
+    "translationIds": []
+  },
+  {
     "pageId": "35534d6d-7cea-8190-a83b-ce678bf395bc",
     "trid": 13663,
     "language": "zh-hant",

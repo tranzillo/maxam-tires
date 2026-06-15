@@ -1,5 +1,103 @@
 [
   {
+    "pageId": "38034d6d-7cea-8128-9e31-c4683ab27ecd",
+    "trid": 95247,
+    "language": "de",
+    "name": "TBR-Reifen (Truck-, Bus- und Radialreifen)",
+    "slug": "tbr-de",
+    "color": "#0077c8",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ae-85c5-f14b08923472",
+    "trid": 587,
+    "language": "de",
+    "name": "Reifen für die Forstwirtschaft",
+    "slug": "forestry-tires",
+    "color": "#dcb127",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/forestry-bg-01-min.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-811a-9400-f182018a4feb",
+    "trid": 591,
+    "language": "de",
+    "name": "Reifen für den Untertage-Bergbau",
+    "slug": "underground-mining-tires",
+    "color": "#000000",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/underground-mining-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8106-bc49-f2b34b9045ad",
+    "trid": 584,
+    "language": "de",
+    "name": "OTR Vollgummireifen",
+    "slug": "solid-otr-tires",
+    "color": "#092479",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/solid-OTR-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8163-b188-e68b6dce6f36",
+    "trid": 590,
+    "language": "de",
+    "name": "Offroad-Reifen",
+    "slug": "off-the-road-tires",
+    "color": "#0077c8",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/OTR-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81cf-bb24-cb1570bf99c4",
+    "trid": 585,
+    "language": "de",
+    "name": "Landwirtschaftsreifen",
+    "slug": "agricultural-tractor-tires",
+    "color": "#009042",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/agriculture-02.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81f4-8b33-cd18cb637ae2",
+    "trid": 588,
+    "language": "de",
+    "name": "Industriereifen",
+    "slug": "industrial-forklift-tires",
+    "color": "#9e0b0f",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/material-handling-02.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81c2-ab13-e29fb95fe93c",
+    "trid": 95441,
+    "language": "de",
+    "name": "Gummi-Raupenketten",
+    "slug": "rubber-tracks-de",
+    "color": "#0077c8",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81c2-8ba4-f76dea8666f2",
+    "trid": 589,
+    "language": "de",
+    "name": "Bergbaureifen",
+    "slug": "mining-tires",
+    "color": "#65686d",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/mining-02.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-813d-8de7-e98de078ed75",
+    "trid": 586,
+    "language": "de",
+    "name": "Baumaschinenreifen",
+    "slug": "construction-tires",
+    "color": "#f79425",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2025/02/construction-product-page_features-benes-background-1.png",
+    "translationIds": []
+  },
+  {
     "pageId": "35534d6d-7cea-8121-bfaa-db93dc5f5df8",
     "trid": 590,
     "language": "zh-hant",
