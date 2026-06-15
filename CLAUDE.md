@@ -75,9 +75,12 @@ lookups use the resolved 10. `getLang`/`getDir`/`localeName` cover all 14.
    `.pagination`, `.app-shell`. **`global.css` @import rules MUST stay at the
    TOP of the file** (CSS spec; Vite drops imports placed after other rules).
    New styling → `src/styles/**`, never utility classes in markup.
-2. **No `Rubber*` / `rubber-` naming** for anything new. The 17 `Rubber*`
-   components + `.rubber-*` selectors are legacy pending a rename phase. Don't
-   extend the pattern; don't rename ad-hoc.
+2. **No `Rubber*` / `rubber-` naming.** *DONE 2026-06-13:* the prefix is gone
+   everywhere — components are semantic (`Button`, `Chip`, `ProductCard`,
+   `SiteHeader`…), CSS classes are semantic (`.btn`, `.product-card`,
+   `.site-header`, `.mega-nav`, `.mobile-nav`…). Only `--ease-rubber` (a motion
+   token) and "rubbermorphism" design-language comments remain — those are the
+   intentional visual vocabulary, not the banned prefix. Don't reintroduce it.
 3. **All editorial content flows from Notion** via `npm run sync` →
    `src/data/notion-content/*.json` → `src/lib/data.ts` → pages. `scripts/output/`
    holds **frozen one-time WP-migration artifacts** — never wire them as live
@@ -217,10 +220,9 @@ a locale.
   but have no route.
 - **Images**: ~900 product/article images hotlink the live maxamtire.com —
   re-host before launch.
-- **Rubber naming** still present (decision #2) — the mechanical rename
-  (RubberX.astro → X.astro, `.rubber-*` → semantic) is the next planned phase.
-  (Tailwind removal, decision #1, is DONE.)
-- **Design gallery + 8 old-gen components deleted** 2026-06-13 (were dead).
+- **The "three half-finished migrations" cluster is CLOSED** (2026-06-13):
+  Tailwind removed (#1), Rubber→semantic rename done (#2), old-gen components +
+  design gallery deleted. Styling is now one consistent semantic system.
 - **PR not merged**: the `chore/repo-integrity` branch (Session 1) is pushed but
   not merged to `main`.
 
