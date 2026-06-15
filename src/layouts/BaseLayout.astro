@@ -40,9 +40,9 @@ const alternates = locales.map((loc) => ({ hreflang: getLang(loc), href: localeP
     <link rel="alternate" hreflang="x-default" href={localePath(defaultLocale, tail)} />
     <title>{pageTitle}</title>
   </head>
-  <body class="min-h-screen flex flex-col text-maxam-gray-900" style="background: var(--color-surface-page);">
+  <body class="app-shell">
     <RubberHeader locale={locale} variant="dark" />
-    <main class="flex-1">
+    <main class="app-shell__main">
       <slot />
     </main>
     <Footer locale={locale} />

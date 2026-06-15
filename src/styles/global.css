@@ -190,6 +190,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* App shell — sticky footer column: header + flex-1 main + footer. */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface-page);
+}
+.app-shell__main {
+  flex: 1;
+}
+
 /* RTL utilities */
 [dir='rtl'] {
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans Arabic', sans-serif;
@@ -247,6 +258,7 @@ body {
 @import './components/filter-sidebar.css';
 @import './components/footer.css';
 @import './components/header.css';
+@import './components/language-switcher.css';
 @import './components/tire-gallery.css';
 @import './components/spec-viewer.css';
 @import './components/spec-selector.css';

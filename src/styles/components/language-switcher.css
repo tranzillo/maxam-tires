@@ -1,0 +1,37 @@
+/*
+ * LanguageSwitcher — the locale <select> in the header chrome.
+ *
+ * Markup lives in: src/components/global/LanguageSwitcher.astro
+ *
+ * A compact dark-styled native select. Sits in the header bar (and the
+ * mobile menu); its dark surface reads against the dark header variant.
+ */
+
+.lang-switcher {
+  position: relative;
+  display: inline-block;
+}
+
+.lang-switcher__select {
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  color: var(--color-maxam-gray-300);
+  background: var(--color-surface-deep);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-tight);
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease-rubber),
+    border-color var(--duration-fast) var(--ease-rubber);
+}
+
+.lang-switcher__select:hover {
+  color: var(--color-maxam-white);
+}
+
+.lang-switcher__select:focus-visible {
+  outline: none;
+  border-color: var(--color-maxam-blue);
+  box-shadow: 0 0 0 1px var(--color-maxam-blue);
+}

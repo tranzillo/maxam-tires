@@ -29,10 +29,10 @@ const localeOptions = locales.map((loc) => ({
 }));
 ---
 
-<div class="relative inline-block">
+<div class="lang-switcher">
   <select
     id="lang-select"
-    class="bg-maxam-gray-900 text-maxam-gray-300 text-sm border border-maxam-gray-700 rounded px-2 py-1 cursor-pointer hover:text-maxam-white focus:outline-none focus:ring-1 focus:ring-maxam-blue"
+    class="lang-switcher__select"
     aria-label="Select language"
   >
     {localeOptions.map((opt) => (
