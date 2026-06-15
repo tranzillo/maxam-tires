@@ -43,6 +43,9 @@
 
   .rubber-header__bar {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding-block: 1rem;
     padding-inline: var(--page-gutter);
   }
@@ -57,6 +60,43 @@
 
   .rubber-header__logo-link:hover {
     opacity: 0.8;
+  }
+
+  /* Logo size + color (color follows the header variant). */
+  .rubber-header__logo {
+    height: 1.25rem;
+    color: var(--color-maxam-blue);
+  }
+  @media (min-width: 768px) {
+    .rubber-header__logo { height: 1.5rem; }
+  }
+
+  /* ── Desktop nav row — hidden below md, flex row above ───────────── */
+  .rubber-header__nav {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .rubber-header__nav {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+  }
+
+  /* Language-switcher cell — small leading divider. */
+  .rubber-header__lang {
+    margin-inline-start: 0.5rem;
+    padding-inline-start: 0.75rem;
+    border-inline-start: 1px solid var(--color-edge);
+  }
+
+  /* Inline directional arrow (→) — mirrors in RTL. */
+  .rubber-arrow {
+    display: inline-block;
+    margin-inline-start: 0.25rem;
+  }
+  [dir='rtl'] .rubber-arrow {
+    transform: scaleX(-1);
   }
 
   /* ── Nav triggers (pill-shaped molded buttons) ─────────────────
@@ -168,6 +208,11 @@
       border-color var(--duration-fast) var(--ease-rubber);
   }
 
+  .rubber-mobile-toggle__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
   .rubber-mobile-toggle:hover {
     color: var(--color-maxam-black);
     background: color-mix(in srgb, var(--color-maxam-blue) 5%, var(--color-surface-raised));
@@ -204,17 +249,115 @@
     pointer-events: none;
   }
 
+  .rubber-mega-panel[hidden] {
+    display: none;
+  }
+
+  /* Inner content column: same centered max-width + gutter as the rest of
+   * the site, laid out as label/chips column + featured column. */
+  .rubber-mega-panel__inner {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    padding-block: 2rem;
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  .rubber-mega-panel__main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .rubber-mega-panel__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .rubber-mega-panel__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .rubber-mega-panel__featured {
+    width: 16rem;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
   /* Section labels, color pins, and "All X" links are now provided by
    * the RubberPlate / RubberChip / RubberButton atoms — the inline
    * .rubber-mega-link* and .rubber-mega-panel__label rules that used to
    * live here were removed when we migrated the markup. */
 
   /* ── Mobile menu ────────────────────────────────────────────────
-   * Slides down on the same raised-surface base as the header.       */
+   * Slides down on the same raised-surface base as the header. Only
+   * present below the md breakpoint.                                  */
   .rubber-mobile-menu {
     background: var(--color-surface-overlay);
     border-top: 1px solid var(--color-edge);
     box-shadow: var(--shadow-card);
+  }
+  .rubber-mobile-menu[hidden] {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    /* Desktop uses the mega-nav; the mobile menu never shows. */
+    .rubber-mobile-menu { display: none !important; }
+  }
+
+  .rubber-mobile-menu__inner {
+    padding: 1rem var(--page-gutter);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .rubber-mobile-section__body {
+    padding-inline-start: 0.75rem;
+    padding-bottom: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .rubber-mobile-section__body[hidden] {
+    display: none;
+  }
+
+  .rubber-mobile-section__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* Mobile nav links (Contact, Dealer Login) — block rows. */
+  .rubber-mobile-link {
+    display: block;
+    padding-block: 0.625rem;
+  }
+
+  .rubber-mobile-menu__lang {
+    padding-top: 0.75rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--color-edge);
+  }
+
+  /* Mobile section chevron — rotates when its section is open. */
+  .rubber-mobile-section-toggle__chevron {
+    width: 1rem;
+    height: 1rem;
+    transition: transform var(--duration-base) var(--ease-rubber);
+  }
+  .rubber-mobile-section-toggle[aria-expanded='true'] .rubber-mobile-section-toggle__chevron {
+    transform: rotate(180deg);
   }
 
   .rubber-mobile-section-toggle {
@@ -261,6 +404,11 @@
    * idea (light catching the upper edge) but tuned for low contrast. */
   .rubber-header--dark::before {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  /* Logo goes white on the dark header bar. */
+  .rubber-header--dark .rubber-header__logo {
+    color: var(--color-maxam-white);
   }
 
   .rubber-header--dark .rubber-nav-trigger {
