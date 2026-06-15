@@ -1,191 +1,224 @@
 # MAXAM Tires — Astro Rebuild
 
-> **This is the contract document.** It records the standing decisions and the real
-> architecture. It overrides every other doc when they disagree.
-> **Maintenance rule: when a decision is made in a session, record it here in that
-> same session.** This file going stale is how the project previously drifted —
-> see `docs/AUDIT-2026-06-10.md` for what that cost.
+> **This is the contract document.** It records the standing decisions and the
+> real architecture, and overrides every other doc when they disagree.
+> **Maintenance rule: when a decision is made or the architecture changes in a
+> session, update this file in that same session.** This file going stale is how
+> the project repeatedly drifted — see `docs/AUDIT-2026-06-10.md` and
+> `docs/AUDIT-2026-06-13.md` for what that cost.
 
-Rebuild of maxamtire.com: WordPress (ACF Pro, WPML, 47 plugins) → **Astro 6 SSG +
-Notion CMS + custom central CSS + Netlify**. Three locales: `en`, `ar-ae` (RTL
-Arabic), `zh-hant` (Traditional Chinese). ~1050 static pages; the build is fully
-offline (no API calls). Content stays consistent with WP; the design is a
-modernized system, **not** a clone of the WP look. The WP install
-(`C:\Users\kappa\Local Sites\site-maxam-live-...`) is reference material only.
-
----
-
-## CURRENT PRIORITY (set 2026-06-10)
-
-**Prototype sprint.** Goal: an internally publishable prototype that looks and
-feels like the final product. The user leads a page-by-page walkthrough
-(homepage → resources → product → industry) and points out design / UX /
-structure changes. Implement exactly those — styling and HTML structure changes
-in the existing central CSS + components.
-
-**During the sprint, do NOT refactor.** No Tailwind removal, no Rubber renames,
-no slug/i18n overhauls, no pipeline changes — unless the user explicitly asks.
-Opportunistic fixes only when already on the affected page.
-
-After the prototype ships internally: execute the recovery phases in
-`docs/AUDIT-2026-06-10.md` (repo integrity → slug identity → Tailwind removal →
-rename pass → close content loops).
+Rebuild of maxamtire.com: WordPress (ACF Pro, WPML, 47 plugins) → **Astro 6 SSG
++ Notion CMS + custom central CSS + Netlify**. Content stays consistent with WP;
+the design is a modernized system, **not** a clone of the WP look. The build is
+fully offline — Astro reads committed JSON snapshots, never the Notion API. The
+WP install (`C:\Users\kappa\Local Sites\site-maxam-live-...`, MySQL on port
+**10023**) is reference/extraction material only.
 
 ---
 
-## Standing decisions (chronological decisions override older docs)
+## CURRENT PRIORITY (set 2026-06-13, after the re-audit)
 
-1. **No Tailwind.** Styling = semantic class names + central CSS files.
-   *Current state:* Tailwind is still installed and load-bearing (the `@theme`
-   token block in `global.css` and ~26 files with utility classes are legacy).
-   Do not ADD new utility classes anywhere; new styling goes in
-   `src/styles/components/*.css` or `src/styles/pages/*.css`. Full removal is a
-   planned recovery phase — don't do it piecemeal.
-2. **No `Rubber*` / `rubber-` naming** for any new component, class, or file.
-   The 17 existing `Rubber*` components and `.rubber-*` selectors are legacy
-   pending a mechanical rename phase. Don't extend the pattern; don't rename
-   ad-hoc mid-task either.
+Follow the recovery sequence in `docs/AUDIT-2026-06-13.md`. **Do not add breadth;
+secure and finish what exists.** Order:
+
+1. ✅ **Session 1 — repo integrity (DONE 2026-06-13).** Branch
+   `chore/repo-integrity`, pushed to origin. Not yet merged to `main` — open a PR.
+2. **Session 2 — this doc.** Make CLAUDE.md current (in progress / done).
+3. **Session 3 — decide the empty-locale question.** 6 front-end locales
+   (es/fr/it/ja/pt-pt/ru) are routable but their product/article content was
+   imported to Notion and **never synced into the snapshot** — so `/es/products/`
+   renders ZERO products. Either (a) finish syncing their content, or (b) reduce
+   emitted locales to those WITH content and fence the rest behind a flag.
+   **Do not keep shipping empty locales.**
+4. Then: LanguageSwitcher hreflang/trid resolution, `prose-content.css`, the
+   Tailwind removal, the Rubber→semantic rename. (Original recovery phases.)
+
+**Principle: stop adding breadth. Commit and document what exists, then finish or
+fence the language port before any further expansion.**
+
+---
+
+## The locale model (the central architectural concept — 2026-06-13)
+
+Two distinct concepts, defined in `src/types/index.ts` + `src/lib/i18n.ts`:
+
+- **`ContentLanguage` (10):** languages we actually STORE — one set of Notion
+  rows + one translation file each. `en, ar-ae, zh-hant, de, es, fr, it, ja,
+  pt-pt, ru`.
+- **`Locale` (14):** front-end URL prefixes + language-switcher options. The 10
+  content languages **plus** 4 regional variants (`en-ca, en-uk, es-mx, fr-ca`)
+  that **alias** to a base via `LOCALE_ALIASES`. A `/fr-ca/` visitor gets
+  `/fr-ca/…` URLs but sees `fr` content. (Verified: WPML regional variants are
+  byte-identical clones — storing them separately would be pure duplication.)
+
+`contentLang(locale)` resolves a front-end locale → its content language. **Every
+data accessor resolves this internally**; routes/switcher iterate all 14, content
+lookups use the resolved 10. `getLang`/`getDir`/`localeName` cover all 14.
+
+**Canonical URL slugs (2026-06-13):** WPML gives each locale its own slug
+(`tbr-de`, `tbr-tires-zh-hant`…). URLs must NOT vary by locale, so `Industry` and
+`Tire` carry **`urlSlug`** — the English slug for that translation group, keyed by
+`trid` (built in `data.ts` `buildCanonicalMaps`). **All hrefs/routes use
+`urlSlug`; `slug` is the per-locale content identity only.** This killed the
+`/de/products/tbr-de/` class of broken URLs.
+
+---
+
+## Standing decisions (later decisions override earlier docs)
+
+1. **No Tailwind.** Styling = semantic class names + central CSS.
+   *Reality:* Tailwind is still installed and load-bearing (the `@theme` token
+   block in `global.css` + ~1,785 utility occurrences across ~26 `.astro` files
+   are legacy). Do not ADD utility classes; new styling → `src/styles/**`. Full
+   removal is a planned phase — not piecemeal.
+2. **No `Rubber*` / `rubber-` naming** for anything new. The 17 `Rubber*`
+   components + `.rubber-*` selectors are legacy pending a rename phase. Don't
+   extend the pattern; don't rename ad-hoc.
 3. **All editorial content flows from Notion** via `npm run sync` →
-   `src/data/notion-content/*.json` snapshots → `src/lib/data.ts` → pages.
-   Files in `scripts/output/` are **frozen one-time WP migration artifacts** —
-   never wire them as live sources. *Known open loop:* product specs (see
-   Architecture → Known open loops).
-4. **UI chrome strings** (nav labels, buttons, form labels) live in
-   `src/data/translations/{en,ar-ae,zh-hant}.json` via `t()`. Sentence-length
-   marketing copy belongs in Notion, not translations.
-5. **Layout system (one formula, 2026-06-10):** two block kinds only.
-   *Container blocks*: content capped at `--container-max` (1280px), centered,
-   padded by `--gutter`. *Wide blocks* (header bar, products viewer, industries
-   strip, recent-products grid): padded by
-   `--page-gutter: min(8vw, var(--content-edge))` — **clamped to the
-   container's content edge**, so wide blocks align exactly with container
-   blocks until the viewport is wide enough for them to actually be wider.
-   Tokens live in `global.css :root`; `--page-gutter`/`--content-edge` are
-   valid only as padding on full-width elements. Section vertical rhythm comes
-   from `--section-pad-{md,lg,xlg}` (shared by `Section` and wide blocks).
-6. **Locale parity:** the three locales must render identical page *structure*.
-   Never branch on English text (heading matching etc.) — use structure-based
-   logic (block types, positions) or data fields.
-7. **Design conduct** (explicit user feedback, repeatedly given):
+   `src/data/notion-content/*.json` → `src/lib/data.ts` → pages. `scripts/output/`
+   holds **frozen one-time WP-migration artifacts** — never wire them as live
+   sources. *Open loop:* product specs (see Known Issues).
+4. **UI chrome strings** (nav, buttons, form labels) live in
+   `src/data/translations/<lang>.json` via `t()` — one file per content language
+   (10 files, 121 keys each, hand-authored, **not regenerable from Notion**).
+   Sentence-length marketing copy belongs in Notion, not translations.
+5. **Resources are English-only (2026-06-13).** Articles + documents are NOT
+   translated per-locale — WP never translated them (verified byte-identical
+   English). `data.ts` `RESOURCE_LANG='en'`; every resource accessor reads English
+   regardless of locale; the sync drops non-English article/document rows+bodies.
+   Products, specs, taxonomies, and homepage (Pages) ARE per-language.
+6. **Layout system (one formula):** two block kinds. *Container blocks* — content
+   capped at `--container-max` (1280px), centered, padded by `--gutter`. *Wide
+   blocks* (header, products viewer, industries strip, recent-products grid) —
+   padded by `--page-gutter: min(8vw, var(--content-edge))`, clamped to the
+   container's content edge so they align until the viewport is wide enough to be
+   wider. Tokens in `global.css :root`. Section rhythm via `--section-pad-*`.
+7. **Locale parity:** all locales render identical page *structure*. Never branch
+   on translated text — use structure-based logic (block types/positions) or data
+   fields + `trid`.
+8. **Design conduct** (explicit, repeated user feedback):
    - Never insert empty/filler elements to align content — alignment is CSS's job.
-   - No sliders/carousels — represent the content statically.
-   - One atom per concept: one chip, one button, one card language, one spec
-     viewer. Don't re-implement an atom's markup inline.
-   - No invented magic numbers — derive sizes from tokens, the layout, or ask.
+   - No sliders/carousels — represent content statically.
+   - One atom per concept (one chip, button, card language, spec viewer); don't
+     re-implement an atom's markup inline.
+   - No invented magic numbers — derive from tokens/layout, or ask.
    - Prefer one clean rule over per-case exceptions.
-8. **Work style:** slow, one element at a time. The user decides design
-   direction; present options when a real choice exists, don't bulk-decide.
-9. **Testimonials are dropped project-wide (2026-06-10).** No testimonial UI
-   or content anywhere on the site. (Pipeline/data cleanup deferred to the
-   recovery phases — just never render them.)
-10. **Homepage product grid = most recent products, one per primary industry**
-    (max 10), newest first — recency proxied by `wpId` until Notion carries a
-    real date/Featured property (`getRecentProductsByIndustry` in data.ts).
-    Renders as an even grid only: 5×2 → 4×2 → 3×2 → 2×2 → 1×3; CSS hides
-    trailing items so rows are never ragged.
-11. **Industries on the homepage = wide horizontal scroll strip** (CSS
-    overflow + scroll-snap, no JS carousel). All 10 industries included.
-12. **Control heights are shared tokens** (`--control-h-{sm,md,lg}` in
-    global.css): buttons and inputs of the same size always match height —
-    pair them by size (e.g. newsletter input `size="lg"` + lg button).
+9. **Work style:** slow, one element at a time. The user decides design
+   direction; present real choices, don't bulk-decide. For large/destructive or
+   out-of-sequence work, get explicit buy-in first (the 2026-06-13 audit exists
+   because a multi-language port was done out of sequence).
+10. **Testimonials dropped project-wide.** No testimonial UI/content anywhere.
+11. **Homepage** = hero (Pages content) → promo pair (Page Promos) → industries
+    horizontal scroll strip (all 10 industries, CSS scroll-snap, no JS) → recent
+    products grid (`getRecentProductsByIndustry`, 1 per primary industry, max 10,
+    even grid 5×2→1×3, recency proxied by `wpId`) → sustainability strip →
+    resource center → newsletter.
+12. **Control heights are shared tokens** (`--control-h-{sm,md,lg}`): inputs and
+    buttons of the same size match height — pair by size.
 13. **Footer = top-level link parity with the header** (Products, Resources,
     Contact, Dealer Login). No subnav columns.
 
 ---
 
-## Architecture (verified 2026-06-10)
+## Architecture
 
 ### Data flow
 ```
-Notion databases
-  └─ npm run sync            (scripts/sync-from-notion.ts; sync:fast skips bodies)
-       └─ src/data/notion-content/*.json     (16 snapshot files, committed)
-          src/data/notion-content/blocks/    (~1,300 per-page body sidecars,
-                                              lazily fs-read at build, NOT imported)
-            └─ src/lib/data.ts               (the ONLY runtime read path)
-                 └─ src/pages/**             (astro build = fully offline)
+Notion databases  ──npm run sync──▶  src/data/notion-content/*.json (committed snapshots)
+                  (sync-from-notion.ts)   + blocks/<type>-<lang>-<slug>.json sidecars
+                                            (lazily fs-read at build, NOT bundled)
+                                              └─▶ src/lib/data.ts (ONLY runtime read path)
+                                                    └─▶ src/pages/** (astro build, offline)
 ```
-- `src/lib/notion/{client,fetchers}.ts` are used **only** by sync scripts, never at runtime.
-- Notion DB IDs live in `scripts/output/notion-ids.json` (required by sync);
-  `NOTION_TOKEN` + `NOTION_PARENT_PAGE_ID` in `.env`.
+- `src/lib/notion/{client,fetchers,query}.ts` are used **only** by sync scripts,
+  never at runtime. `query.ts` `withRetry` hardens against transient timeouts.
+- Notion DB/page IDs + relation maps live in `scripts/output/notion-ids.json` +
+  `notion-*-map.json` (tracked). `NOTION_TOKEN` + `NOTION_PARENT_PAGE_ID` in
+  `.env` (untracked).
 - Notion DBs: Products, Industries, Applications, Tire Types, Articles, Events,
-  Documents, Testimonials, **Pages**, **Page Promos** (last two created
-  2026-06-10; sync hard-fails if they're missing/empty — no silent seed fallback).
-- `scripts/import-pages-to-notion.ts` is **non-idempotent** (re-run = duplicate rows).
+  Documents, Testimonials, Pages, Page Promos. Sync hard-fails if Pages/Promos
+  are missing/empty (no silent fallback).
+
+### Multi-language pipeline (per-language; see docs/LANGUAGE-PARITY-PLAN.md)
+- `scripts/content-languages.ts` — the 10 `CONTENT_LANGUAGES` + `resolveLanguages`.
+  Extract/import scripts take optional language args (default all).
+- Per-language runbook: extract → import taxonomies FIRST (idempotent, merges the
+  tax map) → import products → link siblings → `build-product-specs` →
+  `seed-pages-translations` (homepage) → `sync --only-lang=<lang>` (blocks) → build.
+- **Idempotency:** import-products/articles/taxonomies + seed-pages skip existing
+  rows (WP-ID/trid + language). `import-pages-to-notion.ts` is the ONE
+  non-idempotent importer (re-run duplicates) — use `seed-pages-translations.ts`
+  for new languages instead.
 
 ### Commands
 | Command | What it does |
 |---|---|
-| `npm run dev` | Dev server :4321 **with HMR** — use this while editing |
-| `npm run preview` | Serves static `dist/` — **no file watching**; don't confuse with dev |
-| `npm run build` | ~1050 pages in ~13s |
+| `npm run dev` | Dev server :4321 **with HMR** — use while editing |
+| `npm run preview` | Serves static `dist/` — **no watch**; not for editing |
+| `npm run build` | Full build (currently ~4,467 pages across 14 locales) |
 | `npm run sync` / `sync:fast` | Notion → snapshots (fast skips block bodies) |
-| `npx tsx scripts/build-product-specs.ts` | Regenerates product-specs snapshots (see open loop) |
+| `npm run sync -- --only-lang=de` | Sync block bodies for one language only |
+| `npx tsx scripts/build-product-specs.ts` | Regenerate product-specs (see open loop) |
 
-After a sync or specs rebuild, **restart the dev server** (snapshots are read at startup).
+After a sync or specs rebuild, **restart the dev server** (snapshots read at startup).
 
 ### CSS
-- Entry: `src/styles/global.css` → imports 26 component + 3 page stylesheets.
-  All styling lives there; `.astro` files are pure markup (2 legacy scoped
-  `<style>` blocks remain: contact page, Specimen).
-- Tokens in the `@theme` block of global.css (colors, surfaces, shadows, radii,
-  motion) + `:root` (`--page-gutter`). Naming: BEM-ish
-  (`.block__element--modifier`).
-- Design language: warm off-white layered surfaces, chamfered top highlights,
-  directional shadows, molded/pressed interactive states ("rubbermorphism" —
-  the look stays; the *naming* goes per decision #2).
+- Entry `src/styles/global.css` imports 26 component + 3 page stylesheets. All
+  styling lives there; `.astro` files are (mostly) pure markup — 2 legacy scoped
+  `<style>` blocks remain (contact page, Specimen).
+- Tokens in the `@theme` block (colors/surfaces/shadows/radii/motion) + `:root`
+  (`--gutter`, `--content-edge`, `--page-gutter`, `--section-pad-*`,
+  `--control-h-*`). BEM-ish naming.
+- Design language: warm off-white layered surfaces, chamfer highlights,
+  directional shadows, molded/pressed states ("rubbermorphism" — the *look*
+  stays; the *naming* goes per decision #2).
 
 ### Routes (`src/pages/[locale]/…`)
-`index` (home) · `products/index` (full-bleed viewer: TV-remote filter sidebar +
-grid, no pagination) · `products/[industry]/index` (same viewer pre-filtered,
-industry filter hidden) · `products/[industry]/[slug]` (tire detail: 2-col hero,
-gallery, spec viewer + size selector) · `resources/index` · `resources/[slug]` ·
-`contact` · `design` (component gallery, env-gated: `MAXAM_SHOW_DESIGN_GALLERY=1`).
-Root `/` redirects to a locale. The dirs `src/pages/{en,ar-ae,zh-hans}/` are
-empty scaffold remnants (delete in recovery).
+`index` (home) · `products/index` (full-bleed viewer: filter sidebar + grid, no
+pagination) · `products/[industry]/index` (same viewer pre-filtered) ·
+`products/[industry]/[slug]` (tire detail: 2-col hero, gallery, spec viewer + size
+selector) · `resources/index` · `resources/[slug]` · `contact` · `design`
+(component gallery, env-gated `MAXAM_SHOW_DESIGN_GALLERY=1`). Root `/` redirects to
+a locale.
 
-### i18n
-`src/lib/i18n.ts`: `t()`, `localePath()`, `getDir()`. RTL via `[dir='rtl']` CSS
-rules (legacy `rtl:` Tailwind utilities still in ~12 files). CJK via `:lang(zh)`.
-Translation linkage (`trid`/`translationIds`) is synced into snapshots but not
-yet consumed by routing (see Known broken).
+### i18n (`src/lib/i18n.ts`)
+`t`, `localePath`, `getDir`, `getLang`, `localeName`, `contentLang`,
+`contentLanguages`, `locales` (14), `LOCALE_ALIASES`. RTL via `[dir='rtl']` CSS
+(legacy `rtl:` utilities still in ~12 files). CJK via `:lang(zh)`.
 
 ---
 
-## Known broken / open loops (mapped in docs/AUDIT-2026-06-10.md — don't re-discover, don't casually "fix" mid-sprint)
+## Known issues / open loops (don't re-discover; map in docs/AUDIT-2026-06-13.md)
 
-- **Product specs don't flow from Notion**: `product-specs.*.json` is built from
-  the frozen WP export (`scripts/output/tires-*.json`, May 4). Editing specs in
-  Notion changes nothing. Fix = a structured Specs Notion DB seeded from the
-  normalized JSON (recovery Phase 5).
-- **ar-ae / zh-hant industry nav 404s**: industry routes are generated from EN
-  slugs while nav links use locale slugs. 5 nav links 404. (Fine for an EN-only
-  internal demo.)
-- **LanguageSwitcher** blind-swaps the locale prefix → 404s on divergent slugs /
-  EN-only articles. No hreflang.
-- **Dead-end CTA**: the homepage sustainability strip links to
-  `/sustainability`, which doesn't exist yet — the page is planned for the
-  final site (along with other unported WP pages; see the parity doc).
-  (The `/testimonials` dead link is gone — testimonials were dropped.)
+- **6 locales ship EMPTY** (es/fr/it/ja/pt-pt/ru + aliases es-mx/fr-ca): products
+  + homepage Pages content were imported to Notion but the **snapshot was never
+  synced**, so `products.json`/`pages.json` only hold en/de/ar-ae/zh-hant. These
+  locales route but render zero products / blank hero. **Session 3 decision.**
+- **Product specs don't flow from Notion**: `product-specs.*.json` is built by
+  `build-product-specs.ts` from the frozen WP export (`scripts/output/tires-*.json`).
+  Editing specs in Notion changes nothing. Fix = a structured Specs Notion DB.
+- **LanguageSwitcher** does a blind locale-prefix swap (no trid resolution); can
+  404 across locales. No `hreflang` alternates. `trid`/`translationIds` synced but
+  not consumed by routing.
+- **Simplified Chinese inside the zh-hant (Traditional) locale**: `zh-hant.json`
+  contact.* keys + contact page region names use Simplified forms.
+- **Contact offices hardcoded** in `contact/index.astro` frontmatter (should be a
+  Notion record). **Featured-product** logic and **homepage Pages content** for
+  the 6 unsynced languages still incomplete.
+- **`/sustainability` dead-end CTA** on the homepage (page not built). Events sync
+  but have no route.
 - **Images**: ~900 product/article images hotlink the live maxamtire.com —
-  prototype depends on the old site staying up; re-host before real launch.
-- **Repo state**: FIXED 2026-06-13 (branch `chore/repo-integrity`, pushed to
-  origin). `.gitignore` now tracks scripts/docs/CLAUDE.md and the load-bearing
-  `scripts/output/{notion-ids,notion-*-map}.json`, ignoring only the heavy WP
-  extract artifacts. All 470 files committed in 3 tranches; all 10 spec + 10
-  translation files tracked; a clean checkout builds (4467 pages, verified via
-  worktree). Bus-factor-1 eliminated. (NOT yet merged to main — open a PR.)
-- Contact-page office data is hardcoded in frontmatter (incl. Simplified-Chinese
-  strings in the zh-hant locale); featured-product slugs hardcoded on the
-  homepage; events sync but have no route.
+  re-host before launch.
+- **Tailwind + Rubber naming** still present (decisions #1, #2) — planned phases.
+- **PR not merged**: the `chore/repo-integrity` branch (Session 1) is pushed but
+  not merged to `main`.
 
 ---
 
 ## Reference docs
-
-- `docs/AUDIT-2026-06-10.md` — full verified audit: 128 findings, the five rot
-  clusters, the recovery phases. Findings JSON alongside it.
-- `docs/wp-page-parity.md` — WP page-by-page content parity spec (~90% accurate;
-  ignore its `Rubber*` naming per decision #2 — see banner in the file).
-- `docs/archive/` — superseded March-era planning docs (IMPLEMENTATION-PLAN,
-  DESIGN-SYSTEM). Historical only; do not follow.
+- `docs/AUDIT-2026-06-13.md` — latest audit (83 findings) + recommended sequence.
+  Findings JSON alongside. `docs/AUDIT-2026-06-10.md` — prior audit (context).
+- `docs/LANGUAGE-PARITY-PLAN.md` — the multi-language model, runbook, pipeline gaps.
+- `docs/wp-page-parity.md` — WP page-by-page content parity spec (ignore its
+  `Rubber*` naming per decision #2 — banner in the file).
+- `docs/archive/` — superseded March-era plans. Historical only.
