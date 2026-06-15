@@ -207,6 +207,12 @@ a locale.
 - **Contact offices hardcoded** in `contact/index.astro` frontmatter (should be a
   Notion record). **Featured-product** logic and **homepage Pages content** for
   the 6 unsynced languages still incomplete.
+- **`[table content omitted]` in ~36 resource articles.** The WP→Notion HTML
+  converter (`scripts/html-to-notion.ts:276`) substitutes that literal text when
+  it hits a `<table>` it can't convert — so those articles lost their tables on
+  import, and the placeholder is now baked into the block sidecars. Fix: teach
+  the converter to emit a real Notion table block, then re-import + re-sync the
+  affected English articles. (Resources are English-only, so en only.)
 - **`/sustainability` dead-end CTA** on the homepage (page not built). Events sync
   but have no route.
 - **Images**: ~900 product/article images hotlink the live maxamtire.com —
