@@ -37,7 +37,7 @@ const { items, class: className } = Astro.props;
           <span class="rubber-breadcrumb__current" aria-current="page">{crumb.label}</span>
         )}
         {i < items.length - 1 && (
-          <span class="rubber-breadcrumb__separator rtl:scale-x-[-1]" aria-hidden="true">/</span>
+          <span class="rubber-breadcrumb__separator" aria-hidden="true">/</span>
         )}
       </li>
     ))}

@@ -198,6 +198,14 @@
     transform: translateX(3px);
   }
 
+  /* RTL: mirror the arrow; hover still nudges in the reading direction. */
+  [dir='rtl'] .rubber-card__cta-arrow {
+    transform: scaleX(-1);
+  }
+  [dir='rtl'] .rubber-card:hover .rubber-card__cta-arrow {
+    transform: scaleX(-1) translateX(3px);
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .rubber-card,
     .rubber-card__cta-arrow {

@@ -152,6 +152,14 @@
     transform: translateX(3px);
   }
 
+  /* RTL: mirror the arrow glyph; hover still nudges in the reading direction. */
+  [dir='rtl'] .rubber-article__cta-arrow {
+    transform: scaleX(-1);
+  }
+  [dir='rtl'] .rubber-article:hover .rubber-article__cta-arrow {
+    transform: scaleX(-1) translateX(3px);
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .rubber-article,
     .rubber-article__cta-arrow {
