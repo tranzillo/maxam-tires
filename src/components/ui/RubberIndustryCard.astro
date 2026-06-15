@@ -12,6 +12,7 @@
  */
 import type { Industry, Locale } from '../../types';
 import RubberChip from './RubberChip.astro';
+import { industryVars } from '../../lib/style';
 
 interface Props {
   industry: Industry;
@@ -26,7 +27,7 @@ const href = `/${locale}/products/${industry.urlSlug}/`;
 <a
   href={href}
   class:list={['industry-card', className]}
-  style={`--industry-color:${industry.color};${industry.heroImage ? `background-image:url('${industry.heroImage}');` : ''}`}
+  style={industryVars(industry.color, { bgImage: industry.heroImage })}
   aria-label={industry.name}
 >
   {!industry.heroImage && <span class="industry-card__fallback" aria-hidden="true"></span>}

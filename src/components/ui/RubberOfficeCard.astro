@@ -28,12 +28,14 @@ interface Props {
   class?: string;
 }
 
+import { industryVars } from '../../lib/style';
+
 const { office, class: className } = Astro.props;
 ---
 
 <article
   class:list={['rubber-office', className]}
-  style={`--industry-color:${office.color}`}
+  style={industryVars(office.color)}
 >
   <header class="rubber-office__header">
     <span class="rubber-office__dot" aria-hidden="true"></span>

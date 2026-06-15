@@ -8,6 +8,7 @@ import RubberArticleCard from '../../../../components/ui/RubberArticleCard.astro
 import RubberBreadcrumb from '../../../../components/ui/RubberBreadcrumb.astro';
 import type { Locale } from '../../../../types';
 import { locales, t, localePath } from '../../../../lib/i18n';
+import { industryVars } from '../../../../lib/style';
 import {
   getAllIndustries,
   getIndustryBySlug,
@@ -83,7 +84,7 @@ const heroBg = industry.heroImage ?? '/images/hero-home.jpg';
 
   <!-- Tire viewer — same component as /products. Industry filter group
        is hidden here since the route already scopes the industry. -->
-  <div class="products-page" style={`--industry-color:${industry.color}`}>
+  <div class="products-page" style={industryVars(industry.color)}>
     <ProductsViewer
       locale={locale}
       tires={tires}

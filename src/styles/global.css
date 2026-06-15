@@ -17,17 +17,11 @@
   --color-maxam-gray-100: #f0f0f0;
   --color-maxam-white: #ffffff;
 
-  /* Industry colors */
-  --color-industry-mining: #d4a017;
-  --color-industry-underground: #8b6914;
-  --color-industry-forestry: #2d6a2e;
-  --color-industry-trucking: #1565c0;
-  --color-industry-agricultural: #558b2f;
-  --color-industry-industrial: #e65100;
-  --color-industry-construction: #ef6c00;
-  --color-industry-otr: #6a1b9a;
-  --color-industry-solid-otr: #4a148c;
-  --color-industry-rubber-tracks: #37474f;
+  /* NOTE: industry colors are NOT tokens. They are per-industry Notion data
+     values, passed inline as `--industry-color` via industryVars() (lib/style.ts)
+     and consumed as var(--industry-color). The dead --color-industry-* tokens
+     that used to live here were removed 2026-06-13 (unused + their hex values
+     didn't even match the live Notion colors). */
 
   /* Typography scale */
   --font-size-xs: 0.75rem;

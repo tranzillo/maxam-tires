@@ -11,6 +11,7 @@ import RubberDocumentCard from '../../../../components/ui/RubberDocumentCard.ast
 import type { Locale } from '../../../../types';
 import { locales, t, localePath } from '../../../../lib/i18n';
 import { getAllProducts, getProductBySlug, getProductBlocks, getProductSpecs } from '../../../../lib/data';
+import { industryVars } from '../../../../lib/style';
 
 export function getStaticPaths() {
   const paths: Array<{ params: { locale: string; industry: string; slug: string } }> = [];
@@ -108,7 +109,7 @@ const galleryImages = [
 ---
 
 <BaseLayout locale={locale} title={tire.title}>
-  <article class="tire-page" style={`--industry-color:${primaryIndustry.color}`}>
+  <article class="tire-page" style={industryVars(primaryIndustry.color)}>
     <div class="tire-page__breadcrumb">
       <RubberBreadcrumb items={[
         { label: t(locale, 'nav.products'), href: localePath(locale, '/products') },

@@ -17,6 +17,7 @@
  */
 import type { Tire, Article, Locale } from '../../types';
 import { t, localePath } from '../../lib/i18n';
+import { industryVars } from '../../lib/style';
 
 interface Props {
   locale: Locale;
@@ -59,7 +60,7 @@ if (product) {
   <a
     href={href}
     class="rubber-featured"
-    style={industryColor ? `--industry-color:${industryColor}` : ''}
+    style={industryVars(industryColor)}
   >
     <div class="rubber-featured__image-frame">
       {image ? (
