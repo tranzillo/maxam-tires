@@ -197,6 +197,71 @@ function code(content: string, language = 'plain text'): NotionBlock {
   };
 }
 
+/**
+ * Convert an HTML <table> into a Notion table block (block.children are
+ * table_row blocks). Notion requires every row to have the same cell count
+ * (table_width), so we normalize to the widest row, padding short rows with
+ * empty cells. A header row is detected when the first row uses <th> cells or
+ * its cells are entirely bold (WP exports header rows as <td><strong>…).
+ * Returns null for an empty/degenerate table.
+ */
+function tableBlock(node: any): NotionBlock | null {
+  // Collect every <tr>, whether under <thead>/<tbody>/<tfoot> or direct.
+  const rows: any[] = [];
+  const walk = (n: any) => {
+    for (const c of n.childNodes || []) {
+      if (c.nodeName === 'tr') rows.push(c);
+      else if (['thead', 'tbody', 'tfoot'].includes(c.nodeName)) walk(c);
+    }
+  };
+  walk(node);
+  if (rows.length === 0) return null;
+
+  // Each row → array of cells; each cell → Notion rich text. Track whether the
+  // cell came from a <th> and whether its (only) content is bold.
+  const grid: { cells: NotionRichText[]; isHeaderRow: boolean }[] = [];
+  for (const tr of rows) {
+    const cellNodes = (tr.childNodes || []).filter(
+      (c: any) => c.nodeName === 'th' || c.nodeName === 'td'
+    );
+    if (cellNodes.length === 0) continue;
+    const cells: NotionRichText[] = [];
+    let allTh = true;
+    let allBold = true;
+    for (const cell of cellNodes) {
+      if (cell.nodeName !== 'th') allTh = false;
+      const rt = mergeAdjacent(collectInline(cell));
+      // Header-like = every NON-whitespace segment is bold (WP wraps header
+      // labels in <strong>, but whitespace runs between them aren't bold).
+      const meaningful = rt.filter((r: any) => (r.text?.content ?? '').trim() !== '');
+      if (!meaningful.length || !meaningful.every((r: any) => r.annotations?.bold)) allBold = false;
+      cells.push(rt.length ? rt : [{ type: 'text', text: { content: '' } }]);
+    }
+    grid.push({ cells, isHeaderRow: allTh || allBold });
+  }
+  if (grid.length === 0) return null;
+
+  const width = Math.max(...grid.map((r) => r.cells.length));
+  const hasColumnHeader = grid[0].isHeaderRow;
+
+  const children: NotionBlock[] = grid.map((row) => {
+    const cells = [...row.cells];
+    while (cells.length < width) cells.push([{ type: 'text', text: { content: '' } }]);
+    return { object: 'block', type: 'table_row', table_row: { cells } };
+  });
+
+  return {
+    object: 'block',
+    type: 'table',
+    table: {
+      table_width: width,
+      has_column_header: hasColumnHeader,
+      has_row_header: false,
+    },
+    children,
+  };
+}
+
 /** Convert an HTML element subtree into Notion blocks. */
 function convertNode(node: any): NotionBlock[] {
   const tag = node.nodeName;
@@ -270,10 +335,10 @@ function convertNode(node: any): NotionBlock[] {
       for (const c of node.childNodes || []) out.push(...convertNode(c));
       return out;
     }
-    case 'table':
-      // Article tables are rare and small; emit a placeholder paragraph noting the
-      // table existed. We can revisit if real cases appear.
-      return [paragraph([{ type: 'text', text: { content: '[table content omitted]' }, annotations: { italic: true } }])];
+    case 'table': {
+      const blk = tableBlock(node);
+      return blk ? [blk] : [];
+    }
     default: {
       // Unknown block: try to descend; if no children produce blocks, treat as paragraph.
       const out: NotionBlock[] = [];
