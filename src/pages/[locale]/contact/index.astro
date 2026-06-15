@@ -66,29 +66,29 @@ const offices = [
 ---
 
 <BaseLayout locale={locale} title={t(locale, 'contact.title')}>
-  <section class="max-w-[var(--container-max)] mx-auto px-4 py-10">
+  <section class="contact-page">
     <!-- Page heading -->
-    <div class="mb-10">
-      <h1 class="text-4xl font-bold text-maxam-black mb-2">
+    <div class="contact-page__heading">
+      <h1 class="heading heading--lg">
         {t(locale, 'contact.heading')}
       </h1>
-      <p class="text-lg text-maxam-gray-500 max-w-2xl">
+      <p class="contact-page__subheading heading heading--sm">
         {t(locale, 'contact.subheading')}
       </p>
     </div>
 
     <!-- Main: Offices + Form -->
-    <div class="flex flex-col lg:flex-row gap-10">
+    <div class="contact-page__layout">
       <!-- Left: Office locations -->
-      <div class="flex-1">
-        <div class="mb-2">
+      <div class="contact-page__offices">
+        <div class="contact-page__offices-label">
           <RubberPlate as="h2" size="sm">{t(locale, 'contact.offices.heading')}</RubberPlate>
         </div>
-        <p class="text-sm text-maxam-gray-500 mb-6">
+        <p class="contact-page__offices-intro">
           {t(locale, 'contact.offices.subheading')}
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-6">
+        <div class="contact-page__offices-grid">
           {offices.map((office) => (
             <RubberOfficeCard office={office} />
           ))}
@@ -96,18 +96,18 @@ const offices = [
       </div>
 
       <!-- Right: Contact form -->
-      <div class="w-full lg:w-[420px] shrink-0">
-        <div class="rubber-contact-form">
-          <div class="rubber-contact-form__top">
-            <h2 class="text-xl font-bold text-maxam-black mb-2">
+      <div class="contact-page__form-col">
+        <div class="contact-form">
+          <div class="contact-form__top">
+            <h2 class="contact-form__title heading heading--md">
               {t(locale, 'product.get_in_touch')}
             </h2>
-            <p class="text-sm text-maxam-gray-700">
+            <p class="contact-form__intro">
               {t(locale, 'contact.form_intro')}
             </p>
           </div>
 
-          <form class="rubber-contact-form__body" data-static-form>
+          <form class="contact-form__body" data-static-form>
             <RubberField inputId="contact-name" label={t(locale, 'contact.form.name')} required>
               <RubberInput id="contact-name" name="name" required autocomplete="name" />
             </RubberField>
@@ -146,41 +146,3 @@ const offices = [
     </div>
   </section>
 </BaseLayout>
-
-<style>
-  /* The contact form is its own raised panel — light surface that sits on
-   * the warm page bg. Hairline edge + chamfer highlight + soft drop shadow,
-   * matching the rest of the rubbermorphic raised surfaces. A subtle
-   * blue-tinted header band visually separates the intro from the form. */
-  .rubber-contact-form {
-    position: relative;
-    background: var(--color-surface-overlay);
-    border: 1px solid var(--color-edge);
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow-card);
-    isolation: isolate;
-    overflow: hidden;
-  }
-
-  .rubber-contact-form::before {
-    content: '';
-    position: absolute;
-    inset: 0 0 auto 0;
-    height: 1px;
-    background: var(--edge-highlight-top);
-    pointer-events: none;
-  }
-
-  .rubber-contact-form__top {
-    padding: 22px 24px 18px;
-    border-bottom: 1px solid var(--color-edge);
-    background: color-mix(in srgb, var(--color-maxam-blue) 4%, var(--color-surface-overlay));
-  }
-
-  .rubber-contact-form__body {
-    padding: 22px 24px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-</style>

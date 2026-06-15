@@ -1,0 +1,119 @@
+/*
+ * Contact page.
+ *
+ * Markup lives in: src/pages/[locale]/contact/index.astro
+ *
+ * Centered container with a heading, then a two-column layout: office
+ * location cards on the leading side, the contact form panel on the
+ * trailing side. The form is its own raised panel (chamfer + shadow,
+ * matching the rest of the raised surfaces).
+ *
+ * The form-panel rules were previously a scoped <style> block in the page;
+ * moved here so all styling lives in central CSS (no scoped blocks).
+ */
+
+.contact-page {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  padding-block: 2.5rem 4rem;
+}
+
+.contact-page__heading {
+  margin-bottom: 2.5rem;
+}
+.contact-page__subheading {
+  margin-top: 0.5rem;
+  max-width: 48ch;
+}
+
+/* ── Two-column layout: offices | form ───────────────────────────── */
+.contact-page__layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+@media (min-width: 1024px) {
+  .contact-page__layout {
+    flex-direction: row;
+  }
+}
+
+.contact-page__offices {
+  flex: 1;
+}
+.contact-page__offices-label {
+  margin-bottom: 0.5rem;
+}
+.contact-page__offices-intro {
+  margin: 0 0 1.5rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-maxam-gray-500);
+}
+
+.contact-page__offices-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .contact-page__offices-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  /* In the 2-col page layout the offices column is narrower, so drop to 1. */
+  .contact-page__offices-grid { grid-template-columns: 1fr; }
+}
+@media (min-width: 1280px) {
+  .contact-page__offices-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.contact-page__form-col {
+  width: 100%;
+  flex-shrink: 0;
+}
+@media (min-width: 1024px) {
+  .contact-page__form-col {
+    width: 420px;
+  }
+}
+
+/* ── Form panel — raised surface with a blue-tinted header band ────── */
+.contact-form {
+  position: relative;
+  background: var(--color-surface-overlay);
+  border: 1px solid var(--color-edge);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.contact-form::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: var(--edge-highlight-top);
+  pointer-events: none;
+}
+
+.contact-form__top {
+  padding: 22px 24px 18px;
+  border-bottom: 1px solid var(--color-edge);
+  background: color-mix(in srgb, var(--color-maxam-blue) 4%, var(--color-surface-overlay));
+}
+.contact-form__title {
+  margin-bottom: 0.5rem;
+}
+.contact-form__intro {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-maxam-gray-700);
+}
+
+.contact-form__body {
+  padding: 22px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}

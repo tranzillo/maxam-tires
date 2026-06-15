@@ -201,6 +201,13 @@ body {
   flex: 1;
 }
 
+/* MAXAM wordmark — width auto-sizes from height; never shrinks in a flex row.
+   Color + height come from the consuming class (e.g. .rubber-header__logo). */
+.maxam-logo {
+  flex-shrink: 0;
+  width: auto;
+}
+
 /* RTL utilities */
 [dir='rtl'] {
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans Arabic', sans-serif;
@@ -273,4 +280,5 @@ body {
 @import './pages/tire.css';
 @import './pages/resource-detail.css';
 @import './pages/resources.css';
+@import './pages/contact.css';
 
