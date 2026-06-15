@@ -1,5 +1,271 @@
 [
   {
+    "pageId": "38034d6d-7cea-81a2-b512-cf17032afd21",
+    "trid": 100001,
+    "language": "ru",
+    "title": "Главная",
+    "slug": "home",
+    "content": {
+      "sustainability.heading": "Экологичная разработка шин",
+      "hero.background_image": "/images/hero-home.jpg",
+      "sustainability.lead": "Узнайте, как мы революционизируем производительность и долговечность технологии компаундирования, обеспечивая максимальный срок службы шин, непревзойдённые характеристики и эволюционные смеси.",
+      "sustainability.cta_href": "/sustainability",
+      "hero.description": "Благодаря надёжному качеству шин, высокой производительности и непревзойдённому сервису мы помогаем вам справляться даже с самыми сложными задачами.",
+      "sustainability.body": "Технология EcoPoint<sup>3</sup> — это прорыв в разработке экологичных и низкоуглеродных шин, от выбора сырья и производства до жизненного цикла продукта, при значительном снижении расхода топлива и выбросов углерода.",
+      "sustainability.background_image": "/images/bg-sustainability.jpg",
+      "hero.cta_href": "/products",
+      "newsletter.email_label": "Адрес электронной почты",
+      "newsletter.background_image": "/images/bg-newsletter.jpg",
+      "hero.lead": "Выполните",
+      "sustainability.cta_label": "Подробнее",
+      "newsletter.submit_label": "Подписаться",
+      "hero.heading": "Работу",
+      "newsletter.description": "Подпишитесь на нашу рассылку, чтобы получать последние новости, предложения о продуктах и эксклюзивный контент прямо на вашу почту.",
+      "newsletter.heading": "Присоединяйтесь к нашей сети",
+      "hero.cta_label": "Почему Maxam?",
+      "hero.background_position": "center"
+    },
+    "translationIds": [
+      "37b34d6d-7cea-81ca-b4d6-fbb1d26328db",
+      "37b34d6d-7cea-815b-aba8-cab7b202ef2d",
+      "37b34d6d-7cea-81f3-ad13-e937e2be107e",
+      "38034d6d-7cea-81f2-bc59-ce090584cd72",
+      "38034d6d-7cea-819f-8038-dca7e2d48e86",
+      "38034d6d-7cea-815a-9473-f26d05d21ab5",
+      "38034d6d-7cea-816b-ab1c-f41ed8267ee4",
+      "38034d6d-7cea-81b3-aa1d-f43cb97335c3",
+      "38034d6d-7cea-81bb-aee2-f3956aaf9827"
+    ]
+  },
+  {
+    "pageId": "38034d6d-7cea-81bb-aee2-f3956aaf9827",
+    "trid": 100001,
+    "language": "pt-pt",
+    "title": "Início",
+    "slug": "home",
+    "content": {
+      "sustainability.heading": "Desenvolvimento sustentável de pneus",
+      "hero.background_image": "/images/hero-home.jpg",
+      "sustainability.lead": "Saiba como estamos a revolucionar o desempenho e a durabilidade da tecnologia de composição, com a máxima vida útil do pneu, desempenho incomparável e composição evolutiva.",
+      "sustainability.cta_href": "/sustainability",
+      "hero.description": "Com qualidade de pneus fiável, desempenho elevado e um serviço ao cliente incomparável, ajudamo-lo a concluir até os trabalhos mais exigentes.",
+      "sustainability.body": "A tecnologia EcoPoint<sup>3</sup> é um avanço no desenvolvimento de pneus ecológicos e de baixo carbono, desde a seleção de matérias-primas e fabrico até ao ciclo de vida do produto, reduzindo significativamente o consumo de combustível e as emissões de carbono.",
+      "sustainability.background_image": "/images/bg-sustainability.jpg",
+      "hero.cta_href": "/products",
+      "newsletter.email_label": "Endereço de e-mail",
+      "newsletter.background_image": "/images/bg-newsletter.jpg",
+      "hero.lead": "Conclua o",
+      "sustainability.cta_label": "Saber mais",
+      "newsletter.submit_label": "Subscrever",
+      "hero.heading": "Trabalho",
+      "newsletter.description": "Subscreva a nossa newsletter para receber as últimas notícias, ofertas de produtos e conteúdo exclusivo diretamente na sua caixa de entrada.",
+      "newsletter.heading": "Junte-se à nossa rede",
+      "hero.cta_label": "Porquê a Maxam?",
+      "hero.background_position": "center"
+    },
+    "translationIds": [
+      "37b34d6d-7cea-81ca-b4d6-fbb1d26328db",
+      "37b34d6d-7cea-815b-aba8-cab7b202ef2d",
+      "37b34d6d-7cea-81f3-ad13-e937e2be107e",
+      "38034d6d-7cea-81f2-bc59-ce090584cd72",
+      "38034d6d-7cea-819f-8038-dca7e2d48e86",
+      "38034d6d-7cea-815a-9473-f26d05d21ab5",
+      "38034d6d-7cea-816b-ab1c-f41ed8267ee4",
+      "38034d6d-7cea-81b3-aa1d-f43cb97335c3",
+      "38034d6d-7cea-81a2-b512-cf17032afd21"
+    ]
+  },
+  {
+    "pageId": "38034d6d-7cea-81b3-aa1d-f43cb97335c3",
+    "trid": 100001,
+    "language": "ja",
+    "title": "ホーム",
+    "slug": "home",
+    "content": {
+      "sustainability.heading": "持続可能なタイヤ開発",
+      "hero.background_image": "/images/hero-home.jpg",
+      "sustainability.lead": "最大のタイヤ寿命、比類なき性能、進化する配合技術により、配合技術の性能と耐久性をどのように革新しているかをご覧ください。",
+      "sustainability.cta_href": "/sustainability",
+      "hero.description": "信頼性の高いタイヤ品質、性能、そして比類なきカスタマーサービスにより、最も過酷な作業の完遂を後押しします。",
+      "sustainability.body": "EcoPoint<sup>3</sup>テクノロジーは、原材料の選定から製造、製品ライフサイクルに至るまで、環境に優しい低炭素タイヤ開発における画期的な進歩であり、燃料消費と炭素排出を大幅に削減します。",
+      "sustainability.background_image": "/images/bg-sustainability.jpg",
+      "hero.cta_href": "/products",
+      "newsletter.email_label": "メールアドレス",
+      "newsletter.background_image": "/images/bg-newsletter.jpg",
+      "hero.lead": "仕事を",
+      "sustainability.cta_label": "詳細を見る",
+      "newsletter.submit_label": "購読する",
+      "hero.heading": "やり遂げる",
+      "newsletter.description": "ニュースレターを購読して、最新ニュース、製品情報、限定コンテンツを受信トレイで直接お受け取りください。",
+      "newsletter.heading": "ネットワークに参加",
+      "hero.cta_label": "MAXAMが選ばれる理由",
+      "hero.background_position": "center"
+    },
+    "translationIds": [
+      "37b34d6d-7cea-81ca-b4d6-fbb1d26328db",
+      "37b34d6d-7cea-815b-aba8-cab7b202ef2d",
+      "37b34d6d-7cea-81f3-ad13-e937e2be107e",
+      "38034d6d-7cea-81f2-bc59-ce090584cd72",
+      "38034d6d-7cea-819f-8038-dca7e2d48e86",
+      "38034d6d-7cea-815a-9473-f26d05d21ab5",
+      "38034d6d-7cea-816b-ab1c-f41ed8267ee4",
+      "38034d6d-7cea-81bb-aee2-f3956aaf9827",
+      "38034d6d-7cea-81a2-b512-cf17032afd21"
+    ]
+  },
+  {
+    "pageId": "38034d6d-7cea-816b-ab1c-f41ed8267ee4",
+    "trid": 100001,
+    "language": "it",
+    "title": "Home",
+    "slug": "home",
+    "content": {
+      "sustainability.heading": "Sviluppo sostenibile degli pneumatici",
+      "hero.background_image": "/images/hero-home.jpg",
+      "sustainability.lead": "Scopri come stiamo rivoluzionando le prestazioni e la durata della tecnologia di mescola, con la massima durata degli pneumatici, prestazioni impareggiabili e una mescola evolutiva.",
+      "sustainability.cta_href": "/sustainability",
+      "hero.description": "Con una qualità degli pneumatici affidabile, prestazioni elevate e un servizio clienti impareggiabile, ti aiutiamo a portare a termine anche i lavori più impegnativi.",
+      "sustainability.body": "La tecnologia EcoPoint<sup>3</sup> è una svolta nello sviluppo di pneumatici ecologici e a basse emissioni di carbonio, dalla selezione delle materie prime alla produzione e al ciclo di vita del prodotto, riducendo significativamente il consumo di carburante e le emissioni di carbonio.",
+      "sustainability.background_image": "/images/bg-sustainability.jpg",
+      "hero.cta_href": "/products",
+      "newsletter.email_label": "Indirizzo e-mail",
+      "newsletter.background_image": "/images/bg-newsletter.jpg",
+      "hero.lead": "Porta a termine",
+      "sustainability.cta_label": "Scopri di più",
+      "newsletter.submit_label": "Iscriviti",
+      "hero.heading": "Il lavoro",
+      "newsletter.description": "Iscriviti alla nostra newsletter per ricevere le ultime notizie, le offerte sui prodotti e contenuti esclusivi direttamente nella tua casella di posta.",
+      "newsletter.heading": "Entra nella nostra rete",
+      "hero.cta_label": "Perché Maxam?",
+      "hero.background_position": "center"
+    },
+    "translationIds": [
+      "37b34d6d-7cea-81ca-b4d6-fbb1d26328db",
+      "37b34d6d-7cea-815b-aba8-cab7b202ef2d",
+      "37b34d6d-7cea-81f3-ad13-e937e2be107e",
+      "38034d6d-7cea-81f2-bc59-ce090584cd72",
+      "38034d6d-7cea-819f-8038-dca7e2d48e86",
+      "38034d6d-7cea-815a-9473-f26d05d21ab5",
+      "38034d6d-7cea-81b3-aa1d-f43cb97335c3",
+      "38034d6d-7cea-81bb-aee2-f3956aaf9827",
+      "38034d6d-7cea-81a2-b512-cf17032afd21"
+    ]
+  },
+  {
+    "pageId": "38034d6d-7cea-815a-9473-f26d05d21ab5",
+    "trid": 100001,
+    "language": "fr",
+    "title": "Accueil",
+    "slug": "home",
+    "content": {
+      "sustainability.heading": "Développement durable des pneus",
+      "hero.background_image": "/images/hero-home.jpg",
+      "sustainability.lead": "Découvrez comment nous révolutionnons les performances et la durabilité de la technologie de mélange, avec une durée de vie maximale des pneus, des performances inégalées et un mélange évolutif.",
+      "sustainability.cta_href": "/sustainability",
+      "hero.description": "Grâce à une qualité de pneus fiable, des performances élevées et un service client inégalé, nous vous aidons à accomplir même les tâches les plus difficiles.",
+      "sustainability.body": "La technologie EcoPoint<sup>3</sup> est une avancée majeure dans le développement de pneus écologiques et à faible émission de carbone, de la sélection des matières premières à la fabrication et au cycle de vie du produit, tout en réduisant considérablement la consommation de carburant et les émissions de carbone.",
+      "sustainability.background_image": "/images/bg-sustainability.jpg",
+      "hero.cta_href": "/products",
+      "newsletter.email_label": "Adresse e-mail",
+      "newsletter.background_image": "/images/bg-newsletter.jpg",
+      "hero.lead": "Menez le",
+      "sustainability.cta_label": "En savoir plus",
+      "newsletter.submit_label": "S’abonner",
+      "hero.heading": "Travail à bien",
+      "newsletter.description": "Abonnez-vous à notre newsletter pour recevoir les dernières actualités, offres de produits et contenus exclusifs directement dans votre boîte de réception.",
+      "newsletter.heading": "Rejoignez notre réseau",
+      "hero.cta_label": "Pourquoi Maxam ?",
+      "hero.background_position": "center"
+    },
+    "translationIds": [
+      "37b34d6d-7cea-81ca-b4d6-fbb1d26328db",
+      "37b34d6d-7cea-815b-aba8-cab7b202ef2d",
+      "37b34d6d-7cea-81f3-ad13-e937e2be107e",
+      "38034d6d-7cea-81f2-bc59-ce090584cd72",
+      "38034d6d-7cea-819f-8038-dca7e2d48e86",
+      "38034d6d-7cea-816b-ab1c-f41ed8267ee4",
+      "38034d6d-7cea-81b3-aa1d-f43cb97335c3",
+      "38034d6d-7cea-81bb-aee2-f3956aaf9827",
+      "38034d6d-7cea-81a2-b512-cf17032afd21"
+    ]
+  },
+  {
+    "pageId": "38034d6d-7cea-819f-8038-dca7e2d48e86",
+    "trid": 100001,
+    "language": "es",
+    "title": "Inicio",
+    "slug": "home",
+    "content": {
+      "sustainability.heading": "Desarrollo sostenible de neumáticos",
+      "hero.background_image": "/images/hero-home.jpg",
+      "sustainability.lead": "Descubra cómo estamos revolucionando el rendimiento y la durabilidad de la tecnología de compuestos, con la máxima vida útil del neumático, un rendimiento inigualable y una mezcla evolutiva.",
+      "sustainability.cta_href": "/sustainability",
+      "hero.description": "Con una calidad de neumáticos fiable, alto rendimiento y un servicio al cliente inigualable, le impulsamos a completar incluso los trabajos más exigentes.",
+      "sustainability.body": "La tecnología EcoPoint<sup>3</sup> es un avance en el desarrollo de neumáticos ecológicos y de bajas emisiones de carbono, desde la selección de materias primas y la fabricación hasta el ciclo de vida del producto, reduciendo significativamente el consumo de combustible y las emisiones de carbono.",
+      "sustainability.background_image": "/images/bg-sustainability.jpg",
+      "hero.cta_href": "/products",
+      "newsletter.email_label": "Correo electrónico",
+      "newsletter.background_image": "/images/bg-newsletter.jpg",
+      "hero.lead": "Haga el",
+      "sustainability.cta_label": "Más información",
+      "newsletter.submit_label": "Suscribirse",
+      "hero.heading": "Trabajo",
+      "newsletter.description": "Suscríbase a nuestro boletín para recibir las últimas noticias, ofertas de productos y contenido exclusivo directamente en su bandeja de entrada.",
+      "newsletter.heading": "Únase a nuestra red",
+      "hero.cta_label": "¿Por qué Maxam?",
+      "hero.background_position": "center"
+    },
+    "translationIds": [
+      "37b34d6d-7cea-81ca-b4d6-fbb1d26328db",
+      "37b34d6d-7cea-815b-aba8-cab7b202ef2d",
+      "37b34d6d-7cea-81f3-ad13-e937e2be107e",
+      "38034d6d-7cea-81f2-bc59-ce090584cd72",
+      "38034d6d-7cea-815a-9473-f26d05d21ab5",
+      "38034d6d-7cea-816b-ab1c-f41ed8267ee4",
+      "38034d6d-7cea-81b3-aa1d-f43cb97335c3",
+      "38034d6d-7cea-81bb-aee2-f3956aaf9827",
+      "38034d6d-7cea-81a2-b512-cf17032afd21"
+    ]
+  },
+  {
+    "pageId": "38034d6d-7cea-81f2-bc59-ce090584cd72",
+    "trid": 100001,
+    "language": "de",
+    "title": "Startseite",
+    "slug": "home",
+    "content": {
+      "sustainability.heading": "Nachhaltige Reifenentwicklung",
+      "hero.background_image": "/images/hero-home.jpg",
+      "sustainability.lead": "Erfahren Sie, wie wir die Leistung und Haltbarkeit der Mischungstechnologie revolutionieren – mit maximaler Reifenlebensdauer, unübertroffener Leistung und evolutionärer Mischung.",
+      "sustainability.cta_href": "/sustainability",
+      "hero.description": "Mit zuverlässiger Reifenqualität, Leistung und unübertroffenem Kundenservice bringen wir Sie dazu, selbst die schwierigsten Aufgaben zu meistern.",
+      "sustainability.body": "Die EcoPoint<sup>3</sup>-Technologie ist ein Durchbruch in der grünen und kohlenstoffarmen Reifenentwicklung – von der Auswahl der Rohstoffe über die Herstellung bis hin zum Produktlebenszyklus – und reduziert gleichzeitig den Kraftstoffverbrauch und die CO₂-Emissionen erheblich.",
+      "sustainability.background_image": "/images/bg-sustainability.jpg",
+      "hero.cta_href": "/products",
+      "newsletter.email_label": "E-Mail-Adresse",
+      "newsletter.background_image": "/images/bg-newsletter.jpg",
+      "hero.lead": "Bringen Sie den",
+      "sustainability.cta_label": "Mehr erfahren",
+      "newsletter.submit_label": "Abonnieren",
+      "hero.heading": "Job zu Ende",
+      "newsletter.description": "Abonnieren Sie unseren Newsletter und erhalten Sie die neuesten Nachrichten, Produktangebote und exklusive Inhalte direkt in Ihr Postfach.",
+      "newsletter.heading": "Werden Sie Teil unseres Netzwerks",
+      "hero.cta_label": "Warum Maxam?",
+      "hero.background_position": "center"
+    },
+    "translationIds": [
+      "37b34d6d-7cea-81ca-b4d6-fbb1d26328db",
+      "37b34d6d-7cea-815b-aba8-cab7b202ef2d",
+      "37b34d6d-7cea-81f3-ad13-e937e2be107e",
+      "38034d6d-7cea-819f-8038-dca7e2d48e86",
+      "38034d6d-7cea-815a-9473-f26d05d21ab5",
+      "38034d6d-7cea-816b-ab1c-f41ed8267ee4",
+      "38034d6d-7cea-81b3-aa1d-f43cb97335c3",
+      "38034d6d-7cea-81bb-aee2-f3956aaf9827",
+      "38034d6d-7cea-81a2-b512-cf17032afd21"
+    ]
+  },
+  {
     "pageId": "37b34d6d-7cea-81f3-ad13-e937e2be107e",
     "trid": 100001,
     "language": "zh-hant",
@@ -27,7 +293,14 @@
     },
     "translationIds": [
       "37b34d6d-7cea-81ca-b4d6-fbb1d26328db",
-      "37b34d6d-7cea-815b-aba8-cab7b202ef2d"
+      "37b34d6d-7cea-815b-aba8-cab7b202ef2d",
+      "38034d6d-7cea-81f2-bc59-ce090584cd72",
+      "38034d6d-7cea-819f-8038-dca7e2d48e86",
+      "38034d6d-7cea-815a-9473-f26d05d21ab5",
+      "38034d6d-7cea-816b-ab1c-f41ed8267ee4",
+      "38034d6d-7cea-81b3-aa1d-f43cb97335c3",
+      "38034d6d-7cea-81bb-aee2-f3956aaf9827",
+      "38034d6d-7cea-81a2-b512-cf17032afd21"
     ]
   },
   {
@@ -58,7 +331,14 @@
     },
     "translationIds": [
       "37b34d6d-7cea-81ca-b4d6-fbb1d26328db",
-      "37b34d6d-7cea-81f3-ad13-e937e2be107e"
+      "37b34d6d-7cea-81f3-ad13-e937e2be107e",
+      "38034d6d-7cea-81f2-bc59-ce090584cd72",
+      "38034d6d-7cea-819f-8038-dca7e2d48e86",
+      "38034d6d-7cea-815a-9473-f26d05d21ab5",
+      "38034d6d-7cea-816b-ab1c-f41ed8267ee4",
+      "38034d6d-7cea-81b3-aa1d-f43cb97335c3",
+      "38034d6d-7cea-81bb-aee2-f3956aaf9827",
+      "38034d6d-7cea-81a2-b512-cf17032afd21"
     ]
   },
   {
@@ -89,7 +369,14 @@
     },
     "translationIds": [
       "37b34d6d-7cea-815b-aba8-cab7b202ef2d",
-      "37b34d6d-7cea-81f3-ad13-e937e2be107e"
+      "37b34d6d-7cea-81f3-ad13-e937e2be107e",
+      "38034d6d-7cea-81f2-bc59-ce090584cd72",
+      "38034d6d-7cea-819f-8038-dca7e2d48e86",
+      "38034d6d-7cea-815a-9473-f26d05d21ab5",
+      "38034d6d-7cea-816b-ab1c-f41ed8267ee4",
+      "38034d6d-7cea-81b3-aa1d-f43cb97335c3",
+      "38034d6d-7cea-81bb-aee2-f3956aaf9827",
+      "38034d6d-7cea-81a2-b512-cf17032afd21"
     ]
   }
 ]

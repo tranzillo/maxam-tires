@@ -1,5 +1,593 @@
 [
   {
+    "pageId": "38034d6d-7cea-81e7-804e-c189fff6eb2e",
+    "trid": 590,
+    "language": "ru",
+    "name": "Шины повышенной проходимости",
+    "slug": "off-the-road-tires",
+    "color": "#0077c8",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/OTR-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8173-b9fd-dc67ef4a0a5b",
+    "trid": 591,
+    "language": "ru",
+    "name": "Шины для подземных горных работ",
+    "slug": "underground-mining-tires",
+    "color": "#000000",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/underground-mining-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8112-a7e6-cc1b975ed797",
+    "trid": 589,
+    "language": "ru",
+    "name": "Шины для горных работ",
+    "slug": "mining-tires",
+    "color": "#65686d",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/mining-02.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-815f-accd-f66b97d7386b",
+    "trid": 584,
+    "language": "ru",
+    "name": "Цельнолитые шины для внедорожной техники",
+    "slug": "solid-otr-tires",
+    "color": "#092479",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/solid-OTR-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81e2-853d-e9b5b8cb15cf",
+    "trid": 586,
+    "language": "ru",
+    "name": "Строительные шины",
+    "slug": "construction-tires",
+    "color": "#f79425",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2025/02/construction-product-page_features-benes-background-1.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8136-b58b-d2daf8434277",
+    "trid": 585,
+    "language": "ru",
+    "name": "Сельскохозяйственные шины",
+    "slug": "agricultural-tractor-tires",
+    "color": "#009042",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/agriculture-02.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81f4-ba3b-e21afe368275",
+    "trid": 95441,
+    "language": "ru",
+    "name": "Резиновые гусеницы",
+    "slug": "rubber-tracks-ru",
+    "color": "#0077c8",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-811b-a843-d8261e597ed3",
+    "trid": 95247,
+    "language": "ru",
+    "name": "Радиальные шины для грузовых автомобилей и автобусов (TBR)",
+    "slug": "tbr-ru",
+    "color": "#0077c8",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-813b-bc95-e04d0c4b21a5",
+    "trid": 587,
+    "language": "ru",
+    "name": "Лесные шины",
+    "slug": "forestry-tires",
+    "color": "#dcb127",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/forestry-bg-01-min.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-816f-a539-ed393d3c0d76",
+    "trid": 588,
+    "language": "ru",
+    "name": "Индустриальные шины",
+    "slug": "industrial-forklift-tires",
+    "color": "#9e0b0f",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/material-handling-02.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a5-847f-c27276410a2e",
+    "trid": 95441,
+    "language": "pt-pt",
+    "name": "Rastos de borracha",
+    "slug": "rubber-tracks-pt-pt",
+    "color": "#0077c8",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81c9-b1e1-e7a1d115e0f9",
+    "trid": 95247,
+    "language": "pt-pt",
+    "name": "Pneus radiais para camiões e autocarros",
+    "slug": "tbr-pt-pt",
+    "color": "#0077c8",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8149-96d4-c461f70e1339",
+    "trid": 590,
+    "language": "pt-pt",
+    "name": "Pneus radiais fora de estrada",
+    "slug": "off-the-road-tires",
+    "color": "#0077c8",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/OTR-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8188-b992-ea65ff259470",
+    "trid": 591,
+    "language": "pt-pt",
+    "name": "Pneus para mineração subterrânea",
+    "slug": "underground-mining-tires",
+    "color": "#000000",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/underground-mining-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-818e-b16c-e6974c7a1553",
+    "trid": 589,
+    "language": "pt-pt",
+    "name": "Pneus para mineração",
+    "slug": "mining-tires",
+    "color": "#65686d",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/mining-02.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8199-a404-c31c66ea9816",
+    "trid": 584,
+    "language": "pt-pt",
+    "name": "Pneus maciços fora de estrada",
+    "slug": "solid-otr-tires",
+    "color": "#092479",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/solid-OTR-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81f6-bf1a-e0d7ae6431dc",
+    "trid": 588,
+    "language": "pt-pt",
+    "name": "Pneus Industriais",
+    "slug": "industrial-forklift-tires",
+    "color": "#9e0b0f",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/material-handling-02.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81d2-a488-c47cc8839311",
+    "trid": 587,
+    "language": "pt-pt",
+    "name": "Pneus Florestais",
+    "slug": "forestry-tires",
+    "color": "#dcb127",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/forestry-bg-01-min.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81d7-9fe1-f95fe7f8d81d",
+    "trid": 586,
+    "language": "pt-pt",
+    "name": "Pneus de Construção",
+    "slug": "construction-tires",
+    "color": "#f79425",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2025/02/construction-product-page_features-benes-background-1.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8102-b4c9-f2952ad3b76d",
+    "trid": 585,
+    "language": "pt-pt",
+    "name": "Pneus agrícolas",
+    "slug": "agricultural-tractor-tires",
+    "color": "#009042",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/agriculture-02.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81e4-9ba6-ce25a79939a0",
+    "trid": 589,
+    "language": "ja",
+    "name": "鉱業用タイヤ",
+    "slug": "mining-tires",
+    "color": "#65686d",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/mining-02.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81f4-b835-e9740e0c27b7",
+    "trid": 585,
+    "language": "ja",
+    "name": "農業用タイヤ",
+    "slug": "agricultural-tractor-tires",
+    "color": "#009042",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/agriculture-02.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-819a-a8bb-c41e625bd412",
+    "trid": 587,
+    "language": "ja",
+    "name": "林業用タイヤ",
+    "slug": "forestry-tires",
+    "color": "#dcb127",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/forestry-bg-01-min.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-815c-908f-fc6cd73b1d45",
+    "trid": 586,
+    "language": "ja",
+    "name": "建設用タイヤ",
+    "slug": "construction-tires",
+    "color": "#f79425",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2025/02/construction-product-page_features-benes-background-1.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8179-acbd-cc6ba68c048b",
+    "trid": 588,
+    "language": "ja",
+    "name": "工業用タイヤ",
+    "slug": "industrial-forklift-tires",
+    "color": "#9e0b0f",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/material-handling-02.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-811d-aa05-c0f93e2d1cd7",
+    "trid": 591,
+    "language": "ja",
+    "name": "地下鉱山用タイヤ",
+    "slug": "underground-mining-tires",
+    "color": "#000000",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/underground-mining-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8131-bcbb-d21711966872",
+    "trid": 584,
+    "language": "ja",
+    "name": "ソリッドOTRタイヤ",
+    "slug": "solid-otr-tires",
+    "color": "#092479",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/solid-OTR-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8105-a476-f6da2d502774",
+    "trid": 95441,
+    "language": "ja",
+    "name": "ゴムクローラー",
+    "slug": "rubber-tracks-ja",
+    "color": "#0077c8",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-812b-8d9c-fb32a44f1761",
+    "trid": 590,
+    "language": "ja",
+    "name": "オフロードタイヤ",
+    "slug": "off-the-road-tires",
+    "color": "#0077c8",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/OTR-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-813b-a8dc-e3c800fa70ea",
+    "trid": 95247,
+    "language": "ja",
+    "name": "TBRタイヤ",
+    "slug": "tbr-ja",
+    "color": "#0077c8",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8107-a051-c3fba177d114",
+    "trid": 95247,
+    "language": "it",
+    "name": "Pneumatici TBR",
+    "slug": "tbr-it",
+    "color": "#0077c8",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81bc-9a49-eb0466db9f1a",
+    "trid": 586,
+    "language": "it",
+    "name": "Pneumatici per macchine da costruzione",
+    "slug": "construction-tires",
+    "color": "#f79425",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2025/02/construction-product-page_features-benes-background-1.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-816d-a399-d8ffa54a736a",
+    "trid": 591,
+    "language": "it",
+    "name": "Pneumatici per il settore minerario sotterraneo",
+    "slug": "underground-mining-tires",
+    "color": "#000000",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/underground-mining-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81b0-a8c0-fd641452cada",
+    "trid": 589,
+    "language": "it",
+    "name": "Pneumatici per il settore minerario",
+    "slug": "mining-tires",
+    "color": "#65686d",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/mining-02.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-816a-88a7-de4409fd8961",
+    "trid": 588,
+    "language": "it",
+    "name": "Pneumatici per il settore industriale",
+    "slug": "industrial-forklift-tires",
+    "color": "#9e0b0f",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/material-handling-02.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a4-85e1-cd7a1e489da8",
+    "trid": 587,
+    "language": "it",
+    "name": "Pneumatici per il settore forestale",
+    "slug": "forestry-tires",
+    "color": "#dcb127",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/forestry-bg-01-min.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ff-9be2-ceaa290a5615",
+    "trid": 585,
+    "language": "it",
+    "name": "Pneumatici per il settore agricolo",
+    "slug": "agricultural-tractor-tires",
+    "color": "#009042",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/agriculture-02.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8176-8135-ecbd22f67fcc",
+    "trid": 584,
+    "language": "it",
+    "name": "Pneumatici OTR in gomma piena",
+    "slug": "solid-otr-tires",
+    "color": "#092479",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/solid-OTR-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8192-88d9-f0f74c9cf7c4",
+    "trid": 590,
+    "language": "it",
+    "name": "Pneumatici OTR",
+    "slug": "off-the-road-tires",
+    "color": "#0077c8",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/OTR-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81c2-8817-dd3486d49218",
+    "trid": 95441,
+    "language": "it",
+    "name": "Cingoli in gomma",
+    "slug": "rubber-tracks-it",
+    "color": "#0077c8",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ad-a1af-e23f4bd12a02",
+    "trid": 95247,
+    "language": "fr",
+    "name": "Pneus TBR",
+    "slug": "pneus-tbr-fr",
+    "color": "#0077c8",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-818f-aa9e-cf55f75b8b74",
+    "trid": 591,
+    "language": "fr",
+    "name": "Pneus pour l’exploitation minière souterraine",
+    "slug": "underground-mining-tires",
+    "color": "#000000",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/underground-mining-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81cf-bff1-eb09829655fd",
+    "trid": 589,
+    "language": "fr",
+    "name": "Pneus pour l’exploitation minière",
+    "slug": "mining-tires",
+    "color": "#65686d",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/mining-02.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8141-bf81-f7b00ac4e8f7",
+    "trid": 584,
+    "language": "fr",
+    "name": "Pneus pleins OTR",
+    "slug": "solid-otr-tires",
+    "color": "#092479",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/solid-OTR-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8110-b40d-c4771c62228c",
+    "trid": 588,
+    "language": "fr",
+    "name": "Pneus Industriels",
+    "slug": "industrial-forklift-tires",
+    "color": "#9e0b0f",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/material-handling-02.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-819b-94a4-ed1e55607793",
+    "trid": 590,
+    "language": "fr",
+    "name": "Pneus Génie-civil",
+    "slug": "off-the-road-tires",
+    "color": "#0077c8",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/OTR-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81da-8052-df7329d0ec3c",
+    "trid": 587,
+    "language": "fr",
+    "name": "Pneus Forestiers",
+    "slug": "forestry-tires",
+    "color": "#dcb127",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/forestry-bg-01-min.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8141-85ac-e664645af08e",
+    "trid": 586,
+    "language": "fr",
+    "name": "Pneus Construction",
+    "slug": "construction-tires",
+    "color": "#f79425",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2025/02/construction-product-page_features-benes-background-1.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ef-8696-f6f6775f64c5",
+    "trid": 585,
+    "language": "fr",
+    "name": "Pneus Agricoles",
+    "slug": "agricultural-tractor-tires",
+    "color": "#009042",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/agriculture-02.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-818d-890c-e0433be445f6",
+    "trid": 95441,
+    "language": "fr",
+    "name": "Chenilles en caoutchouc",
+    "slug": "rubber-tracks-fr",
+    "color": "#0077c8",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8138-b79b-ea917caf9683",
+    "trid": 95441,
+    "language": "es",
+    "name": "Orugas de caucho",
+    "slug": "rubber-tracks-es",
+    "color": "#0077c8",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81aa-9437-e998a3492b99",
+    "trid": 584,
+    "language": "es",
+    "name": "Neumáticos todoterreno resistentes",
+    "slug": "solid-otr-tires",
+    "color": "#092479",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/solid-OTR-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81e0-9456-f2fa2a9033da",
+    "trid": 590,
+    "language": "es",
+    "name": "Neumáticos todo terreno",
+    "slug": "off-the-road-tires",
+    "color": "#0077c8",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/OTR-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-817a-aa51-d7aff78888b6",
+    "trid": 95247,
+    "language": "es",
+    "name": "Neumáticos TBR",
+    "slug": "tbr-es",
+    "color": "#0077c8",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8171-a548-c000dc52c217",
+    "trid": 591,
+    "language": "es",
+    "name": "Neumáticos para la minería subterránea",
+    "slug": "underground-mining-tires",
+    "color": "#000000",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/underground-mining-01.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81f0-8676-f3162b969907",
+    "trid": 589,
+    "language": "es",
+    "name": "Neumáticos para la minería",
+    "slug": "mining-tires",
+    "color": "#65686d",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/mining-02.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81e9-b269-e14e49c40c96",
+    "trid": 586,
+    "language": "es",
+    "name": "Neumáticos para la construcción",
+    "slug": "construction-tires",
+    "color": "#f79425",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2025/02/construction-product-page_features-benes-background-1.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8125-a619-e69752395293",
+    "trid": 588,
+    "language": "es",
+    "name": "Neumáticos Industriales",
+    "slug": "industrial-forklift-tires",
+    "color": "#9e0b0f",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/material-handling-02.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8122-8d5a-fff244d165e4",
+    "trid": 587,
+    "language": "es",
+    "name": "Neumáticos forestales",
+    "slug": "forestry-tires",
+    "color": "#dcb127",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/forestry-bg-01-min.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8133-9601-c90970fb527c",
+    "trid": 585,
+    "language": "es",
+    "name": "Neumáticos agrícolas",
+    "slug": "agricultural-tractor-tires",
+    "color": "#009042",
+    "bgImage": "https://maxamtire.com/wp-content/uploads/2023/11/agriculture-02.jpg",
+    "translationIds": []
+  },
+  {
     "pageId": "38034d6d-7cea-8128-9e31-c4683ab27ecd",
     "trid": 95247,
     "language": "de",

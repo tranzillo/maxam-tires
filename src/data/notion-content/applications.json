@@ -1,5 +1,2854 @@
 [
   {
+    "pageId": "38034d6d-7cea-8100-b1bb-e830bfe218af",
+    "trid": 35111,
+    "language": "ru",
+    "name": "Экскаваторы",
+    "slug": "backhoe-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/backhoe.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-815d-8783-d412c27e67c3",
+    "trid": 35119,
+    "language": "ru",
+    "name": "Шины для тракторов",
+    "slug": "tractor-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-815c-9de4-dc667029fc47",
+    "trid": 62437,
+    "language": "ru",
+    "name": "Шины для прицепов",
+    "slug": "agricultural-trailer-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/agricultural-trailer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81d0-85aa-da4a12dac260",
+    "trid": 35113,
+    "language": "ru",
+    "name": "Шины для прицепного оборудования",
+    "slug": "implement-trailer-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/implement-trailer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8119-9004-cb2e111d9d6b",
+    "trid": 62427,
+    "language": "ru",
+    "name": "Шины для портовых погрузочно-разгрузочных работ",
+    "slug": "port-and-marine-equipment-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/marine-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81bc-a4f2-f71a42804cd7",
+    "trid": 62451,
+    "language": "ru",
+    "name": "Шины для опрыскивателей",
+    "slug": "self-propelled-sprayer-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/self-propelled-sprayer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81cd-b661-f215dd42579c",
+    "trid": 62439,
+    "language": "ru",
+    "name": "Шины для комбайнов",
+    "slug": "combine-harvester-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/combine-harvester.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81f2-862d-f68446e84b78",
+    "trid": 62429,
+    "language": "ru",
+    "name": "Шины для вспомогательного оборудования наземных служб аэропортов",
+    "slug": "ground-support-equipment-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/gse-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a0-bdb7-e5b3e15a9235",
+    "trid": 62426,
+    "language": "ru",
+    "name": "Шины для вилочных погрузчиков",
+    "slug": "forklift-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/truck-mounted-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8143-a7b1-fedcd2eeb249",
+    "trid": 62457,
+    "language": "ru",
+    "name": "Шины для валкоукладчиков",
+    "slug": "wind-rower-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/wind-rower.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8162-8e92-ea5055e07ef7",
+    "trid": 62456,
+    "language": "ru",
+    "name": "Шины для автоцистерн",
+    "slug": "water-tanker-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/water-tanker.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-814f-8163-d9a47e755b75",
+    "trid": 62435,
+    "language": "ru",
+    "name": "Шины высокой проходимости",
+    "slug": "flotation-hf4-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/12/Screenshot-2023-12-22-at-1.07.25-PM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-810c-9114-f7daf04a15cd",
+    "trid": 35110,
+    "language": "ru",
+    "name": "Шарнирно-сочлененный самосвал",
+    "slug": "articulated-dump-truck-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/articulated-dump-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8106-bf30-e1ea4c082fec",
+    "trid": 62431,
+    "language": "ru",
+    "name": "Цельнолитые шины для внедорожной техники",
+    "slug": "solid-off-the-road-tires-ru",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8192-a1af-ed2c064e4f15",
+    "trid": 62438,
+    "language": "ru",
+    "name": "Тягач для багажа",
+    "slug": "baggage-tow-tractor-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/baggage-tow-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ec-974e-d26c46e9a650",
+    "trid": 62443,
+    "language": "ru",
+    "name": "Тягач GSE",
+    "slug": "gse-tractor-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/gse-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8197-977b-e070947e4b52",
+    "trid": 62453,
+    "language": "ru",
+    "name": "Траншеекопатели",
+    "slug": "trencher-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/trencher.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-810b-8109-edacdd33716e",
+    "trid": 35118,
+    "language": "ru",
+    "name": "Телескопические погрузчики",
+    "slug": "telehandler-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/telehandler.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8101-8955-f49fa8e1cbb9",
+    "trid": 95217,
+    "language": "ru",
+    "name": "Смешанное обслуживание",
+    "slug": "mixed-service-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/07/mixed-service.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81f4-91d7-d3a9c4c30025",
+    "trid": 35116,
+    "language": "ru",
+    "name": "Скрепер",
+    "slug": "scraper-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/scraper.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a3-a873-c303985da8aa",
+    "trid": 62446,
+    "language": "ru",
+    "name": "Самосвалы-погрузчики с шарнирно-сочленённой рамой",
+    "slug": "load-haul-dump-loader-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/load-haul-dump-loader.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81b7-afa1-cb2678b72e9f",
+    "trid": 62428,
+    "language": "ru",
+    "name": "Самосвал для подземных горных работ",
+    "slug": "underground-mining-truck-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/ugm-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81c4-8fdd-d5c421afc1ba",
+    "trid": 62425,
+    "language": "ru",
+    "name": "Самосвал",
+    "slug": "dump-truck-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/dump-truck-water-tanker.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a0-92f7-f571f238e39b",
+    "trid": 62421,
+    "language": "ru",
+    "name": "Сklадской погрузчик",
+    "slug": "warehouse-forklift-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/warehouse-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-813c-8f96-d22275033cad",
+    "trid": 95201,
+    "language": "ru",
+    "name": "Региональные грузоперевозки",
+    "slug": "regional-haul-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/07/line-haul-2.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-818f-abf1-c44541371905",
+    "trid": 62449,
+    "language": "ru",
+    "name": "Подъемник для грубого рельефа",
+    "slug": "rough-terrain-forklift-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/rough-terrain-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-810d-920e-d0b57a4f3d89",
+    "trid": 62423,
+    "language": "ru",
+    "name": "Поддерживающие шины",
+    "slug": "support-tires-ru",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8157-aa91-e6e93e0be014",
+    "trid": 35117,
+    "language": "ru",
+    "name": "Погрузчики с бортовым поворотом",
+    "slug": "skid-steer-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/skid-steer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81f3-86ba-e9fd703d9a55",
+    "trid": 35114,
+    "language": "ru",
+    "name": "Погрузчик",
+    "slug": "loader-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/loader.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-819f-9c81-f0bbbac0c32f",
+    "trid": 62436,
+    "language": "ru",
+    "name": "Мобильный кран",
+    "slug": "mobile-crane-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/highway-crane.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a7-861c-e803fa657072",
+    "trid": 62448,
+    "language": "ru",
+    "name": "Многоцелевые сельскохозяйственные шины",
+    "slug": "multipurpose-tractor-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/multipurpose-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81af-817c-e4315b46e53c",
+    "trid": 95425,
+    "language": "ru",
+    "name": "Мини-экскаватор",
+    "slug": "mini-excavator-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/11/Mini-excavator.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ae-ba13-e7fe86094c71",
+    "trid": 62441,
+    "language": "ru",
+    "name": "Компактные колесные погрузчики",
+    "slug": "compact-wheel-loader-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/12/Screenshot-2023-12-20-at-2.31.21-PM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8157-83a6-e06e07bdb5e5",
+    "trid": 62432,
+    "language": "ru",
+    "name": "Колесные экскаваторы",
+    "slug": "wheeled-excavators-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/wheeled-excavator.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8100-810b-f97aeaf069e9",
+    "trid": 35112,
+    "language": "ru",
+    "name": "Катки",
+    "slug": "compactor-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/01/Screenshot-2024-01-16-at-10.54.26-AM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8111-9e74-e3733b738e43",
+    "trid": 62458,
+    "language": "ru",
+    "name": "Зерновая тележка для сельскохозяйственных применений",
+    "slug": "grain-cart-for-agricultural-applications-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/grain-cart-for-agricultural-applications.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-815f-897c-c2afed7e8c1e",
+    "trid": 95200,
+    "language": "ru",
+    "name": "Дальнемагистральные грузоперевозки",
+    "slug": "line-haul-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/07/line-haul-2.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8118-a839-cf8c0936d2ae",
+    "trid": 95423,
+    "language": "ru",
+    "name": "Гусеничный мини-погрузчик",
+    "slug": "compact-track-loader-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/11/skid-steer-with-track.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8147-800a-f3dc7920ba2f",
+    "trid": 62424,
+    "language": "ru",
+    "name": "Грузовой автомобиль с жесткой рамой",
+    "slug": "rigid-frame-haul-truck-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/haul-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81b1-a85d-cc99ccda6b37",
+    "trid": 62442,
+    "language": "ru",
+    "name": "Грейпельный скиддер",
+    "slug": "grapple-skidder-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/grapple-skidder.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81cc-88be-d428e08da1f5",
+    "trid": 62422,
+    "language": "ru",
+    "name": "Грейдеры",
+    "slug": "graders-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/grader.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8146-92da-d8ab79f371c9",
+    "trid": 62433,
+    "language": "ru",
+    "name": "Вилочные погрузчики с навесным оборудованием",
+    "slug": "trencher-and-mounted-forklift-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/12/Screenshot-2023-12-20-at-4.30.48-PM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8177-8e38-f4e4e8aa499b",
+    "trid": 35115,
+    "language": "ru",
+    "name": "Асфальтоукладчики",
+    "slug": "paver-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/paver.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81e1-986c-d52fa06f6a3b",
+    "trid": 62430,
+    "language": "ru",
+    "name": "Автоподъёмники с люлькой",
+    "slug": "aerial-platform-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/arial-platform-lift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81b6-8f20-c478a9d510f5",
+    "trid": 62445,
+    "language": "ru",
+    "name": "Автодорожный кран",
+    "slug": "highway-crane-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/highway-crane.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81d7-ae93-f644f788ee07",
+    "trid": 62455,
+    "language": "ru",
+    "name": "Utility Tractor",
+    "slug": "utility-tractor-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/utility-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ee-93cb-f1d5797180e0",
+    "trid": 62454,
+    "language": "ru",
+    "name": "Truck Mounted Forklift",
+    "slug": "truck-mounted-forklift-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/truck-mounted-forklift-1.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8110-b34e-eae64e969177",
+    "trid": 62452,
+    "language": "ru",
+    "name": "Terminal Trailer",
+    "slug": "terminal-trailer-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/terminal-trailer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8174-a8b3-f391fbcf5c04",
+    "trid": 62450,
+    "language": "ru",
+    "name": "Row Crop Tractor",
+    "slug": "row-crop-tractor-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/row-crop-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-815f-a9f8-c11c421a12ce",
+    "trid": 62447,
+    "language": "ru",
+    "name": "Marine Forklift",
+    "slug": "marine-forklift-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/marine-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81c8-9b1c-e100772755cb",
+    "trid": 62434,
+    "language": "ru",
+    "name": "Log Skidder",
+    "slug": "log-skidder-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/log-skidder.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8149-b222-e5f3ccf0dec1",
+    "trid": 62444,
+    "language": "ru",
+    "name": "Haul Truck",
+    "slug": "haul-truck-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/haul-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8130-bc6a-e6199c542173",
+    "trid": 62440,
+    "language": "ru",
+    "name": "Compact Tractor",
+    "slug": "compact-tractor-ru",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/compact-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81b2-9550-de9469878d81",
+    "trid": 62455,
+    "language": "pt-pt",
+    "name": "Utility Tractor",
+    "slug": "utility-tractor-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/utility-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a2-8890-fa0c1bae6a17",
+    "trid": 62454,
+    "language": "pt-pt",
+    "name": "Truck Mounted Forklift",
+    "slug": "truck-mounted-forklift-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/truck-mounted-forklift-1.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8125-86c0-c5088b749502",
+    "trid": 62443,
+    "language": "pt-pt",
+    "name": "Trator GSE",
+    "slug": "gse-tractor-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/gse-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-819b-a73c-f59a42e794c2",
+    "trid": 62438,
+    "language": "pt-pt",
+    "name": "Trator de Reboque de Bagagem",
+    "slug": "baggage-tow-tractor-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/baggage-tow-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8110-bb38-d778eab47c56",
+    "trid": 35119,
+    "language": "pt-pt",
+    "name": "Trator",
+    "slug": "tractor-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a3-9fa7-f77a87cb7474",
+    "trid": 62452,
+    "language": "pt-pt",
+    "name": "Terminal Trailer",
+    "slug": "terminal-trailer-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/terminal-trailer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81fe-851d-cae88ce6751e",
+    "trid": 62442,
+    "language": "pt-pt",
+    "name": "Skidder com Garra",
+    "slug": "grapple-skidder-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/grapple-skidder.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-814d-af56-df8bf8e9d393",
+    "trid": 95217,
+    "language": "pt-pt",
+    "name": "Serviço misto",
+    "slug": "mixed-service-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/07/mixed-service.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81aa-bfdf-d100ad979d42",
+    "trid": 95201,
+    "language": "pt-pt",
+    "name": "Serviço de transporte regional",
+    "slug": "regional-haul-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/07/line-haul-2.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81da-96db-f2acb843340e",
+    "trid": 95200,
+    "language": "pt-pt",
+    "name": "Serviço de longo curso",
+    "slug": "line-haul-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/07/line-haul-2.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81c2-b22f-e0752a66fc1c",
+    "trid": 62450,
+    "language": "pt-pt",
+    "name": "Row Crop Tractor",
+    "slug": "row-crop-tractor-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/row-crop-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-818b-9422-c98debbd7fb5",
+    "trid": 35111,
+    "language": "pt-pt",
+    "name": "Retroescavadoras",
+    "slug": "backhoe-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/backhoe.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81cc-9746-f679eb3d216a",
+    "trid": 35116,
+    "language": "pt-pt",
+    "name": "Raspadores",
+    "slug": "scraper-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/scraper.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81c9-8ef2-f81bf68caae3",
+    "trid": 62434,
+    "language": "pt-pt",
+    "name": "Pneus pour débusqueur de grumes",
+    "slug": "log-skidder-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/log-skidder.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8122-8fb3-c41f5eab7233",
+    "trid": 62437,
+    "language": "pt-pt",
+    "name": "Pneus para reboques",
+    "slug": "agricultural-trailer-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/agricultural-trailer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8189-847e-d446a018a3aa",
+    "trid": 62451,
+    "language": "pt-pt",
+    "name": "Pneus para pulverizador",
+    "slug": "self-propelled-sprayer-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/self-propelled-sprayer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81f6-bb29-ffeabe560ceb",
+    "trid": 62429,
+    "language": "pt-pt",
+    "name": "Pneus para manuseamento de material portuário",
+    "slug": "ground-support-equipment-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/gse-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-811d-a134-ec359c0dea55",
+    "trid": 62426,
+    "language": "pt-pt",
+    "name": "Pneus para empilhadores",
+    "slug": "forklift-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/truck-mounted-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81b8-ab87-d71b3216a5b9",
+    "trid": 62439,
+    "language": "pt-pt",
+    "name": "Pneus para ceifeira-debulhadora",
+    "slug": "combine-harvester-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/combine-harvester.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-818c-9a43-dade94d3c521",
+    "trid": 62456,
+    "language": "pt-pt",
+    "name": "Pneus para camiões-cisterna",
+    "slug": "water-tanker-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/water-tanker.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81f4-8184-d86634f2c292",
+    "trid": 35113,
+    "language": "pt-pt",
+    "name": "Pneus para alfaias",
+    "slug": "implement-trailer-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/implement-trailer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8165-8b0d-f760faf9b53f",
+    "trid": 62457,
+    "language": "pt-pt",
+    "name": "Pneus para aerogeradores",
+    "slug": "wind-rower-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/wind-rower.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-814f-871d-fb7ff7a3f976",
+    "trid": 62431,
+    "language": "pt-pt",
+    "name": "Pneus maciços fora de estrada",
+    "slug": "solid-off-the-road-tires-pt-pt",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ca-9f30-ef7310b1cfda",
+    "trid": 62423,
+    "language": "pt-pt",
+    "name": "Pneus de Apoio",
+    "slug": "support-tires-pt-pt",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81aa-b287-cd6e6854a823",
+    "trid": 62448,
+    "language": "pt-pt",
+    "name": "Pneus agrícolas multiusos",
+    "slug": "multipurpose-tractor-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/multipurpose-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8135-9a7b-f7d7aaa28d5c",
+    "trid": 62435,
+    "language": "pt-pt",
+    "name": "Pneus à haute flottaison",
+    "slug": "flotation-hf4-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/12/Screenshot-2023-12-22-at-1.07.25-PM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81f6-9ebb-fefe0fd809a6",
+    "trid": 62430,
+    "language": "pt-pt",
+    "name": "Plataformas aéreas",
+    "slug": "aerial-platform-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/arial-platform-lift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-815e-a5ac-d2529ca90b7b",
+    "trid": 62427,
+    "language": "pt-pt",
+    "name": "Perguntas frequentes",
+    "slug": "port-and-marine-equipment-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/marine-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-816a-9a4c-c00622223d0a",
+    "trid": 35115,
+    "language": "pt-pt",
+    "name": "Pavimentadores",
+    "slug": "paver-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/paver.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81f9-afee-e057cd87fb86",
+    "trid": 62422,
+    "language": "pt-pt",
+    "name": "Niveladoras",
+    "slug": "graders-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/grader.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81c1-b083-fd0dd5c8d130",
+    "trid": 35117,
+    "language": "pt-pt",
+    "name": "Minicarregadores",
+    "slug": "skid-steer-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/skid-steer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8140-bd08-d7ed2af93159",
+    "trid": 95425,
+    "language": "pt-pt",
+    "name": "Mini-escavadora",
+    "slug": "mini-excavator-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/11/Mini-excavator.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8182-a65d-c5f215fb3d3b",
+    "trid": 62447,
+    "language": "pt-pt",
+    "name": "Marine Forklift",
+    "slug": "marine-forklift-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/marine-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-817b-86f8-fc439c34f0bf",
+    "trid": 35118,
+    "language": "pt-pt",
+    "name": "Manipuladores telescópicos",
+    "slug": "telehandler-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/telehandler.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8160-ad48-da8907c9055d",
+    "trid": 62444,
+    "language": "pt-pt",
+    "name": "Haul Truck",
+    "slug": "haul-truck-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/haul-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81e3-800d-d814a3de58fa",
+    "trid": 62445,
+    "language": "pt-pt",
+    "name": "Guindaste de Rodovia",
+    "slug": "highway-crane-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/highway-crane.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8171-9a01-c026601fc4b8",
+    "trid": 62436,
+    "language": "pt-pt",
+    "name": "Grua móvel",
+    "slug": "mobile-crane-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/highway-crane.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-815b-bbb7-ce6efc5507ac",
+    "trid": 62432,
+    "language": "pt-pt",
+    "name": "Escavadoras de rodas",
+    "slug": "wheeled-excavators-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/wheeled-excavator.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ca-a763-c1e24b8db7a2",
+    "trid": 62433,
+    "language": "pt-pt",
+    "name": "Empilhadores de montagem",
+    "slug": "trencher-and-mounted-forklift-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/12/Screenshot-2023-12-20-at-4.30.48-PM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8111-945f-fc0d155892ea",
+    "trid": 62449,
+    "language": "pt-pt",
+    "name": "Empilhadeira Todo-Terreno",
+    "slug": "rough-terrain-forklift-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/rough-terrain-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81bf-9abe-fa7130d48b6f",
+    "trid": 62421,
+    "language": "pt-pt",
+    "name": "Empilhadeira de Armazém",
+    "slug": "warehouse-forklift-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/warehouse-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81e8-954b-feba7f19830b",
+    "trid": 35112,
+    "language": "pt-pt",
+    "name": "Compactadores",
+    "slug": "compactor-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/01/Screenshot-2024-01-16-at-10.54.26-AM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81cf-bed2-ca982276471f",
+    "trid": 62440,
+    "language": "pt-pt",
+    "name": "Compact Tractor",
+    "slug": "compact-tractor-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/compact-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8181-9352-f713580fa901",
+    "trid": 62458,
+    "language": "pt-pt",
+    "name": "Carro de Grãos para Aplicações Agrícolas",
+    "slug": "grain-cart-for-agricultural-applications-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/grain-cart-for-agricultural-applications.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ac-9d79-e88ed8c54e1e",
+    "trid": 62441,
+    "language": "pt-pt",
+    "name": "Carregadores de rodas compactos",
+    "slug": "compact-wheel-loader-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/12/Screenshot-2023-12-20-at-2.31.21-PM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-815a-b567-f94cd054cc0b",
+    "trid": 62446,
+    "language": "pt-pt",
+    "name": "Carregadores basculantes de carga e transporte",
+    "slug": "load-haul-dump-loader-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/load-haul-dump-loader.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81df-a951-c825dc8fe3a3",
+    "trid": 95423,
+    "language": "pt-pt",
+    "name": "Carregador de rastos compacto",
+    "slug": "compact-track-loader-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/11/skid-steer-with-track.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8129-ae5d-da3ef1b9dfb4",
+    "trid": 35114,
+    "language": "pt-pt",
+    "name": "Carregador",
+    "slug": "loader-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/loader.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81d2-88f4-ef5090b66c3e",
+    "trid": 35110,
+    "language": "pt-pt",
+    "name": "Camiões articulados basculantes",
+    "slug": "articulated-dump-truck-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/articulated-dump-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a6-9621-eaf4b28e7709",
+    "trid": 62428,
+    "language": "pt-pt",
+    "name": "Camião para mineração subterrânea",
+    "slug": "underground-mining-truck-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/ugm-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81e0-9f68-f8fcb2d96de5",
+    "trid": 62424,
+    "language": "pt-pt",
+    "name": "Camião de transporte de estrutura rígida",
+    "slug": "rigid-frame-haul-truck-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/haul-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-816b-a08c-f6b9c276b571",
+    "trid": 62425,
+    "language": "pt-pt",
+    "name": "Camião basculante",
+    "slug": "dump-truck-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/dump-truck-water-tanker.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ca-bbba-ff41e76c6e9b",
+    "trid": 62453,
+    "language": "pt-pt",
+    "name": "Abre-valas",
+    "slug": "trencher-pt-pt",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/trencher.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81bf-ad13-ff87dc5f78b9",
+    "trid": 95200,
+    "language": "ja",
+    "name": "長距離輸送サービス",
+    "slug": "line-haul-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/07/line-haul-2.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8163-93b7-ec255e02f48d",
+    "trid": 35110,
+    "language": "ja",
+    "name": "連結ダンプカー",
+    "slug": "articulated-dump-truck-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/articulated-dump-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-811f-8fac-d023a9f3969e",
+    "trid": 62458,
+    "language": "ja",
+    "name": "農業用穀物カート",
+    "slug": "grain-cart-for-agricultural-applications-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/grain-cart-for-agricultural-applications.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8118-9515-cd71fdf0caa4",
+    "trid": 62438,
+    "language": "ja",
+    "name": "荷物牽引トラクター",
+    "slug": "baggage-tow-tractor-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/baggage-tow-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8167-986e-e32575ca3a7f",
+    "trid": 62427,
+    "language": "ja",
+    "name": "港湾マテリアルハンドリング用タイヤ",
+    "slug": "port-and-marine-equipment-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/marine-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8116-a798-de796e74e62c",
+    "trid": 95217,
+    "language": "ja",
+    "name": "混合サービス",
+    "slug": "mixed-service-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/07/mixed-service.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81e8-8e34-d31ceca2f634",
+    "trid": 62448,
+    "language": "ja",
+    "name": "多目的農業用タイヤ",
+    "slug": "multipurpose-tractor-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/multipurpose-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-815d-baab-c476c160129f",
+    "trid": 95201,
+    "language": "ja",
+    "name": "地域輸送サービス",
+    "slug": "regional-haul-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/07/line-haul-2.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8170-83b6-df6bbcb9f837",
+    "trid": 62428,
+    "language": "ja",
+    "name": "地下鉱業用トラック",
+    "slug": "underground-mining-truck-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/ugm-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8182-aa2c-ffa2be479360",
+    "trid": 62429,
+    "language": "ja",
+    "name": "地上支援機材用タイヤ",
+    "slug": "ground-support-equipment-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/gse-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8136-8fb5-c2f4107f345e",
+    "trid": 62439,
+    "language": "ja",
+    "name": "収穫機用タイヤ",
+    "slug": "combine-harvester-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/combine-harvester.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-810a-88e0-c398ab5f20df",
+    "trid": 62421,
+    "language": "ja",
+    "name": "倉庫用フォークリフト",
+    "slug": "warehouse-forklift-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/warehouse-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8136-898e-cd17858fec6d",
+    "trid": 62434,
+    "language": "ja",
+    "name": "ログスキッダー用タイヤ",
+    "slug": "log-skidder-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/log-skidder.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-819c-a9ed-f00c507d691b",
+    "trid": 62446,
+    "language": "ja",
+    "name": "ロードホールダンプローダー",
+    "slug": "load-haul-dump-loader-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/load-haul-dump-loader.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81d5-8021-d42b478261ed",
+    "trid": 35114,
+    "language": "ja",
+    "name": "ローダー",
+    "slug": "loader-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/loader.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8190-a5c8-e100012eccf7",
+    "trid": 62424,
+    "language": "ja",
+    "name": "リジッドフレーム運搬トラック",
+    "slug": "rigid-frame-haul-truck-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/haul-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-815d-a948-c61dbca4edd0",
+    "trid": 95425,
+    "language": "ja",
+    "name": "ミニショベル",
+    "slug": "mini-excavator-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/11/Mini-excavator.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-814d-9dc2-df122a6044ac",
+    "trid": 62433,
+    "language": "ja",
+    "name": "マウント型フォークリフト",
+    "slug": "trencher-and-mounted-forklift-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/12/Screenshot-2023-12-20-at-4.30.48-PM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8135-9655-f130bfe4eef4",
+    "trid": 62432,
+    "language": "ja",
+    "name": "ホイールエクスカベーター",
+    "slug": "wheeled-excavators-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/wheeled-excavator.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-812a-bde9-c7273d711b84",
+    "trid": 35115,
+    "language": "ja",
+    "name": "ペーバー",
+    "slug": "paver-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/paver.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8145-b636-c20cdbf55d83",
+    "trid": 62426,
+    "language": "ja",
+    "name": "フォークリフト用タイヤ",
+    "slug": "forklift-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/truck-mounted-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8151-aa3d-ed175e082ea1",
+    "trid": 35111,
+    "language": "ja",
+    "name": "バックホー",
+    "slug": "backhoe-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/backhoe.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-817d-9410-d555ee01a3eb",
+    "trid": 62435,
+    "language": "ja",
+    "name": "ハイフローテーション用タイヤ",
+    "slug": "flotation-hf4-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/12/Screenshot-2023-12-22-at-1.07.25-PM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81b2-96a8-e1f9c11e8c2e",
+    "trid": 62445,
+    "language": "ja",
+    "name": "ハイウェークレーン",
+    "slug": "highway-crane-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/highway-crane.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8164-9dcc-d15cfc23ba62",
+    "trid": 62453,
+    "language": "ja",
+    "name": "トレンチャー",
+    "slug": "trencher-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/trencher.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8195-800c-d3e48e3da6ba",
+    "trid": 62437,
+    "language": "ja",
+    "name": "トレーラー用タイヤ",
+    "slug": "agricultural-trailer-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/agricultural-trailer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8127-b415-eab622f0bed2",
+    "trid": 35119,
+    "language": "ja",
+    "name": "トラクター用タイヤ",
+    "slug": "tractor-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8142-92bc-dad4cdaca795",
+    "trid": 35118,
+    "language": "ja",
+    "name": "テレハンドラー",
+    "slug": "telehandler-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/telehandler.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-812e-8368-d91062010f8e",
+    "trid": 62425,
+    "language": "ja",
+    "name": "ダンプカー",
+    "slug": "dump-truck-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/dump-truck-water-tanker.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8142-b3c7-fc84b9cea35a",
+    "trid": 62456,
+    "language": "ja",
+    "name": "タンカー用タイヤ",
+    "slug": "water-tanker-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/water-tanker.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-818c-bb3b-c8b65157d1e9",
+    "trid": 62431,
+    "language": "ja",
+    "name": "ソリッドOTRタイヤ",
+    "slug": "solid-off-the-road-tires-ja",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-817d-baf2-f2d05982ebe2",
+    "trid": 62451,
+    "language": "ja",
+    "name": "スプレイヤー用タイヤ",
+    "slug": "self-propelled-sprayer-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/self-propelled-sprayer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8176-b493-d7473f22a4d7",
+    "trid": 35116,
+    "language": "ja",
+    "name": "スクレーパー",
+    "slug": "scraper-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/scraper.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8177-bc46-e716ff20a2c4",
+    "trid": 35117,
+    "language": "ja",
+    "name": "スキッドステア",
+    "slug": "skid-steer-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/skid-steer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8140-bde5-d04fa2d69b5b",
+    "trid": 62423,
+    "language": "ja",
+    "name": "サポートタイヤ",
+    "slug": "support-tires-ja",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8145-afc9-f1992966e34f",
+    "trid": 62441,
+    "language": "ja",
+    "name": "コンパクトホイールローダー",
+    "slug": "compact-wheel-loader-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/12/Screenshot-2023-12-20-at-2.31.21-PM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8134-9682-e21a46b6597a",
+    "trid": 95423,
+    "language": "ja",
+    "name": "コンパクトトラックローダー",
+    "slug": "compact-track-loader-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/11/skid-steer-with-track.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-815d-ade7-e441762170be",
+    "trid": 35112,
+    "language": "ja",
+    "name": "コンパクター",
+    "slug": "compactor-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/01/Screenshot-2024-01-16-at-10.54.26-AM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-816c-aae3-d95f1840460e",
+    "trid": 62449,
+    "language": "ja",
+    "name": "クワッド用フォークリフト",
+    "slug": "rough-terrain-forklift-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/rough-terrain-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81b2-8930-cfd30ff0a547",
+    "trid": 62436,
+    "language": "ja",
+    "name": "クレーン車",
+    "slug": "mobile-crane-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/highway-crane.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8163-8345-edfae941f60e",
+    "trid": 62422,
+    "language": "ja",
+    "name": "グレーダー",
+    "slug": "graders-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/grader.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-813a-bc4f-f1b49653cd81",
+    "trid": 62442,
+    "language": "ja",
+    "name": "グラップルスキッダー",
+    "slug": "grapple-skidder-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/grapple-skidder.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81c4-9d18-e3e6eea01744",
+    "trid": 62430,
+    "language": "ja",
+    "name": "エアリアルプラットフォーム",
+    "slug": "aerial-platform-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/arial-platform-lift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8112-bf5a-c0dd3ba7ed6a",
+    "trid": 62457,
+    "language": "ja",
+    "name": "ウインドローアー用タイヤ",
+    "slug": "wind-rower-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/wind-rower.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a5-81e8-f4972b830050",
+    "trid": 35113,
+    "language": "ja",
+    "name": "インプルメント用タイヤ",
+    "slug": "implement-trailer-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/implement-trailer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a1-88ce-ca8c3d14c12e",
+    "trid": 62455,
+    "language": "ja",
+    "name": "Utility Tractor",
+    "slug": "utility-tractor-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/utility-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8194-b4f5-cf430c270a3d",
+    "trid": 62454,
+    "language": "ja",
+    "name": "Truck Mounted Forklift",
+    "slug": "truck-mounted-forklift-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/truck-mounted-forklift-1.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81cf-8065-c2789c34f26c",
+    "trid": 62452,
+    "language": "ja",
+    "name": "Terminal Trailer",
+    "slug": "terminal-trailer-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/terminal-trailer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-812f-8c24-f8ad17fa74ae",
+    "trid": 62450,
+    "language": "ja",
+    "name": "Row Crop Tractor",
+    "slug": "row-crop-tractor-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/row-crop-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-817b-bd4b-c48aea09d56a",
+    "trid": 62447,
+    "language": "ja",
+    "name": "Marine Forklift",
+    "slug": "marine-forklift-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/marine-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-810c-bd6e-fa262e284bc4",
+    "trid": 62444,
+    "language": "ja",
+    "name": "Haul Truck",
+    "slug": "haul-truck-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/haul-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8166-9d16-e669b3bbb943",
+    "trid": 62443,
+    "language": "ja",
+    "name": "GSEトラクター",
+    "slug": "gse-tractor-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/gse-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8129-b0c8-c1adf885437e",
+    "trid": 62440,
+    "language": "ja",
+    "name": "Compact Tractor",
+    "slug": "compact-tractor-ja",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/compact-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-814b-9608-fcd95f25d275",
+    "trid": 62455,
+    "language": "it",
+    "name": "Utility Tractor",
+    "slug": "utility-tractor-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/utility-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-819c-bce6-f47245f78212",
+    "trid": 62454,
+    "language": "it",
+    "name": "Truck Mounted Forklift",
+    "slug": "truck-mounted-forklift-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/truck-mounted-forklift-1.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8175-adec-fbf821aa13d7",
+    "trid": 62453,
+    "language": "it",
+    "name": "Trencher",
+    "slug": "trencher-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/trencher.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a7-b8f7-e0d713ecc8c8",
+    "trid": 35119,
+    "language": "it",
+    "name": "Trattori",
+    "slug": "tractor-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a2-b831-e4733528d0f0",
+    "trid": 62438,
+    "language": "it",
+    "name": "Trattore traino bagagli",
+    "slug": "baggage-tow-tractor-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/baggage-tow-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8150-bf82-d8025944f8d6",
+    "trid": 62443,
+    "language": "it",
+    "name": "Trattore GSE",
+    "slug": "gse-tractor-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/gse-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-810b-9e11-e50a345acd36",
+    "trid": 35111,
+    "language": "it",
+    "name": "Terne",
+    "slug": "backhoe-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/backhoe.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-819c-ad81-d50b28fed951",
+    "trid": 62452,
+    "language": "it",
+    "name": "Terminal Trailer",
+    "slug": "terminal-trailer-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/terminal-trailer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a5-8010-ee5aa0b6fa5a",
+    "trid": 35118,
+    "language": "it",
+    "name": "Sollevatori telescopici",
+    "slug": "telehandler-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/telehandler.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81d2-beff-c35f981182d0",
+    "trid": 62442,
+    "language": "it",
+    "name": "Skidder a grappolo",
+    "slug": "grapple-skidder-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/grapple-skidder.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-817b-9d86-c18668355adb",
+    "trid": 95217,
+    "language": "it",
+    "name": "Servizi misti",
+    "slug": "mixed-service-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/07/mixed-service.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81f7-a95e-fc93486b9f03",
+    "trid": 95201,
+    "language": "it",
+    "name": "Servizi di trasporto regionale",
+    "slug": "regional-haul-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/07/line-haul-2.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a8-afe8-d46080d03a3f",
+    "trid": 95200,
+    "language": "it",
+    "name": "Servizi a lunga percorrenza",
+    "slug": "line-haul-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/07/line-haul-2.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8162-832e-f452e9b27061",
+    "trid": 35116,
+    "language": "it",
+    "name": "Ruspe",
+    "slug": "scraper-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/scraper.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-815d-9b3c-eb344fa7bb1d",
+    "trid": 62450,
+    "language": "it",
+    "name": "Row Crop Tractor",
+    "slug": "row-crop-tractor-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/row-crop-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81df-b215-c05e90a817d2",
+    "trid": 62437,
+    "language": "it",
+    "name": "Pneumatici per rimorchi",
+    "slug": "agricultural-trailer-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/agricultural-trailer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81bf-bd60-f83f2bddae3e",
+    "trid": 62427,
+    "language": "it",
+    "name": "Pneumatici per movimentazione materiali in porto",
+    "slug": "port-and-marine-equipment-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/marine-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8110-8fa5-f3197db38e45",
+    "trid": 62439,
+    "language": "it",
+    "name": "Pneumatici per mietitrebbia",
+    "slug": "combine-harvester-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/combine-harvester.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81fb-add1-f027007b8498",
+    "trid": 62434,
+    "language": "it",
+    "name": "Pneumatici per macchine disboscatrici",
+    "slug": "log-skidder-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/log-skidder.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a5-8cbe-e081341a7d96",
+    "trid": 35113,
+    "language": "it",
+    "name": "Pneumatici per macchine agricole",
+    "slug": "implement-trailer-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/implement-trailer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81f4-8767-c8fa2c573a04",
+    "trid": 62451,
+    "language": "it",
+    "name": "Pneumatici per irroratrici",
+    "slug": "self-propelled-sprayer-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/self-propelled-sprayer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8180-b28a-f68ffcebc589",
+    "trid": 62457,
+    "language": "it",
+    "name": "Pneumatici per falciandanatrici",
+    "slug": "wind-rower-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/wind-rower.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81b9-baee-f9f405244a16",
+    "trid": 62426,
+    "language": "it",
+    "name": "Pneumatici per carrelli elevatori",
+    "slug": "forklift-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/truck-mounted-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8173-bc5d-c5e34fd4e6fe",
+    "trid": 62456,
+    "language": "it",
+    "name": "Pneumatici per autocisterne",
+    "slug": "water-tanker-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/water-tanker.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ac-8b55-c030e2d7aaee",
+    "trid": 62429,
+    "language": "it",
+    "name": "Pneumatici per attrezzature di supporto a terra",
+    "slug": "ground-support-equipment-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/gse-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8121-b52c-d0dd6af3ea1d",
+    "trid": 62431,
+    "language": "it",
+    "name": "Pneumatici OTR in gomma piena",
+    "slug": "solid-off-the-road-tires-it",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-814c-b301-e128a5361204",
+    "trid": 62423,
+    "language": "it",
+    "name": "Pneumatici di supporto",
+    "slug": "support-tires-it",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8189-aba9-c9722ccf0c45",
+    "trid": 62448,
+    "language": "it",
+    "name": "Pneumatici agricoli multiuso",
+    "slug": "multipurpose-tractor-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/multipurpose-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-812b-95aa-f6aed74f2def",
+    "trid": 62435,
+    "language": "it",
+    "name": "Pneumatici a flottazione elevata",
+    "slug": "flotation-hf4-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/12/Screenshot-2023-12-22-at-1.07.25-PM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ec-a2de-e0a525114cfa",
+    "trid": 62430,
+    "language": "it",
+    "name": "Piattaforme aeree",
+    "slug": "aerial-platform-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/arial-platform-lift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81d2-8ec7-fff5d20d97d4",
+    "trid": 35115,
+    "language": "it",
+    "name": "Pavimentatrici",
+    "slug": "paver-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/paver.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8175-82d4-d89e2e749ac3",
+    "trid": 62446,
+    "language": "it",
+    "name": "Pale LHD",
+    "slug": "load-haul-dump-loader-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/load-haul-dump-loader.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8110-a49e-c940fb809da3",
+    "trid": 62441,
+    "language": "it",
+    "name": "Pale gommate compatte",
+    "slug": "compact-wheel-loader-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/12/Screenshot-2023-12-20-at-2.31.21-PM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a6-b405-db14bcca7fa2",
+    "trid": 35114,
+    "language": "it",
+    "name": "Pale",
+    "slug": "loader-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/loader.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-818f-8a4e-f0956d9c522a",
+    "trid": 95423,
+    "language": "it",
+    "name": "Pala cingolata compatta",
+    "slug": "compact-track-loader-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/11/skid-steer-with-track.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-810c-a4aa-c8c1221c255f",
+    "trid": 62422,
+    "language": "it",
+    "name": "Motolivellatrici",
+    "slug": "graders-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/grader.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-812f-8b07-dbde183e9a7f",
+    "trid": 35117,
+    "language": "it",
+    "name": "Minipale",
+    "slug": "skid-steer-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/skid-steer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-812a-8c6c-d18f51ccb6b5",
+    "trid": 95425,
+    "language": "it",
+    "name": "Mini-escavatore",
+    "slug": "mini-excavator-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/11/Mini-excavator.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a0-96ac-e35525af00b0",
+    "trid": 62447,
+    "language": "it",
+    "name": "Marine Forklift",
+    "slug": "marine-forklift-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/marine-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81e1-a21e-d0383e2d6f1a",
+    "trid": 62444,
+    "language": "it",
+    "name": "Haul Truck",
+    "slug": "haul-truck-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/haul-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81d1-b939-de364a40c4ef",
+    "trid": 62445,
+    "language": "it",
+    "name": "Gru autostradale",
+    "slug": "highway-crane-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/highway-crane.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81bd-9ba1-f07326d259f8",
+    "trid": 62432,
+    "language": "it",
+    "name": "Escavatori gommati",
+    "slug": "wheeled-excavators-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/wheeled-excavator.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81de-9a55-d654b821de5e",
+    "trid": 35110,
+    "language": "it",
+    "name": "Dumper articolati",
+    "slug": "articulated-dump-truck-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/articulated-dump-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8153-bf85-f5c5083f6160",
+    "trid": 62425,
+    "language": "it",
+    "name": "Dumper",
+    "slug": "dump-truck-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/dump-truck-water-tanker.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8175-bc85-f7ba5fb3bb81",
+    "trid": 35112,
+    "language": "it",
+    "name": "Compattatori",
+    "slug": "compactor-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/01/Screenshot-2024-01-16-at-10.54.26-AM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81e2-996b-e8b928c39a43",
+    "trid": 62440,
+    "language": "it",
+    "name": "Compact Tractor",
+    "slug": "compact-tractor-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/compact-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-811e-b043-f3408c626d05",
+    "trid": 62449,
+    "language": "it",
+    "name": "Carrello elevatore per terreni accidentati",
+    "slug": "rough-terrain-forklift-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/rough-terrain-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-813c-85e2-d826a494859c",
+    "trid": 62421,
+    "language": "it",
+    "name": "Carrello elevatore per magazzino",
+    "slug": "warehouse-forklift-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/warehouse-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81c9-8b99-edf659d3972d",
+    "trid": 62458,
+    "language": "it",
+    "name": "Carrello cerealicolo per applicazioni agricole",
+    "slug": "grain-cart-for-agricultural-applications-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/grain-cart-for-agricultural-applications.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81db-a340-ea847b4ac3cd",
+    "trid": 62433,
+    "language": "it",
+    "name": "Carrelli elevatori autotrasportati",
+    "slug": "trencher-and-mounted-forklift-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/12/Screenshot-2023-12-20-at-4.30.48-PM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-813c-8aba-cdd2c70b31aa",
+    "trid": 62436,
+    "language": "it",
+    "name": "Autogru",
+    "slug": "mobile-crane-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/highway-crane.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81b1-a28f-d47c660c0e60",
+    "trid": 62428,
+    "language": "it",
+    "name": "Autocarri per miniere sotterranee",
+    "slug": "underground-mining-truck-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/ugm-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-815b-89ef-f0fbb5843e1f",
+    "trid": 62424,
+    "language": "it",
+    "name": "Autocarri a telaio rigido",
+    "slug": "rigid-frame-haul-truck-it",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/haul-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-817f-bbce-e86442fa10e9",
+    "trid": 62455,
+    "language": "fr",
+    "name": "Utility Tractor",
+    "slug": "utility-tractor-fr",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8122-8e79-e38ecd897969",
+    "trid": 62454,
+    "language": "fr",
+    "name": "Truck Mounted Forklift",
+    "slug": "truck-mounted-forklift-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/truck-mounted-forklift-1.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8109-8753-da4e5a08b052",
+    "trid": 62453,
+    "language": "fr",
+    "name": "Trancheuses",
+    "slug": "trencher-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/trencher.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8165-b736-f5644b043c0e",
+    "trid": 35119,
+    "language": "fr",
+    "name": "Tracteurs",
+    "slug": "tractor-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8103-b00d-d6187beb3205",
+    "trid": 62443,
+    "language": "fr",
+    "name": "Tracteur GSE",
+    "slug": "gse-tractor-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/gse-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ea-a96d-f42f77075558",
+    "trid": 62438,
+    "language": "fr",
+    "name": "Tracteur de remorquage de bagages",
+    "slug": "baggage-tow-tractor-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/baggage-tow-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8183-ab58-cdb16f4a191e",
+    "trid": 62424,
+    "language": "fr",
+    "name": "Tombereau Rigide",
+    "slug": "rigid-frame-haul-truck-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/haul-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-810b-a4e3-fadfd3fd43c2",
+    "trid": 35110,
+    "language": "fr",
+    "name": "Tombereau Articulé",
+    "slug": "articulated-dump-truck-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/articulated-dump-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-813c-9cd0-ca3a97702604",
+    "trid": 62452,
+    "language": "fr",
+    "name": "Terminal Trailer",
+    "slug": "terminal-trailer-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/terminal-trailer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ef-b8e0-dd43f7ae1ae2",
+    "trid": 62442,
+    "language": "fr",
+    "name": "Skidder à grappin",
+    "slug": "grapple-skidder-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/grapple-skidder.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-810e-92ff-e87a27f5952b",
+    "trid": 95217,
+    "language": "fr",
+    "name": "Service mixte",
+    "slug": "mixed-service-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/07/mixed-service.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81bd-a575-d2c891e11f9d",
+    "trid": 95201,
+    "language": "fr",
+    "name": "Service de transport régional",
+    "slug": "regional-haul-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/07/line-haul-2.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ed-8e6a-e4a91b842505",
+    "trid": 95200,
+    "language": "fr",
+    "name": "Service de transport longue distance",
+    "slug": "line-haul-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/07/line-haul-2.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-818a-b3c2-cd55e573153b",
+    "trid": 62450,
+    "language": "fr",
+    "name": "Row Crop Tractor",
+    "slug": "row-crop-tractor-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/row-crop-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81e7-bec0-ead8e180c4fd",
+    "trid": 62427,
+    "language": "fr",
+    "name": "Port and Marine Equipment",
+    "slug": "port-and-marine-equipment-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/marine-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a5-a1c6-d5133a2244c1",
+    "trid": 62437,
+    "language": "fr",
+    "name": "Pneus pour remorques",
+    "slug": "agricultural-trailer-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/agricultural-trailer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-811e-93e7-d45062eaaee6",
+    "trid": 62451,
+    "language": "fr",
+    "name": "Pneus pour pulvérisateur agricole",
+    "slug": "self-propelled-sprayer-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/self-propelled-sprayer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ec-81ae-c2f9b4fd3da2",
+    "trid": 62439,
+    "language": "fr",
+    "name": "Pneus pour moissonneuses-batteuses",
+    "slug": "combine-harvester-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/combine-harvester.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8141-9d12-f973e63648b1",
+    "trid": 35113,
+    "language": "fr",
+    "name": "Pneus pour machines-outils",
+    "slug": "implement-trailer-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/implement-trailer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81fc-b0b7-d0ba4bc35264",
+    "trid": 62429,
+    "language": "fr",
+    "name": "Pneus pour équipement de soutien au sol",
+    "slug": "ground-support-equipment-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/gse-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8186-bfa9-d5c3b3395b08",
+    "trid": 62434,
+    "language": "fr",
+    "name": "Pneus pour débusqueur de grumes",
+    "slug": "log-skidder-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/log-skidder.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81f7-a282-dce981141ade",
+    "trid": 62426,
+    "language": "fr",
+    "name": "Pneus pour chariots élévateurs",
+    "slug": "forklift-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/truck-mounted-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81c0-b6b9-c21dab445e8f",
+    "trid": 62456,
+    "language": "fr",
+    "name": "Pneus pour camions-citernes",
+    "slug": "water-tanker-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/water-tanker.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81c6-b766-e11a4385e8de",
+    "trid": 62457,
+    "language": "fr",
+    "name": "Pneus pour andaineuse",
+    "slug": "wind-rower-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/wind-rower.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81d4-b88e-e0d6cc5ea5fb",
+    "trid": 62431,
+    "language": "fr",
+    "name": "Pneus pleins OTR",
+    "slug": "solid-off-the-road-tires-fr",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-810f-a836-e23204d566dc",
+    "trid": 62423,
+    "language": "fr",
+    "name": "Pneus de support",
+    "slug": "support-tires-fr",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81d5-be72-f5bde7b37ab0",
+    "trid": 62448,
+    "language": "fr",
+    "name": "Pneus agricoles polyvalents",
+    "slug": "multipurpose-tractor-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/multipurpose-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8198-8241-e53751ea6bc4",
+    "trid": 62435,
+    "language": "fr",
+    "name": "Pneus à haute flottaison",
+    "slug": "flotation-hf4-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/12/Screenshot-2023-12-22-at-1.07.25-PM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-817a-9fd5-d940490f468e",
+    "trid": 35111,
+    "language": "fr",
+    "name": "Pelleteuses",
+    "slug": "backhoe-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/backhoe.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8160-b87a-e105ef89ecaf",
+    "trid": 62422,
+    "language": "fr",
+    "name": "Niveleuses",
+    "slug": "graders-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/grader.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-815c-9dfa-c60dfbcd53a1",
+    "trid": 62430,
+    "language": "fr",
+    "name": "Nacelles élévatrices",
+    "slug": "aerial-platform-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/arial-platform-lift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8105-85f0-e1a022ede25c",
+    "trid": 95425,
+    "language": "fr",
+    "name": "Mini-excavatrice",
+    "slug": "mini-excavator-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/11/Mini-excavator.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ea-a830-cb06a45a9d0e",
+    "trid": 62447,
+    "language": "fr",
+    "name": "Marine Forklift",
+    "slug": "marine-forklift-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/marine-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81bc-82a5-fbf68e7b764f",
+    "trid": 35118,
+    "language": "fr",
+    "name": "Machines télescopiques",
+    "slug": "telehandler-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/telehandler.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81f5-be06-db543e787c7f",
+    "trid": 62444,
+    "language": "fr",
+    "name": "Haul Truck",
+    "slug": "haul-truck-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/haul-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ab-b599-ccdd25510df5",
+    "trid": 62445,
+    "language": "fr",
+    "name": "Grue autoroutière",
+    "slug": "highway-crane-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/highway-crane.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-815a-9fc7-d17c52149a6b",
+    "trid": 62436,
+    "language": "fr",
+    "name": "Grue Automotrice",
+    "slug": "mobile-crane-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/highway-crane.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8129-a5eb-d6cccbd0e907",
+    "trid": 35115,
+    "language": "fr",
+    "name": "Finisseuses",
+    "slug": "paver-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/paver.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81e4-bf5c-c81c1c332b66",
+    "trid": 62432,
+    "language": "fr",
+    "name": "Excavatrices sur roues",
+    "slug": "wheeled-excavators-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/wheeled-excavator.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8105-99c7-c89c41440a95",
+    "trid": 62428,
+    "language": "fr",
+    "name": "Engin pour l’exploitation minière souterraine",
+    "slug": "underground-mining-truck-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/ugm-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8152-9eed-ccfa77109f5d",
+    "trid": 35116,
+    "language": "fr",
+    "name": "Décapeuse",
+    "slug": "scraper-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/scraper.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81c7-bef2-e288de12b74a",
+    "trid": 35112,
+    "language": "fr",
+    "name": "Compacteurs",
+    "slug": "compactor-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/01/Screenshot-2024-01-16-at-10.54.26-AM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8158-b216-d2284437ef5b",
+    "trid": 62440,
+    "language": "fr",
+    "name": "Compact Tractor",
+    "slug": "compact-tractor-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/compact-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-815b-838c-f233e37903ea",
+    "trid": 62433,
+    "language": "fr",
+    "name": "Chariots élévateurs embarqués",
+    "slug": "trencher-and-mounted-forklift-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/12/Screenshot-2023-12-20-at-4.30.48-PM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8124-9425-cf4e385fe741",
+    "trid": 62449,
+    "language": "fr",
+    "name": "Chariot élévateur tout-terrain",
+    "slug": "rough-terrain-forklift-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/rough-terrain-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-817d-b0d9-f1c745dee552",
+    "trid": 62421,
+    "language": "fr",
+    "name": "Chariot élévateur d'entrepôt",
+    "slug": "warehouse-forklift-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/warehouse-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ff-b844-da31139bc851",
+    "trid": 62458,
+    "language": "fr",
+    "name": "Chariot à grains pour applications agricoles",
+    "slug": "grain-cart-for-agricultural-applications-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/grain-cart-for-agricultural-applications.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8150-ab2e-f362afdd182f",
+    "trid": 62441,
+    "language": "fr",
+    "name": "Chargeuses compactes sur pneus",
+    "slug": "compact-wheel-loader-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/12/Screenshot-2023-12-20-at-2.31.21-PM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8145-bfd8-e14492df659d",
+    "trid": 35117,
+    "language": "fr",
+    "name": "Chargeuses à direction différentielle",
+    "slug": "skid-steer-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/skid-steer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8108-b85f-c2edfb43982e",
+    "trid": 95423,
+    "language": "fr",
+    "name": "Chargeuse compacte sur chenilles",
+    "slug": "compact-track-loader-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/11/skid-steer-with-track.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-812d-a360-c8a922bb9caa",
+    "trid": 35114,
+    "language": "fr",
+    "name": "Chargeuse",
+    "slug": "loader-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/loader.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81cc-aa1d-ccc35d2d8f7d",
+    "trid": 62446,
+    "language": "fr",
+    "name": "Chageur souterrain",
+    "slug": "load-haul-dump-loader-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/load-haul-dump-loader.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8119-9f5d-e44061346a47",
+    "trid": 62425,
+    "language": "fr",
+    "name": "Camion à benne basculante",
+    "slug": "dump-truck-fr",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/dump-truck-water-tanker.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-815f-960b-c6b6cff623c8",
+    "trid": 62453,
+    "language": "es",
+    "name": "Zanjadoras",
+    "slug": "trencher-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/trencher.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a6-b930-e3e09ab39d0f",
+    "trid": 62455,
+    "language": "es",
+    "name": "Utility Tractor",
+    "slug": "utility-tractor-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/utility-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8185-bda6-cca1c677be42",
+    "trid": 62454,
+    "language": "es",
+    "name": "Truck Mounted Forklift",
+    "slug": "truck-mounted-forklift-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/truck-mounted-forklift-1.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8180-9061-dc9c07219021",
+    "trid": 35119,
+    "language": "es",
+    "name": "Tractores",
+    "slug": "tractor-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81b9-9371-da721d473f6c",
+    "trid": 62443,
+    "language": "es",
+    "name": "Tractor GSE",
+    "slug": "gse-tractor-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/gse-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8105-acdd-f62b022629b9",
+    "trid": 62438,
+    "language": "es",
+    "name": "Tractor de Remolque de Equipaje",
+    "slug": "baggage-tow-tractor-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/baggage-tow-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-813f-900b-dcf87867cda4",
+    "trid": 62452,
+    "language": "es",
+    "name": "Terminal Trailer",
+    "slug": "terminal-trailer-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/terminal-trailer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8185-a175-caeada25db29",
+    "trid": 62442,
+    "language": "es",
+    "name": "Skidder con Grapa",
+    "slug": "grapple-skidder-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/grapple-skidder.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8139-9f25-c3bcbf6028f8",
+    "trid": 95217,
+    "language": "es",
+    "name": "Servicio mixto",
+    "slug": "mixed-service-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/07/mixed-service.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81a1-b487-db4184420f88",
+    "trid": 95201,
+    "language": "es",
+    "name": "Servicio de recorrido regional",
+    "slug": "regional-haul-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/07/line-haul-2.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-813e-ad12-c4ec09bd3a80",
+    "trid": 95200,
+    "language": "es",
+    "name": "Servicio de largo recorrido",
+    "slug": "line-haul-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/07/line-haul-2.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-814e-a85f-f50210aca0ee",
+    "trid": 62450,
+    "language": "es",
+    "name": "Row Crop Tractor",
+    "slug": "row-crop-tractor-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/row-crop-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81e5-b722-cdff18916fdb",
+    "trid": 35111,
+    "language": "es",
+    "name": "Retroexcavadoras",
+    "slug": "backhoe-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/backhoe.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8186-ab49-fbe06ba2bc42",
+    "trid": 62430,
+    "language": "es",
+    "name": "Plataformas aéreas",
+    "slug": "aerial-platform-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/arial-platform-lift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8132-87b6-d36f1609fd5a",
+    "trid": 62441,
+    "language": "es",
+    "name": "Palas de ruedas compactas",
+    "slug": "compact-wheel-loader-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/12/Screenshot-2023-12-20-at-2.31.21-PM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8189-a58b-fd172fe847a1",
+    "trid": 62431,
+    "language": "es",
+    "name": "Neumáticos todoterreno (OTR) sólidos",
+    "slug": "solid-off-the-road-tires-es",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8155-8b2f-dd2c44605094",
+    "trid": 62457,
+    "language": "es",
+    "name": "Neumáticos para segadoras hileradoras",
+    "slug": "wind-rower-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/wind-rower.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-817c-bd41-e72041d919d0",
+    "trid": 62437,
+    "language": "es",
+    "name": "Neumáticos para remolques",
+    "slug": "agricultural-trailer-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/agricultural-trailer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8184-bc28-da5270bdee01",
+    "trid": 62451,
+    "language": "es",
+    "name": "Neumáticos para pulverizadores",
+    "slug": "self-propelled-sprayer-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/self-propelled-sprayer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8123-8a02-da778b46e0ba",
+    "trid": 62426,
+    "language": "es",
+    "name": "Neumáticos para montacargas",
+    "slug": "forklift-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/truck-mounted-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-811a-ac78-d92be5b1be60",
+    "trid": 35113,
+    "language": "es",
+    "name": "Neumáticos para implementos",
+    "slug": "implement-trailer-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/implement-trailer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8188-b807-dab8613e3c1b",
+    "trid": 62429,
+    "language": "es",
+    "name": "Neumáticos para equipos de apoyo en tierra",
+    "slug": "ground-support-equipment-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/gse-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8129-b5aa-f319b1210a35",
+    "trid": 62439,
+    "language": "es",
+    "name": "Neumáticos para cosechadoras",
+    "slug": "combine-harvester-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/combine-harvester.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-819b-b4a9-e1e1e09281d7",
+    "trid": 62456,
+    "language": "es",
+    "name": "Neumáticos para cisternas",
+    "slug": "water-tanker-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/water-tanker.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81c5-8187-ff2d7695eafe",
+    "trid": 62427,
+    "language": "es",
+    "name": "Neumáticos de manipulación de materiales en puertos",
+    "slug": "port-and-marine-equipment-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/marine-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81d9-95b4-fe2ef33fa24a",
+    "trid": 62434,
+    "language": "es",
+    "name": "Neumáticos de arrastradores de troncos",
+    "slug": "log-skidder-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/log-skidder.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81d4-974d-f72717b1b0b5",
+    "trid": 62423,
+    "language": "es",
+    "name": "Neumáticos de Apoyo",
+    "slug": "support-tires-es",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8195-96b9-d6b616078cb1",
+    "trid": 62435,
+    "language": "es",
+    "name": "Neumáticos de alta flotación",
+    "slug": "flotation-hf4-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/12/Screenshot-2023-12-22-at-1.07.25-PM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-811e-bd4d-c1e09f1b1509",
+    "trid": 62448,
+    "language": "es",
+    "name": "Neumáticos agrícolas multiuso",
+    "slug": "multipurpose-tractor-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/multipurpose-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8136-a631-dbf3213b3674",
+    "trid": 62422,
+    "language": "es",
+    "name": "Motoniveladoras",
+    "slug": "graders-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/grader.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81d8-8e1c-d6efa48bf1dc",
+    "trid": 62449,
+    "language": "es",
+    "name": "Montacargas Todo Terreno",
+    "slug": "rough-terrain-forklift-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/rough-terrain-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8149-a082-e7babdd5166d",
+    "trid": 62421,
+    "language": "es",
+    "name": "Montacargas de Almacén",
+    "slug": "warehouse-forklift-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/warehouse-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81d6-8ee7-c2ba068282a2",
+    "trid": 95425,
+    "language": "es",
+    "name": "Miniexcavadora",
+    "slug": "mini-excavator-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/11/Mini-excavator.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8131-b8a3-d19768874017",
+    "trid": 62447,
+    "language": "es",
+    "name": "Marine Forklift",
+    "slug": "marine-forklift-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/marine-forklift.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8129-8d1c-df4d7348a083",
+    "trid": 35118,
+    "language": "es",
+    "name": "Manipuladoras telescópicas",
+    "slug": "telehandler-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/telehandler.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81d5-bdb9-c08f76a3702f",
+    "trid": 62444,
+    "language": "es",
+    "name": "Haul Truck",
+    "slug": "haul-truck-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/haul-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-810b-9858-f2aad19f9437",
+    "trid": 62436,
+    "language": "es",
+    "name": "Grúa móvil",
+    "slug": "mobile-crane-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/highway-crane.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81d4-8ac4-c1cfc7e18e0c",
+    "trid": 62445,
+    "language": "es",
+    "name": "Grúa de Autopista",
+    "slug": "highway-crane-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/highway-crane.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-814b-b371-f5199917b0d9",
+    "trid": 35115,
+    "language": "es",
+    "name": "Extendedoras de asfalto de ruedas",
+    "slug": "paver-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/paver.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-818a-a088-c4048b798e34",
+    "trid": 35116,
+    "language": "es",
+    "name": "Explanadora",
+    "slug": "scraper-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/scraper.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81cd-9503-fb96ddc877f0",
+    "trid": 62432,
+    "language": "es",
+    "name": "Excavadoras de ruedas",
+    "slug": "wheeled-excavators-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/wheeled-excavator.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81f3-8ec4-ea9df16535b5",
+    "trid": 62428,
+    "language": "es",
+    "name": "Dúmperes para minería subterránea",
+    "slug": "underground-mining-truck-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/ugm-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-811f-a818-d77b8ae40ad3",
+    "trid": 35112,
+    "language": "es",
+    "name": "Compactadoras",
+    "slug": "compactor-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/01/Screenshot-2024-01-16-at-10.54.26-AM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8153-a69e-da06a0006b04",
+    "trid": 62440,
+    "language": "es",
+    "name": "Compact Tractor",
+    "slug": "compact-tractor-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/compact-tractor.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81fa-af05-c9ea9f41fc9d",
+    "trid": 62458,
+    "language": "es",
+    "name": "Carro de Granos para Aplicaciones Agrícolas",
+    "slug": "grain-cart-for-agricultural-applications-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/grain-cart-for-agricultural-applications.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8104-8039-e859609c26b5",
+    "trid": 62433,
+    "language": "es",
+    "name": "Carretilla elevadora montada",
+    "slug": "trencher-and-mounted-forklift-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/12/Screenshot-2023-12-20-at-4.30.48-PM.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81f8-b16c-f1666c98a9d9",
+    "trid": 62446,
+    "language": "es",
+    "name": "Cargadoras de transporte y descarga",
+    "slug": "load-haul-dump-loader-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/load-haul-dump-loader.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81ad-9896-c49a9820cc4a",
+    "trid": 35117,
+    "language": "es",
+    "name": "Cargadoras compactas",
+    "slug": "skid-steer-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/skid-steer.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-81b8-85aa-d4fb42833fce",
+    "trid": 95423,
+    "language": "es",
+    "name": "Cargadora compacta de oruga",
+    "slug": "compact-track-loader-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2024/11/skid-steer-with-track.png",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8112-be29-edbc664ace72",
+    "trid": 35114,
+    "language": "es",
+    "name": "Cargador",
+    "slug": "loader-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/loader.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-8119-971a-f5b00d1cbe0c",
+    "trid": 62424,
+    "language": "es",
+    "name": "Camión volquete rígido",
+    "slug": "rigid-frame-haul-truck-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/haul-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-817f-ae2c-db52b8a51f55",
+    "trid": 35110,
+    "language": "es",
+    "name": "Camión volquete articulado",
+    "slug": "articulated-dump-truck-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/articulated-dump-truck.jpg",
+    "translationIds": []
+  },
+  {
+    "pageId": "38034d6d-7cea-812d-b036-c9559124c6b3",
+    "trid": 62425,
+    "language": "es",
+    "name": "Camión volquete",
+    "slug": "dump-truck-es",
+    "icon": "https://maxamtire.com/wp-content/uploads/2023/10/dump-truck-water-tanker.jpg",
+    "translationIds": []
+  },
+  {
     "pageId": "38034d6d-7cea-81e4-b6fb-db3ca022a847",
     "trid": 62455,
     "language": "de",

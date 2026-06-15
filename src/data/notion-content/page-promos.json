@@ -1,5 +1,355 @@
 [
   {
+    "promoId": "38034d6d-7cea-819f-b43e-e0ec777975ff",
+    "pageId": "38034d6d-7cea-81a2-b512-cf17032afd21",
+    "trid": 100102,
+    "language": "ru",
+    "order": 2,
+    "tag": "Новинка",
+    "heading": "Резиновые гусеницы",
+    "description": "Модернизируйте свою строительную технику с резиновыми гусеницами MAXAM.",
+    "ctaLabel": "Смотреть резиновые гусеницы",
+    "ctaHref": "/products/rubber-tracks",
+    "image": "/images/promo-rubber-tracks.jpg",
+    "imagePosition": "center bottom",
+    "translationIds": [
+      "37b34d6d-7cea-8174-bc67-c68ab7735cc2",
+      "37b34d6d-7cea-81e7-86e0-fb9aabb1d8c2",
+      "37b34d6d-7cea-814d-901c-f889dfae8d74",
+      "38034d6d-7cea-810b-8a9c-c82da49041a1",
+      "38034d6d-7cea-81ff-b368-c88ad07b1f50",
+      "38034d6d-7cea-8125-b4d0-ccda2291893d",
+      "38034d6d-7cea-8123-8010-de4b344d7382",
+      "38034d6d-7cea-81ba-b0b9-e4830160172c",
+      "38034d6d-7cea-81c0-bb65-d775430b5f43"
+    ]
+  },
+  {
+    "promoId": "38034d6d-7cea-8148-a969-d525a3859b94",
+    "pageId": "38034d6d-7cea-81a2-b512-cf17032afd21",
+    "trid": 100101,
+    "language": "ru",
+    "order": 1,
+    "tag": null,
+    "heading": "Найдите своё сцепление",
+    "description": "Воспользуйтесь самой передовой технологией сцепления по лучшей цене.",
+    "ctaLabel": "Смотреть продукцию",
+    "ctaHref": "/products",
+    "image": "/images/promo-find-your-grip.png",
+    "imagePosition": "center",
+    "translationIds": [
+      "37b34d6d-7cea-810f-8e41-f033efcc4ad2",
+      "37b34d6d-7cea-8168-80ec-e5102e9cee01",
+      "37b34d6d-7cea-8188-951d-e54492db29f5",
+      "38034d6d-7cea-817f-88ff-ed513e10efc6",
+      "38034d6d-7cea-81c8-a732-ffdfda966f93",
+      "38034d6d-7cea-816c-b12e-e12d4162aa91",
+      "38034d6d-7cea-8106-bae7-e13716eb185f",
+      "38034d6d-7cea-8131-ae7c-c591eed3b9f0",
+      "38034d6d-7cea-81a6-a320-f50d3cf86e94"
+    ]
+  },
+  {
+    "promoId": "38034d6d-7cea-81c0-bb65-d775430b5f43",
+    "pageId": "38034d6d-7cea-81bb-aee2-f3956aaf9827",
+    "trid": 100102,
+    "language": "pt-pt",
+    "order": 2,
+    "tag": "Novidade",
+    "heading": "Lagartas de borracha",
+    "description": "Melhore o seu equipamento de construção com as lagartas de borracha da MAXAM.",
+    "ctaLabel": "Explorar lagartas de borracha",
+    "ctaHref": "/products/rubber-tracks",
+    "image": "/images/promo-rubber-tracks.jpg",
+    "imagePosition": "center bottom",
+    "translationIds": [
+      "37b34d6d-7cea-8174-bc67-c68ab7735cc2",
+      "37b34d6d-7cea-81e7-86e0-fb9aabb1d8c2",
+      "37b34d6d-7cea-814d-901c-f889dfae8d74",
+      "38034d6d-7cea-810b-8a9c-c82da49041a1",
+      "38034d6d-7cea-81ff-b368-c88ad07b1f50",
+      "38034d6d-7cea-8125-b4d0-ccda2291893d",
+      "38034d6d-7cea-8123-8010-de4b344d7382",
+      "38034d6d-7cea-81ba-b0b9-e4830160172c",
+      "38034d6d-7cea-819f-b43e-e0ec777975ff"
+    ]
+  },
+  {
+    "promoId": "38034d6d-7cea-81a6-a320-f50d3cf86e94",
+    "pageId": "38034d6d-7cea-81bb-aee2-f3956aaf9827",
+    "trid": 100101,
+    "language": "pt-pt",
+    "order": 1,
+    "tag": null,
+    "heading": "Encontre a sua aderência",
+    "description": "Aproveite a tecnologia de tração mais avançada ao melhor preço.",
+    "ctaLabel": "Explorar produtos",
+    "ctaHref": "/products",
+    "image": "/images/promo-find-your-grip.png",
+    "imagePosition": "center",
+    "translationIds": [
+      "37b34d6d-7cea-810f-8e41-f033efcc4ad2",
+      "37b34d6d-7cea-8168-80ec-e5102e9cee01",
+      "37b34d6d-7cea-8188-951d-e54492db29f5",
+      "38034d6d-7cea-817f-88ff-ed513e10efc6",
+      "38034d6d-7cea-81c8-a732-ffdfda966f93",
+      "38034d6d-7cea-816c-b12e-e12d4162aa91",
+      "38034d6d-7cea-8106-bae7-e13716eb185f",
+      "38034d6d-7cea-8131-ae7c-c591eed3b9f0",
+      "38034d6d-7cea-8148-a969-d525a3859b94"
+    ]
+  },
+  {
+    "promoId": "38034d6d-7cea-81ba-b0b9-e4830160172c",
+    "pageId": "38034d6d-7cea-81b3-aa1d-f43cb97335c3",
+    "trid": 100102,
+    "language": "ja",
+    "order": 2,
+    "tag": "新登場",
+    "heading": "ゴムクローラー",
+    "description": "MAXAMのゴムクローラーで建設機械をアップグレード。",
+    "ctaLabel": "ゴムクローラーを見る",
+    "ctaHref": "/products/rubber-tracks",
+    "image": "/images/promo-rubber-tracks.jpg",
+    "imagePosition": "center bottom",
+    "translationIds": [
+      "37b34d6d-7cea-8174-bc67-c68ab7735cc2",
+      "37b34d6d-7cea-81e7-86e0-fb9aabb1d8c2",
+      "37b34d6d-7cea-814d-901c-f889dfae8d74",
+      "38034d6d-7cea-810b-8a9c-c82da49041a1",
+      "38034d6d-7cea-81ff-b368-c88ad07b1f50",
+      "38034d6d-7cea-8125-b4d0-ccda2291893d",
+      "38034d6d-7cea-8123-8010-de4b344d7382",
+      "38034d6d-7cea-81c0-bb65-d775430b5f43",
+      "38034d6d-7cea-819f-b43e-e0ec777975ff"
+    ]
+  },
+  {
+    "promoId": "38034d6d-7cea-8131-ae7c-c591eed3b9f0",
+    "pageId": "38034d6d-7cea-81b3-aa1d-f43cb97335c3",
+    "trid": 100101,
+    "language": "ja",
+    "order": 1,
+    "tag": null,
+    "heading": "最適なグリップを",
+    "description": "最先端のトラクション技術を、最高のコストパフォーマンスでご利用いただけます。",
+    "ctaLabel": "製品を見る",
+    "ctaHref": "/products",
+    "image": "/images/promo-find-your-grip.png",
+    "imagePosition": "center",
+    "translationIds": [
+      "37b34d6d-7cea-810f-8e41-f033efcc4ad2",
+      "37b34d6d-7cea-8168-80ec-e5102e9cee01",
+      "37b34d6d-7cea-8188-951d-e54492db29f5",
+      "38034d6d-7cea-817f-88ff-ed513e10efc6",
+      "38034d6d-7cea-81c8-a732-ffdfda966f93",
+      "38034d6d-7cea-816c-b12e-e12d4162aa91",
+      "38034d6d-7cea-8106-bae7-e13716eb185f",
+      "38034d6d-7cea-81a6-a320-f50d3cf86e94",
+      "38034d6d-7cea-8148-a969-d525a3859b94"
+    ]
+  },
+  {
+    "promoId": "38034d6d-7cea-8123-8010-de4b344d7382",
+    "pageId": "38034d6d-7cea-816b-ab1c-f41ed8267ee4",
+    "trid": 100102,
+    "language": "it",
+    "order": 2,
+    "tag": "Novità",
+    "heading": "Cingoli in gomma",
+    "description": "Aggiorna le tue attrezzature da costruzione con i cingoli in gomma MAXAM.",
+    "ctaLabel": "Esplora i cingoli in gomma",
+    "ctaHref": "/products/rubber-tracks",
+    "image": "/images/promo-rubber-tracks.jpg",
+    "imagePosition": "center bottom",
+    "translationIds": [
+      "37b34d6d-7cea-8174-bc67-c68ab7735cc2",
+      "37b34d6d-7cea-81e7-86e0-fb9aabb1d8c2",
+      "37b34d6d-7cea-814d-901c-f889dfae8d74",
+      "38034d6d-7cea-810b-8a9c-c82da49041a1",
+      "38034d6d-7cea-81ff-b368-c88ad07b1f50",
+      "38034d6d-7cea-8125-b4d0-ccda2291893d",
+      "38034d6d-7cea-81ba-b0b9-e4830160172c",
+      "38034d6d-7cea-81c0-bb65-d775430b5f43",
+      "38034d6d-7cea-819f-b43e-e0ec777975ff"
+    ]
+  },
+  {
+    "promoId": "38034d6d-7cea-8106-bae7-e13716eb185f",
+    "pageId": "38034d6d-7cea-816b-ab1c-f41ed8267ee4",
+    "trid": 100101,
+    "language": "it",
+    "order": 1,
+    "tag": null,
+    "heading": "Trova la tua aderenza",
+    "description": "Approfitta della tecnologia di trazione più avanzata al miglior prezzo.",
+    "ctaLabel": "Esplora i prodotti",
+    "ctaHref": "/products",
+    "image": "/images/promo-find-your-grip.png",
+    "imagePosition": "center",
+    "translationIds": [
+      "37b34d6d-7cea-810f-8e41-f033efcc4ad2",
+      "37b34d6d-7cea-8168-80ec-e5102e9cee01",
+      "37b34d6d-7cea-8188-951d-e54492db29f5",
+      "38034d6d-7cea-817f-88ff-ed513e10efc6",
+      "38034d6d-7cea-81c8-a732-ffdfda966f93",
+      "38034d6d-7cea-816c-b12e-e12d4162aa91",
+      "38034d6d-7cea-8131-ae7c-c591eed3b9f0",
+      "38034d6d-7cea-81a6-a320-f50d3cf86e94",
+      "38034d6d-7cea-8148-a969-d525a3859b94"
+    ]
+  },
+  {
+    "promoId": "38034d6d-7cea-8125-b4d0-ccda2291893d",
+    "pageId": "38034d6d-7cea-815a-9473-f26d05d21ab5",
+    "trid": 100102,
+    "language": "fr",
+    "order": 2,
+    "tag": "Nouveauté",
+    "heading": "Chenilles en caoutchouc",
+    "description": "Améliorez vos engins de chantier avec les chenilles en caoutchouc de MAXAM.",
+    "ctaLabel": "Découvrir les chenilles",
+    "ctaHref": "/products/rubber-tracks",
+    "image": "/images/promo-rubber-tracks.jpg",
+    "imagePosition": "center bottom",
+    "translationIds": [
+      "37b34d6d-7cea-8174-bc67-c68ab7735cc2",
+      "37b34d6d-7cea-81e7-86e0-fb9aabb1d8c2",
+      "37b34d6d-7cea-814d-901c-f889dfae8d74",
+      "38034d6d-7cea-810b-8a9c-c82da49041a1",
+      "38034d6d-7cea-81ff-b368-c88ad07b1f50",
+      "38034d6d-7cea-8123-8010-de4b344d7382",
+      "38034d6d-7cea-81ba-b0b9-e4830160172c",
+      "38034d6d-7cea-81c0-bb65-d775430b5f43",
+      "38034d6d-7cea-819f-b43e-e0ec777975ff"
+    ]
+  },
+  {
+    "promoId": "38034d6d-7cea-816c-b12e-e12d4162aa91",
+    "pageId": "38034d6d-7cea-815a-9473-f26d05d21ab5",
+    "trid": 100101,
+    "language": "fr",
+    "order": 1,
+    "tag": null,
+    "heading": "Trouvez votre adhérence",
+    "description": "Profitez de la technologie de traction la plus avancée au meilleur prix.",
+    "ctaLabel": "Découvrir les produits",
+    "ctaHref": "/products",
+    "image": "/images/promo-find-your-grip.png",
+    "imagePosition": "center",
+    "translationIds": [
+      "37b34d6d-7cea-810f-8e41-f033efcc4ad2",
+      "37b34d6d-7cea-8168-80ec-e5102e9cee01",
+      "37b34d6d-7cea-8188-951d-e54492db29f5",
+      "38034d6d-7cea-817f-88ff-ed513e10efc6",
+      "38034d6d-7cea-81c8-a732-ffdfda966f93",
+      "38034d6d-7cea-8106-bae7-e13716eb185f",
+      "38034d6d-7cea-8131-ae7c-c591eed3b9f0",
+      "38034d6d-7cea-81a6-a320-f50d3cf86e94",
+      "38034d6d-7cea-8148-a969-d525a3859b94"
+    ]
+  },
+  {
+    "promoId": "38034d6d-7cea-81ff-b368-c88ad07b1f50",
+    "pageId": "38034d6d-7cea-819f-8038-dca7e2d48e86",
+    "trid": 100102,
+    "language": "es",
+    "order": 2,
+    "tag": "Novedad",
+    "heading": "Orugas de caucho",
+    "description": "Mejore su equipo de construcción con las orugas de caucho de MAXAM.",
+    "ctaLabel": "Explorar orugas de caucho",
+    "ctaHref": "/products/rubber-tracks",
+    "image": "/images/promo-rubber-tracks.jpg",
+    "imagePosition": "center bottom",
+    "translationIds": [
+      "37b34d6d-7cea-8174-bc67-c68ab7735cc2",
+      "37b34d6d-7cea-81e7-86e0-fb9aabb1d8c2",
+      "37b34d6d-7cea-814d-901c-f889dfae8d74",
+      "38034d6d-7cea-810b-8a9c-c82da49041a1",
+      "38034d6d-7cea-8125-b4d0-ccda2291893d",
+      "38034d6d-7cea-8123-8010-de4b344d7382",
+      "38034d6d-7cea-81ba-b0b9-e4830160172c",
+      "38034d6d-7cea-81c0-bb65-d775430b5f43",
+      "38034d6d-7cea-819f-b43e-e0ec777975ff"
+    ]
+  },
+  {
+    "promoId": "38034d6d-7cea-81c8-a732-ffdfda966f93",
+    "pageId": "38034d6d-7cea-819f-8038-dca7e2d48e86",
+    "trid": 100101,
+    "language": "es",
+    "order": 1,
+    "tag": null,
+    "heading": "Encuentre su agarre",
+    "description": "Aproveche la tecnología de tracción más avanzada al mejor precio.",
+    "ctaLabel": "Explorar productos",
+    "ctaHref": "/products",
+    "image": "/images/promo-find-your-grip.png",
+    "imagePosition": "center",
+    "translationIds": [
+      "37b34d6d-7cea-810f-8e41-f033efcc4ad2",
+      "37b34d6d-7cea-8168-80ec-e5102e9cee01",
+      "37b34d6d-7cea-8188-951d-e54492db29f5",
+      "38034d6d-7cea-817f-88ff-ed513e10efc6",
+      "38034d6d-7cea-816c-b12e-e12d4162aa91",
+      "38034d6d-7cea-8106-bae7-e13716eb185f",
+      "38034d6d-7cea-8131-ae7c-c591eed3b9f0",
+      "38034d6d-7cea-81a6-a320-f50d3cf86e94",
+      "38034d6d-7cea-8148-a969-d525a3859b94"
+    ]
+  },
+  {
+    "promoId": "38034d6d-7cea-810b-8a9c-c82da49041a1",
+    "pageId": "38034d6d-7cea-81f2-bc59-ce090584cd72",
+    "trid": 100102,
+    "language": "de",
+    "order": 2,
+    "tag": "Neu",
+    "heading": "Gummiketten",
+    "description": "Rüsten Sie Ihre Baumaschinen mit den Gummiketten von MAXAM auf.",
+    "ctaLabel": "Gummiketten entdecken",
+    "ctaHref": "/products/rubber-tracks",
+    "image": "/images/promo-rubber-tracks.jpg",
+    "imagePosition": "center bottom",
+    "translationIds": [
+      "37b34d6d-7cea-8174-bc67-c68ab7735cc2",
+      "37b34d6d-7cea-81e7-86e0-fb9aabb1d8c2",
+      "37b34d6d-7cea-814d-901c-f889dfae8d74",
+      "38034d6d-7cea-81ff-b368-c88ad07b1f50",
+      "38034d6d-7cea-8125-b4d0-ccda2291893d",
+      "38034d6d-7cea-8123-8010-de4b344d7382",
+      "38034d6d-7cea-81ba-b0b9-e4830160172c",
+      "38034d6d-7cea-81c0-bb65-d775430b5f43",
+      "38034d6d-7cea-819f-b43e-e0ec777975ff"
+    ]
+  },
+  {
+    "promoId": "38034d6d-7cea-817f-88ff-ed513e10efc6",
+    "pageId": "38034d6d-7cea-81f2-bc59-ce090584cd72",
+    "trid": 100101,
+    "language": "de",
+    "order": 1,
+    "tag": null,
+    "heading": "Finden Sie Ihren Grip",
+    "description": "Profitieren Sie von der modernsten Traktionstechnologie zum besten Preis.",
+    "ctaLabel": "Produkte entdecken",
+    "ctaHref": "/products",
+    "image": "/images/promo-find-your-grip.png",
+    "imagePosition": "center",
+    "translationIds": [
+      "37b34d6d-7cea-810f-8e41-f033efcc4ad2",
+      "37b34d6d-7cea-8168-80ec-e5102e9cee01",
+      "37b34d6d-7cea-8188-951d-e54492db29f5",
+      "38034d6d-7cea-81c8-a732-ffdfda966f93",
+      "38034d6d-7cea-816c-b12e-e12d4162aa91",
+      "38034d6d-7cea-8106-bae7-e13716eb185f",
+      "38034d6d-7cea-8131-ae7c-c591eed3b9f0",
+      "38034d6d-7cea-81a6-a320-f50d3cf86e94",
+      "38034d6d-7cea-8148-a969-d525a3859b94"
+    ]
+  },
+  {
     "promoId": "37b34d6d-7cea-814d-901c-f889dfae8d74",
     "pageId": "37b34d6d-7cea-81f3-ad13-e937e2be107e",
     "trid": 100102,
@@ -14,7 +364,14 @@
     "imagePosition": "center bottom",
     "translationIds": [
       "37b34d6d-7cea-8174-bc67-c68ab7735cc2",
-      "37b34d6d-7cea-81e7-86e0-fb9aabb1d8c2"
+      "37b34d6d-7cea-81e7-86e0-fb9aabb1d8c2",
+      "38034d6d-7cea-810b-8a9c-c82da49041a1",
+      "38034d6d-7cea-81ff-b368-c88ad07b1f50",
+      "38034d6d-7cea-8125-b4d0-ccda2291893d",
+      "38034d6d-7cea-8123-8010-de4b344d7382",
+      "38034d6d-7cea-81ba-b0b9-e4830160172c",
+      "38034d6d-7cea-81c0-bb65-d775430b5f43",
+      "38034d6d-7cea-819f-b43e-e0ec777975ff"
     ]
   },
   {
@@ -32,7 +389,14 @@
     "imagePosition": "center",
     "translationIds": [
       "37b34d6d-7cea-810f-8e41-f033efcc4ad2",
-      "37b34d6d-7cea-8168-80ec-e5102e9cee01"
+      "37b34d6d-7cea-8168-80ec-e5102e9cee01",
+      "38034d6d-7cea-817f-88ff-ed513e10efc6",
+      "38034d6d-7cea-81c8-a732-ffdfda966f93",
+      "38034d6d-7cea-816c-b12e-e12d4162aa91",
+      "38034d6d-7cea-8106-bae7-e13716eb185f",
+      "38034d6d-7cea-8131-ae7c-c591eed3b9f0",
+      "38034d6d-7cea-81a6-a320-f50d3cf86e94",
+      "38034d6d-7cea-8148-a969-d525a3859b94"
     ]
   },
   {
@@ -50,7 +414,14 @@
     "imagePosition": "center bottom",
     "translationIds": [
       "37b34d6d-7cea-8174-bc67-c68ab7735cc2",
-      "37b34d6d-7cea-814d-901c-f889dfae8d74"
+      "37b34d6d-7cea-814d-901c-f889dfae8d74",
+      "38034d6d-7cea-810b-8a9c-c82da49041a1",
+      "38034d6d-7cea-81ff-b368-c88ad07b1f50",
+      "38034d6d-7cea-8125-b4d0-ccda2291893d",
+      "38034d6d-7cea-8123-8010-de4b344d7382",
+      "38034d6d-7cea-81ba-b0b9-e4830160172c",
+      "38034d6d-7cea-81c0-bb65-d775430b5f43",
+      "38034d6d-7cea-819f-b43e-e0ec777975ff"
     ]
   },
   {
@@ -68,7 +439,14 @@
     "imagePosition": "center",
     "translationIds": [
       "37b34d6d-7cea-810f-8e41-f033efcc4ad2",
-      "37b34d6d-7cea-8188-951d-e54492db29f5"
+      "37b34d6d-7cea-8188-951d-e54492db29f5",
+      "38034d6d-7cea-817f-88ff-ed513e10efc6",
+      "38034d6d-7cea-81c8-a732-ffdfda966f93",
+      "38034d6d-7cea-816c-b12e-e12d4162aa91",
+      "38034d6d-7cea-8106-bae7-e13716eb185f",
+      "38034d6d-7cea-8131-ae7c-c591eed3b9f0",
+      "38034d6d-7cea-81a6-a320-f50d3cf86e94",
+      "38034d6d-7cea-8148-a969-d525a3859b94"
     ]
   },
   {
@@ -86,7 +464,14 @@
     "imagePosition": "center bottom",
     "translationIds": [
       "37b34d6d-7cea-81e7-86e0-fb9aabb1d8c2",
-      "37b34d6d-7cea-814d-901c-f889dfae8d74"
+      "37b34d6d-7cea-814d-901c-f889dfae8d74",
+      "38034d6d-7cea-810b-8a9c-c82da49041a1",
+      "38034d6d-7cea-81ff-b368-c88ad07b1f50",
+      "38034d6d-7cea-8125-b4d0-ccda2291893d",
+      "38034d6d-7cea-8123-8010-de4b344d7382",
+      "38034d6d-7cea-81ba-b0b9-e4830160172c",
+      "38034d6d-7cea-81c0-bb65-d775430b5f43",
+      "38034d6d-7cea-819f-b43e-e0ec777975ff"
     ]
   },
   {
@@ -104,7 +489,14 @@
     "imagePosition": "center",
     "translationIds": [
       "37b34d6d-7cea-8168-80ec-e5102e9cee01",
-      "37b34d6d-7cea-8188-951d-e54492db29f5"
+      "37b34d6d-7cea-8188-951d-e54492db29f5",
+      "38034d6d-7cea-817f-88ff-ed513e10efc6",
+      "38034d6d-7cea-81c8-a732-ffdfda966f93",
+      "38034d6d-7cea-816c-b12e-e12d4162aa91",
+      "38034d6d-7cea-8106-bae7-e13716eb185f",
+      "38034d6d-7cea-8131-ae7c-c591eed3b9f0",
+      "38034d6d-7cea-81a6-a320-f50d3cf86e94",
+      "38034d6d-7cea-8148-a969-d525a3859b94"
     ]
   }
 ]
