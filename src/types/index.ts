@@ -2,6 +2,12 @@
 export interface Industry {
   id: string;
   slug: string;
+  /**
+   * Canonical, locale-stable URL slug (the English slug for this industry's
+   * translation group). ALWAYS use this for hrefs/routes so URLs don't vary
+   * by locale; `slug` is the per-locale WPML slug, kept for content identity.
+   */
+  urlSlug: string;
   name: string;
   color: string;
   heroImage?: string;
@@ -49,6 +55,9 @@ export interface Document {
 export interface Tire {
   id: string;
   slug: string;
+  /** Canonical, locale-stable URL slug (English slug for this trid). Use for
+   *  hrefs/routes; `slug` is the per-locale WPML slug for content identity. */
+  urlSlug: string;
   title: string;
   subheading?: string;
   description: string;
@@ -109,8 +118,40 @@ export interface Event {
   href?: string;
 }
 
-/** Supported locale codes */
-export type Locale = 'en' | 'ar-ae' | 'zh-hant';
+/**
+ * Content languages — the set of languages we actually STORE (one set of
+ * Notion rows / one translation file each). Regional variants are NOT here;
+ * they alias to one of these (see Locale + LOCALE_ALIASES in lib/i18n).
+ *
+ * Verified against WP WPML 2026-06-13: regional variants (fr-ca, es-mx,
+ * en-ca, en-uk) are byte-identical clones of their base, so storing them
+ * separately would be pure duplication.
+ */
+export type ContentLanguage =
+  | 'en'
+  | 'ar-ae'
+  | 'zh-hant'
+  | 'de'
+  | 'es'
+  | 'fr'
+  | 'it'
+  | 'ja'
+  | 'pt-pt'
+  | 'ru';
+
+/**
+ * Front-end locales — the set of URL prefixes / language-switcher options
+ * shown to users (14, matching WP's active WPML languages). Each resolves to
+ * exactly one ContentLanguage via LOCALE_ALIASES. Every ContentLanguage is
+ * also a Locale (it's its own front-end locale); the extras are the regional
+ * variants that alias back.
+ */
+export type Locale =
+  | ContentLanguage
+  | 'en-ca'
+  | 'en-uk'
+  | 'es-mx'
+  | 'fr-ca';
 
 /** Translation dictionary shape (flat key-value) */
 export type TranslationDict = Record<string, string>;

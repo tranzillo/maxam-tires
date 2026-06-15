@@ -30,8 +30,8 @@ interface Props {
 
 const { tire, locale, variant = 'light', showFilterData = false } = Astro.props;
 const detailHref = tire.industries.length > 0
-  ? `/${locale}/products/${tire.industries[0].slug}/${tire.slug}`
-  : `/${locale}/products/${tire.slug}`;
+  ? `/${locale}/products/${tire.industries[0].urlSlug}/${tire.urlSlug}`
+  : `/${locale}/products/${tire.urlSlug}`;
 const industry = tire.industries[0];
 
 // The legacy filter script on the products page targets `.product-card` and

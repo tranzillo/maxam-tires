@@ -6,7 +6,6 @@ import Grid from '../../components/ui/Grid.astro';
 import RubberIndustryCard from '../../components/ui/RubberIndustryCard.astro';
 import RubberProductCard from '../../components/ui/RubberProductCard.astro';
 import RubberArticleCard from '../../components/ui/RubberArticleCard.astro';
-import RubberTestimonialCard from '../../components/ui/RubberTestimonialCard.astro';
 import RubberButton from '../../components/ui/RubberButton.astro';
 import RubberChip from '../../components/ui/RubberChip.astro';
 import RubberInput from '../../components/ui/RubberInput.astro';
@@ -14,10 +13,8 @@ import type { Locale } from '../../types';
 import { locales, t, localePath } from '../../lib/i18n';
 import {
   getAllIndustries,
-  getProductBySlug,
-  getFeaturedProducts,
+  getRecentProductsByIndustry,
   getRecentArticles,
-  getAllTestimonials,
   getPageContent,
   getPagePromos,
   pageText,
@@ -34,23 +31,15 @@ const { locale } = Astro.params as { locale: Locale };
 const homePage = getPageContent(locale, 'home');
 const promoCards = getPagePromos(locale, 'home');
 
-// Collection content (industries, products, articles, testimonials) flows
-// through the same pipeline as the rest of the site.
-// Rubber Tracks lives in the promo card so it isn't duplicated as a tile.
-const industries = getAllIndustries(locale).filter((i) => i.slug !== 'rubber-tracks');
+// Collection content (industries, products, articles) flows through the
+// same pipeline as the rest of the site. All industries show in the strip.
+const industries = getAllIndustries(locale);
 
-const wpFeaturedSlugs = ['agrixtra-85', 'ms453', 'ms600', 'ms709'];
-const wpPicked = wpFeaturedSlugs
-  .map((s) => getProductBySlug(locale, s))
-  .filter((p): p is NonNullable<typeof p> => !!p);
-const featuredProducts =
-  wpPicked.length === wpFeaturedSlugs.length ? wpPicked : getFeaturedProducts(locale, 4);
+// Recent products: newest first (wpId proxy), max one per industry, up to
+// 10 — the grid shows an even subset per breakpoint (5x2 → … → 1x3).
+const featuredProducts = getRecentProductsByIndustry(locale, 10);
 
 const recentArticles = getRecentArticles(locale, 3);
-
-const testimonials = getAllTestimonials(locale)
-  .filter((tt) => tt.quote && tt.quote.length > 0)
-  .slice(0, 3);
 ---
 
 <BaseLayout locale={locale}>
@@ -76,8 +65,8 @@ const testimonials = getAllTestimonials(locale)
     </div>
   </Section>
 
-  <!-- INDUSTRIES — promos in a 2-col grid, then industries in a 3-col 3x3 -->
-  <Section vertical="lg">
+  <!-- 2. PROMO PAIR — 2-col grid inside the standard container -->
+  <Section vertical="lg" class="home-promos">
     <Grid cols={2} gap="md">
       {promoCards.map((card) => (
         <a
@@ -99,43 +88,38 @@ const testimonials = getAllTestimonials(locale)
         </a>
       ))}
     </Grid>
-    <div class="industries-spacer"></div>
-    <Grid cols={3} gap="md">
-      {industries.map((industry) => (
-        <RubberIndustryCard industry={industry} locale={locale} />
-      ))}
-    </Grid>
   </Section>
 
-  <!-- 3. TESTIMONIALS — sunken bg, 3-up Grid -->
-  {testimonials.length > 0 && (
-    <Section background="sunken" vertical="lg">
-      <SectionHeader
-        heading={t(locale, 'home.testimonials.heading')}
-        viewAllHref={localePath(locale, '/testimonials')}
-        viewAllLabel={t(locale, 'home.testimonials.view_all')}
-      />
-      <Grid cols={3} gap="md">
-        {testimonials.map((testimonial) => (
-          <RubberTestimonialCard testimonial={testimonial} />
-        ))}
-      </Grid>
-    </Section>
-  )}
+  <!-- 3. INDUSTRIES — wide block: horizontally scrolling strip of all
+       industry tiles. Same full-bleed gutter treatment as the header and
+       products viewer; scrolls when the tiles overflow it. -->
+  <section class="industries-strip" aria-label={t(locale, 'nav.products')}>
+    <ul class="industries-strip__track">
+      {industries.map((industry) => (
+        <li class="industries-strip__item">
+          <RubberIndustryCard industry={industry} locale={locale} />
+        </li>
+      ))}
+    </ul>
+  </section>
 
-  <!-- 4. FEATURED PRODUCTS — 4-up Grid in a normal Section -->
-  <Section vertical="lg">
+  <!-- 4. RECENT PRODUCTS — wide block: newest product per industry in an
+       even grid (5x2 → 4x2 → 3x2 → 2x2 → 1x3; CSS hides trailing items
+       so rows are always full). -->
+  <section class="recent-products">
     <SectionHeader
       heading={t(locale, 'home.featured_heading')}
       viewAllHref={localePath(locale, '/products')}
       viewAllLabel={t(locale, 'home.featured_view_all')}
     />
-    <Grid cols={4} gap="md">
+    <ul class="recent-products__grid">
       {featuredProducts.map((tire) => (
-        <RubberProductCard tire={tire} locale={locale} />
+        <li class="recent-products__item">
+          <RubberProductCard tire={tire} locale={locale} />
+        </li>
       ))}
-    </Grid>
-  </Section>
+    </ul>
+  </section>
 
   <!-- 5. SUSTAINABILITY — full-bleed bg image, content in container, 2-col layout -->
   <Section
@@ -203,6 +187,7 @@ const testimonials = getAllTestimonials(locale)
             placeholder={pageText(homePage, 'newsletter.email_label')}
             required
             autocomplete="email"
+            size="lg"
           />
         </div>
         <RubberButton type="submit" variant="primary" size="lg">

@@ -56,21 +56,23 @@
     width: 100%;
   }
 
-  /* ── Sizes ──────────────────────────────────────────────────────  */
+  /* ── Sizes ──────────────────────────────────────────────────────
+   * Heights come from the shared control-height scale (global.css) so
+   * buttons and inputs of the same size always match. */
   .rubber-btn[data-size='sm'] {
     padding: 4px 12px;
     font-size: 12px;
-    min-height: 28px;
+    min-height: var(--control-h-sm);
   }
   .rubber-btn[data-size='md'] {
     padding: 8px 16px;
     font-size: var(--font-size-sm);
-    min-height: 40px;
+    min-height: var(--control-h-md);
   }
   .rubber-btn[data-size='lg'] {
     padding: 12px 22px;
     font-size: var(--font-size-base);
-    min-height: 48px;
+    min-height: var(--control-h-lg);
   }
 
   /* ── Variant: secondary (default) ────────────────────────────────

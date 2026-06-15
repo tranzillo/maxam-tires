@@ -157,11 +157,103 @@
   color: var(--color-maxam-white);
 }
 
-/* Vertical breathing room between the promo pair and the industries
- * grid below it. Both are inside the same section, so a real spacer is
- * needed (not a section padding). */
-.industries-spacer {
-  height: 1.5rem;
+/* The promo section sits directly above the industries strip; trim its
+ * bottom padding so the promo pair + strip read as one industries block
+ * (the strip carries the small gap itself). */
+.home-promos .section__container {
+  padding-block-end: 0;
+}
+
+/* ── Industries strip ─────────────────────────────────────────────────
+ * Wide block (see global.css layout tokens): all industry tiles in one
+ * horizontally scrolling row. Same gutter system as the header and
+ * products viewer — aligned with the container at small widths, wider
+ * once the viewport allows. Pure CSS scroll w/ snap; no JS. */
+.industries-strip {
+  padding-inline: var(--page-gutter);
+  padding-block: 0.25rem 0;
+}
+
+.industries-strip__track {
+  display: flex;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0 0 0.25rem;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-edge-strong) transparent;
+}
+
+.industries-strip__track::-webkit-scrollbar {
+  height: 6px;
+}
+.industries-strip__track::-webkit-scrollbar-track {
+  background: transparent;
+}
+.industries-strip__track::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-edge-strong) 60%, transparent);
+  border-radius: 999px;
+}
+
+.industries-strip__item {
+  /* Tile width = what a tile measured in the old 3-up container grid
+   * ((--container-max − 2×2rem container pad − 2×1.5rem gaps) / 3),
+   * capped on narrow viewports so the next tile peeks in and signals
+   * that the strip scrolls. */
+  flex: 0 0 min(calc((var(--container-max) - 4rem - 3rem) / 3), 82vw);
+  scroll-snap-align: start;
+}
+
+/* ── Recent products ──────────────────────────────────────────────────
+ * Wide block: newest product per industry (max 10). The grid only ever
+ * shows full rows — columns × 2 rows per breakpoint, except a single
+ * column of 3 at the smallest — by hiding trailing items. */
+.recent-products {
+  padding-inline: var(--page-gutter);
+  padding-block: var(--section-pad-lg);
+}
+
+.recent-products__grid {
+  display: grid;
+  gap: 0.25rem;
+  grid-template-columns: 1fr;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* base: 1 column × 3 items */
+.recent-products__item:nth-child(n + 4) {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  /* 2 × 2 */
+  .recent-products__grid { grid-template-columns: repeat(2, 1fr); }
+  .recent-products__item:nth-child(-n + 4) { display: block; }
+  .recent-products__item:nth-child(n + 5) { display: none; }
+}
+
+@media (min-width: 960px) {
+  /* 3 × 2 */
+  .recent-products__grid { grid-template-columns: repeat(3, 1fr); }
+  .recent-products__item:nth-child(-n + 6) { display: block; }
+  .recent-products__item:nth-child(n + 7) { display: none; }
+}
+
+@media (min-width: 1280px) {
+  /* 4 × 2 */
+  .recent-products__grid { grid-template-columns: repeat(4, 1fr); }
+  .recent-products__item:nth-child(-n + 8) { display: block; }
+  .recent-products__item:nth-child(n + 9) { display: none; }
+}
+
+@media (min-width: 1600px) {
+  /* 5 × 2 — all 10 visible */
+  .recent-products__grid { grid-template-columns: repeat(5, 1fr); }
+  .recent-products__item:nth-child(-n + 10) { display: block; }
 }
 
 /* ── Sustainability strip ─────────────────────────────────────────────

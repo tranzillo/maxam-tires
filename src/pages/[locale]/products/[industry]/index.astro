@@ -16,11 +16,12 @@ import {
 } from '../../../../lib/data';
 
 export function getStaticPaths() {
+  // Canonical (English) industry slugs — locale-stable URLs across all locales.
   const industries = getAllIndustries('en');
   const paths: Array<{ params: { locale: string; industry: string } }> = [];
   for (const locale of locales) {
     for (const industry of industries) {
-      paths.push({ params: { locale, industry: industry.slug } });
+      paths.push({ params: { locale, industry: industry.urlSlug } });
     }
   }
   return paths;

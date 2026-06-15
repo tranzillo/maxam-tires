@@ -7,8 +7,8 @@ import RubberSelect from '../../../components/ui/RubberSelect.astro';
 import RubberTextarea from '../../../components/ui/RubberTextarea.astro';
 import RubberButton from '../../../components/ui/RubberButton.astro';
 import RubberPlate from '../../../components/ui/RubberPlate.astro';
-import type { Locale } from '../../../types';
-import { locales, t } from '../../../lib/i18n';
+import type { Locale, ContentLanguage } from '../../../types';
+import { locales, t, contentLang } from '../../../lib/i18n';
 import { getAllIndustries } from '../../../lib/data';
 
 export function getStaticPaths() {
@@ -17,18 +17,22 @@ export function getStaticPaths() {
 
 const { locale } = Astro.params as { locale: Locale };
 const industries = getAllIndustries(locale);
+const lang = contentLang(locale);
 
 // Office data extracted from WordPress (block-3-column-special).
-// Region names are localized per the WP WPML translations.
-const officeRegionNames: Record<string, Record<Locale, string>> = {
+// TODO (recovery phase 5): move offices to a Notion record; region names
+// here are placeholders for the 7 newly-added languages (fall back to the
+// English label) until that record exists.
+const officeRegionNames: Record<string, Partial<Record<ContentLanguage, string>>> = {
   northAmerica: { en: 'North America', 'ar-ae': 'أمريكا الشمالية', 'zh-hant': '北美' },
   eu: { en: 'Maxam Tire EU', 'ar-ae': 'شركة Maxam للإطارات في الاتحاد الأوروبي', 'zh-hant': 'Maxam Tire（欧盟）' },
-  amea: { en: 'Maxam Tire AMEA', 'ar-ae': 'شركة Maxam للإطارات في أفريقيا والشرق الأوسط وآسيا', 'zh-hant': 'Maxam Tire（亚洲、中东和非洲）' },
+  amea: { en: 'Maxam Tire AMEA', 'ar-ae': 'شركة Maxam للإطارات في أفريقيا والشرق الأوسط وآسيا', 'zh-hant': 'Maxam Tire（亚洲、中東和非洲）' },
 };
+const regionName = (key: string) => officeRegionNames[key][lang] ?? officeRegionNames[key].en!;
 
 const offices = [
   {
-    region: officeRegionNames.northAmerica[locale],
+    region: regionName('northAmerica'),
     color: '#092479',
     company: 'MAXAM Tire North America Inc.',
     locations: [
@@ -40,7 +44,7 @@ const offices = [
     phones: ['+1 844-629-2662', '+1 978-560-0624'],
   },
   {
-    region: officeRegionNames.eu[locale],
+    region: regionName('eu'),
     color: '#0077c8',
     company: 'MAXAM International Limited',
     locations: [
@@ -49,7 +53,7 @@ const offices = [
     phones: ['+44 121 790 0505', '+44 121 767 1898'],
   },
   {
-    region: officeRegionNames.amea[locale],
+    region: regionName('amea'),
     color: '#1a1a1a',
     company: 'MAXAM Tire Solutions Co, Ltd',
     locations: [

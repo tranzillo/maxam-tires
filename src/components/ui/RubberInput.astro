@@ -25,6 +25,11 @@ interface Props {
   full?: boolean;
   /** Error state — red-tinted border + ring. */
   error?: boolean;
+  /**
+   * Control height, shared scale with RubberButton (--control-h-*). Use
+   * the same size as an adjacent button so paired controls match height.
+   */
+  size?: 'md' | 'lg';
   class?: string;
 }
 
@@ -40,12 +45,14 @@ const {
   autocomplete,
   full = true,
   error = false,
+  size = 'md',
   class: className,
 } = Astro.props;
 
 const dataAttrs: Record<string, string | boolean> = {};
 if (full) dataAttrs['data-full'] = true;
 if (error) dataAttrs['data-error'] = true;
+if (size !== 'md') dataAttrs['data-size'] = size;
 ---
 
 <input

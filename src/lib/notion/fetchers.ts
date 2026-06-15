@@ -170,17 +170,18 @@ function parseSizes(s: string): string[] {
 
 // ── Fetchers ───────────────────────────────────────────────────────────
 
-export async function fetchProducts({ withBlocks = false } = {}): Promise<RawProduct[]> {
+export async function fetchProducts({ withBlocks = false, blockLangs = null as string[] | null } = {}): Promise<RawProduct[]> {
   const ids = getNotionIds();
   const pages = await queryAllPages(ids.productsDataSourceId);
   const rows: RawProduct[] = [];
   for (const p of pages) {
     const props = p.properties;
+    const language = getSelect(props, 'Language') ?? 'en';
     const row: RawProduct = {
       pageId: p.id,
       wpId: getNumber(props, 'WP ID'),
       trid: getNumber(props, 'Translation Group'),
-      language: getSelect(props, 'Language') ?? 'en',
+      language,
       title: getTitle(props, 'Name'),
       slug: getRichText(props, 'Slug'),
       subheading: getRichText(props, 'Subheading'),
@@ -193,7 +194,12 @@ export async function fetchProducts({ withBlocks = false } = {}): Promise<RawPro
       documentIds: getRelationIds(props, 'Documents'),
       translationIds: getRelationIds(props, 'Translations'),
     };
-    if (withBlocks) row.blocks = await fetchPageBlocks(p.id);
+    // Fetch blocks only when requested, and only for the requested languages
+    // (blockLangs null = all). Lets the sync refresh one language's bodies
+    // without re-fetching every language — the multi-language scaling fix.
+    if (withBlocks && (!blockLangs || blockLangs.includes(language))) {
+      row.blocks = await fetchPageBlocks(p.id);
+    }
     rows.push(row);
   }
   return rows;
@@ -235,17 +241,18 @@ export async function fetchTireTypes(): Promise<RawTaxonomy[]> {
   return fetchTaxonomyDb(getNotionIds().tireTypesDataSourceId);
 }
 
-export async function fetchArticles({ withBlocks = false } = {}): Promise<RawArticle[]> {
+export async function fetchArticles({ withBlocks = false, blockLangs = null as string[] | null } = {}): Promise<RawArticle[]> {
   const ids = getNotionIds();
   const pages = await queryAllPages(ids.articlesDataSourceId);
   const rows: RawArticle[] = [];
   for (const p of pages) {
     const props = p.properties;
+    const language = getSelect(props, 'Language') ?? 'en';
     const row: RawArticle = {
       pageId: p.id,
       wpId: getNumber(props, 'WP ID'),
       trid: getNumber(props, 'Translation Group'),
-      language: getSelect(props, 'Language') ?? 'en',
+      language,
       title: getTitle(props, 'Name'),
       slug: getRichText(props, 'Slug'),
       type: getSelect(props, 'Type') ?? 'blog',
@@ -257,7 +264,9 @@ export async function fetchArticles({ withBlocks = false } = {}): Promise<RawArt
       industryIds: getRelationIds(props, 'Industries'),
       translationIds: getRelationIds(props, 'Translations'),
     };
-    if (withBlocks) row.blocks = await fetchPageBlocks(p.id);
+    if (withBlocks && (!blockLangs || blockLangs.includes(language))) {
+      row.blocks = await fetchPageBlocks(p.id);
+    }
     rows.push(row);
   }
   return rows;

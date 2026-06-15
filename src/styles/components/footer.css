@@ -15,6 +15,7 @@
    * chamfer treatment used on raised elements above.                  */
   .rubber-footer {
     position: relative;
+    margin-top: auto; /* sticky-footer push inside BaseLayout's flex column */
     background: var(--color-surface-deep);
     color: var(--color-maxam-gray-300);
     border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -23,13 +24,70 @@
       inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
   }
 
-  .rubber-footer__heading {
-    color: #ffffff;
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 14px;
+  /* Content column — same container + gutter system as page sections so
+   * the footer's content edge lines up with everything above it. */
+  .footer-inner {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding: 3rem var(--gutter);
+  }
+
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .footer-top {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+  }
+
+  .footer-brand {
+    max-width: 44ch;
+  }
+
+  .footer-brand__logo {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-maxam-white);
+  }
+
+  .footer-brand__mark {
+    height: 28px;
+  }
+
+  .footer-brand__description {
+    margin: 0.75rem 0 0;
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    color: var(--color-maxam-gray-300);
+  }
+
+  /* Top-level link row — parity with the header nav, no subnav columns. */
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 2rem;
+    row-gap: 0.75rem;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+  }
+
+  .footer-nav .rubber-footer__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .footer-nav__external {
+    width: 11px;
+    height: 11px;
+    opacity: 0.7;
   }
 
   .rubber-footer__link {

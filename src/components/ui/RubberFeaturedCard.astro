@@ -36,8 +36,8 @@ let industryColor: string | null = null;
 if (product) {
   const primaryIndustry = product.industries[0];
   href = primaryIndustry
-    ? localePath(locale, `/products/${primaryIndustry.slug}/${product.slug}`)
-    : localePath(locale, `/products/${product.slug}`);
+    ? localePath(locale, `/products/${primaryIndustry.urlSlug}/${product.urlSlug}`)
+    : localePath(locale, `/products/${product.urlSlug}`);
   title = product.title;
   image = product.featuredImage;
   if (primaryIndustry) {

@@ -117,22 +117,48 @@
 }
 
 /* ──────────────────────────────────────────────────────────────────
- * Page gutter — the horizontal padding for full-bleed pages (products
- * page, header bar) that don't use the centered `.section__container`.
+ * Layout system tokens — ONE rule for how content aligns site-wide.
  *
- * Below the container width it matches the standard container gutter
- * (clamp(1rem, 4vw, 2rem)) so these pages line up with the rest of the
- * site. Once the viewport exceeds the container, the gutter grows with
- * the viewport so content doesn't sprawl edge-to-edge on wide monitors.
+ * Two kinds of blocks exist:
+ *   1. Container blocks: content capped at --container-max, centered,
+ *      padded by --gutter (`.section__container` and friends).
+ *   2. Wide blocks: intentionally wider than the container (header bar,
+ *      products viewer, industries strip). Padded by --page-gutter.
+ *
+ * --page-gutter is clamped to the container's content edge: while the
+ * viewport is small enough that the container fills it, wide blocks get
+ * exactly the same gutter — their content aligns with everything else.
+ * Only when the viewport grows past the container does the wide gutter
+ * (8vw, slower than the container's centering margins) let wide blocks
+ * actually become wider.
+ *
+ * 100% (not 100vw) in --content-edge so the math matches the real layout
+ * width — 100vw includes the scrollbar on Windows and would misalign by
+ * half a scrollbar. Consequence: --page-gutter and --content-edge are
+ * only valid as padding on FULL-WIDTH elements (header bar, page
+ * wrappers); don't consume them inside narrower boxes.
  * ────────────────────────────────────────────────────────────────── */
 :root {
-  --page-gutter: clamp(1rem, 4vw, 2rem);
-}
+  /* Standard gutter for container blocks (also used by .section__container). */
+  --gutter: clamp(1rem, 4vw, 2rem);
+  /* Distance from viewport edge to the centered container's content edge. */
+  --content-edge: calc(max(0px, (100% - var(--container-max)) / 2) + var(--gutter));
+  /* Gutter for wide/full-bleed blocks: aligned with the container until
+     there's real room to be wider, then grows at 8vw. */
+  --page-gutter: min(8vw, var(--content-edge));
 
-@media (min-width: 1280px) {
-  :root {
-    --page-gutter: 8vw;
-  }
+  /* Control heights — shared by buttons AND inputs so adjacent form
+     controls (e.g. newsletter input + submit) always match. */
+  --control-h-sm: 28px;
+  --control-h-md: 40px;
+  --control-h-lg: 48px;
+
+  /* Section vertical padding scale — consumed by .section--v-* and by
+     wide blocks that live outside the Section primitive but must keep
+     the same page rhythm. */
+  --section-pad-md: clamp(3rem, 6vw, 5rem);
+  --section-pad-lg: clamp(4rem, 8vw, 7rem);
+  --section-pad-xlg: clamp(5rem, 11vw, 9rem);
 }
 
 /* Base resets */

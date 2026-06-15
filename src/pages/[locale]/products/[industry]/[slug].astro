@@ -19,7 +19,7 @@ export function getStaticPaths() {
     for (const tire of products) {
       if (tire.industries.length === 0) continue;
       paths.push({
-        params: { locale, industry: tire.industries[0].slug, slug: tire.slug },
+        params: { locale, industry: tire.industries[0].urlSlug, slug: tire.urlSlug },
       });
     }
   }
@@ -112,7 +112,7 @@ const galleryImages = [
     <div class="tire-page__breadcrumb">
       <RubberBreadcrumb items={[
         { label: t(locale, 'nav.products'), href: localePath(locale, '/products') },
-        { label: primaryIndustry.name, href: localePath(locale, `/products/${primaryIndustry.slug}`) },
+        { label: primaryIndustry.name, href: localePath(locale, `/products/${primaryIndustry.urlSlug}`) },
         { label: tire.title },
       ]} />
     </div>

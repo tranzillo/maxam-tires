@@ -112,13 +112,14 @@
   z-index: 1;
   max-width: var(--container-max);
   margin-inline: auto;
-  padding-inline: clamp(1rem, 4vw, 2rem);
+  padding-inline: var(--gutter);
 }
 
 /* ── Vertical padding scale ───────────────────────────────────────────
- * One source of truth for section spacing. Adjust here and every
- * section across the site picks it up. */
+ * One source of truth for section spacing. The scale tokens live in
+ * global.css (:root --section-pad-*) so wide blocks outside the Section
+ * primitive can keep the same rhythm. */
 .section--v-none .section__container { padding-block: 0; }
-.section--v-md   .section__container { padding-block: clamp(3rem, 6vw, 5rem); }
-.section--v-lg   .section__container { padding-block: clamp(4rem, 8vw, 7rem); }
-.section--v-xlg  .section__container { padding-block: clamp(5rem, 11vw, 9rem); }
+.section--v-md   .section__container { padding-block: var(--section-pad-md); }
+.section--v-lg   .section__container { padding-block: var(--section-pad-lg); }
+.section--v-xlg  .section__container { padding-block: var(--section-pad-xlg); }

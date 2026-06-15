@@ -18,7 +18,9 @@ import type {
   Testimonial,
   Event,
   Locale,
+  ContentLanguage,
 } from '../types';
+import { contentLang } from './i18n';
 
 import productsJson from '../data/notion-content/products.json';
 import articlesJson from '../data/notion-content/articles.json';
@@ -33,6 +35,13 @@ import pagePromosJson from '../data/notion-content/page-promos.json';
 import productSpecsEn from '../data/notion-content/product-specs.en.json';
 import productSpecsArAe from '../data/notion-content/product-specs.ar-ae.json';
 import productSpecsZhHant from '../data/notion-content/product-specs.zh-hant.json';
+import productSpecsDe from '../data/notion-content/product-specs.de.json';
+import productSpecsEs from '../data/notion-content/product-specs.es.json';
+import productSpecsFr from '../data/notion-content/product-specs.fr.json';
+import productSpecsIt from '../data/notion-content/product-specs.it.json';
+import productSpecsJa from '../data/notion-content/product-specs.ja.json';
+import productSpecsPtPt from '../data/notion-content/product-specs.pt-pt.json';
+import productSpecsRu from '../data/notion-content/product-specs.ru.json';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -195,12 +204,53 @@ const applicationBySlug = indexBySlug(applications);
 const tireTypeBySlug = indexBySlug(tireTypes);
 const documentBySlug = indexBySlug(documents);
 
+// ── Canonical (locale-stable) URL slugs ────────────────────────────────
+// WPML gives each locale its own slug (tbr-de, tbr-tires-zh-hant, …). URLs
+// must NOT vary by locale, so we canonicalize every industry/product URL to
+// its ENGLISH slug, keyed by trid. Content stays per-locale; only the URL
+// segment is stabilized. These maps power both URL generation (canonicalSlug
+// on the domain object) and URL→row resolution (canonicalProduct/IndustrySlug
+// back to the locale row).
+
+function buildCanonicalMaps<T extends { trid: number | null; language: string; slug: string }>(rows: T[]) {
+  // trid → english slug (the canonical URL segment)
+  const tridToEn = new Map<number, string>();
+  for (const r of rows) {
+    if (r.language === 'en' && r.trid != null) tridToEn.set(r.trid, r.slug);
+  }
+  // `${locale}::${localeSlug}` → english slug  (for outbound URL building)
+  const localeSlugToEn = new Map<string, string>();
+  // `${locale}::${englishSlug}` → locale row    (for inbound URL resolution)
+  const enSlugToRow = new Map<string, T>();
+  for (const r of rows) {
+    if (r.trid == null) continue;
+    const en = tridToEn.get(r.trid);
+    if (!en) continue;
+    localeSlugToEn.set(`${r.language}::${r.slug}`, en);
+    enSlugToRow.set(`${r.language}::${en}`, r);
+  }
+  return { tridToEn, localeSlugToEn, enSlugToRow };
+}
+
+const industryCanon = buildCanonicalMaps(industries);
+const productCanon = buildCanonicalMaps(products);
+
+/** The canonical (English) URL slug for an industry row's locale slug. */
+function canonicalIndustrySlug(locale: string, localeSlug: string): string {
+  return industryCanon.localeSlugToEn.get(`${locale}::${localeSlug}`) ?? localeSlug;
+}
+/** The canonical (English) URL slug for a product row's locale slug. */
+function canonicalProductSlug(locale: string, localeSlug: string): string {
+  return productCanon.localeSlugToEn.get(`${locale}::${localeSlug}`) ?? localeSlug;
+}
+
 // ── Mappers from snapshot rows → domain types ──────────────────────────
 
 function toIndustry(row: TaxonomyRow): Industry {
   return {
     id: row.slug,
     slug: row.slug,
+    urlSlug: canonicalIndustrySlug(row.language, row.slug),
     name: row.name,
     color: row.color || '#FFB81C',
     heroImage: row.bgImage,
@@ -240,6 +290,7 @@ function toTire(p: ProductRow, locale: Locale): Tire {
   return {
     id: p.slug,
     slug: p.slug,
+    urlSlug: canonicalProductSlug(p.language, p.slug),
     title: p.title,
     subheading: p.subheading || undefined,
     description: '', // body lives in Notion blocks; rendered separately
@@ -271,12 +322,23 @@ function toTire(p: ProductRow, locale: Locale): Tire {
 }
 
 /**
- * Resolve industry slug list to full Industry domain objects, scoped to the
- * locale. Used by both Article and Document → Article adapters.
+ * Resolve an industry slug list to Industry domain objects for display in
+ * `locale`. Used by Article/Document adapters, where the stored industry
+ * slugs are ENGLISH (resources are English-only). We map each English slug →
+ * its trid → the display locale's industry row, so the chip shows the
+ * localized name while `urlSlug` stays canonical. Falls back to the English
+ * row if the locale has no translation.
  */
 function resolveIndustries(slugs: string[], locale: Locale): Industry[] {
+  const lang = contentLang(locale);
   return slugs
-    .map((s) => industryBySlug.get(`${locale}::${s}`))
+    .map((enSlug) => {
+      const enRow = industryBySlug.get(`en::${enSlug}`);
+      if (!enRow || enRow.trid == null) return industryBySlug.get(`en::${enSlug}`);
+      // Find the same-trid row in the display language.
+      const localized = industries.find((i) => i.language === lang && i.trid === enRow.trid);
+      return localized ?? enRow;
+    })
     .filter((r): r is TaxonomyRow => Boolean(r))
     .map(toIndustry);
 }
@@ -333,98 +395,165 @@ function documentToArticle(d: DocumentRow, locale: Locale): Article {
 export function getAllProducts(locale: Locale): Tire[] {
   // Drop products without an industry — they have no canonical /products/<industry>/<slug>
   // URL. There are 5 such records in WP (untagged), so we skip them globally.
+  const lang = contentLang(locale);
   return products
-    .filter((p) => p.language === locale && p.industries.length > 0)
-    .map((p) => toTire(p, locale));
+    .filter((p) => p.language === lang && p.industries.length > 0)
+    .map((p) => toTire(p, lang));
+}
+
+/**
+ * Resolve a CANONICAL (English) product URL slug to the row for this locale.
+ * Falls back to a direct per-locale slug match (covers en, and any product
+ * whose slug isn't locale-suffixed).
+ */
+function productRowByUrlSlug(lang: string, urlSlug: string): ProductRow | undefined {
+  return (
+    productCanon.enSlugToRow.get(`${lang}::${urlSlug}`) ??
+    products.find((p) => p.language === lang && p.slug === urlSlug)
+  );
 }
 
 export function getProductBySlug(locale: Locale, slug: string): Tire | undefined {
-  const row = products.find((p) => p.language === locale && p.slug === slug);
-  return row ? toTire(row, locale) : undefined;
+  const lang = contentLang(locale);
+  const row = productRowByUrlSlug(lang, slug);
+  return row ? toTire(row, lang) : undefined;
 }
 
-/** Get the Notion block tree for a product (description, features, spec table, gallery). */
+/** Get the Notion block tree for a product. `slug` is the canonical URL slug;
+ *  resolve it to the locale's real slug (block sidecars are keyed by that). */
 export function getProductBlocks(locale: Locale, slug: string): any[] {
-  return readBlocks('product', locale, slug);
+  const lang = contentLang(locale);
+  const row = productRowByUrlSlug(lang, slug);
+  return readBlocks('product', lang, row?.slug ?? slug);
 }
 
-export function getProductsByIndustry(locale: Locale, industrySlug: string): Tire[] {
+export function getProductsByIndustry(locale: Locale, industryUrlSlug: string): Tire[] {
+  const lang = contentLang(locale);
+  // industryUrlSlug is canonical (English). Match each product's industries —
+  // which are per-locale slugs — by canonicalizing them to English.
   return products
-    .filter((p) => p.language === locale && p.industries.includes(industrySlug))
-    .map((p) => toTire(p, locale));
+    .filter(
+      (p) =>
+        p.language === lang &&
+        p.industries.some((s) => canonicalIndustrySlug(lang, s) === industryUrlSlug)
+    )
+    .map((p) => toTire(p, lang));
 }
 
 export function getFeaturedProducts(locale: Locale, limit?: number): Tire[] {
-  const all = products.filter((p) => p.language === locale && p.industries.length > 0);
+  const lang = contentLang(locale);
+  const all = products.filter((p) => p.language === lang && p.industries.length > 0);
   const sliced = limit ? all.slice(0, limit) : all;
-  return sliced.map((p) => toTire(p, locale));
+  return sliced.map((p) => toTire(p, lang));
+}
+
+/**
+ * Most-recent products, at most one per (primary) industry, newest first,
+ * capped at `max`. Powers the homepage "recent products" grid: with 10
+ * industries the grid is an even 5x2 at its widest; CSS hides trailing
+ * items at narrower even-grid steps.
+ *
+ * Recency proxy: WP post id — the snapshot carries no creation date, and
+ * WP ids increase with creation time. Swap to a real date (or an editorial
+ * Featured flag) once one exists in the Notion Products database.
+ */
+export function getRecentProductsByIndustry(locale: Locale, max = 10): Tire[] {
+  const lang = contentLang(locale);
+  const seen = new Set<string>();
+  const out: Tire[] = [];
+  const sorted = products
+    .filter((p) => p.language === lang && p.industries.length > 0)
+    .sort((a, b) => (b.wpId ?? 0) - (a.wpId ?? 0));
+  for (const row of sorted) {
+    const primary = row.industries[0];
+    if (seen.has(primary)) continue;
+    seen.add(primary);
+    out.push(toTire(row, lang));
+    if (out.length >= max) break;
+  }
+  return out;
 }
 
 // ── Industry queries ────────────────────────────────────────────────────
 
 export function getAllIndustries(locale: Locale): Industry[] {
-  return industries.filter((i) => i.language === locale).map(toIndustry);
+  const lang = contentLang(locale);
+  return industries.filter((i) => i.language === lang).map(toIndustry);
 }
 
 export function getIndustryBySlug(locale: Locale, slug: string): Industry | undefined {
-  const row = industries.find((i) => i.language === locale && i.slug === slug);
+  const lang = contentLang(locale);
+  // `slug` is the canonical (English) URL slug; resolve to the locale row.
+  const row =
+    industryCanon.enSlugToRow.get(`${lang}::${slug}`) ??
+    industries.find((i) => i.language === lang && i.slug === slug);
   return row ? toIndustry(row) : undefined;
 }
 
 // ── Application queries ─────────────────────────────────────────────────
 
 export function getAllApplications(locale: Locale): Application[] {
-  return applications.filter((a) => a.language === locale).map(toApplication);
+  const lang = contentLang(locale);
+  return applications.filter((a) => a.language === lang).map(toApplication);
 }
 
 // ── Article queries ─────────────────────────────────────────────────────
+//
+// RESOURCES ARE ENGLISH-ONLY (decision 2026-06-13). WP never translated the
+// articles/documents — the per-locale rows are English passthrough, so they
+// carry no value. Every locale's Resource Center renders the SAME English
+// content. All resource accessors read `RESOURCE_LANG` regardless of locale;
+// `locale` is kept in the signature only for building locale-prefixed hrefs.
+
+const RESOURCE_LANG = 'en';
 
 /**
- * Returns articles only — blog/news/event content with prose bodies.
+ * Returns articles only — blog/news content with prose bodies. English-only.
  * For the Resources page that mixes articles AND documents, use
  * `getAllResources(locale)` instead.
  */
 export function getAllArticles(locale: Locale): Article[] {
-  return articles.filter((a) => a.language === locale).map((a) => toArticle(a, locale));
+  return articles.filter((a) => a.language === RESOURCE_LANG).map((a) => toArticle(a, locale));
 }
 
 export function getArticleBySlug(locale: Locale, slug: string): Article | undefined {
-  const row = articles.find((a) => a.language === locale && a.slug === slug);
+  const row = articles.find((a) => a.language === RESOURCE_LANG && a.slug === slug);
   return row ? toArticle(row, locale) : undefined;
 }
 
-/** Get the Notion block tree for an article (full prose body). */
+/** Get the Notion block tree for an article (full prose body). English-only. */
 export function getArticleBlocks(locale: Locale, slug: string): any[] {
-  return readBlocks('article', locale, slug);
+  return readBlocks('article', RESOURCE_LANG, slug);
 }
 
 export function getArticlesByType(locale: Locale, type: ArticleType): Article[] {
   return articles
-    .filter((a) => a.language === locale)
+    .filter((a) => a.language === RESOURCE_LANG)
     .map((a) => toArticle(a, locale))
     .filter((a) => a.type === type);
 }
 
-export function getArticlesByIndustry(locale: Locale, industrySlug: string): Article[] {
+export function getArticlesByIndustry(locale: Locale, industryUrlSlug: string): Article[] {
+  // industryUrlSlug is canonical (English); article industries are English too.
   return articles
-    .filter((a) => a.language === locale && (a.industries ?? []).includes(industrySlug))
+    .filter((a) => a.language === RESOURCE_LANG && (a.industries ?? []).includes(industryUrlSlug))
     .map((a) => toArticle(a, locale));
 }
 
 export function getRecentArticles(locale: Locale, limit: number): Article[] {
   return [...articles]
-    .filter((a) => a.language === locale)
+    .filter((a) => a.language === RESOURCE_LANG)
     .sort((a, b) => (b.publishedDate ?? '').localeCompare(a.publishedDate ?? ''))
     .slice(0, limit)
     .map((a) => toArticle(a, locale));
 }
 
-// ── Document queries ────────────────────────────────────────────────────
+// ── Document queries (English-only, like articles) ──────────────────────
 
 /** Documents (brochures + product sheets) as Article-shaped objects. */
 export function getAllDocuments(locale: Locale): Article[] {
   return documents
-    .filter((d) => d.language === locale)
+    .filter((d) => d.language === RESOURCE_LANG)
     .map((d) => documentToArticle(d, locale));
 }
 
@@ -432,7 +561,7 @@ export function getAllDocuments(locale: Locale): Article[] {
  *  for callers that want to render a RubberDocumentCard. */
 export function getAllRawDocuments(locale: Locale): Doc[] {
   return documents
-    .filter((d) => d.language === locale)
+    .filter((d) => d.language === RESOURCE_LANG)
     .map(toDocument);
 }
 
@@ -451,7 +580,8 @@ function toTestimonial(t: TestimonialRow): Testimonial {
 }
 
 export function getAllTestimonials(locale: Locale): Testimonial[] {
-  return testimonials.filter((t) => t.language === locale).map(toTestimonial);
+  const lang = contentLang(locale);
+  return testimonials.filter((t) => t.language === lang).map(toTestimonial);
 }
 
 // ── Event queries ───────────────────────────────────────────────────────
@@ -469,7 +599,10 @@ function toEvent(e: EventRow, locale: Locale): Event {
 }
 
 export function getAllEvents(locale: Locale): Event[] {
-  return events.filter((e) => e.language === locale).map((e) => toEvent(e, locale));
+  // Filter by content language, but keep the front-end locale for the href
+  // so the URL keeps its region prefix (e.g. /fr-ca/resources/...).
+  const lang = contentLang(locale);
+  return events.filter((e) => e.language === lang).map((e) => toEvent(e, locale));
 }
 
 // ── Unified resource feed ──────────────────────────────────────────────
@@ -483,11 +616,12 @@ export function getAllEvents(locale: Locale): Event[] {
  * Sorted by date desc; documents have no date, so they fall to the end.
  */
 export function getAllResources(locale: Locale): Article[] {
+  // English-only resources; `locale` only sets href prefixes.
   const articleEntries = articles
-    .filter((a) => a.language === locale)
+    .filter((a) => a.language === RESOURCE_LANG)
     .map((a) => toArticle(a, locale));
   const documentEntries = documents
-    .filter((d) => d.language === locale)
+    .filter((d) => d.language === RESOURCE_LANG)
     .map((d) => documentToArticle(d, locale));
   return [...articleEntries, ...documentEntries].sort((a, b) => b.date.localeCompare(a.date));
 }
@@ -543,7 +677,8 @@ export function pageText(page: PageContent | undefined, key: string, fallback = 
  * Returns undefined if no record exists for that (locale, slug).
  */
 export function getPageContent(locale: Locale, slug: string): PageContent | undefined {
-  const row = pages.find((p) => p.language === locale && p.slug === slug);
+  const lang = contentLang(locale);
+  const row = pages.find((p) => p.language === lang && p.slug === slug);
   if (!row) return undefined;
   return {
     slug: row.slug,
@@ -559,10 +694,11 @@ export function getPageContent(locale: Locale, slug: string): PageContent | unde
  */
 export function getPagePromos(locale: Locale, pageSlug: string): PagePromo[] {
   // Resolve the page record to its pageId so we can match promos by relation.
-  const page = pages.find((p) => p.language === locale && p.slug === pageSlug);
+  const lang = contentLang(locale);
+  const page = pages.find((p) => p.language === lang && p.slug === pageSlug);
   if (!page) return [];
   return pagePromos
-    .filter((promo) => promo.language === locale && promo.pageId === page.pageId)
+    .filter((promo) => promo.language === lang && promo.pageId === page.pageId)
     .sort((a, b) => a.order - b.order)
     .map((promo) => ({
       order: promo.order,
@@ -595,10 +731,23 @@ export interface ProductSpecs {
   variants: SpecVariant[];
 }
 
-const productSpecsByLocale: Record<Locale, Record<string, ProductSpecs>> = {
+/**
+ * Spec tables, keyed by CONTENT language. Languages whose spec snapshot
+ * hasn't been generated yet (the 7 added 2026-06-13) fall back to English
+ * specs so tire pages still render a table; Phase B/C replace these with
+ * per-language extracts (translated column headers).
+ */
+const productSpecsByLang: Record<ContentLanguage, Record<string, ProductSpecs>> = {
   en: productSpecsEn as Record<string, ProductSpecs>,
   'ar-ae': productSpecsArAe as Record<string, ProductSpecs>,
   'zh-hant': productSpecsZhHant as Record<string, ProductSpecs>,
+  de: productSpecsDe as Record<string, ProductSpecs>,
+  es: productSpecsEs as Record<string, ProductSpecs>,
+  fr: productSpecsFr as Record<string, ProductSpecs>,
+  it: productSpecsIt as Record<string, ProductSpecs>,
+  ja: productSpecsJa as Record<string, ProductSpecs>,
+  'pt-pt': productSpecsPtPt as Record<string, ProductSpecs>,
+  ru: productSpecsRu as Record<string, ProductSpecs>,
 };
 
 /**
@@ -608,5 +757,9 @@ const productSpecsByLocale: Record<Locale, Record<string, ProductSpecs>> = {
  * Returns undefined if the product has no spec table.
  */
 export function getProductSpecs(locale: Locale, slug: string): ProductSpecs | undefined {
-  return productSpecsByLocale[locale]?.[slug];
+  const lang = contentLang(locale);
+  // `slug` is the canonical URL slug; spec tables are keyed by the locale's
+  // real slug (built from tires-<lang>.json), so resolve it first.
+  const row = productRowByUrlSlug(lang, slug);
+  return productSpecsByLang[lang]?.[row?.slug ?? slug];
 }

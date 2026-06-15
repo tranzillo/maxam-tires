@@ -140,7 +140,7 @@ const resourceTypes: ArticleType[] = ['blog', 'news', 'event', 'product-sheet', 
               variant="industry"
               size="lg"
               color={ind.color}
-              href={localePath(locale, `/products/${ind.slug}/`)}
+              href={localePath(locale, `/products/${ind.urlSlug}/`)}
             >
               {ind.name}
             </RubberChip>
@@ -211,7 +211,7 @@ const resourceTypes: ArticleType[] = ['blog', 'news', 'event', 'product-sheet', 
                 variant="industry"
                 size="lg"
                 color={ind.color}
-                href={localePath(locale, `/products/${ind.slug}/`)}
+                href={localePath(locale, `/products/${ind.urlSlug}/`)}
               >
                 {ind.name}
               </RubberChip>

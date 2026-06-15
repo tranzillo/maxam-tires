@@ -20,7 +20,7 @@ interface Props {
 }
 
 const { industry, locale, class: className } = Astro.props;
-const href = `/${locale}/products/${industry.slug}/`;
+const href = `/${locale}/products/${industry.urlSlug}/`;
 ---
 
 <a

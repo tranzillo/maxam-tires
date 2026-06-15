@@ -43,6 +43,6 @@
 
 /* Gap scale. */
 .grid--gap-none { gap: 0; }
-.grid--gap-sm   { gap: 0.5rem; }
-.grid--gap-md   { gap: 1.5rem; }
-.grid--gap-lg   { gap: 2.5rem; }
+.grid--gap-sm   { gap: 0.1rem; }
+.grid--gap-md   { gap: 0.25rem; }
+.grid--gap-lg   { gap: 1rem; }

@@ -1,6 +1,6 @@
 ---
 import type { Locale } from '../../types';
-import { locales, t } from '../../lib/i18n';
+import { locales, localeName } from '../../lib/i18n';
 
 interface Props {
   locale: Locale;
@@ -31,7 +31,7 @@ function switchLocalePath(targetLocale: Locale, path: string): string {
         value={switchLocalePath(loc, currentPath)}
         selected={loc === locale}
       >
-        {t(locale, `language.${loc}`)}
+        {localeName(loc)}
       </option>
     ))}
   </select>
