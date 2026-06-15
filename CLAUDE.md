@@ -67,10 +67,14 @@ lookups use the resolved 10. `getLang`/`getDir`/`localeName` cover all 14.
 ## Standing decisions (later decisions override earlier docs)
 
 1. **No Tailwind.** Styling = semantic class names + central CSS.
-   *Reality:* Tailwind is still installed and load-bearing (the `@theme` token
-   block in `global.css` + ~1,785 utility occurrences across ~26 `.astro` files
-   are legacy). Do not ADD utility classes; new styling → `src/styles/**`. Full
-   removal is a planned phase — not piecemeal.
+   *DONE 2026-06-13:* Tailwind is fully removed (no package, no `@import`, no
+   utility classes anywhere). Tokens are plain `:root` custom properties.
+   Shared primitives: `.heading` scale (`--heading-*`), `prose-content.css`
+   (Notion bodies), the `Section`/`--container-max`/`--gutter` container,
+   `--reading-max` (long-form), `industryVars()` (lib/style.ts), `.filter-pill`,
+   `.pagination`, `.app-shell`. **`global.css` @import rules MUST stay at the
+   TOP of the file** (CSS spec; Vite drops imports placed after other rules).
+   New styling → `src/styles/**`, never utility classes in markup.
 2. **No `Rubber*` / `rubber-` naming** for anything new. The 17 `Rubber*`
    components + `.rubber-*` selectors are legacy pending a rename phase. Don't
    extend the pattern; don't rename ad-hoc.
@@ -207,7 +211,10 @@ a locale.
   but have no route.
 - **Images**: ~900 product/article images hotlink the live maxamtire.com —
   re-host before launch.
-- **Tailwind + Rubber naming** still present (decisions #1, #2) — planned phases.
+- **Rubber naming** still present (decision #2) — the mechanical rename
+  (RubberX.astro → X.astro, `.rubber-*` → semantic) is the next planned phase.
+  (Tailwind removal, decision #1, is DONE.)
+- **Design gallery + 8 old-gen components deleted** 2026-06-13 (were dead).
 - **PR not merged**: the `chore/repo-integrity` branch (Session 1) is pushed but
   not merged to `main`.
 
