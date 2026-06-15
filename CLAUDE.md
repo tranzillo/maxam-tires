@@ -169,9 +169,12 @@ yet consumed by routing (see Known broken).
   (The `/testimonials` dead link is gone — testimonials were dropped.)
 - **Images**: ~900 product/article images hotlink the live maxamtire.com —
   prototype depends on the old site staying up; re-host before real launch.
-- **Repo state**: ALL of `scripts/` is gitignored (incl. the live sync pipeline
-  + notion-ids.json) and 5 snapshot files imported by `data.ts` are untracked —
-  **a fresh clone cannot build**. Everything since 2026-05-04 is uncommitted.
+- **Repo state**: FIXED 2026-06-13 (branch `chore/repo-integrity`, pushed to
+  origin). `.gitignore` now tracks scripts/docs/CLAUDE.md and the load-bearing
+  `scripts/output/{notion-ids,notion-*-map}.json`, ignoring only the heavy WP
+  extract artifacts. All 470 files committed in 3 tranches; all 10 spec + 10
+  translation files tracked; a clean checkout builds (4467 pages, verified via
+  worktree). Bus-factor-1 eliminated. (NOT yet merged to main — open a PR.)
 - Contact-page office data is hardcoded in frontmatter (incl. Simplified-Chinese
   strings in the zh-hant locale); featured-product slugs hardcoded on the
   homepage; events sync but have no route.
