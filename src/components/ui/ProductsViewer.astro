@@ -56,29 +56,26 @@ const {
 <!-- Mobile filter toggle -->
 <button
   id="mobile-filter-toggle"
-  class="md:hidden flex items-center gap-2 mb-4 px-4 py-2 bg-maxam-blue text-maxam-white rounded-full text-sm font-semibold"
+  class="filter-toggle"
   aria-expanded="false"
   aria-controls="filter-sidebar"
 >
-  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg class="filter-toggle__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
   </svg>
   {t(locale, 'products.filter.show')}
 </button>
 
-<div id="filter-overlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden"></div>
+<div id="filter-overlay" class="filter-overlay" hidden></div>
 
 <div class="products-page__body">
   <!-- Filters sidebar / TV remote -->
   <aside
     id="filter-sidebar"
-    class="filter-sidebar w-full fixed inset-y-0 start-0 z-50 md:relative md:inset-auto md:z-auto transition-transform duration-300"
+    class="filter-sidebar"
     data-open="false"
   >
-    <button
-      id="filter-close"
-      class="md:hidden mb-2 self-end text-sm text-maxam-gray-500 hover:text-maxam-black px-4 pt-3"
-    >
+    <button id="filter-close" class="filter-sidebar__close">
       {t(locale, 'products.filter.close')} &times;
     </button>
 
@@ -182,7 +179,7 @@ const {
       ))}
     </div>
 
-    <p id="no-results" class="products-page__empty hidden">
+    <p id="no-results" class="products-page__empty" hidden>
       {t(locale, 'products.no_results')}
     </p>
   </div>
@@ -292,7 +289,7 @@ const {
     if (resultsCountEl) {
       resultsCountEl.textContent = meta.resultsTemplate.replace('{count}', String(filteredCards.length));
     }
-    noResults.classList.toggle('hidden', filteredCards.length > 0);
+    noResults.hidden = filteredCards.length > 0;
 
     renderChips(active);
     updateFilterCounts(active, query);
@@ -392,14 +389,14 @@ const {
 
   function openDrawer() {
     filterSidebar.dataset.open = 'true';
-    filterOverlay.classList.remove('hidden');
+    filterOverlay.hidden = false;
     mobileToggle.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
   }
 
   function closeDrawer() {
     filterSidebar.dataset.open = 'false';
-    filterOverlay.classList.add('hidden');
+    filterOverlay.hidden = true;
     mobileToggle.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   }
@@ -408,7 +405,7 @@ const {
   filterClose.addEventListener('click', closeDrawer);
   filterOverlay.addEventListener('click', closeDrawer);
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !filterOverlay.classList.contains('hidden')) closeDrawer();
+    if (e.key === 'Escape' && !filterOverlay.hidden) closeDrawer();
   });
 
   checkboxes.forEach((cb) => cb.addEventListener('change', () => applyFilters()));

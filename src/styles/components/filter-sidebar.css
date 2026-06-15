@@ -50,11 +50,80 @@
   visibility: visible;
 }
 
+/* ── Mobile: off-canvas drawer (slides in from the leading edge) ─────
+ * Below md the sidebar is a fixed full-height drawer; the slide itself
+ * (transform on [data-open]) lives in global.css. Above md it becomes a
+ * static sticky column (the @media block below). */
+.filter-sidebar {
+  width: 100%;
+  position: fixed;
+  inset-block: 0;
+  inset-inline-start: 0;
+  z-index: var(--z-floating);
+  transition: transform var(--duration-base) var(--ease-rubber);
+}
+
+/* Mobile "Filters" toggle button — hidden at md+. */
+.filter-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-maxam-white);
+  background: var(--color-maxam-blue);
+  border: 0;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+.filter-toggle__icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Scrim behind the open drawer. */
+.filter-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  background: rgba(0, 0, 0, 0.5);
+}
+.filter-overlay[hidden] {
+  display: none;
+}
+
+/* In-drawer close button — hidden at md+. */
+.filter-sidebar__close {
+  align-self: flex-end;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem 1rem 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-maxam-gray-500);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.filter-sidebar__close:hover {
+  color: var(--color-maxam-black);
+}
+
 @media (min-width: 768px) {
+  /* Desktop: static sticky column, no drawer chrome. */
+  .filter-toggle,
+  .filter-overlay,
+  .filter-sidebar__close {
+    display: none;
+  }
   .filter-sidebar {
     width: 260px;
     flex-shrink: 0;
     position: sticky;
+    inset-inline-start: auto;
+    inset-block: auto;
+    z-index: auto;
+    transform: none;
     top: 5rem;
     /* Natural height = head + body content. The JS in ProductsViewer
      * sets a JS `max-height` to min(viewport - 6rem, grid area height)
