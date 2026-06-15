@@ -49,10 +49,14 @@ function tableRows(block: any): any[] {
 }
 ---
 
+{/* Emits plain semantic HTML — all styling comes from prose-content.css on
+    the wrapping `.prose-content` element. The only classes here are the few
+    structural hooks prose-content needs for non-semantic containers
+    (callout / toggle / columns / table-scroll). No utility classes. */}
 {groups.map((group) => {
   if (group.kind === 'ul') {
     return (
-      <ul class="list-disc ps-6 my-4 space-y-1">
+      <ul>
         {group.items.map((b) => (
           <li>
             <NotionRichText richText={b.bulleted_list_item.rich_text} />
@@ -67,7 +71,7 @@ function tableRows(block: any): any[] {
 
   if (group.kind === 'ol') {
     return (
-      <ol class="list-decimal ps-6 my-4 space-y-1">
+      <ol>
         {group.items.map((b) => (
           <li>
             <NotionRichText richText={b.numbered_list_item.rich_text} />
@@ -85,45 +89,45 @@ function tableRows(block: any): any[] {
   switch (block.type) {
     case 'paragraph':
       return (
-        <p class="my-4 leading-relaxed">
+        <p>
           <NotionRichText richText={block.paragraph.rich_text} />
         </p>
       );
     case 'heading_1':
       return (
-        <h1 class="text-3xl font-bold mt-8 mb-3">
+        <h1>
           <NotionRichText richText={block.heading_1.rich_text} />
         </h1>
       );
     case 'heading_2':
       return (
-        <h2 class="text-2xl font-bold mt-6 mb-3">
+        <h2>
           <NotionRichText richText={block.heading_2.rich_text} />
         </h2>
       );
     case 'heading_3':
       return (
-        <h3 class="text-xl font-bold mt-5 mb-2">
+        <h3>
           <NotionRichText richText={block.heading_3.rich_text} />
         </h3>
       );
     case 'quote':
       return (
-        <blockquote class="border-s-4 border-maxam-gray-300 ps-4 italic my-4">
+        <blockquote>
           <NotionRichText richText={block.quote.rich_text} />
         </blockquote>
       );
     case 'divider':
-      return <hr class="my-8 border-maxam-gray-100" />;
+      return <hr />;
     case 'image': {
       const img = block.image;
       const url = img.type === 'external' ? img.external.url : img.file?.url;
       const caption = img.caption?.[0]?.plain_text;
       if (!url) return null;
       return (
-        <figure class="my-6">
-          <img src={url} alt={caption ?? ''} class="rounded-lg max-w-full h-auto" loading="lazy" />
-          {caption && <figcaption class="text-sm text-maxam-gray-500 mt-2 text-center">{caption}</figcaption>}
+        <figure>
+          <img src={url} alt={caption ?? ''} loading="lazy" />
+          {caption && <figcaption>{caption}</figcaption>}
         </figure>
       );
     }
@@ -134,13 +138,13 @@ function tableRows(block: any): any[] {
       const headerRow = hasColumnHeader ? rows[0] : null;
       const bodyRows = hasColumnHeader ? rows.slice(1) : rows;
       return (
-        <div class="overflow-x-auto my-6">
-          <table class="w-full text-sm border-collapse">
+        <div class="prose-table-scroll">
+          <table>
             {headerRow && (
-              <thead class="bg-maxam-gray-100">
+              <thead>
                 <tr>
                   {headerRow.table_row.cells.map((cell: any[]) => (
-                    <th class="border border-maxam-gray-300 px-3 py-2 text-start font-semibold">
+                    <th>
                       <NotionRichText richText={cell} />
                     </th>
                   ))}
@@ -151,7 +155,7 @@ function tableRows(block: any): any[] {
               {bodyRows.map((row: any) => (
                 <tr>
                   {row.table_row.cells.map((cell: any[]) => (
-                    <td class="border border-maxam-gray-300 px-3 py-2 align-top">
+                    <td>
                       <NotionRichText richText={cell} />
                     </td>
                   ))}
@@ -165,8 +169,8 @@ function tableRows(block: any): any[] {
     case 'callout': {
       const icon = block.callout?.icon?.emoji ?? '💡';
       return (
-        <div class="my-4 p-4 bg-maxam-gray-100 rounded-lg flex items-start gap-3">
-          <span class="text-xl shrink-0" aria-hidden="true">{icon}</span>
+        <div class="prose-callout">
+          <span class="prose-callout__icon" aria-hidden="true">{icon}</span>
           <div>
             <NotionRichText richText={block.callout.rich_text} />
             {block.children && block.children.length > 0 && (
@@ -178,12 +182,12 @@ function tableRows(block: any): any[] {
     }
     case 'toggle':
       return (
-        <details class="my-4 border border-maxam-gray-100 rounded-lg p-3">
-          <summary class="cursor-pointer font-medium">
+        <details class="prose-toggle">
+          <summary>
             <NotionRichText richText={block.toggle.rich_text} />
           </summary>
           {block.children && block.children.length > 0 && (
-            <div class="mt-3">
+            <div>
               <Astro.self blocks={block.children} />
             </div>
           )}
@@ -191,13 +195,13 @@ function tableRows(block: any): any[] {
       );
     case 'code':
       return (
-        <pre class="my-4 p-4 bg-maxam-gray-100 rounded text-sm overflow-x-auto">
+        <pre>
           <code><NotionRichText richText={block.code.rich_text} plain /></code>
         </pre>
       );
     case 'column_list':
       return (
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+        <div class="prose-columns">
           {(block.children ?? []).map((col: any) => (
             <div>
               <Astro.self blocks={col.children ?? []} />

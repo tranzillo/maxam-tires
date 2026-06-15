@@ -126,8 +126,8 @@ const galleryImages = [
           ))}
         </div>
 
-        <h1 class="tire-page__title">{tire.title}</h1>
-        {tire.subheading && <p class="tire-page__subheading">{tire.subheading}</p>}
+        <h1 class="tire-page__title heading heading--lg">{tire.title}</h1>
+        {tire.subheading && <p class="tire-page__subheading heading heading--sm">{tire.subheading}</p>}
 
         {tire.applications.length > 0 && (
           <div class="tire-page__applications">
@@ -162,7 +162,7 @@ const galleryImages = [
          normalized spec data; otherwise fall back to the raw block table. -->
     {specs ? (
       <section class="tire-page__section">
-        <h2 class="tire-page__section-heading">{t(locale, 'product.specifications')}</h2>
+        <h2 class="tire-page__section-heading heading heading--md">{t(locale, 'product.specifications')}</h2>
         <SpecViewer specs={specs} id="tire-specs" />
       </section>
     ) : (
@@ -183,7 +183,7 @@ const galleryImages = [
     <!-- Documents -->
     {tire.documents.length > 0 && (
       <section class="tire-page__section">
-        <h2 class="tire-page__section-heading">
+        <h2 class="tire-page__section-heading heading heading--md">
           {t(locale, 'product.documents') || 'Documents'}
         </h2>
         <div class="tire-page__docs-grid">
@@ -197,7 +197,7 @@ const galleryImages = [
     <!-- Back link -->
     <div class="tire-page__back">
       <RubberButton variant="ghost" size="md" href={localePath(locale, '/products')}>
-        <span class="inline-block rtl:scale-x-[-1] me-1" aria-hidden="true">←</span>
+        <span class="tire-page__back-arrow" aria-hidden="true">←</span>
         {t(locale, 'product.back')}
       </RubberButton>
     </div>

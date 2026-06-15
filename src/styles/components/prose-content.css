@@ -1,0 +1,169 @@
+/*
+ * prose-content — styling for rendered Notion body content.
+ *
+ * Wraps NotionBlocks / NotionRichText output (article bodies, tire
+ * description + features). Styles the elements directly so the renderers
+ * emit plain semantic HTML with NO utility classes. Apply `.prose-content`
+ * to the wrapper; everything inside is styled by element.
+ *
+ * Was previously referenced on 3 pages but never defined — Notion content
+ * rendered unstyled. This is the definition.
+ *
+ * Colors/spacing use design tokens (global.css) so it stays consistent
+ * with the rest of the system and survives Tailwind removal.
+ */
+
+.prose-content {
+  color: var(--color-maxam-gray-900);
+  line-height: 1.6;
+}
+
+/* Flow spacing: vertical rhythm between block children. */
+.prose-content > * + * {
+  margin-top: 1rem;
+}
+
+/* ── Paragraphs ──────────────────────────────────────────────────── */
+.prose-content p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── Headings (within prose — distinct from page .heading) ───────── */
+.prose-content h1,
+.prose-content h2,
+.prose-content h3,
+.prose-content h4 {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-maxam-black);
+}
+.prose-content h1 { font-size: var(--font-size-3xl); margin-top: 2rem; }
+.prose-content h2 { font-size: var(--font-size-2xl); margin-top: 1.5rem; }
+.prose-content h3 { font-size: var(--font-size-xl); margin-top: 1.25rem; }
+.prose-content h4 { font-size: var(--font-size-lg); margin-top: 1rem; }
+/* First child never carries top margin. */
+.prose-content > :first-child { margin-top: 0; }
+
+/* ── Lists ───────────────────────────────────────────────────────── */
+.prose-content ul,
+.prose-content ol {
+  margin: 0;
+  padding-inline-start: 1.5rem;
+}
+.prose-content ul { list-style: disc; }
+.prose-content ol { list-style: decimal; }
+.prose-content li + li { margin-top: 0.25rem; }
+.prose-content li::marker { color: var(--color-maxam-gray-500); }
+
+/* ── Links + inline formatting ───────────────────────────────────── */
+.prose-content a {
+  color: var(--color-maxam-blue);
+  text-decoration: none;
+}
+.prose-content a:hover {
+  text-decoration: underline;
+}
+.prose-content strong { font-weight: 700; }
+.prose-content em { font-style: italic; }
+
+.prose-content code {
+  padding: 0.125rem 0.3rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+  background: var(--color-surface-sunken);
+  border-radius: var(--radius-tight);
+}
+.prose-content pre {
+  margin: 0;
+  padding: 1rem;
+  overflow-x: auto;
+  background: var(--color-surface-sunken);
+  border-radius: var(--radius-card);
+  font-size: var(--font-size-sm);
+}
+.prose-content pre code {
+  padding: 0;
+  background: none;
+}
+
+/* ── Blockquote — leading-edge rule (logical, RTL-correct) ───────── */
+.prose-content blockquote {
+  margin: 0;
+  padding-inline-start: 1rem;
+  border-inline-start: 4px solid var(--color-edge-strong);
+  font-style: italic;
+  color: var(--color-maxam-gray-700);
+}
+
+/* ── Rule ────────────────────────────────────────────────────────── */
+.prose-content hr {
+  margin-block: 2rem;
+  border: 0;
+  border-top: 1px solid var(--color-edge);
+}
+
+/* ── Media ───────────────────────────────────────────────────────── */
+.prose-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-card);
+}
+.prose-content figure { margin: 0; }
+.prose-content figcaption {
+  margin-top: 0.5rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-maxam-gray-500);
+  text-align: center;
+}
+
+/* ── Tables (raw Notion tables — distinct from the SpecViewer) ────── */
+.prose-content .prose-table-scroll {
+  overflow-x: auto;
+}
+.prose-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+.prose-content thead {
+  background: var(--color-surface-sunken);
+}
+.prose-content th,
+.prose-content td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-edge);
+  text-align: start;
+  vertical-align: top;
+}
+.prose-content th { font-weight: 600; }
+
+/* ── Callout / toggle / column structures ────────────────────────── */
+.prose-content .prose-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--color-surface-sunken);
+  border-radius: var(--radius-card);
+}
+.prose-content .prose-toggle {
+  border: 1px solid var(--color-edge);
+  border-radius: var(--radius-card);
+  padding: 0.75rem 1rem;
+}
+.prose-content .prose-toggle > summary {
+  cursor: pointer;
+  font-weight: 500;
+}
+.prose-content .prose-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .prose-content .prose-columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

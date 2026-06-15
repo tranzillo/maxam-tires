@@ -23,8 +23,9 @@ const { richText, plain = false } = Astro.props;
 
   // Build the inline element with stacked formatting wrappers. Order
   // doesn't matter visually as long as each annotation is represented.
+  // Plain semantic HTML — styled by prose-content.css (code, a, strong…).
   let content: any = text;
-  if (a.code) content = <code class="px-1 py-0.5 bg-maxam-gray-100 rounded text-sm">{content}</code>;
+  if (a.code) content = <code>{content}</code>;
   if (a.bold) content = <strong>{content}</strong>;
   if (a.italic) content = <em>{content}</em>;
   if (a.underline) content = <u>{content}</u>;
@@ -34,7 +35,6 @@ const { richText, plain = false } = Astro.props;
     return (
       <a
         href={href}
-        class="text-maxam-blue hover:underline"
         target={href.startsWith('http') ? '_blank' : undefined}
         rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
       >

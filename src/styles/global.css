@@ -159,6 +159,22 @@
   --section-pad-md: clamp(3rem, 6vw, 5rem);
   --section-pad-lg: clamp(4rem, 8vw, 7rem);
   --section-pad-xlg: clamp(5rem, 11vw, 9rem);
+
+  /* ── Fluid heading scale — ONE source of truth for heading sizes ──
+   * Replaces the ~9 ad-hoc `font-size: clamp(...)` declarations that were
+   * picked per-page. Use via the `.heading` component class (heading.css)
+   * or consume the token directly. Steps, largest → smallest:
+   *   display  hero "punch" (homepage)
+   *   xl       page hero H1 (products/industry hero)
+   *   lg       section / detail-page H1 (tire title)
+   *   md       section H2 (spec/docs headings, section-header)
+   *   sm       sub-heading / large lead text
+   * Values consolidate the real sizes already in use so nothing jumps. */
+  --heading-display: clamp(3.5rem, 10vw, 8rem);
+  --heading-xl: clamp(2.5rem, 5vw, 5rem);
+  --heading-lg: clamp(2rem, 4vw, 3rem);
+  --heading-md: clamp(1.5rem, 2.5vw, 2rem);
+  --heading-sm: clamp(1.125rem, 1.5vw, 1.375rem);
 }
 
 /* Base resets */
@@ -210,6 +226,8 @@ body {
  * ────────────────────────────────────────────────────────────────── */
 @import './components/section.css';
 @import './components/grid.css';
+@import './components/heading.css';
+@import './components/prose-content.css';
 @import './components/product-card.css';
 @import './components/article-card.css';
 @import './components/industry-card.css';

@@ -1,0 +1,62 @@
+/*
+ * Heading — the ONE heading primitive.
+ *
+ * Replaces ~9 ad-hoc `font-size: clamp(...)` declarations scattered across
+ * page stylesheets. Every page/section heading uses `.heading` plus a size
+ * modifier, so heading sizes live in exactly one place (the --heading-*
+ * tokens in global.css :root).
+ *
+ *   <h1 class="heading heading--lg">…</h1>   detail-page / section H1
+ *   <h2 class="heading heading--md">…</h2>   section H2
+ *
+ * Sizes: --display (hero punch) · --xl (page hero) · --lg (page/section H1)
+ *        · --md (section H2) · --sm (sub-heading / lead).
+ */
+.heading {
+  margin: 0;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-maxam-black);
+  text-wrap: balance;
+}
+
+.heading--display {
+  font-size: var(--heading-display);
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.heading--xl {
+  font-size: var(--heading-xl);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.heading--lg {
+  font-size: var(--heading-lg);
+  line-height: 1;
+}
+
+.heading--md {
+  font-size: var(--heading-md);
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+
+.heading--sm {
+  font-size: var(--heading-sm);
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 1.3;
+  color: var(--color-maxam-gray-500);
+}
+
+/* On dark/image backgrounds, headings invert to white with a soft shadow.
+ * Add `.heading--on-dark` alongside the size modifier. */
+.heading--on-dark {
+  color: var(--color-maxam-white);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
