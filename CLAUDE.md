@@ -193,9 +193,11 @@ a locale.
 - **Product specs don't flow from Notion**: `product-specs.*.json` is built by
   `build-product-specs.ts` from the frozen WP export (`scripts/output/tires-*.json`).
   Editing specs in Notion changes nothing. Fix = a structured Specs Notion DB.
-- **LanguageSwitcher** does a blind locale-prefix swap (no trid resolution); can
-  404 across locales. No `hreflang` alternates. `trid`/`translationIds` synced but
-  not consumed by routing.
+- **LanguageSwitcher** — FIXED 2026-06-13. The blind prefix-swap no longer 404s
+  (slug normalization + English-only resources made every path identical across
+  locales). Switcher now preserves query string + hash on switch; BaseLayout
+  emits 14 `hreflang` alternates + x-default. (Switcher still carries Tailwind
+  utility classes — deferred to the Tailwind-removal phase.)
 - **Simplified Chinese inside the zh-hant (Traditional) locale**: `zh-hant.json`
   contact.* keys + contact page region names use Simplified forms.
 - **Contact offices hardcoded** in `contact/index.astro` frontmatter (should be a
