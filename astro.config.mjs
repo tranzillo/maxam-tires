@@ -1,16 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
 
-export default defineConfig({
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'ar-ae', 'zh-hant'],
-    routing: {
-      prefixDefaultLocale: true,
-    },
-  },
-  vite: {
-    plugins: [tailwindcss()],
-  },
-});
+// NOTE: locale routing is handled entirely by our own getStaticPaths over the
+// 14 front-end locales (src/lib/i18n.ts) — Astro's built-in i18n integration is
+// not used (its locales list was stale at 3). Tailwind was removed 2026-06-13;
+// all styling is plain central CSS (src/styles/).
+export default defineConfig({});

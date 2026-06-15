@@ -1,11 +1,57 @@
-@import 'tailwindcss';
+/* ──────────────────────────────────────────────────────────────────
+ * Central CSS entry point.
+ *
+ * CSS @import rules MUST come first (before any other rule) per the CSS
+ * spec — Vite only bundles imports in this position. Each shared atom /
+ * molecule / page has its own stylesheet imported here, so all styling
+ * loads from one place. (Before Tailwind was removed, its @import pulled
+ * these through PostCSS regardless of position; now order matters.)
+ * ────────────────────────────────────────────────────────────────── */
+@import './components/section.css';
+@import './components/grid.css';
+@import './components/heading.css';
+@import './components/prose-content.css';
+@import './components/product-card.css';
+@import './components/article-card.css';
+@import './components/industry-card.css';
+@import './components/testimonial-card.css';
+@import './components/featured-card.css';
+@import './components/breadcrumb.css';
+@import './components/button.css';
+@import './components/chip.css';
+@import './components/event-card.css';
+@import './components/document-card.css';
+@import './components/office-card.css';
+@import './components/plate.css';
+@import './components/section-header.css';
+@import './components/spec-table.css';
+@import './components/input.css';
+@import './components/select.css';
+@import './components/textarea.css';
+@import './components/field.css';
+@import './components/filter-sidebar.css';
+@import './components/footer.css';
+@import './components/header.css';
+@import './components/language-switcher.css';
+@import './components/tire-gallery.css';
+@import './components/spec-viewer.css';
+@import './components/spec-selector.css';
+@import './pages/home.css';
+@import './pages/products.css';
+@import './pages/tire.css';
+@import './pages/resource-detail.css';
+@import './pages/resources.css';
+@import './pages/contact.css';
 
 /*
  * MAXAM Tires – Design Tokens
- * Extracted from current site for incremental refresh.
+ *
+ * Plain CSS custom properties (Tailwind removed 2026-06-13). All tokens are
+ * consumed as var(...) in the central stylesheets; nothing relies on Tailwind
+ * generating utilities from them. There are TWO :root blocks in this file —
+ * this one (the design tokens) and the layout/heading block further down.
  */
-
-@theme {
+:root {
   /* Brand palette */
   --color-maxam-blue: #0077c8;
   --color-maxam-blue-dark: #005a9e;
@@ -234,51 +280,4 @@ body {
   font-family: system-ui, -apple-system, 'Segoe UI', 'Noto Sans SC', 'PingFang SC', sans-serif;
   line-height: 1.8;
 }
-
-/* ──────────────────────────────────────────────────────────────────
- * Component styles. Each shared atom / molecule has its own stylesheet
- * imported here, so layout / atom CSS lives in one auditable place
- * rather than scattered across component-scoped <style> blocks.
- * ────────────────────────────────────────────────────────────────── */
-@import './components/section.css';
-@import './components/grid.css';
-@import './components/heading.css';
-@import './components/prose-content.css';
-@import './components/product-card.css';
-@import './components/article-card.css';
-@import './components/industry-card.css';
-@import './components/testimonial-card.css';
-@import './components/featured-card.css';
-@import './components/breadcrumb.css';
-@import './components/button.css';
-@import './components/chip.css';
-@import './components/event-card.css';
-@import './components/document-card.css';
-@import './components/office-card.css';
-@import './components/plate.css';
-@import './components/section-header.css';
-@import './components/spec-table.css';
-@import './components/input.css';
-@import './components/select.css';
-@import './components/textarea.css';
-@import './components/field.css';
-@import './components/filter-sidebar.css';
-@import './components/footer.css';
-@import './components/header.css';
-@import './components/language-switcher.css';
-@import './components/tire-gallery.css';
-@import './components/spec-viewer.css';
-@import './components/spec-selector.css';
-
-/* ──────────────────────────────────────────────────────────────────
- * Page styles. Each page imports its own stylesheet here so all CSS
- * loads from one entry point and we can audit page-bound styling in
- * one place per page.
- * ────────────────────────────────────────────────────────────────── */
-@import './pages/home.css';
-@import './pages/products.css';
-@import './pages/tire.css';
-@import './pages/resource-detail.css';
-@import './pages/resources.css';
-@import './pages/contact.css';
 
