@@ -1,0 +1,22 @@
+{
+  "productsDbId": "ba220be8-dd5e-415b-a23f-974e4b3df59a",
+  "productsDataSourceId": "cd2f8d2f-c272-4ec4-ad97-012a5ab6e62d",
+  "industriesDbId": "5a726cd3-6b67-4db1-b141-d61b550f4f1c",
+  "industriesDataSourceId": "134b37b2-ebc5-4202-b3bc-f57fc733f9d3",
+  "applicationsDbId": "b12ce15c-fb67-412f-b075-5d7cebe93885",
+  "applicationsDataSourceId": "99def4b4-12a3-4302-8d62-67ec8e0eaf16",
+  "tireTypesDbId": "0fec877c-f6e4-45b6-b776-de356971c445",
+  "tireTypesDataSourceId": "6bf124f8-3bd6-44a7-9f38-aba6637b4ce8",
+  "articlesDbId": "47f4916c-dc35-4c6d-afe4-eb841aa5e9ae",
+  "articlesDataSourceId": "37b24988-9d90-45af-832b-40614b8629b3",
+  "eventsDbId": "7294ad78-dd5b-48a0-8c0b-aeb3ee642695",
+  "eventsDataSourceId": "011e8fa2-6077-4a69-b9f6-1f15084eb113",
+  "documentsDbId": "1bb0f97e-9547-4e0b-b7c5-38e989ca01ac",
+  "documentsDataSourceId": "acaafb28-180f-4051-abe4-58bd6495b15c",
+  "testimonialsDbId": "6afed783-9ee0-4585-a59b-5c22108b3126",
+  "testimonialsDataSourceId": "2705f819-22d1-4768-814a-035bf854fe85",
+  "pagesDbId": "aee3ac0c-d77e-4886-9fac-b6d84324f54f",
+  "pagesDataSourceId": "96920d20-7bb8-49c8-91e7-430218870e51",
+  "pagePromosDbId": "8d05f3da-24a2-41cb-a43c-71bd5e3c1aae",
+  "pagePromosDataSourceId": "8f3daef2-9ea4-4655-9656-dcb992c94a37"
+}

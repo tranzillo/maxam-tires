@@ -23,15 +23,21 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# Project instructions
-CLAUDE.md
-
-# Internal docs
-docs/
-
-# WP migration scripts and extracted data
-scripts/
-
 # Editor config
 .vscode/
+
+# ──────────────────────────────────────────────────────────────────
+# Pipeline scripts, docs, and the contract doc ARE tracked — they are
+# the project (sync pipeline, audits, decisions). Only the large WP
+# migration EXTRACT artifacts under scripts/output/ are ignored, with
+# explicit exceptions for the small load-bearing files sync/imports need:
+#   - notion-ids.json          Notion DB/page identity map (every sync needs it)
+#   - notion-*-map.json        trid→pageId maps (idempotent re-imports need them)
+# ──────────────────────────────────────────────────────────────────
+scripts/output/*
+!scripts/output/notion-ids.json
+!scripts/output/notion-*-map.json
+
+# Scratch/probe scripts (temporary, prefixed with _)
+scripts/_*.ts
 

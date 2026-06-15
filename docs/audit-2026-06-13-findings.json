@@ -1,0 +1,902 @@
+{
+  "summary": "Fresh comprehensive audit of MAXAM after slug-normalization, resources-English-only, and 7-language port",
+  "agentCount": 18,
+  "logs": [
+    "Re-audit complete: 9 domains, 83 findings"
+  ],
+  "result": [
+    {
+      "domain": "Repo/ops integrity (prior audit cluster #4)",
+      "summary": "Cluster #4 (repo/ops fragility) is essentially UNFIXED and has gotten WORSE since 2026-06-10. The prior audit's #1 immediate action (fix .gitignore, commit scripts + notion-ids.json + the then-5 untracked snapshots + the drift) was never executed: last commit is still 1a03902 (2026-06-10), .gitignore:33 still ignores all of scripts/ (0 scripts tracked), and the count of statically-imported-but-untracked files grew from 5 to 14 (7 product-specs + 7 translations). A fresh clone CANNOT run `astro build` — data.ts and i18n.ts import product-specs.{de,es,fr,it,ja,pt-pt,ru}.json and translations/{de,es,fr,it,ja,pt-pt,ru}.json, all untracked. If this machine dies the entire sync pipeline (129 scripts, 36MB), notion-ids.json (sync's identity map), hand-authored UI translations (90 keys/lang, full parity, irreplaceable), and 7 new product-spec snapshots are lost with no remote copy. Separately, ~918 article block sidecars (~8.6MB) for de/ar-ae/zh-hant are content-identical English duplicates that data.ts never reads (RESOURCE_LANG='en'), and the broader standing decisions on Tailwind and Rubber remain violated (Tailwind still in package.json/astro.config; 17 Rubber* components, 78 files using rubber- classes).",
+      "stats": "git status --porcelain = 470 (437 untracked ?? + 33 modified M). git ls-files scripts = 0. git log -1 = 1a03902 (2026-06-10, \"big wip sprint\"), zero new commits since prior audit. Tracked files total = 1453. Block sidecars: 1751 on disk, 1328 tracked, 423 untracked. notion-content = 59MB; scripts = 36MB; translations = 84KB. Snapshot product languages = only en/de/ar-ae/zh-hant (4 of 10). 14 statically-imported files untracked. Article-block English duplicate waste ≈ 918 files / 8.6MB.",
+      "findings": [
+        {
+          "title": "Fresh clone cannot build: 14 statically-imported snapshot/translation files are untracked",
+          "severity": "critical",
+          "category": "broken",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "src/lib/data.ts:38-44 imports product-specs.{de,es,fr,it,ja,pt-pt,ru}.json and src/lib/i18n.ts:6-12 imports translations/{de,es,fr,it,ja,pt-pt,ru}.json. `git ls-files --error-unmatch` reports all 14 UNTRACKED while present on disk (e.g. product-specs.de.json 1528938 bytes real data, translations/es.json 90 keys full parity). `git check-ignore` confirms they are NOT ignored — just never `git add`ed. Astro statically imports them, so a clone missing them fails `astro build` at module resolution. Prior audit (docs/AUDIT-2026-06-10.md:115-116) flagged 5 such files; it is now 14.",
+          "recommendation": "git add the 7 product-specs.<lang>.json and 7 translations/<lang>.json files and commit IMMEDIATELY, before any other work. These are load-bearing build inputs; the translations are hand-authored and not regenerable from Notion.",
+          "verified": true,
+          "verifierNote": "Verified exactly. data.ts:38-44 statically imports product-specs.{de,es,fr,it,ja,pt-pt,ru}.json; i18n.ts:6-12 imports translations/{de,es,fr,it,ja,pt-pt,ru}.json. git ls-files --error-unmatch confirms all 14 UNTRACKED (en/ar-ae/zh-hant counterparts TRACKED). git check-ignore exits 1 (NOT ignored, just never added). product-specs.de.json is 1528938 bytes of real data. One correction to the parenthetical: translations/es.json has 121 keys (not '90 keys' as the evidence states) — full parity, matching the other locales; the count is wrong but the issue holds. Astro statically imports these, so a clone missing them fails astro build at module resolution. Prior audit (AUDIT-2026-06-10.md:115-116) flagged 5 such files; now 14. Hand-authored translations are not regenerable from Notion. Critical, confirmed."
+        },
+        {
+          "title": ".gitignore line 33 ignores all of scripts/ — entire sync pipeline + notion-ids.json untracked",
+          "severity": "critical",
+          "category": "broken",
+          "status": "still-broken-from-prior-audit",
+          "evidence": ".gitignore:33 `scripts/` causes `git ls-files scripts` = 0 while `find scripts -type f` = 129 files (36MB). `git check-ignore -v scripts/output/notion-ids.json` => `.gitignore:33:scripts/`. package.json:21-22 wires `npm run sync` = `tsx scripts/sync-from-notion.ts`, so the only path to regenerate snapshots lives entirely in untracked files. notion-ids.json (Notion DB/page identity map every sync needs) exists on this machine only. Identical to prior audit finding docs/AUDIT-2026-06-10.md:112-114; unchanged.",
+          "recommendation": "Replace `.gitignore:33 scripts/` with `scripts/output/` (per prior audit's stated fix), then explicitly track scripts/output/notion-ids.json (e.g. `git add -f scripts/output/notion-ids.json` or move it out of output/). Commit all pipeline scripts. This is the single highest-priority action — without it the bus factor is 1.",
+          "verified": true,
+          "verifierNote": "Verified exactly. .gitignore:33 is `scripts/` (comment 'WP migration scripts and extracted data' at line 32). git ls-files scripts = 0; find scripts -type f = 129 files. git check-ignore -v scripts/output/notion-ids.json => `.gitignore:33:scripts/`. package.json:13 wires `sync`=`tsx scripts/sync-from-notion.ts` (and :14 sync:fast), so the only regeneration path lives entirely in untracked files. notion-ids.json (1260 bytes) exists on this machine only. Prior audit cited the same ignore at .gitignore:35-36 (line shifted to 33 in current file; both correct in their respective versions). Single highest-priority action; bus factor 1. Critical, confirmed."
+        },
+        {
+          "title": "Zero commits since prior audit; 470 files of uncommitted drift, nothing pushed",
+          "severity": "critical",
+          "category": "regression-new",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "`git log -1` = 1a03902 2026-06-10 'big wip sprint' — the SAME commit the prior audit ended on. `git status --porcelain | wc -l` = 470 (437 untracked + 33 modified). All locale-model, slug-normalization, resources-English-only, and 7-language work (data.ts, i18n.ts, types/index.ts, fetchers.ts, query.ts all show as M) exists only in the working tree. If this machine dies, every change since 2026-06-10 is lost.",
+          "recommendation": "Commit in staged tranches NOW: (1) .gitignore fix + scripts + notion-ids.json, (2) the 14 untracked build-input files, (3) modified source (data.ts/i18n.ts/types/fetchers/query + components/styles), (4) snapshot JSON. Push to a remote. Do this before any further feature work.",
+          "verified": true,
+          "verifierNote": "Verified exactly. git log -1 = 1a03902 2026-06-10 13:12:36 'big wip sprint' — same commit prior audit ended on. git status --porcelain | wc -l = 470 (437 untracked + 33 modified). All locale-model/slug/resources/7-language work present only in working tree: data.ts, i18n.ts, types/index.ts, fetchers.ts, query.ts all show as M. If this machine dies all changes since 2026-06-10 are lost. Critical, confirmed."
+        },
+        {
+          "title": "918 de/ar-ae/zh-hant article block sidecars are dead English duplicates never read by data.ts",
+          "severity": "major",
+          "category": "duplicate-system",
+          "status": "newly-introduced",
+          "evidence": "data.ts:508 `const RESOURCE_LANG = 'en'` and getArticleBlocks (data.ts:525-527) always calls `readBlocks('article', RESOURCE_LANG, slug)` => only article-en-* files are ever read. Yet blocks/ holds article-de-* (306), article-ar-ae- (306), article-zh-hant- (306) files. Word-diff of article-en-warranty-stop.json vs article-de-warranty-stop.json shows ONLY Notion block id/page_id/created_time differ (e.g. en id 35534d6d-... created 2026-05-03 vs de 38034d6d-... created 2026-06-15); the `content`/`plain_text` English prose is identical. ~8.6MB across the three non-en languages; will grow to ~6 more languages if synced. This is the waste the user already caught; NOT cleaned up.",
+          "recommendation": "Stop syncing per-language ARTICLE block files (sync-from-notion should skip article bodies for non-en given RESOURCE_LANG='en'), and delete the existing article-{de,ar-ae,zh-hant}-* sidecars (~918 files). Do this BEFORE committing snapshots so the duplicates never enter history.",
+          "verified": true,
+          "verifierNote": "Verified exactly. data.ts:508 `const RESOURCE_LANG = 'en'`; getArticleBlocks (data.ts:525-527) always calls readBlocks('article', RESOURCE_LANG, slug) so only article-en-* is ever read. blocks/ holds article-de-* (306), article-ar-ae-* (306), article-zh-hant-* (306) = 918 files. Direct content comparison of article-en-warranty-stop vs article-de-warranty-stop: prose plain_text is byte-identical English ('A Grower should first and foremost find Ag tires...'); only Notion ids/created_time differ (en id 35534d6d-... created 2026-05-03 vs de id 38034d6d-... created 2026-06-15) — matches the finding's quoted example precisely. ar-ae article body is the same English passthrough. Pure duplication given Resources English-only (decision #7); not cleaned up. Major, confirmed."
+        },
+        {
+          "title": "Block sidecars partially tracked: 423 of 1751 untracked, en/de/ar-ae/zh-hant inconsistently committed",
+          "severity": "major",
+          "category": "inconsistency",
+          "status": "newly-introduced",
+          "evidence": "blocks/ has 1751 files on disk, 1328 tracked, 423 untracked. Same article tracked in one language but not another: article-ar-ae-warranty-stop.json and article-zh-hant-warranty-stop.json are TRACKED while article-de-warranty-stop.json is UNTRACKED. Block bodies render product/article pages (getProductBlocks data.ts:424-428; getArticleBlocks 525-527) — untracked product-de/zh-hant sidecars would render empty bodies on a fresh clone. Mixed tracked/untracked state means the committed snapshot and the working tree disagree about which pages have bodies.",
+          "recommendation": "After deleting the article duplicate waste, decide a single rule for block sidecars (track all surviving product-* and article-en-* sidecars) and bring the tree to a consistent, fully-tracked state in one commit. Verify with `git status --porcelain src/data/notion-content/blocks/` = empty afterward.",
+          "verified": true,
+          "verifierNote": "Verified exactly. blocks/ = 1751 files on disk, 1328 tracked, 423 untracked. Same article tracked in one language but not another: article-ar-ae-warranty-stop and article-zh-hant-warranty-stop are TRACKED while article-de-warranty-stop is UNTRACKED (confirmed via git ls-files --error-unmatch). product-{en,de,ar-ae,zh-hant} have 117 sidecars each; product-{es,fr,it,ja,pt-pt,ru} have 0. getProductBlocks (data.ts:424-428) and getArticleBlocks (525-527) render bodies from these, so untracked sidecars render empty bodies on a fresh clone. Mixed tracked/untracked state means committed snapshot and working tree disagree on which pages have bodies. Major, confirmed."
+        },
+        {
+          "title": "Snapshot has only 4 of 10 content languages while build imports 10 (es/fr/it/ja/pt-pt/ru products absent)",
+          "severity": "major",
+          "category": "plan-divergence",
+          "status": "newly-introduced",
+          "evidence": "products.json contains only en/de/ar-ae/zh-hant (117 rows each; grep `\"language\"` shows no es/fr/it/ja/pt-pt/ru). But i18n.ts:59-74 lists 14 front-end locales and contentLanguages (i18n.ts:33-44) lists all 10, and data.ts:740-751 wires productSpecsByLang for all 10. So es/fr/it/ja/pt-pt/ru pages will render with empty product rows (getAllProducts data.ts:399-401 filters by language and finds none) even though their translations and spec tables exist. The 6 languages were imported to Notion but never synced into the snapshot, as the task brief states.",
+          "recommendation": "Run a full `npm run sync` (with blocks, all langs) to bring products/taxonomies/blocks for es/fr/it/ja/pt-pt/ru into the snapshot, then commit — OR temporarily narrow contentLanguages/locales until the snapshot catches up, so the build doesn't ship 6 empty-product locales.",
+          "verified": true,
+          "verifierNote": "Verified exactly. products.json has only en/de/ar-ae/zh-hant (117 rows each; no es/fr/it/ja/pt-pt/ru). i18n.ts:33-44 lists all 10 contentLanguages and :59-74 lists 14 front-end locales; data.ts:740-751 wires productSpecsByLang for all 10. getAllProducts (data.ts:399-401) filters by p.language===lang, so es/fr/it/ja/pt-pt/ru render with zero product rows. Corroborated by 0 product-* block sidecars for those 6 languages. The 6 were imported to Notion but never synced into the snapshot. Major, confirmed."
+        },
+        {
+          "title": "Tailwind still present in build — violates standing decision #1 (NO Tailwind)",
+          "severity": "major",
+          "category": "plan-divergence",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "package.json:18,25,28 still declare @tailwindcss/oxide-win32-x64-msvc, @tailwindcss/vite 4.2.1, tailwindcss 4.2.1; astro.config.mjs:3,14 import and register `tailwindcss()` in vite plugins; src/styles/global.css still contains a tailwindcss import. Standing decision #1 is NO Tailwind; prior audit Phase 3 (docs/AUDIT-2026-06-10.md:179-184) scheduled its removal — not yet done.",
+          "recommendation": "Out of this domain's immediate scope, but track it: complete the Tailwind removal (move @theme tokens to :root, port rtl: utilities, convert remaining Tailwind pages) then delete the import/plugin/packages so regression is impossible.",
+          "verified": true,
+          "verifierNote": "Verified exactly. package.json:18 @tailwindcss/oxide-win32-x64-msvc ^4.2.1, :25 @tailwindcss/vite 4.2.1, :28 tailwindcss 4.2.1. astro.config.mjs:3 imports tailwindcss from '@tailwindcss/vite' and :14 registers tailwindcss() in vite.plugins. src/styles/global.css:1 is `@import 'tailwindcss';`. Violates standing decision #1; prior audit Phase 3 (AUDIT-2026-06-10.md:179-184) scheduled removal — not done. Correctly scoped as out-of-domain-but-track. Major, confirmed."
+        },
+        {
+          "title": "Rubber prefix persists: 17 Rubber*.astro components + 78 files using rubber- classes — violates decision #2",
+          "severity": "major",
+          "category": "plan-divergence",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "find src/components -name 'Rubber*' = 17 files (RubberHeader.astro, RubberProductCard.astro, RubberButton.astro, RubberChip.astro, etc.); `grep -rl 'rubber-' src/` = 78 files. Several are in the modified set (Footer/LanguageSwitcher/RubberHeader/RubberFeaturedCard/RubberIndustryCard/RubberInput/RubberProductCard show as M in git status). Standing decision #2 is NO Rubber prefix; prior audit Phase 4 (docs/AUDIT-2026-06-10.md:186-189) scheduled the rename — not done.",
+          "recommendation": "Out of immediate repo/ops scope but note for planning: mechanical rename RubberX.astro -> X.astro and .rubber-* -> semantic, then grep-assert zero `rubber`. Defer until after the commit-the-pipeline emergency is resolved.",
+          "verified": true,
+          "verifierNote": "Verified exactly. find src/components -name 'Rubber*' = 17 files (RubberHeader.astro in global/, plus 16 in ui/ incl RubberProductCard/RubberButton/RubberChip/RubberInput/RubberFeaturedCard/RubberIndustryCard etc). grep -rl 'rubber-' src/ = 78 files. Several in modified set: Footer.astro, LanguageSwitcher.astro, RubberHeader.astro, RubberFeaturedCard.astro, RubberIndustryCard.astro, RubberInput.astro, RubberProductCard.astro all show as M. Violates standing decision #2; prior audit Phase 4 (AUDIT-2026-06-10.md:186-189) scheduled the rename — not done. Major, confirmed."
+        },
+        {
+          "title": "Build serves two content eras: row metadata 2026-06-15, but committed block bodies older",
+          "severity": "minor",
+          "category": "undocumented-complexity",
+          "status": "partially-fixed",
+          "evidence": "Block sidecars carry created_time '2026-06-15T14:00:00.000Z' for newly-synced de while en bodies show '2026-05-03'. readBlocks (data.ts:58-66) silently returns [] for any missing sidecar (`if (!existsSync(file)) return []`), so a row present in products.json with no matching tracked block file renders an empty page body with no build error. Prior audit flagged this (docs/AUDIT-2026-06-10.md:118-120); risk persists wherever tracked rows outpace tracked blocks.",
+          "recommendation": "Add a build-time assertion that every product/article row in the snapshot has a corresponding block sidecar (fail the build on a missing one) instead of silently returning []. At minimum, run one full sync so row metadata and block bodies share a single timestamp era before committing.",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        }
+      ]
+    },
+    {
+      "domain": "Content model and block-duplication waste",
+      "summary": "Non-English article blocks are byte-identical English duplicates; resources are English-only but sync stores all languages, so 918 block files plus 921 article and 390 doc rows are dead.",
+      "stats": "918 dead article block files (8.6MB). articles.json 921/1279 dead. documents.json 390/520 dead. product-specs 6 langs ~9MB lack rows. scripts gitignored.",
+      "findings": [
+        {
+          "title": "918 non-English article block files (8.6MB) are byte-identical English duplicates never read",
+          "severity": "major",
+          "category": "duplicate-system",
+          "status": "newly-introduced",
+          "evidence": "article-de/ar-ae/zh-hant-* = 918 files 8.6MB; plain_text identical to en; data.ts:526 getArticleBlocks uses RESOURCE_LANG=en (data.ts:508).",
+          "recommendation": "git rm article-{de,ar-ae,zh-hant}-*; skip non-en sidecars in sync splitBlocks.",
+          "verified": true,
+          "verifierNote": "CONFIRMED with corrected figures. File count is exact: ls blocks/ shows article-de-* / article-ar-ae-* / article-zh-hant-* = 306 each = 918 non-en article sidecars. 'Never read' is airtight: readBlocks('article',...) has exactly ONE consumer, data.ts:526 'return readBlocks(\"article\", RESOURCE_LANG, slug)', and RESOURCE_LANG='en' (data.ts:508); the page consumer src/pages/[locale]/resources/[slug].astro:30 calls getArticleBlocks(locale,slug) but that ignores locale, so non-en sidecars are unreachable for every locale. TWO overstatements in the evidence: (1) 'byte-identical' is FALSE — for the 301 slugs shared between en and de, 0/301 are byte-identical because block ids, page_ids and timestamps differ (en created 2026-05-03 vs de 2026-06-15); the accurate claim is plain_text(prose)-identical, which holds for 290/301 shared slugs (the other 11 are coincidental slug collisions where en and de point at genuinely different articles, but both bodies are still English). (2) Size: actual apparent bytes for the 918 files = 7.0MB (7,382,191 bytes), not 8.6MB; on-disk du reports only ~1.9M due to 4KB-block rounding of many tiny files. Core waste claim (English prose duplicated across 3 locales, never read) holds; the duplication is of prose content, not literal bytes."
+        },
+        {
+          "title": "Sync writes all-language article/document rows data.ts never reads",
+          "severity": "major",
+          "category": "inconsistency",
+          "status": "newly-introduced",
+          "evidence": "sync-from-notion.ts:100/:104 no lang filter; data.ts gates RESOURCE_LANG=en (516-624); 921+390 rows bundled (data.ts:26) unread.",
+          "recommendation": "Filter resource rows to language==en before write() in sync.",
+          "verified": true,
+          "verifierNote": "CONFIRMED exactly. sync-from-notion.ts:100 'const articles = await fetchArticles({ withBlocks, blockLangs })' and :104 'const documents = await fetchDocuments()' apply no language filter, and the rows are written unconditionally at :235 write('articles', articlesLean) and :236 write('documents', documentsResolved). data.ts reads gate on RESOURCE_LANG='en' across all resource accessors (getAllArticles:516, getArticleBySlug:520, getArticlesByType:531, getArticlesByIndustry:539, getRecentArticles:545, getAllDocuments:556, getAllRawDocuments:564, getAllResources:621-624). Row counts: articles.json = 1279 total (en 358, de/ar-ae/zh-hant 307 each = 921 non-en unread); documents.json = 520 total (en 130, 3×130 = 390 non-en unread). 921+390 matches the evidence exactly. articlesJson import is data.ts:26, documentsJson is data.ts:30."
+        },
+        {
+          "title": "6 more langs would add ~1836 dead blocks (+17MB), +1842 article rows, +780 doc rows",
+          "severity": "major",
+          "category": "undocumented-complexity",
+          "status": "newly-introduced",
+          "evidence": "~306 blocks+307 article+130 doc rows per non-en lang; plan batches 6 (LANGUAGE-PARITY-PLAN.md:192).",
+          "recommendation": "Land fixes before Phase C sync.",
+          "verified": true,
+          "verifierNote": "CONFIRMED; projections accurate, size slightly high. Per non-en lang today: 306 article block sidecars (verified ls article-de-* = 306), 307 article rows, 130 document rows (from articles.json/documents.json language tallies). Phase C batch is exactly 6 langs — LANGUAGE-PARITY-PLAN.md:189-191 lists 'Phase C (batch 6: es, fr, it, ja, pt-pt, ru)'. So blocks 306×6 = 1836 (matches '~1836 dead blocks'), article rows 307×6 = 1842 (matches '+1842'), doc rows 130×6 = 780 (matches '+780'). The '+17MB' for blocks is somewhat high: measured per-lang article-block apparent bytes are de 2.88MB / ar-ae 2.17MB / zh-hant 2.16MB (avg ~2.4MB), so 6 langs ≈ ~14MB, not 17MB. Direction and magnitude correct; treat 17MB as an upper-bound estimate."
+        },
+        {
+          "title": "6 product-specs files (~9MB) bundled but products.json has no rows for those langs",
+          "severity": "major",
+          "category": "inconsistency",
+          "status": "newly-introduced",
+          "evidence": "data.ts:39-44 imports product-specs.es/fr/it/ja/pt-pt/ru.json but products.json 0 rows; getAllProducts(data.ts:399) empty.",
+          "recommendation": "Sync the 6 langs' products or defer the spec imports.",
+          "verified": true,
+          "verifierNote": "CONFIRMED exactly. data.ts:39-44 statically imports product-specs.es/fr/it/ja/pt-pt/ru.json and wires them into productSpecsByLang (data.ts:746-750). On-disk total for those 6 files = 9.1MB (verified). products.json contains rows only for en/de/ar-ae/zh-hant (117 each, 468 total) and ZERO for es/fr/it/ja/pt-pt/ru. Since contentLang() returns identity for those 6 (i18n.ts:83-85) and getAllProducts (data.ts:399-401) filters p.language===lang, getAllProducts('es'/'fr'/...) returns []. getProductSpecs (data.ts:759-764) resolves via productRowByUrlSlug which also finds no row, so the bundled spec maps for the 6 langs are unreachable from any generated product page even though each file holds 117 keyed products (e.g. product-specs.es.json has 117 keys, same as en)."
+        },
+        {
+          "title": "Homepage Pages/Promos missing for de and the 6 new languages",
+          "severity": "major",
+          "category": "plan-divergence",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "pages/page-promos = zh-hant,ar-ae,en only; getPageContent(data.ts:679) undefined for de/+6, homepages fall back to English.",
+          "recommendation": "Sync de + Phase C Pages/Promos; assert each lang has a home record.",
+          "verified": true,
+          "verifierNote": "CONFIRMED exactly. pages.json holds only 3 rows: slug 'home' for en, ar-ae, zh-hant — NO de and none of es/fr/it/ja/pt-pt/ru. page-promos.json holds only en/ar-ae/zh-hant (2 each). getPageContent (data.ts:679-682) does pages.find(p => p.language===lang && p.slug===slug) and returns undefined for de and the 6, so those homepages fall back to English (pageText returns the fallback). Notably this also contradicts the changelog claim that 'de [is imported] fully ... +homepage' — the de homepage Pages/Promos are absent from the snapshot. Cited line data.ts:679 is correct."
+        },
+        {
+          "title": "scripts/ pipeline including the sync is still 100% gitignored",
+          "severity": "critical",
+          "category": "broken",
+          "status": "still-broken-from-prior-audit",
+          "evidence": ".gitignore:33 ignores scripts/; git ls-files scripts/=0.",
+          "recommendation": "Narrow .gitignore:33 to scripts/output/ and commit pipeline scripts.",
+          "verified": true,
+          "verifierNote": "CONFIRMED exactly. .gitignore:33 is the bare line 'scripts/'. git ls-files scripts/ returns 0 tracked files. git check-ignore -v scripts/sync-from-notion.ts reports '.gitignore:33:scripts/  scripts/sync-from-notion.ts', i.e. the entire pipeline (the sync, fetchers' callers, content-languages.ts, seed-pages-translations.ts, etc.) is untracked while present on disk (scripts/sync-from-notion.ts exists, 10609 bytes). Last commit is 1a03902 (2026-06-10), so nothing in scripts/ has ever been committed. A fresh clone cannot run npm run sync. This is the same critical repo-fragility cluster carried over from the prior audit, unfixed."
+        }
+      ]
+    },
+    {
+      "domain": "Locale slug identity + i18n (prior cluster #2)",
+      "summary": "The worst prior defect — locale-suffixed URLs and industry-hub/breadcrumb 404s — is genuinely FIXED for the 4 synced locales (en, de, ar-ae, zh-hant). I verified buildCanonicalMaps/canonicalIndustrySlug/canonicalProductSlug against real snapshot data and the dist/ build: every divergent locale slug (tbr-de, rubber-tracks-ar-ae, agricultural-tractor-tires, ms938-con, 33 products + 7 industries) canonicalizes to its English URL, round-trips back to the correct per-locale row, and ships canonical English dirs in dist (no *-de/*-zh-hant dirs). Every LIVE URL builder (RubberHeader, RubberProductCard/IndustryCard/FeaturedCard, both [industry] routes, [slug] breadcrumb) uses urlSlug; the remaining .slug builders are design-gallery-only (env-gated, not shipped). However a NEW critical defect dominates: 6 newly-imported languages (es/fr/it/ja/pt-pt/ru) plus their aliases (es-mx/fr-ca) are fully routable — in the 14-entry language switcher, nav chips, and route tree — but their content was never synced into the snapshot, so the built site has 0 product detail pages and 404 industry hubs for them, and blank homepages. Three prior i18n defects are also still shipping: Simplified Chinese inside zh-hant (verified in dist HTML), zero hreflang, and translationIds consumed by nothing; plus ~918 dead per-locale article block files were newly created.",
+      "stats": "Files read: types/index.ts, lib/i18n.ts, lib/data.ts, BaseLayout, RubberHeader, RubberProductCard/IndustryCard/FeaturedCard/ArticleCard/Breadcrumb, LanguageSwitcher, ProductsViewer, contact/resources/products/[industry]/[slug] routes, design gallery, old-gen Header/MegaNav/ProductCard/IndustryCard/FeaturedCard. Data verified: products.json (117/lang ×4 langs), industries.json, pages.json, page-promos.json, articles/documents.json, translations/*.json (10), block sidecars (~1751). Build verified: dist/ all 14 locales. 11 findings (3 critical, 5 major, 3 minor).",
+      "findings": [
+        {
+          "title": "6 front-end locales (es/fr/it/ja/pt-pt/ru) are routable but have NO catalog content: every product/industry page 404s",
+          "severity": "critical",
+          "category": "broken",
+          "status": "newly-introduced",
+          "evidence": "lib/i18n.ts:59-74 lists all 14 locales; every getStaticPaths iterates `locales`. But snapshots only contain en/de/ar-ae/zh-hant: products.json languages = ['ar-ae','de','en','zh-hant'] (117 each), industries.json = same 4, pages.json = en/ar-ae/zh-hant only. Verified in build: `find dist/<l>/products -mindepth 3 -name index.html` = en:112, de:112, ar-ae:112, zh-hant:112, but fr:0, es:0, it:0, ja:0, pt-pt:0, ru:0. `dist/fr/products/tbr-tires/` has NO index.html -> /fr/products/tbr-tires/ is a hard 404; `dist/fr/products/` contains only index.html (empty listing). getAllProducts('fr')=[] and getAllIndustries('fr')=[] (data.ts:399 filters p.language===contentLang('fr')='fr', 0 rows).",
+          "recommendation": "Either (a) finish Phase C — sync es/fr/it/ja/pt-pt/ru content into the snapshot before these locales are routable, or (b) gate `locales` / route generation to only emit locales that have content in the snapshot (derive the route locale list from languages actually present in products.json), so partially-imported languages don't ship 404 catalogs. The current state ships a switcher that sends users to 404s for 8 of 14 locales' product catalogs.",
+          "verified": true,
+          "verifierNote": "Confirmed exactly. i18n.ts:59-74 lists all 14 locales; every getStaticPaths iterates `locales` ([slug].astro:15-27, products/index.astro:14-16). Snapshot languages verified: products.json = ['ar-ae','de','en','zh-hant'] (117 each), industries.json = same 4, pages.json = ['ar-ae','en','zh-hant']. Build counts of product-detail index.html: en/de/ar-ae/zh-hant/en-ca/en-uk = 112 each; fr/es/it/ja/pt-pt/ru/es-mx/fr-ca = 0. Verified dist/fr/products/tbr-tires/ has no index.html (hard 404) and dist/fr/products/ contains only an empty-listing index.html. data.ts:398-401 getAllProducts filters p.language===contentLang(locale), which is 0 rows for these 6 langs. The 117-vs-112 distinction reconciles: 117 in snapshot minus 5 untagged (data.ts:396-397) = 112 rendered. Critical severity stands: the language switcher ships options that route to 404 catalogs for 8 of 14 locales."
+        },
+        {
+          "title": "LanguageSwitcher blind prefix-swap now 404s into the 6 unsynced locales (and their aliases)",
+          "severity": "critical",
+          "category": "regression-new",
+          "status": "partially-fixed",
+          "evidence": "LanguageSwitcher.astro:13-20 switchLocalePath() still does a pure prefix swap (strip segment[0], prepend targetLocale) with no validation that the target page exists. This is now SAFE for the 4 synced locales because URLs are locale-stable (canonical English slugs), but it offers all 14 options (verified: dist/en/index.html switcher has value=\"/fr/\", \"/es/\", \"/it/\", \"/ja/\", \"/pt-pt/\", \"/ru/\", \"/es-mx/\", \"/fr-ca/\"). Switching from /en/products/tbr-tires/mx100l/ to French yields /fr/products/tbr-tires/mx100l/ which is not generated (fr has 0 product detail pages) -> 404.",
+          "recommendation": "Make the switcher (or the locale list it iterates) reflect only locales with rendered content for the current route, or only emit locales that are fully synced. Long-term, resolve the switch target via the trid/translation map and fall back to the locale home when the exact page is absent, instead of a blind swap.",
+          "verified": true,
+          "verifierNote": "Confirmed. File is at src/components/global/LanguageSwitcher.astro (orchestrator's path omitted the dir; component exists and is correct). switchLocalePath (lines 13-20) is a pure prefix swap with no existence check; the <select> maps all 14 `locales` (line 29). It IS in the live path: imported by RubberHeader.astro (the header BaseLayout.astro:3,32 actually renders) and ships in dist (dist/en/index.html contains lang-select x2 and options value=\"/fr/\", \"/es/\", \"/es-mx/\", \"/ja/\"). Verified an en product-detail page emits value=\"/fr/products/agricultural-tires/agilxtra\" while dist/fr/products/tbr-tires/ (and all fr detail dirs) do not exist -> blind swap yields a 404. Evidence accurate and current."
+        },
+        {
+          "title": "Simplified Chinese still shipped inside the Traditional (zh-hant) locale",
+          "severity": "critical",
+          "category": "inconsistency",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "src/data/translations/zh-hant.json: contact.heading=\"联系方式\" (Simplified 联系; cf. contact.title=\"聯絡我們\" which is correct Traditional), contact.subheading=\"我们帮您出色地完成任务。\" (Simplified 我们/帮/任务), contact.form_intro=\"请用下表...我们联系...授权经销商...问题\" (Simplified throughout). contact/index.astro:28-29 region names: eu zh-hant=\"Maxam Tire（欧盟）\" (Simplified 欧盟; Traditional=歐盟), amea zh-hant=\"Maxam Tire（亚洲、中東和非洲）\" (mixed: Simplified 亚洲 + Traditional 中東和非洲). Verified shipped in build: grep of dist/zh-hant/contact/index.html matches 联系方式, 我们帮您, 欧盟, 亚洲 (1 each).",
+          "recommendation": "Translate the three zh-hant.json contact keys (contact.heading, contact.subheading, contact.form_intro) and the two contact/index.astro region labels to Traditional Chinese. This is the same finding the 2026-06-10 audit raised and it is unchanged.",
+          "verified": true,
+          "verifierNote": "Confirmed exactly, all citations correct. zh-hant.json: contact.heading=\"联系方式\" (Simplified 联; cf. contact.title=\"聯絡我們\" correct Traditional), contact.subheading=\"我们帮您出色地完成任务。\" (Simplified 们/帮/务), contact.form_intro contains Simplified 请/与/们/问题. contact/index.astro:28 eu zh-hant=\"Maxam Tire（欧盟）\" (Simplified 欧, Traditional=歐); :29 amea zh-hant=\"Maxam Tire（亚洲、中東和非洲）\" (mixed Simplified 亚洲 + Traditional 中東和非洲). All four shipped: grep of dist/zh-hant/contact/index.html returns exactly 1 match each for 联系方式 / 我们帮您 / 欧盟 / 亚洲. Same finding as 2026-06-10, unchanged."
+        },
+        {
+          "title": "de/es/fr/it/ja/pt-pt/ru homepages render with blank hero (no Pages record in snapshot)",
+          "severity": "major",
+          "category": "plan-divergence",
+          "status": "newly-introduced",
+          "evidence": "LANGUAGE-PARITY-PLAN.md claims homepage Pages were seeded for de and the batch, but pages.json languages = en/ar-ae/zh-hant only; page-promos.json = same 3. getPageContent('de','home') returns undefined -> index.astro:56-59 pageText(homePage,'hero.lead'/'heading'/'description') default to '' (no fallback). Verified: dist/de home record MISSING; dist/fr/index.html has `<span class=\"hero-punch\"></span>` (empty) vs dist/en `>Done<` and dist/zh-hant `>必達<`. German — the 'COMPLETE' pilot — has full product/spec content but a blank homepage hero and no promo pair.",
+          "recommendation": "Sync the home Pages record + promos for de and the 6 batch languages into pages.json/page-promos.json, or fall back to English hero/promo copy when a locale's home record is absent.",
+          "verified": true,
+          "verifierNote": "Confirmed. pages.json languages = en/ar-ae/zh-hant only (no de); page-promos.json = same 3. getPageContent('de','home') returns undefined (data.ts:679-688). index.astro lines 56/57/59 call pageText(homePage,'hero.lead'/'hero.heading'/'hero.description') with no fallback (default ''), so the hero is blank. Build verified: dist/en hero-punch=\">Done<\", dist/zh-hant=\">必達<\", dist/de=\"></span>\" (empty), dist/fr=empty; dist/de hero-lead also empty. Promo pair absent for de: dist/de/index.html has 0 promo-card elements vs 1 each for en/zh-hant. German, the 'COMPLETE' pilot, has full product/spec content but a blank homepage hero and no promo pair, exactly as stated. (Nit: cited lines are 56/57/59 not a contiguous 56-59 range, but every cited key/line is accurate.)"
+        },
+        {
+          "title": "Regional-alias model works for en-ca but es-mx/fr-ca inherit empty base content",
+          "severity": "major",
+          "category": "inconsistency",
+          "status": "newly-introduced",
+          "evidence": "i18n.ts:51-56 LOCALE_ALIASES maps en-ca/en-uk->en, es-mx->es, fr-ca->fr; contentLang() resolves correctly. Verified the alias mechanism itself is sound: dist/en-ca/products product-detail count = 112 (correctly aliases to en content). But dist/es-mx = 0 and dist/fr-ca = 0 because their base languages (es, fr) have no snapshot content. So 2 of 4 regional-variant locales ship empty catalogs purely because their base wasn't synced.",
+          "recommendation": "Same root cause as finding #1 (sync es/fr or gate locale emission). The alias resolution code is correct; the defect is upstream content absence.",
+          "verified": true,
+          "verifierNote": "Confirmed. i18n.ts:51-56 LOCALE_ALIASES maps en-ca/en-uk->en, es-mx->es, fr-ca->fr; contentLang (i18n.ts:83-85) resolves correctly. Build verified: dist/en-ca and dist/en-uk product-detail count = 112 each (alias to en content works), but dist/es-mx = 0 and dist/fr-ca = 0 because their base langs (es, fr) have no snapshot content. So 2 of 4 regional variants ship empty catalogs purely from upstream base absence. The alias resolution code is sound; defect is content absence (same root cause as finding #1). Accurate, not overstated."
+        },
+        {
+          "title": "Old-generation card/header components still build URLs from per-locale .slug instead of urlSlug",
+          "severity": "major",
+          "category": "dead-code",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "FeaturedCard.astro:22 `/products/${product.industries[0].slug}/${product.slug}`; IndustryCard.astro:11 `/products/${industry.slug}/`; ProductCard.astro:16 `/products/${tire.industries[0].slug}/${tire.slug}`; MegaNav.astro:46 and Header.astro:103 `/products/${ind.slug}/`. These would produce locale-suffixed 404 URLs (tbr-de, rubber-tracks-zh-hant). They are NOT in the live render path: BaseLayout uses RubberHeader; live pages use Rubber* cards; these old components are imported only by design/index.astro which is env-gated (getStaticPaths returns [] unless MAXAM_SHOW_DESIGN_GALLERY=1, confirmed line 47). So the bug doesn't ship, but it is live-looking dead code carrying the exact defect the rename/deletion migration was meant to remove.",
+          "recommendation": "Delete the superseded old-gen components (Header, MegaNav, ProductCard, IndustryCard, FeaturedCard) along with the design gallery, or at minimum port them to urlSlug so a future un-gating doesn't reintroduce locale-suffixed 404s. This is the unfinished old-gen deletion from prior cluster #1.",
+          "verified": true,
+          "verifierNote": "Confirmed exactly, all 5 lines correct: FeaturedCard.astro:22 `/products/${product.industries[0].slug}/${product.slug}`; IndustryCard.astro:11 `/products/${industry.slug}/`; ProductCard.astro:16 `/products/${tire.industries[0].slug}/${tire.slug}`; MegaNav.astro:46 and Header.astro:103 `/products/${ind.slug}/`. All use per-locale .slug (would yield tbr-de/rubber-tracks-zh-hant 404s). Confirmed NOT in live path: BaseLayout uses RubberHeader (line 3,32); the old global/Header.astro is imported by nothing live (Header imports MegaNav+FeaturedCard, but no live file imports Header); FeaturedCard/IndustryCard/ProductCard are reachable only via design/index.astro, which is env-gated at line 47 (`if (process.env.MAXAM_SHOW_DESIGN_GALLERY !== '1') return [];`). dist has no /design pages, so the defect doesn't ship. Accurate characterization as live-looking dead code carrying the exact rename/deletion defect from prior cluster #1."
+        },
+        {
+          "title": "~918 per-locale article block sidecar files are byte-equivalent English duplicates, never read",
+          "severity": "major",
+          "category": "duplicate-system",
+          "status": "newly-introduced",
+          "evidence": "blocks/ contains article-de-* (306), article-ar-ae-* (306), article-zh-hant-* (306) in addition to article-en-* (356). Resources are English-only (data.ts:508 RESOURCE_LANG='en'); getArticleBlocks reads only readBlocks('article','en',slug) (data.ts:525-527). I verified text identity: article-{en,de}-maxam-introduces-63-mining-tyre.json have identical rich_text plain_text content (md5 differs only due to per-row Notion block UUIDs + image URLs). So all 918 non-en article block files are dead duplication of English bodies, shipped in the repo, read by nothing.",
+          "recommendation": "Delete article-{de,ar-ae,zh-hant}-* block files and stop the sync from writing per-language article blocks (Resources English-only). Per the orchestrator note this grows to ~2000 if the remaining 6 langs are synced as-is.",
+          "verified": true,
+          "verifierNote": "Confirmed exactly. blocks/ counts: article-en-* = 356, article-de-* = 306, article-ar-ae-* = 306, article-zh-hant-* = 306; non-en total = 918. RESOURCE_LANG='en' (data.ts:508); getArticleBlocks reads only readBlocks('article','en',slug) (data.ts:525-527), so non-en article blocks are never read. Verified text identity on the cited file: article-{en,de}-maxam-introduces-63-mining-tyre.json have byte-identical concatenated rich_text plain_text (236 chars each, strict ===). Pure dead duplication shipped in repo. Grows to ~2000 if remaining 6 langs sync as-is, per orchestrator note."
+        },
+        {
+          "title": "Zero hreflang alternates emitted on any page",
+          "severity": "major",
+          "category": "plan-divergence",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "BaseLayout.astro:21-30 <head> emits only charset/viewport/description/icon/title — no <link rel=\"alternate\" hreflang>. Grep for hreflang across src/**/*.astro = no matches. The 2026-06-10 audit and LANGUAGE-PARITY-PLAN both call for hreflang; the trid/translationIds data needed to build it is in the snapshot but unused on the consumer side.",
+          "recommendation": "Emit <link rel=\"alternate\" hreflang> per page using getLang() for all locales sharing the canonical URL (URLs are now locale-stable, so the alternates are just the locale-prefix variants of the same path). Skip locales lacking content for that route.",
+          "verified": true,
+          "verifierNote": "Confirmed. BaseLayout.astro <head> emits only charset/viewport/description/icon/apple-touch-icon/title and no <link rel=\"alternate\" hreflang>. Grep for hreflang across src = 0 matches; dist/en/index.html = 0 hreflang and 0 rel=\"alternate\". The trid/translationIds data needed to build alternates IS present and unused on the consumer side: pages.json rows carry translationIds (sample 2 ids) and products.json rows carry trid (sample 95578); data.ts never references them for alternates. Since URLs are now locale-stable, alternates would be simple locale-prefix variants. (Nit: the <head> spans BaseLayout.astro:23-30, not 21-30 as cited — lines 21-22 are doctype/<html> — but the head-content claim is exact.)"
+        },
+        {
+          "title": "translationIds synced into pages/promos rows but consumed by nothing",
+          "severity": "minor",
+          "category": "dead-code",
+          "status": "partially-fixed",
+          "evidence": "fetchers.ts and data.ts PageRow/PagePromoRow carry translationIds: string[] (data.ts:164,180), but grep of src/**/*.astro for translationIds/trid = no matches in any page/component. trid IS now consumed (data.ts:215-233 buildCanonicalMaps uses it for URL canonicalization — the prior 'trid consumed by nothing' finding is resolved for trid), but translationIds remains unused dead payload.",
+          "recommendation": "Either consume translationIds (e.g. to build hreflang / switch targets) or drop it from the snapshot schema to reduce noise.",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        },
+        {
+          "title": "Recent-products homepage grid: 10 tiles in en but 9 in de/ar-ae/zh-hant (structure-parity drift)",
+          "severity": "minor",
+          "category": "inconsistency",
+          "status": "newly-introduced",
+          "evidence": "Built homepages: `grep -o recent-products__item` = en:10, de:9, ar-ae:9, zh-hant:9 (industries-strip is 10 in all, so parity holds there). getRecentProductsByIndustry (data.ts:460-475) dedups by row.industries[0] (per-locale primary-industry slug) capped at 10; the localized rows yield one fewer distinct primary industry than en. Prior audit flagged the opposite (an EXTRA duplicated tile via EN-slug dedup); that is fixed, but a different-direction 1-tile divergence remains.",
+          "recommendation": "Minor. If exact cross-locale parity is required, dedup by canonical (trid-keyed) primary industry rather than the per-locale slug so the tile set is identical across locales. Likely reflects a real per-locale difference in a product's industries[0] assignment; verify in Notion.",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        },
+        {
+          "title": "Contact office region labels not localized for de/es/fr/it/ja/pt-pt/ru (English fallback)",
+          "severity": "minor",
+          "category": "hardcoded-content",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "contact/index.astro:26-31 officeRegionNames only has en/ar-ae/zh-hant entries; regionName() falls back to .en for any other lang (acknowledged in the TODO comment lines 23-25). Verified: dist/de/contact/index.html shows 'North America', 'Maxam Tire EU', 'Maxam Tire AMEA' (English). The full office dataset is still hardcoded in page frontmatter (lines 33-65), not in Notion — the prior cluster #3 'contact offices hardcoded' open loop.",
+          "recommendation": "Move offices to a Notion record (recovery Phase 5) and translate region labels, or at minimum add de/es/fr/it/ja/pt-pt/ru region-name entries. Acknowledged in-code, so tracked, not silent.",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        }
+      ]
+    },
+    {
+      "domain": "Tailwind removal + CSS (prior audit cluster #1, Tailwind-to-central-CSS migration)",
+      "summary": "The Tailwind removal has NOT advanced since 2026-06-10 and remains ~50% done and fully load-bearing in both directions. `@import 'tailwindcss'` is still global.css line 1, the @theme block still holds ALL ~50 design tokens, the @tailwindcss/vite plugin is still wired in astro.config.mjs, and the packages are still installed. Removing Tailwind today would break everything twice over: (a) every Tailwind utility in 26 .astro files dies, and (b) all 24 central component stylesheets die because they consume 467 var(--color-*/--shadow-*/--radius-*) references that ONLY Tailwind's @theme emits as :root custom properties. The layout/language sprint did NOT regress Tailwind — it added semantic central-CSS classes (home, products hub/detail, Footer fully converted), so a few production surfaces improved; but it also did NOT advance the removal, and the explicitly-flagged blockers (prose-content still undefined, rtl: utilities still load-bearing, contact scoped style block) are untouched. Net: the migration is frozen at the prior audit's state with minor incidental improvement on a handful of pages.",
+      "stats": "Tailwind utility occurrences: ~1785 across 26 of 49 .astro files (prior audit: ~1858 across 26 of 49 — essentially unchanged). global.css unchanged re: Tailwind (only the layout-token region was refactored). @theme = sole source of all design tokens; 467 var(--token) consumptions across all 24 central component stylesheets depend on it. prose-content: referenced on 4 elements, defined in 0 CSS files. rtl:scale-x-[-1]: 12 references across 11 files (8 production-shipping). Scoped <style> blocks: 2 total (contact = production, Specimen = gallery-only). Last commit 1a03902 (2026-06-10); all of the above is uncommitted drift.",
+      "findings": [
+        {
+          "title": "Tailwind still fully installed and wired (import, vite plugin, packages) — removal not started",
+          "severity": "critical",
+          "category": "plan-divergence",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "src/styles/global.css:1 `@import 'tailwindcss';`. astro.config.mjs:3 `import tailwindcss from '@tailwindcss/vite';` and :13-15 `vite: { plugins: [tailwindcss()] }`. package.json:25,28 devDependencies `@tailwindcss/vite: 4.2.1`, `tailwindcss: 4.2.1` (plus optional oxide/lightningcss win32 binaries :18,20). Standing decision (1): NO Tailwind. Phase 3 of the recovery plan (finish Tailwind removal) is untouched.",
+          "recommendation": "This is the cluster #1 work item and is unstarted. Do not delete the import/plugin until the @theme tokens are moved to :root and all utility classes are ported (see dependent findings) — doing so now hard-breaks the whole site.",
+          "verified": true,
+          "verifierNote": "Verified exactly. src/styles/global.css:1 `@import 'tailwindcss';`. astro.config.mjs:3 `import tailwindcss from '@tailwindcss/vite';` and :13-15 `vite: { plugins: [tailwindcss()] }`. package.json:25 `@tailwindcss/vite: 4.2.1`, :28 `tailwindcss: 4.2.1` (devDependencies), :18 `@tailwindcss/oxide-win32-x64-msvc ^4.2.1`, :20 `lightningcss-win32-x64-msvc ^1.32.0` (dependencies). All citations land precisely. Tailwind removal is unstarted, contradicting standing decision (1). Confirmed."
+        },
+        {
+          "title": "@theme is still the sole home of ALL design tokens; 24 central stylesheets (467 refs) depend on Tailwind to emit them",
+          "severity": "critical",
+          "category": "undocumented-complexity",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "All tokens are defined only inside the `@theme {}` block in src/styles/global.css:8-117 (e.g. :10 `--color-maxam-blue: #0077c8;`, :57 `--color-surface-page`, :77 `--shadow-card`, :104 `--radius-card`). Grep for `--color-maxam-blue|--color-surface-page|--shadow-card|--radius-card` outside @theme finds ZERO `:root` fallback definitions — only consumers. The 24 files in src/styles/components/*.css contain 467 `var(--color-*/--shadow-*/--radius-*/--font-size-*/--z-*/--ease-*/--duration-*/--edge-*/--parallax-*/--container-max)` references (header.css:65, button.css:39, chip.css:33, filter-sidebar.css:41, product-card.css:29, …). In Tailwind v4 @theme variables are emitted as :root custom properties, so deleting `@import 'tailwindcss'` zeroes out every token and breaks all 24 'good' stylesheets that the prior audit said to keep.",
+          "recommendation": "Move the entire @theme token set to a plain `:root {}` block in global.css (Phase 3 first step). This decouples the central CSS from Tailwind and must land BEFORE the import is removed. Note global.css already has a `:root` block (lines 141-162) for layout tokens — the design tokens should join it.",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        },
+        {
+          "title": "Tailwind utility footprint unchanged: ~1785 occurrences across 26 of 49 .astro files",
+          "severity": "critical",
+          "category": "plan-divergence",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "Counted class/class:list attributes across all 49 .astro files: 26 still carry Tailwind utilities (~1785 total; prior audit reported ~1858 across 26/49 — statistically unchanged). Production-shipping fully/heavily-Tailwind surfaces: NotionBlocks.astro (80 — every article/product body block: :55 `list-disc ps-6 my-4 space-y-1`, :94 `text-3xl font-bold mt-8 mb-3`, :112 `border-s-4 border-maxam-gray-300 ps-4 italic`, :138 `w-full text-sm border-collapse`); resources/index.astro (79 — :28 `max-w-[var(--container-max)] mx-auto px-4 py-10`, :69 `grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6`); resources/[slug].astro (30 — :43 `max-w-3xl mx-auto px-4 py-10`, :61 `text-4xl font-bold`); contact/index.astro (34 — :69, :81 `flex flex-col lg:flex-row gap-10`, :91 `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2`); RubberHeader.astro (108 — :54 `flex items-center justify-between`, :68 `hidden md:flex items-center gap-1.5`, :128 `max-w-[var(--container-max)] mx-auto px-4 py-8`); NotionRichText.astro (7); LanguageSwitcher.astro (12); BaseLayout.astro (5 — :31 `min-h-screen flex flex-col text-maxam-gray-900`).",
+          "recommendation": "Port these production surfaces to central CSS per Phase 3 (resources index+detail, contact, NotionBlocks→prose-content.css, RubberHeader layout utilities, BaseLayout body, NotionRichText, LanguageSwitcher). This is the bulk of the remaining work and has not been touched.",
+          "verified": true,
+          "verifierNote": "Confirmed. 49 .astro files total. All cited code lines verified exactly: NotionBlocks.astro :55 `list-disc ps-6 my-4 space-y-1`, :94 `text-3xl font-bold mt-8 mb-3`, :112 `border-s-4 border-maxam-gray-300 ps-4 italic`, :138 `w-full text-sm border-collapse`; resources/index.astro :28, :69; resources/[slug].astro :43 `max-w-3xl mx-auto px-4 py-10`, :61 `text-4xl font-bold`; contact/index.astro :69, :81 `flex flex-col lg:flex-row gap-10`, :91 `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2`; RubberHeader.astro :54 `flex items-center justify-between`, :68 `hidden md:flex items-center gap-1.5`, :128 `max-w-[var(--container-max)] mx-auto px-4 py-8`; BaseLayout.astro :31 `min-h-screen flex flex-col text-maxam-gray-900`. Per-file occurrence counts match (NotionBlocks ~80, NotionRichText 7, LanguageSwitcher 12, BaseLayout 5). My conservative regex gives a floor of 24/49 files and ~1187 occurrences; the finding's 26/49 ~1785 is consistent with a more inclusive count (color utilities text-maxam-*/bg-maxam-*/border-maxam-* and [var(...)] arbitrary values). Magnitude not overstated. Confirmed."
+        },
+        {
+          "title": "prose-content class referenced on article/product bodies but defined in zero CSS files",
+          "severity": "major",
+          "category": "broken",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "Referenced on 4 elements: resources/[slug].astro:75 `<section class=\"prose-content\">`, products/[industry]/[slug].astro:141 `tire-page__lead prose-content` and :170 `tire-page__section prose-content`, design/index.astro:873. Grep for `.prose-content` / `prose-content` across all *.css (src/styles and whole repo) returns NO matches — the class is undefined everywhere. Article and product long-form bodies therefore get zero prose styling beyond the raw Tailwind utilities NotionBlocks emits per-block; the wrapper styling intent is dead.",
+          "recommendation": "Write src/styles/components/prose-content.css (imported by global.css) as the single home for Notion body typography, then strip the per-block Tailwind utilities out of NotionBlocks.astro. This is the listed Phase 3 task 'Write prose-content.css for NotionBlocks' and is unstarted.",
+          "verified": true,
+          "verifierNote": "Fully verified. `prose-content` is referenced at resources/[slug].astro:75 `<section class=\"prose-content\">`, products/[industry]/[slug].astro:141 `tire-page__lead prose-content` and :170 `tire-page__section prose-content`, design/index.astro:873 `<div class=\"prose-content\">`. A repo-wide grep for prose-content across all *.css (src and whole repo excluding node_modules/dist) returns zero matches (grep exit 1). The class is undefined everywhere; Notion body typography gets only the per-block Tailwind utilities NotionBlocks emits. Confirmed."
+        },
+        {
+          "title": "RTL arrow mirroring still depends on Tailwind rtl:scale-x-[-1] utilities (partially ported)",
+          "severity": "major",
+          "category": "broken",
+          "status": "partially-fixed",
+          "evidence": "12 `rtl:scale-x-[-1]` references across 11 files, 8 production-shipping: ArticleCard.astro:79, IndustryCard.astro:29, ProductCard.astro:69, RubberArticleCard.astro:98, RubberBreadcrumb.astro:40, RubberProductCard.astro:115, RubberHeader.astro:134,168, SectionHeader.astro:41, resources/[slug].astro:82, products/[industry]/[slug].astro:200. breadcrumb.css:9 even documents the dependency: 'inherits an RTL mirror via the rtl:scale-x-[-1] utility on the markup.' PARTIAL PROGRESS: global.css:180-204 now ports SOME RTL to native CSS — `[dir='rtl']` font-family (:180), `[dir='rtl'] #filter-sidebar` slide direction (:191), `:lang(zh)` font (:201) — so the filter drawer and fonts no longer need Tailwind, but arrow mirroring still does. Removing Tailwind silently un-mirrors every directional arrow/chevron in Arabic.",
+          "recommendation": "Replace the 8 production `rtl:scale-x-[-1]` usages with a small semantic class (e.g. `.dir-arrow` + `[dir='rtl'] .dir-arrow { transform: scaleX(-1); }`) in global.css alongside the already-ported filter-drawer rule. Update breadcrumb.css:9 comment afterward.",
+          "verified": true,
+          "verifierNote": "Confirmed. Exactly 12 `rtl:scale-x-[-1]` occurrences across 11 files, all cited lines exact: RubberHeader.astro:134,168; ArticleCard.astro:79; IndustryCard.astro:29; ProductCard.astro:69; RubberArticleCard.astro:98; RubberBreadcrumb.astro:40; RubberProductCard.astro:115; SectionHeader.astro:41; resources/[slug].astro:82; products/[industry]/[slug].astro:200; plus the breadcrumb.css:9 comment which documents the dependency verbatim ('inherits an RTL mirror via the rtl:scale-x-[-1] utility on the markup'). Partial-progress claim verified: global.css:180-182 ports [dir='rtl'] font-family, :185-193 ports the #filter-sidebar direction-aware slide, :201-204 ports :lang(zh) font — so fonts and the filter drawer no longer need Tailwind, but arrow mirroring still does. Minor imprecision: the finding labels '8 production-shipping' but there are actually 10 production .astro markup usages (the 11th cited file is the breadcrumb.css comment, not production markup); this does not affect the substantive claim that removing Tailwind silently un-mirrors directional arrows in Arabic. Confirmed."
+        },
+        {
+          "title": "Contact page still carries a scoped <style> block instead of a central stylesheet",
+          "severity": "minor",
+          "category": "inconsistency",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "src/pages/[locale]/contact/index.astro:150-186 `<style>` defines `.rubber-contact-form`, `.rubber-contact-form::before`, `.rubber-contact-form__top`, `.rubber-contact-form__body` — the only production scoped style block (the other, Specimen.astro:54, is gallery-only and env-gated). This contradicts the stated convention in global.css:206-210: component CSS 'lives in one auditable place rather than scattered across component-scoped <style> blocks.' Unchanged since 2026-06-10.",
+          "recommendation": "Move the .rubber-contact-form rules into a central stylesheet (e.g. src/styles/components/contact-form.css imported by global.css) when converting the contact page off Tailwind in Phase 3/4.",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        },
+        {
+          "title": "Dead old-gen components and the env-gated design gallery still concentrate ~1270 Tailwind utilities (do not ship, but block the count from dropping)",
+          "severity": "minor",
+          "category": "dead-code",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "design/index.astro holds 906 utility occurrences but is correctly env-gated — getStaticPaths returns [] unless `process.env.MAXAM_SHOW_DESIGN_GALLERY === '1'` (design/index.astro:46-48), so it does not ship (prior audit's refuted-leak finding still holds). It keeps 7 old-gen Tailwind components alive ONLY via its imports (design/index.astro:18-27): ProductCard(42), ArticleCard(54), FeaturedCard(49), IndustryCard(27), IndustryBadge, Hero(22), SpecTable(29). Header.astro(128) + MegaNav.astro(94) are hard-dead — Header imports MegaNav (Header.astro:6) but nothing imports Header; the live header is RubberHeader (BaseLayout.astro:3). These ~1270 non-shipping occurrences inflate the raw Tailwind count and will be a Tailwind-removal blocker only if the gallery is kept.",
+          "recommendation": "Resolve the design-gallery fate (Phase 0 decision item): either delete Header.astro/MegaNav.astro + the 7 superseded duplicates and the gallery, or accept they must also be de-Tailwinded in Phase 3. Until then the production Tailwind surface is ~500 occurrences, not ~1785.",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        },
+        {
+          "title": "Language/layout sprint advanced central CSS on home + products pages and fully converted Footer (incidental Tailwind progress)",
+          "severity": "minor",
+          "category": "plan-divergence",
+          "status": "partially-fixed",
+          "evidence": "Footer.astro (prior audit: 'fully-Tailwind') is now central-CSS: semantic classes only (Footer.astro:22-57 `.rubber-footer`, `.footer-inner`, `.footer-top`, `.footer-brand`, `.rubber-footer__link`) backed by src/styles/components/footer.css. products/[industry]/index.astro and [slug].astro are now central-CSS (only 3 and 0 utility occurrences; semantic `.products-hero`, `.products-page`, `.tire-page__*` backed by pages/products.css + tire.css). [locale]/index.astro is down to ~1 utility occurrence — its sprint diff added only SEMANTIC classes (`industries-strip`, `recent-products__grid`, `home-promos`), not Tailwind. global.css change since last commit was purely the layout-token refactor (--gutter/--content-edge/--page-gutter/--control-h/--section-pad), NOT Tailwind work. So the sprint did not regress the migration and incidentally finished a few surfaces — but it did not advance the actual Tailwind-removal blockers.",
+          "recommendation": "None required for correctness; documenting that the migration moved forward only as a side effect. The deliberate Phase 3 removal (tokens→:root, prose-content.css, RTL port, resources/contact/NotionBlocks/header-layout/BaseLayout conversion, then delete the import+plugin+packages) remains entirely to do.",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        }
+      ]
+    },
+    {
+      "domain": "Rubber + dead code + scripts",
+      "summary": "Cluster 1 untouched since 2026-06-10.",
+      "stats": "17 Rubber astro; 105 selectors/18 css (prior 104); 127 refs; mocks 699L; 4 empty dirs; 7 old-gen gallery-only; 52 scripts 0 tracked.",
+      "findings": [
+        {
+          "title": "Rubber unchanged; ProductsViewer hardcodes rubber-chip; dead Header MegaNav, 699L mocks, 4 empty dirs, gallery-only old-gen and testimonial",
+          "severity": "major",
+          "category": "dead-code",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "17 Rubber astro and 105 .rubber- selectors over 18 stylesheets, untouched in the sprint. ProductsViewer.astro 95 and 378 hardcode rubber-chip. Header.astro unimported; MegaNav only via Header.astro 6. mock-tires 565 plus mock-articles 134 plus generate-mock-data.ts dead. Empty tire and pages en ar-ae zh-hans. The 7 old-gen plus RubberTestimonialCard alive only via env-gated gallery (design index 47).",
+          "recommendation": "Phase 4 rename plus delete Header MegaNav both mocks generator 4 empty dirs RubberTestimonialCard; decide gallery fate then delete the 7 old-gen.",
+          "verified": true,
+          "verifierNote": "Every sub-claim verified exactly. (1) 17 Rubber*.astro components confirmed (RubberHeader + 16 in components/ui). Prefix never renamed; 5 files were edited 2026-06-15 but names untouched, so the rename migration is genuinely stalled. (2) '105 .rubber- selectors over 18 stylesheets' is precise: grep finds .rubber- in exactly 18 .css files; 254 raw occurrences but exactly 105 UNIQUE .rubber-* class selectors -- finding correctly says 'selectors'. (3) ProductsViewer.astro:95 ('class=\"rubber-chip\"') and :378 ('chip.className = rubber-chip') hardcode rubber-chip verbatim; note the file lives at src/components/ui/ProductsViewer.astro (no dir was cited, so citation stands). (4) Header.astro (src/components/global/Header.astro) is imported by zero files -- only RubberHeader is imported anywhere. MegaNav.astro is imported only at Header.astro:6 (rendered Header.astro:80); the design/index.astro:899 reference is a Specimen description STRING, not an import -- so MegaNav is reachable only through dead Header. (5) mock-tires.ts = 565 lines, mock-articles.ts = 134 lines (=699 total); only cross-reference is mock-articles.ts:7 importing mock-tires; nothing else imports either -> both dead. generate-mock-data.ts has zero external references -> dead. (6) Exactly 4 empty dirs in all of src and they are precisely the cited ones: src/components/tire, src/pages/en, src/pages/ar-ae, src/pages/zh-hans (zh-hans is a stale WP locale; project uses zh-hant). (7) design gallery env-gate confirmed at src/pages/[locale]/design/index.astro:47 ('if (process.env.MAXAM_SHOW_DESIGN_GALLERY !== 1) return []'). RubberTestimonialCard imported ONLY by design/index.astro. The 7 old-gen components alive only via this gallery: ProductCard, ArticleCard, IndustryCard, Hero, SpecTable (each imported solely by design/index.astro), plus FeaturedCard (else only by dead Header/MegaNav) and IndustryBadge (else only by dead FeaturedCard/ProductCard) -- transitively gallery-only. Section is correctly NOT counted (used by live index + products pages). Holds exactly."
+        },
+        {
+          "title": "scripts/ gitignored incl. pipeline and new language scripts; no temp probes; ~25 of 52 one-time junk",
+          "severity": "critical",
+          "category": "broken",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "gitignore 32-33 ignore scripts/; 0 of 52 tracked; sync-from-notion content-languages seed-pages-translations untracked. No temp probes; 6 probe scripts predate sprint. Retire probe test verify create-db clear link audit-wp generate-mock-data vertical-slice extract-translations incremental-sync backfill archive; keep extract import loaders. db.ts port 10023 vs CLAUDE.md 10017.",
+          "recommendation": "Narrow ignore to scripts output and commit; archive one-time bucket; reconcile MySQL port.",
+          "verified": true,
+          "verifierNote": "Confirmed with one corrected sub-claim. VERIFIED: .gitignore lines 32-33 ('# WP migration scripts and extracted data' / 'scripts/') ignore the whole dir; `git ls-files scripts/` returns 0 of 52 .ts files tracked; the active pipeline scripts sync-from-notion.ts, content-languages.ts, seed-pages-translations.ts are all present and untracked (mtimes 2026-06-15, this sprint). The 6 probe-*.ts scripts all date 2026-05-03/04, predating the June sprint -> 'no temp probes; 6 probe scripts predate sprint' holds. The one-time/junk bucket by the finding's own naming criteria (probe/test/verify/create-*/clear-*/link-*/audit-wp-*/generate-mock-data/extract-vertical-slice/extract-translations/incremental-sync/backfill-*/archive-*) totals 29 scripts; finding says '~25 of 52' -- the '~' approximation holds (slight undercount, not overstated). CORRECTION: the 'db.ts port 10023 vs CLAUDE.md 10017' sub-claim is HALF false. db.ts:6 does set 'port: 10023' (verified). But CLAUDE.md contains NO port/MySQL/localhost/:100 reference whatsoever -- grep for 'port', 'mysql', '10017', '10023' in CLAUDE.md, README.md, .env.example, and .env all return nothing. There is no documented '10017' to contradict, so the port-reconciliation point is fabricated and should be dropped from the recommendation. The core finding (gitignore scope too broad, pipeline+language scripts untracked, fresh clone cannot build pipeline, large one-time bucket) is fully valid."
+        }
+      ]
+    },
+    {
+      "domain": "Data pipeline + scripts correctness",
+      "summary": "Real fixes landed (locale/content split, urlSlug, withRetry, --only-lang, idempotency; WP IDs unique so --only-new sound) but coherence DROPPED vs 2026-06-10: new-language work half-synced/half-committed.",
+      "stats": "Blocks 1751 (918 non-en dups). Snapshot langs 4; pages/promos 3. scripts/ tracked=0; 14 imported files missing HEAD; 470 uncommitted.",
+      "findings": [
+        {
+          "title": "Fresh clone fails build: 14 imported new-lang files missing from HEAD",
+          "severity": "critical",
+          "category": "regression-new",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "data.ts:38-44 imports product-specs.{de..ru}.json; i18n.ts:6-12 imports translations/{de..ru}.json; all 14 untracked (git cat-file HEAD -> not in HEAD).",
+          "recommendation": "Commit the 14 files; cluster-4 widened 5 to 14.",
+          "verified": true,
+          "verifierNote": "CONFIRMED exactly. data.ts:38-44 statically imports product-specs.{de,es,fr,it,ja,pt-pt,ru}.json; i18n.ts:6-12 imports translations/{de,es,fr,it,ja,pt-pt,ru}.json. All 14 exist on disk but `git cat-file -e HEAD:<path>` returns NOT-in-HEAD for every one (en/ar-ae/zh-hant ARE in HEAD). `git status` shows them as untracked '??' and `git check-ignore` returns empty (not ignored, just uncommitted). Astro's static `import x from '...json'` resolves at build time, so a fresh HEAD clone cannot resolve these 14 modules -> build fails. Severity critical is right. Minor status nit: the prior audit's cluster-4 covered the same fresh-clone-cannot-build failure mode (the 7 new langs widened it 5->14), so 'still-broken-from-prior-audit' is defensible even though these specific 14 files are new artifacts."
+        },
+        {
+          "title": "scripts/, CLAUDE.md, docs/ still 100% gitignored",
+          "severity": "critical",
+          "category": "plan-divergence",
+          "status": "still-broken-from-prior-audit",
+          "evidence": ".gitignore:33-34 ignores scripts/, CLAUDE.md, docs/; git ls-files scripts/=0; notion-ids.json unversioned.",
+          "recommendation": "Ignore only scripts/output/; commit pipeline + ids + docs.",
+          "verified": true,
+          "verifierNote": "CONFIRMED with a citation correction. The .gitignore lines are NOT contiguous 33-34 as cited: CLAUDE.md is line 27, docs/ is line 30, scripts/ is line 33 (verified via grep -n). `git ls-files scripts/` = 0, `git ls-files docs/` = 0, `git ls-files CLAUDE.md` = empty -> all fully untracked. notion-ids.json lives at scripts/output/notion-ids.json, which is covered by the scripts/ ignore, so it is unversioned -- confirmed. The whole pipeline (54 scripts), the maps, the ids, the decisions contract, and all docs are absent from version control. Severity critical holds."
+        },
+        {
+          "title": "English-only-resources enforced only at read layer; 918 dup non-en blocks + 921 unused rows",
+          "severity": "major",
+          "category": "duplicate-system",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "data.ts:508 RESOURCE_LANG=en; fetchers.ts:244-273 queries all langs; sync:228 splitBlocks per lang; article-de/ar-ae/zh-hant=306 each byte-identical to en; data.ts:525 reads only en.",
+          "recommendation": "Filter fetch to English; drop non-en rows; delete 918 files.",
+          "verified": true,
+          "verifierNote": "CONFIRMED substantively with one factual correction. data.ts:508 RESOURCE_LANG='en' and EVERY article/document/resource accessor (lines 516,520,526,531,539,545,557,564,621,625) filters language===RESOURCE_LANG, so all non-en resource rows are dead weight. fetchers.ts:244-273 (fetchArticles) queries ALL languages unconditionally; sync splitBlocks (sync-from-notion.ts:228, splitBlocks defn L64-76) writes one sidecar per (language,slug). Counts verified: article block sidecars = 306 each for ar-ae, zh-hant, de = 918 non-en files (en=356); articles.json rows = 307 each for ar-ae, de, zh-hant = 921 non-en rows. CORRECTION: the files are NOT byte-identical to en -- a de sidecar differs from its en counterpart at char 27 (different Notion block ids/parent ids/timestamps), same byte length (3513 vs 3513). The PROSE plain_text is identical English (verified by extracting rich_text across the tree). So 'byte-identical' is wrong, but 'pure English duplicates with zero translation value' is correct. es/fr/it/ja/pt-pt/ru have 0 article sidecars (not yet synced), so the figure would grow if those 6 are synced."
+        },
+        {
+          "title": "Product-specs open loop open+deepened: 10 langs from frozen May-4 WP export",
+          "severity": "major",
+          "category": "plan-divergence",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "build-product-specs.ts:1-11 retire-once-pushed scaffolding; L43/287-309 loop tires-${locale}.json all 10; no spec ref in sync; Notion specs ignored.",
+          "recommendation": "Seed Specs DB from JSON, read in sync; fix header.",
+          "verified": true,
+          "verifierNote": "CONFIRMED with a freshness correction. build-product-specs.ts:1-11 header explicitly says 'This is migration scaffolding -- once these clean specs are pushed back into Notion ... this script is retired'; it remains unretired. L43 LOCALES = CONTENT_LANGUAGES (the 10 content langs); L287-309 loops `tires-${locale}.json` from scripts/output, all present (tires-en..tires-ru). `grep -i spec scripts/sync-from-notion.ts` = 0 hits, so sync never reads/writes specs and Notion Specs are ignored. The 10 product-specs.<lang>.json each have ~116-117 keys and carry GENUINELY translated headers (es: 'Talla','Indice de carga/Simbolo de velocidad', not en fallbacks), confirming real per-lang data now lives outside Notion -- the loop is deepened. CORRECTION to 'frozen May-4': only tires-en.json is dated 2026-05-04; tires-de/ja/ru.json are dated 2026-06-15 (regenerated). So the source is WP-migration extracts in the frozen scripts/output tree, but the new-lang extracts are recent, not May-4."
+        },
+        {
+          "title": "Snapshot stale: Notion 10-lang homepages vs pages.json 3; de/es/fr homepages empty",
+          "severity": "major",
+          "category": "broken",
+          "status": "newly-introduced",
+          "evidence": "pages.json(10:57)=en/ar-ae/zh-hant; notion-pages-map.json(11:35)=10 langs; getPageContent(de,home)=undefined -> index.astro:56-59 hero empty.",
+          "recommendation": "Re-run sync; tighten fetchPages guard (only length===0).",
+          "verified": true,
+          "verifierNote": "CONFIRMED with a minor structure note. pages.json contains exactly 3 rows: en/home, ar-ae/home, zh-hant/home (no de/es/fr/... ). notion-pages-map.json holds one trid (100001) with all 10 language pageIds (en,ar-ae,zh-hant,de,es,fr,it,ja,pt-pt,ru), so Notion has 10 homepages seeded but the snapshot has 3. getPageContent(de,'home') (data.ts:679-688) finds no row -> returns undefined -> index.astro pageText(homePage,...) returns '' for hero.lead/heading/description (data-driven at index.astro:49,56-59) -> empty hero. Citation nit: the finding's 'notion-pages-map.json(11:35)=10 langs' implies array-row line ranges; the file is actually a single trid object whose value has 10 lang keys -- substance correct. Affects de and all 6 newly-routed locales, not just de/es/fr. Severity major holds."
+        },
+        {
+          "title": "Six locales es,fr,it,ja,pt-pt,ru routed with zero content -> empty pages",
+          "severity": "major",
+          "category": "broken",
+          "status": "newly-introduced",
+          "evidence": "i18n.ts:59-74 locales has the 6, not aliased(51-56); products.json langs=ar-ae,de,en,zh-hant; getAllProducts(es) data.ts:399-401 returns [].",
+          "recommendation": "Sync 6 langs or gate the locales list; assert product rows.",
+          "verified": true,
+          "verifierNote": "CONFIRMED exactly. i18n.ts:59-74 `locales` includes es,fr,it,ja,pt-pt,ru; none are in LOCALE_ALIASES (i18n.ts:51-56 only aliases en-ca,en-uk,es-mx,fr-ca), so contentLang() is identity for each. products.json has only ar-ae,de,en,zh-hant (117 each; 0 rows for the 6). getAllProducts('es') at data.ts:399-401 filters products by language==='es' -> []. Routes ARE generated for all 14 locales: index.astro:24 and products/index.astro:15 both do `locales.map(locale => ...)`, and products/[industry] (L18-22) and [slug] (L15-17) iterate `for (const locale of locales)`. So es/fr/it/ja/pt-pt/ru render real routes with empty product grids (and empty homepages per the previous finding). Severity major holds."
+        },
+        {
+          "title": "Article sibling-map split (singular vs plural) latent trap",
+          "severity": "major",
+          "category": "inconsistency",
+          "status": "partially-fixed",
+          "evidence": "import-articles:17 writes notion-article-map.json singular; link-notion-siblings.ts:22 + all others use plural; stale notion-articles-map.json May 3 (no de) on disk; ...articles links 0.",
+          "recommendation": "Rename to plural, delete stale map, use ...articles.",
+          "verified": true,
+          "verifierNote": "CONFIRMED with a correction to 'links 0'. import-articles-to-notion.ts:17 writes the SINGULAR notion-article-map.json (and its header L5 documents that name); this file is fresh (2026-06-15), has 363 trids across en,ar-ae,de,zh-hant. link-notion-siblings.ts:22 reads notion-${type}-map.json from argv; its own usage doc (L9-10) and import-pages-to-notion.ts examples list types like 'articles' (PLURAL). Running `link-notion-siblings.ts articles` reads notion-articles-map.json -- which exists but is STALE (2026-05-03, 356 trids, only en,ar-ae,zh-hant, NO de). CORRECTION: it would not 'link 0'; it would silently link the stale 356-trid/3-language set, omitting German and the 7 newer trids -- a worse failure than zero because it looks successful. The writer/documented-reader filename mismatch is the real latent trap. Severity major holds; status 'partially-fixed' is reasonable."
+        },
+        {
+          "title": "import-pages-to-notion non-idempotent + clobbers maps seed-pages merges",
+          "severity": "major",
+          "category": "broken",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "import-pages:14-17 run-ONCE, L153-154 REPLACE maps; seed-pages-translations.ts:207-208 MERGES same files (10 langs); re-run duplicates rows + wipes 7 new-lang entries.",
+          "recommendation": "Make idempotent + merge, or retire.",
+          "verified": true,
+          "verifierNote": "CONFIRMED exactly. import-pages-to-notion.ts:14-17 header states re-running creates duplicate rows ('meant to run ONCE'); it has no existence guard (it unconditionally notion.pages.create's every seed row) and initializes pagesMap/promosMap as empty {} at L113-114, then L153-154 writeFileSync REPLACES notion-pages-map.json / notion-page-promos-map.json wholesale. seed-pages-translations.ts:204-208 instead MERGES into the existing maps (existsSync ? JSON.parse(readFileSync) : {}) and is idempotent via existingPageKeys/existingPromoKeys guards (L201-202, skip at L212). seed-pages added the 7 new-lang homepage entries into the same map (notion-pages-map.json now has all 10 langs). So re-running import-pages-to-notion would (a) duplicate the en/ar-ae/zh-hant page+promo rows in Notion and (b) overwrite the merged map, wiping the de/es/fr/it/ja/pt-pt/ru entries seed-pages added. Severity major holds."
+        },
+        {
+          "title": "Four minor: events dead-end; ContentLanguage dup 4x; product English headings; _manifest single-scope",
+          "severity": "minor",
+          "category": "dead-code",
+          "status": "newly-introduced",
+          "evidence": "events: data.ts:597 href but resources/[slug].astro:11-14 getAllArticles-only, getAllResources:618-627 excludes events; ContentLanguage dup content-languages.ts:13-26+i18n.ts:33-44+data.ts:740-751; import-products:23-27 HEADINGS 3 langs only, L190 en fallback; _manifest pages3 vs Notion10 (sync:246-261).",
+          "recommendation": "Build/remove events; single-source ContentLanguage; extend HEADINGS to 10; per-lang manifest coverage.",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        }
+      ]
+    },
+    {
+      "domain": "Content open loops + hardcoded content (prior audit cluster #3)",
+      "summary": "Most of cluster #3 is unchanged from 2026-06-10. FIXED: featured-products hardcoded slug list is gone (homepage now uses getRecentProductsByIndustry); the /testimonials dead CTA was removed from nav/footer/homepage. STILL BROKEN: contact offices remain fully hardcoded in page frontmatter (incl. residual Simplified Chinese in the zh-hant locale, byte-identical to the prior finding at zh-hant.json:103-105); ~900 product/article images still hotlink legacy maxamtire.com (468 product featuredImages + 893 block files, only 5 local images); the /sustainability CTA is still a live 404 on every homepage; events (6) and testimonials (28) are synced but render nowhere except the env-gated design gallery, and the resources 'event' filter is still dead; /products, /resources, /contact still have no Pages records (products hero is a literal style attribute). NEW since the locale split: the language-parity work shipped 6 front-end content languages (es, fr, it, ja, pt-pt, ru) with translated UI chrome + Spanish/etc spec tables + generated routes, but ZERO product/industry/article/taxonomy content in the snapshots — those 6 locales render empty product catalogs and blank homepages; de has products but no home Pages content; and the \"resources English-only\" decision left 918 byte-identical English article block-file duplicates (ar-ae/de/zh-hant) plus 3 redundant article-language sets in articles.json. Orphan translation keys grew from 50 to 56 per file and are now replicated across 10 files (~560 dead key-values), since localizeCategory (38 category.* keys) is defined but never called.",
+      "stats": "Files examined: contact/index.astro, [locale]/index.astro, products/index.astro, products/[industry]/index.astro, resources/index.astro + [slug].astro, design/index.astro, RubberHeader.astro, Footer.astro, lib/data.ts, lib/i18n.ts, types/index.ts, 10 translations/*.json, 10 product-specs.*.json, all notion-content snapshots, 1751 block files. Findings: 11 (1 critical, 7 major, 3 minor). Hard numbers: products.json 4 langs (en/de/ar-ae/zh-hant), 0 for es/fr/it/ja/pt-pt/ru; pages.json 3 langs (en/ar-ae/zh-hant) only; 468/468 product images hotlink maxamtire.com; 893 block files contain maxamtire.com; 5 files in public/images; 918 duplicate English article block files; 56 orphan translation keys/file; events 6 unrendered; testimonials 28 unrendered.",
+      "findings": [
+        {
+          "title": "Six front-end content languages (es, fr, it, ja, pt-pt, ru) ship routes + UI + specs but have NO product/industry/article/taxonomy content — empty catalogs and blank homepages",
+          "severity": "critical",
+          "category": "broken",
+          "status": "newly-introduced",
+          "evidence": "lib/i18n.ts:59-74 `locales` includes es,es-mx,fr,fr-ca,it,ja,pt-pt,ru. But products.json contains only en/de/ar-ae/zh-hant (verified: `getAllProducts('es')` -> 0, fr/it/ja/pt-pt/ru all 0; en/de/ar-ae/zh-hant -> 112 each). industries/applications/articles snapshots likewise only en,ar-ae,de,zh-hant. Consequence in products/[industry]/index.astro:31-35: `const industry = getIndustryBySlug(locale, industrySlug); if (!industry) return Astro.redirect(localePath(locale,'/products'))` — for es/fr/it/ja/pt-pt/ru getIndustryBySlug returns undefined (no rows in that content language), so all 60 industry-hub pages (10 industries x 6 langs) are redirect stubs and /es/products etc. render an empty ProductsViewer. Yet translations/es.json (121 keys, ~63% translated) and product-specs.es.json (117 entries, real Spanish headers e.g. 'Talla','Índice de carga/Símbolo de velocidad') are fully wired into i18n.ts/data.ts. The user note confirms: '6 new langs imported to Notion but NOT yet synced into snapshot.'",
+          "recommendation": "Run the per-language sync (LANGUAGE-PARITY-PLAN runbook step 14, `npm run sync --only-lang=LANG`) to populate products/industries/applications for es,fr,it,ja,pt-pt,ru into the snapshots, OR temporarily drop those 6 (+es-mx,fr-ca) from `locales` in i18n.ts until content lands, so the build doesn't ship empty/redirect-stub catalogs.",
+          "verified": true,
+          "verifierNote": "Verified exactly. i18n.ts:59-74 `locales` includes es,es-mx,fr,fr-ca,it,ja,pt-pt,ru. products.json row counts per language: en/de/ar-ae/zh-hant=117 each (112 with industries), es/fr/it/ja/pt-pt/ru=0. industries.json/applications.json/articles.json/tire-types.json/documents.json likewise carry only en/ar-ae/de/zh-hant. Redirect-stub logic confirmed verbatim at src/pages/[locale]/products/[industry]/index.astro:30-35 (`const industry = getIndustryBySlug(locale, industrySlug); if (!industry) { return Astro.redirect(localePath(locale, '/products')); }`) and getStaticPaths:18-28 generates all 14 locales x 10 English industry urlSlugs, so 6 langs x 10 = 60 industry-hub pages are redirect stubs; /es/products renders an empty ProductsViewer (getAllProducts('es')->0). Yet product-specs.es.json has 117 entries with real Spanish headers ('Talla','Índice de carga/Símbolo de velocidad') and translations/es.json has all 121 keys (~64% translated, finding said ~63%), both fully wired into i18n.ts:7-12/19-30 and data.ts:39/746. User note 'imported to Notion but NOT yet synced into snapshot' corroborated. Critical severity holds: shipping empty/redirect catalogs for 6 (8 incl es-mx/fr-ca) of 14 locales."
+        },
+        {
+          "title": "Homepage Pages content missing for de + all 6 new languages — blank hero/promos/sustainability/newsletter copy",
+          "severity": "major",
+          "category": "plan-divergence",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "pages.json has home content for only en, ar-ae, zh-hant (verified langs: ar-ae,en,zh-hant; page-promos.json same 3, count 6). data.ts:679-688 getPageContent returns undefined when no row for the content language. index.astro:56-59 then renders `pageText(homePage,'hero.lead')`/`hero.heading` as empty strings (blank H1), `getPagePromos` returns [] (no promo cards), and sustainability/newsletter headings/body are blank. So de (which HAS products) shows a homepage with empty hero text + empty promo pair + empty sustainability/newsletter sections; es/fr/it/ja/pt-pt/ru show that PLUS empty industries strip and empty products grid. The plan (LANGUAGE-PARITY-PLAN Phase B/C) claims homepage Pages were seeded for de + 6, but they are not in the snapshot. Prior audit finding 'pages.json covers only home' for 3 locales is unchanged.",
+          "recommendation": "Sync the seeded de/es/fr/it/ja/pt-pt/ru `home` Pages + page-promos rows from Notion into pages.json/page-promos.json (or block those locales from build until present). Verify getPageContent returns content for every shipped locale.",
+          "verified": true,
+          "verifierNote": "Verified exactly. pages.json contains a 'home' row for ONLY en, ar-ae, zh-hant (3 rows); page-promos.json has 2 promos each for the same 3 langs (6 total). Programmatic check confirms de/es/fr/it/ja/pt-pt/ru all have home page exists=false, promos=0. getPageContent returns undefined when no row (data.ts:681-682) and getPagePromos returns [] (data.ts:698-699). index.astro:55-59 then renders `pageText(homePage,'hero.lead')`/`hero.heading` as empty strings (blank H1), and promoCards.map (lines 71-89) renders nothing. So de — which HAS 112 products — shows a homepage with empty hero + no promo pair + empty sustainability/newsletter; the 6 new langs show that plus empty industries strip and empty products grid. Plan's claim that de+6 homepage Pages were seeded is not reflected in the snapshot. Major severity holds."
+        },
+        {
+          "title": "Contact offices + region-name translation map still hardcoded in page frontmatter for all 14 locales",
+          "severity": "major",
+          "category": "hardcoded-content",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "contact/index.astro:22-65 — `const officeRegionNames: Record<...>` (lines 26-30) and `const offices = [...]` (33-65) hold the full editorial dataset (addresses, phones, company names) inline; the TODO at line 23-25 explicitly defers it to 'recovery phase 5'. Region names only translated for en/ar-ae/zh-hant; de/es/fr/it/ja/pt-pt/ru fall back to the English label (regionName() line 31 `?? officeRegionNames[key].en`), so 7 locales show English 'North America'/'Maxam Tire EU'/'Maxam Tire AMEA'. No Notion Offices record exists. Prior audit finding (contact/index.astro:23-61) carried forward essentially verbatim.",
+          "recommendation": "Seed a Notion Offices data source from this dataset (same playbook as Pages/Promos) and read it via data.ts, so offices are maintainable per-language and the 7 new locales get localized region names.",
+          "verified": true,
+          "verifierNote": "Verified exactly. contact/index.astro:26-30 holds `officeRegionNames` (only en/ar-ae/zh-hant translations) and lines 33-65 hold the full `offices = [...]` editorial dataset (addresses, company names, phone numbers) inline. The TODO is at lines 22-25 ('TODO (recovery phase 5): move offices to a Notion record; region names here are placeholders for the 7 newly-added languages'). regionName fallback at line 31: `officeRegionNames[key][lang] ?? officeRegionNames[key].en!` — so de/es/fr/it/ja/pt-pt/ru fall back to English 'North America'/'Maxam Tire EU'/'Maxam Tire AMEA'. No Notion Offices snapshot exists. Major severity holds; this is hardcoded editorial content outside the Notion pipeline (contradicts standing decision #3)."
+        },
+        {
+          "title": "Residual Simplified Chinese in the Traditional (zh-hant) locale — translation keys AND contact-page region names",
+          "severity": "major",
+          "category": "inconsistency",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "zh-hant.json:103-105 (byte-identical to the prior audit's cited lines) still Simplified: `\"contact.heading\": \"联系方式\"` (联→聯), `\"contact.subheading\": \"我们帮您出色地完成任务。\"` (们→們), `\"contact.form_intro\": \"请用下表与我们联系，…授权经销商…\"` (请→請, 经销商→經銷商) — while sibling keys contact.title/form.*/offices.* ARE Traditional (聯絡, 發送訊息, 辦事處), so the file is mixed. Also contact/index.astro:29 `eu: { ... 'zh-hant': 'Maxam Tire（欧盟）' }` uses Simplified 欧盟 (Trad 歐盟) and `amea: {... 'zh-hant': 'Maxam Tire（亚洲、中東和非洲）'}` mixes Simplified 亚洲 (Trad 亞洲) with Traditional 中東. Violates standing decision #6/parity.",
+          "recommendation": "Convert the three zh-hant.json contact keys and the two contact/index.astro zh-hant region strings to Traditional characters (联系方式→聯絡方式, 我们→我們, 请→請, 经销商→經銷商, 欧盟→歐盟, 亚洲→亞洲).",
+          "verified": true,
+          "verifierNote": "Confirmed with one citation correction. zh-hant.json:103-105 verified Simplified: line 103 `\"contact.heading\": \"联系方式\"` (联), line 104 `\"contact.subheading\": \"我们帮您出色地完成任务。\"` (们), line 105 `\"contact.form_intro\": \"请用下表与我们联系…授权经销商…\"` (请/经销商), while sibling keys are Traditional (contact.title 聯絡 L102, contact.form.submit 發送訊息 L113, contact.offices.heading 辦事處 L114) — file is genuinely mixed. The contact/index.astro region strings are real: eu `'Maxam Tire（欧盟）'` (Simplified 欧盟) and amea `'Maxam Tire（亚洲、中東和非洲）'` (Simplified 亚洲 mixed with Traditional 中東). CORRECTION: the finding cites 'contact/index.astro:29' for both, but eu is on line 28 and only amea is on line 29. Issue is real; line for the eu string is off by one. Major severity holds."
+        },
+        {
+          "title": "~900 product/article images still hotlink legacy maxamtire.com (launch blocker) — no re-host done",
+          "severity": "major",
+          "category": "hardcoded-content",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "products.json: all 468 featuredImage values are https://maxamtire.com/... (verified: hotlinked=468, local /images=0, sample `https://maxamtire.com/wp-content/uploads/2025/01/241210_Maxam_SOW20__MS971R.jpg`). 893 block files under src/data/notion-content/blocks/ contain 'maxamtire.com'. 2068 maxamtire.com occurrences across the non-block snapshot JSONs. public/images still holds only 5 files (bg-newsletter.jpg, bg-sustainability.jpg, hero-home.jpg, promo-find-your-grip.png, promo-rubber-tracks.jpg). Identical to prior audit's ~900-hotlink finding.",
+          "recommendation": "Re-host the WP media into public/images (or a CDN/asset host) and rewrite image URLs in the snapshots + blocks at sync time. This is an external-dependency launch blocker.",
+          "verified": true,
+          "verifierNote": "Verified exactly. products.json: 468/468 featuredImage values are https://maxamtire.com/... (hotlinked=468, local /images=0, null=0; sample 'https://maxamtire.com/wp-content/uploads/2025/01/241210_Maxam_SOW20__MS971R.jpg'). 893 block files under src/data/notion-content/blocks/ contain 'maxamtire.com'. 2068 maxamtire.com occurrences across the top-level (non-block) snapshot JSONs. public/images holds exactly 5 files: bg-newsletter.jpg, bg-sustainability.jpg, hero-home.jpg, promo-find-your-grip.png, promo-rubber-tracks.jpg. No re-host performed. Major severity holds as an external-dependency launch blocker."
+        },
+        {
+          "title": "/sustainability CTA is still a live link to a non-existent route on every homepage (404)",
+          "severity": "major",
+          "category": "broken",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "index.astro:135-141 renders a RubberButton with `href={localePath(locale, pageText(homePage,'sustainability.cta_href','/sustainability'))}`; pages.json stores `\"sustainability.cta_href\": \"/sustainability\"` for en/ar-ae/zh-hant (lines 12,43,74). No src/pages/**/sustainability route exists (glob of src/pages shows only contact, design, products, resources, index). So /{locale}/sustainability 404s in every locale that renders the CTA label. Prior audit finding unchanged; only /testimonials was removed.",
+          "recommendation": "Either build a /sustainability page (Pages record + route) or remove the sustainability CTA/section. Add the build-time internal-link assertion the prior audit recommended (any homepage href to a non-generated route fails the build).",
+          "verified": true,
+          "verifierNote": "Verified exactly. index.astro:135-141 renders a RubberButton with `href={localePath(locale, pageText(homePage, 'sustainability.cta_href', '/sustainability'))}`. pages.json stores `\"sustainability.cta_href\": \"/sustainability\"` for zh-hant (line 12), ar-ae (line 43), en (line 74). The full src/pages tree contains only contact, design, products, resources, and index routes — no src/pages/**/sustainability exists. So /{locale}/sustainability 404s wherever the CTA renders. (Note: in the 3 locales that have homepage content the CTA renders with a label; in the other 11 the homepage is otherwise blank but the section still emits the button with fallback href '/sustainability'.) Major severity holds; no build-time internal-link assertion exists."
+        },
+        {
+          "title": "Events (6) and testimonials (28) synced but rendered nowhere in production; resources 'event' filter + mega-nav '?type=event' are permanently dead",
+          "severity": "major",
+          "category": "dead-code",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "getAllEvents/getAllTestimonials (data.ts:582,601) are imported ONLY by design/index.astro:44, which is env-gated (`if (process.env.MAXAM_SHOW_DESIGN_GALLERY !== '1') return []`, design/index.astro:47) — so they never ship. events.json has 6 en events; _manifest.json counts testimonials:28. The resources page still offers an 'event' filter pill (resources/index.astro:21 `{ key: 'event', label: t(locale,'resources.type.event') }`) and RubberHeader.astro:50 `resourceTypes` includes 'event' linking to `/resources?type=event`, but getAllResources (data.ts:618-627) merges only articles+documents — never events — so the filter can never match. getAllEvents builds href `/${locale}/resources/${e.slug}` (data.ts:597) but resources/[slug].astro:11-21 generates paths only from getAllArticles, so all 6 event slugs 404 (verified: none of the 6 event slugs match an en article slug).",
+          "recommendation": "Either build an events route (and add events to getAllResources so the 'event' filter works) or remove events from the sync + drop the 'event' filter pill and mega-nav entry. Same decision for testimonials (build a section or stop syncing 28 rows).",
+          "verified": true,
+          "verifierNote": "Confirmed with a file-path correction. getAllTestimonials (data.ts:582) and getAllEvents (data.ts:601) are imported ONLY by src/pages/[locale]/design/index.astro:44 and used at lines 58-59; getStaticPaths there is env-gated (`if (process.env.MAXAM_SHOW_DESIGN_GALLERY !== '1') return [];` at line 47), so they never ship. events.json has 6 en events; _manifest.json reports testimonials:28. The 'event' filter pill is real at resources/index.astro:21. CORRECTION: the finding cites 'RubberHeader.astro:50' but the actual file is src/components/global/RubberHeader.astro (it omits the global/ dir); line 50 is correct — `const resourceTypes: ArticleType[] = ['blog','news','event','product-sheet','brochure']` — and lines 176/245 build `href={...'/resources')}?type=${type}` so ?type=event is a real mega-nav link. getAllResources (data.ts:618-627) merges only articles+documents, never events, so the 'event' filter can never match. getAllEvents builds href `/${locale}/resources/${e.slug}` (data.ts:597) but resources/[slug].astro getStaticPaths (lines 11-20) generates paths only from getAllArticles; verified none of the 6 event slugs (national-farm-machinery-2026, ara-show, conexpo-con-agg-2026, bassmaster-classic-2026, rema-2026, ne-loggers-expo-2026) match any en article slug, so all 6 would 404. Major severity holds."
+        },
+        {
+          "title": "918 byte-identical English article block-file duplicates (ar-ae/de/zh-hant) + redundant per-language article rows, contradicting the Resources-English-only decision",
+          "severity": "major",
+          "category": "duplicate-system",
+          "status": "newly-introduced",
+          "evidence": "Resources are English-only (data.ts:508 RESOURCE_LANG='en'; all article/document accessors filter language==='en'). Yet src/data/notion-content/blocks holds 306 article-ar-ae-*, 306 article-de-*, 306 article-zh-hant-* files in addition to 356 article-en-* (verified counts). Spot-check of article 'ag-tire-talk-...': all 4 language files are 3513 bytes with identical English plain_text; the only diffs are Notion block ids/page_ids/timestamps (article-de created_time 2026-06-15 vs en 2026-05-03). articles.json itself carries 1279 rows across en/ar-ae/de/zh-hant though only the 'en' rows are ever read. This is pure duplication (the user's noted KNOWN WASTE); the de set is dated 2026-06-15 (newly synced).",
+          "recommendation": "Stop syncing non-en article block files/rows (the sync should write article blocks for RESOURCE_LANG only), and delete the existing ~918 duplicate ar-ae/de/zh-hant article block files + non-en article rows from the snapshot.",
+          "verified": true,
+          "verifierNote": "Verified exactly. Resources are English-only: data.ts:508 `const RESOURCE_LANG = 'en'` and every article/document accessor (getAllArticles:515-517, getArticleBlocks:525-527, getAllResources:618-627, etc.) filters language===RESOURCE_LANG. Yet blocks/ holds 356 article-en + 306 article-ar-ae + 306 article-de + 306 article-zh-hant files = 918 non-en duplicates (306x3, exact match to finding). Spot-check of 'ag-tire-talk-manufacturers-explain-product-names-and-tech': all 4 language files are 3513 bytes with identical plain_text (same md5 hash, 357 chars); diffs are only Notion ids/timestamps — article-de created_time 2026-06-15T13:57 vs article-en 2026-05-03T21:58 (newly synced de set confirmed). articles.json carries 1279 rows (en=358, ar-ae/de/zh-hant=307 each) though only en is ever read. Pure duplication of the user's noted KNOWN WASTE. Major severity holds."
+        },
+        {
+          "title": "/products, /resources, /contact still have no Pages records; /products hero is a literal hardcoded style attribute reusing the home hero",
+          "severity": "minor",
+          "category": "hardcoded-content",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "products/index.astro:28-31 `<section class=\"products-hero\" style=\"background-image:url('/images/hero-home.jpg');\">` — hardcoded image, no getPageContent call. resources/index.astro and contact/index.astro likewise call no getPageContent; pages.json contains only the 'home' slug (no products/resources/contact rows in any language). Prior audit finding carried forward.",
+          "recommendation": "Add Pages records for products/resources/contact (hero image + heading/subheading) so these page chromes are Notion-editable and per-locale, matching the home page pattern.",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        },
+        {
+          "title": "56 orphan translation keys per file, now replicated across 10 language files (~560 dead key-values); localizeCategory + 38 category.* keys are defined-but-never-called",
+          "severity": "minor",
+          "category": "dead-code",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "Static analysis of all .astro/.ts t(locale,'…') refs vs en.json (121 keys): 18 literal orphans (nav.search, products.filter.type, products.applications, products.pagination.page, product.features, product.downloads, home.testimonials.heading, home.testimonials.view_all, home.industries_subheading, home.resources_subheading, industry.products_heading, industry.view_all_products, resources.filter.industry, common.learn_more, footer.products, language.en, language.ar-ae, language.zh-hant) PLUS 38 category.* keys. localizeCategory (i18n.ts:163) is the only consumer of category.* and is never called anywhere (grep for localizeCategory returns only its definition). Total 56 orphans/file x 10 files. Prior audit counted 50/121 across 3 files; the count rose and was multiplied into the 7 new files.",
+          "recommendation": "Delete the 38 category.* keys + localizeCategory + the 18 literal orphans from all 10 translation files (taxonomy names already come from Notion via getAllIndustries/getAllApplications). Re-run a key-usage assertion in CI.",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        },
+        {
+          "title": "Sentence-length marketing copy still lives in translations JSON instead of Notion (home.resources_lead and similar)",
+          "severity": "minor",
+          "category": "plan-divergence",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "index.astro:156-157 SectionHeader subheading={t(locale,'home.resources_lead')}; en.json contains 'home.resources_lead' (a full marketing sentence) and home.featured_heading/home.resources_heading — editorial copy in the UI-chrome translation files rather than the home Pages record. Standing decision #4 reserves t() for UI chrome; sentence marketing copy belongs in Notion Pages content. Prior audit finding unchanged.",
+          "recommendation": "Move sentence-length marketing strings (home.resources_lead etc.) into the home Pages content record and read via pageText, keeping translations JSON for short UI labels only.",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        }
+      ]
+    },
+    {
+      "domain": "Layout/design consistency (prior rot cluster #5)",
+      "summary": "Net direction since 2026-06-10 is split: the token layer genuinely improved, but the page surfaces did not converge. Fixed/improved: a real layout-token system landed in global.css (:root --gutter/--content-edge/--page-gutter + control-height + section-pad scale), the homepage was rebuilt cleanly on Section/Grid plus a sanctioned \"wide block\" pattern (industries-strip, recent-products) using --page-gutter, and Footer now uses the same --gutter so its content edge finally aligns. Still broken: the three Tailwind pages (resources index, resources detail, contact) were NOT migrated — they still use raw Tailwind containers with a fixed px-4 gutter that does not match --gutter, still import Rubber* components, still carry a scoped <style> block (contact) and the dangling prose-content class (defined nowhere, 4 refs). Container systems were not reduced from the prior count of 5 — they grew to ~6 because the wide --page-gutter system and a new .products-hero banner were added while none of the old Tailwind container variants were removed. Form-atom triplication, the chamfer ::before duplication (~15 sheets), and chip re-implementation outside the component are all still present, and .rubber-* naming is now pervasive in the CSS layer (237 selectors / 18 sheets), plus ~30 lines of newly-dead .products-page__header CSS. New regressions are minor; the dominant story is that the consolidation was applied to home/products/tire only and stopped there.",
+      "stats": "Scope: 30 src CSS files (1 global, 26 component, 3 page) + 9 page .astro + global components. Container/gutter treatments: ~6 distinct (was 5). H1/large-heading treatments: 9+ page-level (.hero-punch, .products-hero__heading, .products-page__heading[dead], .tire-page__title, .strip-heading, .cta-heading, .promo-card__heading, plus raw Tailwind text-3xl/text-4xl h1 on resources×2 + contact, plus dead Hero.astro text-3xl md:text-5xl). Hero/banner systems: 5 (Section bg+overlay; .products-hero; home .hero-content; home promo/cta/strip variants; dead Hero.astro). Section-spacing systems: 2 sanctioned (.section--v-* tokens + --section-pad-* on wide blocks) but Tailwind pages use ad-hoc py-10. Grid implementations: 6 (.grid component, .recent-products__grid, .products-page__grid, .tire-page__docs-grid, .tire-page__hero, .strip-2col) + raw Tailwind grid-cols on resources/contact. .rubber-* selectors: 237 across 18 sheets. Chamfer ::before via --edge-highlight-top: 16 occurrences across 15 sheets + contact inline. Form atoms: 3 near-identical sheets (input/select/textarea). Scoped <style>: 2 (contact, Specimen).",
+      "findings": [
+        {
+          "title": "Three pages (resources index, resources detail, contact) never migrated off Tailwind containers — parallel gutter system persists",
+          "severity": "critical",
+          "category": "plan-divergence",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "resources/index.astro:28 `<section class=\"max-w-[var(--container-max)] mx-auto px-4 py-10\">`; contact/index.astro:69 same; resources/[slug].astro:43 `<article class=\"max-w-3xl mx-auto px-4 py-10\">`. These use a FIXED `px-4` (1rem) gutter, whereas the sanctioned container .section__container uses `padding-inline: var(--gutter)` = `clamp(1rem, 4vw, 2rem)` (section.css:115, global.css:143). Content edges on these pages do NOT align with home/products/footer at viewports wider than ~1rem-gutter. Violates standing decisions #1 (no Tailwind) and #5 (container/gutter rules).",
+          "recommendation": "Convert these three pages to BaseLayout content wrapped in `.section`/`.section__container` (or a shared `.page-shell` that consumes --container-max + --gutter), delete the Tailwind container/utility classes. This is the single highest-leverage layout fix remaining.",
+          "verified": true,
+          "verifierNote": "HOLDS. Verified at the actual paths (the finding drops the `[locale]/` segment): src/pages/[locale]/resources/index.astro:28 `<section class=\"max-w-[var(--container-max)] mx-auto px-4 py-10\">`; src/pages/[locale]/contact/index.astro:69 identical; src/pages/[locale]/resources/[slug].astro:43 `<article class=\"max-w-3xl mx-auto px-4 py-10\">`. The fixed `px-4` (1rem) vs sanctioned `.section__container { padding-inline: var(--gutter) }` (section.css:115) where `--gutter: clamp(1rem, 4vw, 2rem)` (global.css:143) is accurate, so content edges diverge above ~1rem gutter. Tailwind is confirmed still live: global.css:1 `@import 'tailwindcss';`. Standing decisions #1 and #5 violated as stated."
+        },
+        {
+          "title": "Container/gutter systems grew to ~6 instead of consolidating to the sanctioned 2",
+          "severity": "critical",
+          "category": "duplicate-system",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "Distinct container treatments coexist: (1) .section__container max-width+--gutter (section.css:110-116); (2) .footer-inner hand-rolled clone using --gutter (footer.css:29-33); (3) .tire-page hand-rolled clone using `padding: 2.5rem clamp(1rem,4vw,2rem) 4rem` not the token (tire.css:12-16); (4) wide blocks via --page-gutter (header.css:47, products.css:21/28/78, home.css:173/214); (5) Tailwind `max-w-[var(--container-max)] mx-auto px-4` (contact:69, resources/index:28, RubberHeader.astro:128/162, MegaNav.astro:28); (6) Tailwind `max-w-3xl mx-auto px-4` reading column (resources/[slug]:43, Hero.astro:21). The prior audit counted 5; the --page-gutter wide system + .products-hero were added without removing any Tailwind variant.",
+          "recommendation": "Collapse to two primitives as the prior audit prescribed: container (.section__container) and wide (--page-gutter). Make .tire-page and .footer-inner reuse .section__container instead of re-declaring max-width/margin/padding; eliminate the Tailwind container variants when the 3 pages are migrated.",
+          "verified": true,
+          "verifierNote": "HOLDS. All six treatments verified: (1) .section__container max-width+--gutter (section.css:110-116); (2) .footer-inner clone using --gutter (footer.css:29-33, `padding: 3rem var(--gutter)`); (3) .tire-page clone with LITERAL `padding: 2.5rem clamp(1rem,4vw,2rem) 4rem` not the token (tire.css:12-16); (4) --page-gutter wide system (header.css:47, products.css:21/28/78, home.css:173/214); (5) Tailwind `max-w-[var(--container-max)] mx-auto px-4` (contact:69, resources/index:28, RubberHeader.astro:128 & :162, MegaNav.astro:28); (6) Tailwind `max-w-3xl mx-auto px-4` (resources/[slug]:43, Hero.astro:21). Caveat for context only: MegaNav.astro and Hero.astro are old-gen/showcase components (BaseLayout uses RubberHeader, not Header/MegaNav; Hero is only used by design/index.astro), but they still exist in the tree as parallel systems, so the enumeration is accurate as written."
+        },
+        {
+          "title": "Form-atom CSS still triplicated across input/select/textarea (~90% identical)",
+          "severity": "major",
+          "category": "duplicate-system",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "input.css:11-32, select.css:12-35, textarea.css:12-31 repeat the identical recessed-well block (same font-size var(--font-size-sm), color, background var(--color-surface-sunken), border 1px var(--color-edge-strong), border-radius var(--radius-tight), padding 9px 12px, the two-line inset box-shadow `inset 0 2px 3px -1px rgba(31,29,26,0.10), inset 0 -1px 0 0 rgba(255,255,255,0.7)`, and identical 3-property transition). The :hover, :focus (incl. the `0 0 0 3px color-mix(... 20% ...)` ring), :disabled and [data-error] blocks are likewise copy-pasted in all three. ~85 lines each, ~250 lines total where ~100 would do.",
+          "recommendation": "Hoist the shared well to a single `.field-control` base (or `:where(.input, .select, .textarea)`) and keep only the deltas (select chevron bg + RTL flip; textarea resize/min-height). Do this in the same pass as the Rubber rename.",
+          "verified": true,
+          "verifierNote": "HOLDS. input.css:11-32, select.css:12-35, textarea.css:12-31 repeat the identical recessed well: font-size var(--font-size-sm), color var(--color-maxam-black), bg var(--color-surface-sunken), border 1px var(--color-edge-strong), radius var(--radius-tight), padding 9px 12px, the two-line inset box-shadow `inset 0 2px 3px -1px rgba(31,29,26,0.10), inset 0 -1px 0 0 rgba(255,255,255,0.7)`, and the same 3-property transition. :hover/:focus (incl. the `0 0 0 3px color-mix(... 20% ...)` ring), :disabled and [data-error] are copy-pasted in all three. The deltas are exactly as the recommendation says (select chevron bg + RTL flip; textarea resize:vertical + min-height:80px). The ~250-vs-100 line estimate is fair (files are ~75-90 lines each)."
+        },
+        {
+          "title": "Chamfer `::before` edge-highlight block duplicated across ~15 stylesheets + contact inline",
+          "severity": "major",
+          "category": "duplicate-system",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "The identical pseudo-element (`content:''; position:absolute; inset:0 0 auto 0; height:1px; background: var(--edge-highlight-top); pointer-events:none;`) is repeated as a chamfer fill in button.css:49, article-card.css:38 & :92, event-card.css:37, featured-card.css:38 & :98, header.css:40, office-card.css:31, product-card.css:80 & :148, document-card.css:38, spec-viewer.css:28, testimonial-card.css:32, tire-gallery.css:48, and inline in contact/index.astro:170 (.rubber-contact-form::before). 16 occurrences across 15 sheets.",
+          "recommendation": "Provide a shared utility/mixin (e.g. a `.chamfer-top` class or `@utility`/placeholder) so the 1px top-highlight is declared once and applied; or apply it via a shared base class on raised surfaces.",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        },
+        {
+          "title": ".rubber-* naming is pervasive in the CSS layer (237 selectors / 18 stylesheets)",
+          "severity": "major",
+          "category": "plan-divergence",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "Grep `\\.rubber-` over src/styles = 237 occurrences across 18 files: e.g. product-card.css(21), article-card.css(17), chip.css(19), button.css(20), header.css(40), footer.css(7), input/select/textarea, .rubber-header/.rubber-nav-trigger/.rubber-footer/.rubber-chip/.rubber-input/.rubber-card/.rubber-document__title/.rubber-section-header__heading etc. Markup still imports 17 Rubber*.astro components (RubberHeader, RubberChip, RubberArticleCard, RubberInput, …). Directly violates standing decision #2 (NO Rubber prefix).",
+          "recommendation": "Mechanical rename pass: Rubber*.astro -> *.astro and `.rubber-*` -> semantic across the 18 sheets + components + the 2 client scripts referencing 'rubber-chip'; grep-assert zero `rubber` afterward (per prior audit Phase 4).",
+          "verified": true,
+          "verifierNote": "HOLDS exactly. Grep `\\.rubber-` over src/styles = 237 occurrences across 18 files, matching the cited per-file counts (product-card 21, article-card 17, chip 19, button 20, header 40, footer 7, plus input/select/textarea). 17 Rubber*.astro components confirmed in src/components (RubberHeader, RubberChip, RubberArticleCard, RubberInput, RubberSelect, RubberTextarea, RubberField, RubberButton, RubberPlate, RubberBreadcrumb, RubberEventCard, RubberDocumentCard, RubberOfficeCard, RubberTestimonialCard, RubberIndustryCard, RubberProductCard, RubberFeaturedCard). 'rubber-chip' is referenced in client JS at ProductsViewer.astro:378 (`chip.className = 'rubber-chip'`) in addition to markup at :95. Directly violates standing decision #2."
+        },
+        {
+          "title": ".products-hero re-duplicates Section's background + overlay machinery",
+          "severity": "major",
+          "category": "duplicate-system",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "products.css:42-67 reimplements bg-image + tinted-overlay that Section already provides. .products-hero__overlay (products.css:58) `linear-gradient(135deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.5) 100%)` mirrors .section--overlay-dark (section.css:70-76); the industry tint .products-hero[data-overlay='industry'] (products.css:61-67) `color-mix(... 88% black) ... 55% black)` is byte-for-pattern identical to .section--overlay-blue-full (section.css:96-103). Two pages (products/index.astro:28-39, products/[industry]/index.astro:63-73) hand-roll the hero section instead of using <Section background=\"image\" overlay=...>.",
+          "recommendation": "Re-express the products/industry hero as a Section variant (the overlay tints already exist) or factor a shared hero primitive; the only delta is the inline `--products-hero-overlay-color` per-industry, which can pass through Section.",
+          "verified": true,
+          "verifierNote": "HOLDS. products.css:42-67 reimplements bg-image + tinted overlay that Section provides. .products-hero__overlay (products.css:58) `linear-gradient(135deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.5) 100%)` mirrors .section--overlay-dark (section.css:71-75, which uses 0.78/0.45 — same pattern, slightly different stops). The industry tint products.css:61-67 `color-mix(... 88% black) ... 55% black)` is byte-for-pattern identical to .section--overlay-blue-full (section.css:96-103). Both products/index.astro:28-39 and products/[industry]/index.astro:63-73 hand-roll the hero `<section class=\"products-hero\">` with inline overlay div instead of using the Section primitive."
+        },
+        {
+          "title": "Tire detail page diverges from products/industry pages — no full-bleed hero, own container",
+          "severity": "major",
+          "category": "inconsistency",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "products/index and products/[industry]/index both open with the full-bleed `.products-hero` banner; the tire detail page does NOT — tire.css:12-16 wraps everything in `.tire-page { max-width: var(--container-max); margin-inline: auto; padding: 2.5rem clamp(1rem,4vw,2rem) 4rem }` and the title is a plain in-flow `.tire-page__title` (tire.css:52). So within the same /products/ section, the index + hub have a hero banner and the leaf does not, and the leaf uses a 3rd container clone rather than .section__container.",
+          "recommendation": "Decide one treatment for the products section (either give tire detail the same banner or drop the banner everywhere) and route .tire-page through .section__container.",
+          "verified": true,
+          "verifierNote": "HOLDS. products/index.astro:28-39 and products/[industry]/index.astro:63-73 both open with the full-bleed `.products-hero` banner; tire detail does not — tire.css:12-16 `.tire-page { max-width: var(--container-max); margin-inline: auto; padding: 2.5rem clamp(1rem,4vw,2rem) 4rem }` and the title is an in-flow `.tire-page__title` (tire.css:52). So within /products/ the index+hub have a hero banner and the leaf does not, and the leaf uses a 3rd container clone rather than .section__container."
+        },
+        {
+          "title": "Nine+ parallel large-heading/H1 treatments; no shared display-heading token",
+          "severity": "major",
+          "category": "duplicate-system",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "Distinct page-level heading rules each redeclare size/weight/letter-spacing: .hero-punch (home.css:50, weight 900, clamp(3.5rem,10vw,8rem)), .products-hero__heading (products.css:81, weight 800, clamp(2.5rem,5vw,5rem)), .tire-page__title (tire.css:52, weight 800, clamp(2rem,4vw,3rem)), .strip-heading (home.css:289), .cta-heading (home.css:324), .promo-card__heading (home.css:134), .tire-page__section-heading (tire.css:84). On the Tailwind pages H1 is raw utilities: resources/index.astro:29 `text-3xl font-bold`, contact/index.astro:72 `text-4xl font-bold`, resources/[slug].astro:61 `text-4xl font-bold` — none share a class. .rubber-section-header__heading (section-header.css:35) is the only shared heading, used for section sub-titles only. Prior audit counted 6 h1 treatments; still fragmented.",
+          "recommendation": "Introduce a small display-heading scale (e.g. --display-1/-2/-3 or .display--xl/lg/md tokens) and map hero/banner/section headings to it; give the Tailwind pages a real heading class when migrated.",
+          "verified": true,
+          "verifierNote": "HOLDS. Each redeclares size/weight/letter-spacing: .hero-punch (home.css:50, weight 900, clamp(3.5rem,10vw,8rem)), .products-hero__heading (products.css:81, weight 800, clamp(2.5rem,5vw,5rem)), .tire-page__title (tire.css:52, weight 800, clamp(2rem,4vw,3rem)), .strip-heading (home.css:289), .cta-heading (home.css:324), .promo-card__heading (home.css:134), .tire-page__section-heading (tire.css:84). The Tailwind pages use raw utilities for H1: resources/index.astro:29 `text-3xl font-bold`, contact/index.astro:72 `text-4xl font-bold`, resources/[slug].astro:61 `text-4xl font-bold` (and old-gen Hero.astro:22 `text-3xl md:text-5xl font-bold`). .rubber-section-header__heading (section-header.css:35) is the only shared heading and is used for section sub-titles only. No shared display-heading token exists."
+        },
+        {
+          "title": "Dangling `prose-content` class still referenced but defined nowhere",
+          "severity": "major",
+          "category": "broken",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "Referenced at resources/[slug].astro:75 `<section class=\"prose-content\">`, products/[industry]/[slug].astro:141 & :170, and design/index.astro:873. Grep `prose-content` over src/styles = no matches; it is in no .css file and global.css imports none named for it. Notion article/spec bodies render with zero prose styling (no max-width, spacing, list/heading rules) on the very pages that need it.",
+          "recommendation": "Write src/styles/components/prose-content.css (the prior audit's Phase 3 deliverable) and import it from global.css, or remove the class. Currently it is silently a no-op.",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        },
+        {
+          "title": "Resources filter pills re-implement the chip atom in raw Tailwind",
+          "severity": "minor",
+          "category": "duplicate-system",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "resources/index.astro:37 `class=\"type-filter-btn px-4 py-1.5 text-sm rounded-full border border-maxam-gray-300 hover:border-maxam-blue ...\"` and :48/:55 `industry-filter-btn px-3 py-1 text-xs rounded-full border ...` hand-roll pills with their own active-state JS toggling bg-maxam-blue (resources/index.astro:224-232). The chip component already has exactly this: .rubber-chip[data-variant='filter'] with :hover and [data-active] (chip.css:126-147). IndustryBadge.astro:15 is a third pill (`rounded-full font-medium`).",
+          "recommendation": "Replace the resources filter pills with RubberChip variant=\"filter\" (toggle data-active) when migrating the page off Tailwind; retire IndustryBadge (design-gallery-only).",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        },
+        {
+          "title": "Dead legacy heading CSS (.products-page__header/__heading/__count) — newly orphaned",
+          "severity": "minor",
+          "category": "dead-code",
+          "status": "newly-introduced",
+          "evidence": "products.css:105-137 defines .products-page__header, .products-page__heading (+ [dir='rtl'] rule), and .products-page__count with a comment 'Legacy in-page header (kept so any other consumer doesn't break...)'. Grep of src for these classes finds them ONLY inside products.css itself — both the products index (products/index.astro:34 uses .products-hero__heading) and the industry hub (products/[industry]/index.astro:70 same) moved to the hero. ~30 lines of dead CSS with a misleading 'kept for consumers' rationale.",
+          "recommendation": "Delete .products-page__header, .products-page__heading (both rules), and .products-page__count; nothing references them.",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        },
+        {
+          "title": "Contact page retains a scoped <style> block and a hardcoded inline chamfer",
+          "severity": "minor",
+          "category": "inconsistency",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "contact/index.astro:150-186 is a component-scoped `<style>` defining .rubber-contact-form (+ ::before chamfer at :165-172, duplicating the global --edge-highlight-top block). This contradicts global.css:206-210's stated rule that atom/layout CSS lives in central sheets 'rather than scattered across component-scoped <style> blocks'. Only 2 scoped <style> blocks remain (this + Specimen.astro:54).",
+          "recommendation": "Move .rubber-contact-form into a central stylesheet (or reuse RubberPlate/an existing raised-panel class) and drop the inline chamfer in favor of the shared chamfer utility.",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        },
+        {
+          "title": "Dead Hero.astro is a 5th hero/banner + extra container/H1 variant kept only by the gallery",
+          "severity": "minor",
+          "category": "dead-code",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "Hero.astro:21 `<div class=\"relative max-w-[var(--container-max)] mx-auto px-4 py-20 md:py-28\">` + :22 `<h1 class=\"text-3xl md:text-5xl font-bold ...\">` is a self-contained hero with its own container + H1 scale, imported only by design/index.astro:23 (env-gated, returns [] unless MAXAM_SHOW_DESIGN_GALLERY=1, so it does not ship). It survives the prior audit's deletion list along with Header.astro/MegaNav.astro/IndustryBadge.astro (Header imports MegaNav:6; ProductCard:4/FeaturedCard:8 import IndustryBadge, themselves gallery-only).",
+          "recommendation": "Resolve the design-gallery fate (prior audit Phase 0). If kept, it should consume the same primitives; if not, delete Hero/Header/MegaNav/IndustryBadge to remove these phantom layout variants from the tree.",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        },
+        {
+          "title": "RubberHeader mega-panel uses a Tailwind container inside an otherwise central-CSS header",
+          "severity": "minor",
+          "category": "inconsistency",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "header.css migrated the bar to central CSS with --page-gutter (header.css:44-48), but the mega-panel inner and mobile menu still use Tailwind utilities in markup: RubberHeader.astro:128 & :162 `class=\"rubber-mega-panel__inner max-w-[var(--container-max)] mx-auto px-4 py-8 flex gap-10\"`, :195 `px-4 py-4`. So the mega-panel content edge (px-4 fixed) does not align with the bar's --page-gutter edge, and the header straddles both systems.",
+          "recommendation": "Port the mega-panel/mobile-menu inner padding to central CSS using --gutter (to match the panel's intended container) and remove the Tailwind utilities, as part of the header de-Tailwind/de-Rubber pass.",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        },
+        {
+          "title": "BaseLayout body still relies on Tailwind utility classes",
+          "severity": "minor",
+          "category": "plan-divergence",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "BaseLayout.astro:31 `<body class=\"min-h-screen flex flex-col text-maxam-gray-900\" style=\"background: var(--color-surface-page);\">` and :33 `<main class=\"flex-1\">`. The sticky-footer scaffold + base text color are Tailwind utilities, so removing `@import 'tailwindcss'` (global.css:1) would break the page shell on every route. Tailwind remains load-bearing for the global layout, not just the 3 unmigrated pages.",
+          "recommendation": "Move the body/main flex-column sticky-footer rules + base color into global.css :root/body (the body color is already partly set there at global.css:171-177) so the shell no longer depends on Tailwind.",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        }
+      ]
+    },
+    {
+      "domain": "Docs as contract + overall project direction / critical-path sequencing",
+      "summary": "The single highest-leverage prior recommendation — Phase 1, \"make CLAUDE.md the contract\" — was NOT done: CLAUDE.md is still frozen at the 2026-06-10 prototype-sprint state (it says \"Three locales\", describes a no-refactor sprint, and contains zero mention of the 14-locale split, resources-English-only, or slug normalization that the team then spent days building). Worse, CLAUDE.md, all of docs/, and all of scripts/ remain gitignored, so the contract document literally cannot be version-controlled. Phase 0 (repo integrity) was also skipped: scripts are still untracked, 14 snapshot/translation files that data.ts/i18n.ts statically import are untracked (fresh clone fails build, up from 5 files in the prior audit), and the entire ~470-file multi-language port sits uncommitted on top of the last commit (2026-06-10) — nothing has been committed in 3+ days of major work. What IS genuinely fixed: the locale-slug 404 cluster (routes/links now use canonical English urlSlug keyed by trid; build is green, 4467 pages) and the locale model split (ContentLanguage 10 / Locale 14 / aliases) are real and well-implemented. What is NEW and concerning: 6 of the new content languages (es/fr/it/ja/pt-pt/ru) plus their aliases ship as empty shells — translated UI chrome and spec files exist, but products.json/articles.json were never synced, so /es/, /fr/, etc. render product catalogs with ZERO products (1 products page vs en's 123), and ~918 non-English article block files are byte-identical English duplicates that no code path ever reads. The team did a wide, shallow language port out of sequence instead of the agreed Phase 0→1 foundation; the result is more surface area, more uncommitted risk, and more divergence between docs and reality — which is exactly the failure mode the prior audit diagnosed.",
+      "stats": "Docs reviewed: CLAUDE.md, README.md, docs/AUDIT-2026-06-10.md, docs/LANGUAGE-PARITY-PLAN.md. Code verified: src/types/index.ts, src/lib/i18n.ts, src/lib/data.ts, 3 route files, LanguageSwitcher, contact page, .gitignore. Build: green (exit 0, 4467 pages, 24.6s). Git: HEAD=1a03902 (2026-06-10), 33 modified + 437 untracked = 470 uncommitted; scripts/ docs/ CLAUDE.md = 0 files tracked. Snapshots: products/articles in 4 langs (en/de/ar-ae/zh-hant), specs+translations in all 10. 14 imported files untracked. 1751 block files (918 dead non-en article dupes). 17 Rubber* components / 380 refs; Tailwind still imported, 24 files with utility classes.",
+      "findings": [
+        {
+          "title": "CLAUDE.md (the contract doc) is stale: describes the abandoned prototype sprint, omits every major decision made since",
+          "severity": "critical",
+          "category": "doc-stale",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "CLAUDE.md:11 'Three locales: en, ar-ae (RTL Arabic), zh-hant' — but src/types/index.ts:130-154 now defines 10 ContentLanguages + 14 Locales. CLAUDE.md:18-32 'CURRENT PRIORITY (set 2026-06-10) Prototype sprint... do NOT refactor' is the active priority, yet the team did a large multi-language refactor/port. CLAUDE.md has NO mention of: the locale/contentLang split, LOCALE_ALIASES, urlSlug/slug normalization, or resources-English-only (RESOURCE_LANG, data.ts:508). Prior audit named this exact file 'highest leverage' (AUDIT-2026-06-10.md:165 'Phase 1 — Docs become the contract ... ← highest leverage') and it was not done.",
+          "recommendation": "Rewrite CLAUDE.md NOW, before any more feature work. It must describe: the 10/14 locale model + aliases, urlSlug canonicalization, resources-English-only, and the actual current state (6 langs imported to Notion but products/articles NOT synced). Record the resources-English-only and locale-split decisions as standing decisions. This is the single highest-leverage action and it is overdue from the last audit.",
+          "verified": true,
+          "verifierNote": "CONFIRMED. CLAUDE.md:10-11 still reads 'Three locales: en, ar-ae (RTL Arabic), zh-hant'; src/types/index.ts:130-154 now defines 10 ContentLanguages + 14 Locales. CLAUDE.md:18-32 still has the active 'CURRENT PRIORITY (set 2026-06-10) Prototype sprint... do NOT refactor'. A grep of CLAUDE.md for urlSlug|LOCALE_ALIASES|RESOURCE_LANG|ContentLanguage|regional variant|10 locale|14 locale returns ZERO matches, so the file mentions none of: the locale/contentLang split, LOCALE_ALIASES, urlSlug, or resources-English-only. data.ts:508 confirms RESOURCE_LANG='en'. AUDIT-2026-06-10.md:165 verbatim names Phase 1 docs 'highest leverage' and it was not done. Citations exact; finding holds."
+        },
+        {
+          "title": "CLAUDE.md, docs/, and scripts/ are all gitignored — the contract and the entire pipeline are unversioned",
+          "severity": "critical",
+          "category": "broken",
+          "status": "still-broken-from-prior-audit",
+          "evidence": ".gitignore:27 'CLAUDE.md', :30 'docs/', :33 'scripts/'. Verified: `git ls-files CLAUDE.md` = 0, `git ls-files docs/` = 0, `git ls-files scripts/` = 0. The document the project relies on to stop drift, the audit docs, and the live sync/import/extract pipeline (sync-from-notion.ts, build-product-specs.ts, import-*, notion-ids.json) exist on one machine only. Prior audit: AUDIT-2026-06-10.md:110-114 flagged scripts/ gitignored as cluster 4; CLAUDE.md and docs/ being ignored is additionally fatal for a 'docs-as-contract' strategy.",
+          "recommendation": "Edit .gitignore to ignore only scripts/output/ (the frozen WP artifacts + secrets like notion-ids.json if it must stay secret — but then commit a notion-ids.example.json). Un-ignore CLAUDE.md, docs/, and scripts/*.ts. Commit them. A contract doc that cannot be committed cannot be a contract.",
+          "verified": true,
+          "verifierNote": "CONFIRMED. .gitignore:27 'CLAUDE.md', :30 'docs/', :33 'scripts/'. git ls-files for CLAUDE.md, docs/, scripts/ each return 0. Pipeline files verified present-but-untracked: scripts/sync-from-notion.ts, build-product-specs.ts, content-languages.ts, seed-pages-translations.ts, scripts/output/notion-ids.json all exist on disk but are gitignored. AUDIT-2026-06-10.md:110 is cluster 4 'Repo/ops fragility'. A docs-as-contract strategy with the contract gitignored is fatal. Holds exactly."
+        },
+        {
+          "title": "Fresh clone still cannot build: 14 statically-imported snapshot/translation files are untracked (worse than prior audit's 5)",
+          "severity": "critical",
+          "category": "broken",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "data.ts:38-44 statically imports product-specs.{de,es,fr,it,ja,pt-pt,ru}.json; i18n.ts:6-12 statically imports translations/{de,es,fr,it,ja,pt-pt,ru}.json. All 14 verified untracked (`git ls-files` = 0 each), present only in the working tree. A clean `git clone` would fail `astro build` at import resolution. Prior audit AUDIT-2026-06-10.md:115-116 found 5 such untracked files; the language port added 14 more imported-but-untracked files, so the regression is now ~3x larger.",
+          "recommendation": "Commit all 14 files (and re-verify nothing else imported by data.ts/i18n.ts is untracked). Add a CI/pre-push check that runs `git stash -u && npm ci && npm run build` in a temp checkout, or simpler: assert every path imported in data.ts/i18n.ts is tracked. This finding has now recurred across two audits.",
+          "verified": true,
+          "verifierNote": "CONFIRMED. data.ts:38-44 statically imports product-specs.{de,es,fr,it,ja,pt-pt,ru}.json; i18n.ts:6-12 imports translations/{de,es,fr,it,ja,pt-pt,ru}.json. All 14 verified: exists=True on disk, git ls-files=0 (untracked). A clean clone fails astro build at import resolution. AUDIT-2026-06-10.md:115-116 found 5 such untracked files; the language port added 14 more. Regression confirmed."
+        },
+        {
+          "title": "Six new content locales (es/fr/it/ja/pt-pt/ru) + aliases ship EMPTY product catalogs — chrome and specs built, content never synced",
+          "severity": "critical",
+          "category": "plan-divergence",
+          "status": "newly-introduced",
+          "evidence": "products.json has rows only for en/de/ar-ae/zh-hant (117 each); es/fr/it/ja/pt-pt/ru = 0 rows (verified by counting). getAllProducts resolves contentLang('es')='es' (i18n.ts:84) then filters products by language (data.ts:399), yielding []. Built output: dist/es/products has 1 index.html (the empty viewer, contains 'No products') vs dist/en/products = 123 detail pages. /es/ homepage = 21169 bytes with 0 product links vs /en/ = 45202 bytes with 43. Same for fr/it/ja/pt-pt/ru and aliases es-mx/fr-ca. LANGUAGE-PARITY-PLAN.md:192 marks Phase C as '[ ]' (not done) — yet translations/<lang>.json and product-specs.<lang>.json for these langs are already wired into data.ts/i18n.ts and the routes generate all 14 locales, so the empties are publicly built.",
+          "recommendation": "Either finish the sync for these 6 langs (run the per-language runbook, LANGUAGE-PARITY-PLAN.md:164-181, then `npm run sync`), OR gate route generation so a locale with no product rows is not emitted (or 404s/redirects) until its content lands. Do not ship 8 of 14 locales as empty shells. This half-state is the concrete evidence the project is 'moving in the wrong direction': breadth was added before the existing langs were committed/finished.",
+          "verified": true,
+          "verifierNote": "CONFIRMED with one minor evidence correction. products.json has 468 rows: en/de/ar-ae/zh-hant = 117 each; es/fr/it/ja/pt-pt/ru = 0 rows (verified by Group-Object language). getAllProducts (data.ts:399-401) filters by contentLang, yielding [] for these. dist confirms: dist/es/products has 0 detail dirs vs dist/en/products = 123 index.html + 10 industry subdirs; /es/ home = 21282 bytes vs /en/ = 45309. LANGUAGE-PARITY-PLAN.md:192 marks Phase C '[ ]' (Phase B/German is '[x]'). CORRECTION: the es products index.html is 179484 bytes and does NOT contain the literal string 'No products' (the filter viewer renders with an empty product set, not a 'No products' message). The 'contains No products' and exact byte figures (21169/45202) are slightly off, but the substance — 8 of 14 locales ship empty catalogs — is fully confirmed."
+        },
+        {
+          "title": "~918 non-English article block files are byte-identical English duplicates that no code path reads (dead waste, user already flagged)",
+          "severity": "major",
+          "category": "duplicate-system",
+          "status": "newly-introduced",
+          "evidence": "blocks/ has article block files per lang: en=356, ar-ae=306, de=306, zh-hant=306 (1274 total article files). Resources are English-only: data.ts:508 'const RESOURCE_LANG = ' + chr + getArticleBlocks (data.ts:525-527) reads readBlocks('article', RESOURCE_LANG, slug) — i.e. ALWAYS 'en'. So all 918 non-en article block files are unreachable. Verified the duplication: plain-text of article-de-agricultural-tire-wheel-conversion.json === article-en-... (extracted plain_text identical; same 12243-byte length). The brief notes this will grow to ~2000 if the remaining 6 langs sync. These are untracked working-tree files inflating the repo for zero runtime value.",
+          "recommendation": "Delete all blocks/article-{ar-ae,zh-hant,de,...}-*.json (keep only article-en-*). Add a guard in sync-from-notion.ts to NOT write per-language article/document block sidecars (resources are English-only). Confirm getArticleBlocks/getAllArticles/getAllDocuments are the only readers (they are, all RESOURCE_LANG).",
+          "verified": true,
+          "verifierNote": "CONFIRMED on substance with a precision correction. blocks/ has 1751 files; article files: en=356, ar-ae=306, zh-hant=306, de=306 (1274 total, 918 non-en). data.ts:508 RESOURCE_LANG='en' and getArticleBlocks (data.ts:525-527) calls readBlocks('article', RESOURCE_LANG, slug) — always 'en' — so the 918 non-en article block files are unreachable (getAllArticles/getArticlesByType/etc. all use RESOURCE_LANG, verified data.ts:515-539). CORRECTION: the files are NOT raw byte-identical — article-de-agricultural-tire-wheel-conversion.json and the en version are the same LENGTH (15143 bytes) but have DIFFERENT md5 hashes because Notion block UUIDs differ. Their extracted plain_text IS identical (2799 chars each), confirming they are English content duplicates. The finding's own wording 'extracted plain_text identical' is accurate; its '12243-byte length' example figure is wrong for this file (15143 bytes), and 'byte-identical' should read 'content-identical'. Dead-waste conclusion holds."
+        },
+        {
+          "title": "Entire multi-language port (~470 files) is uncommitted; nothing committed in 3+ days of major work — bus factor 1, now much larger",
+          "severity": "critical",
+          "category": "broken",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "git log -1 = 1a03902 'big wip sprint' dated 2026-06-10; `git log --since=2026-06-10` shows only that commit. `git status --porcelain` = 470 entries (33 modified, 437 untracked). The Phase A/B/C language work (types split, i18n, data.ts rewrite, de pilot, 7 langs of specs+translations, ~1000+ new block files) is 100% in the working tree only. Prior audit AUDIT-2026-06-10.md:117 '5 weeks of drift uncommitted'; the situation is now larger and riskier.",
+          "recommendation": "Commit in logical chunks immediately after fixing .gitignore: (1) repo/gitignore + scripts + docs + CLAUDE.md, (2) locale-model + slug-normalization code, (3) snapshots+translations+specs, (4) delete dead block dupes. A single machine failure currently erases days of work.",
+          "verified": true,
+          "verifierNote": "CONFIRMED. git log -1 = 1a03902 'big wip sprint' dated 2026-06-10 13:12; no commits since. git status --porcelain = 470 entries, broken down as 33 modified + 437 untracked (exact match to finding). The entire Phase A/B language port lives in the working tree only. AUDIT-2026-06-10.md:117 prior wording was '5 weeks of drift uncommitted'; situation now larger. Holds."
+        },
+        {
+          "title": "README.md is stale: 'Three locales', '~1050 pages', no mention of the locale model or resources-English-only",
+          "severity": "minor",
+          "category": "doc-stale",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "README.md:4 'Three locales: en, ar-ae (RTL), zh-hant.' and README.md:35 'npm run build ... (~1050 pages)' — actual build emits 4467 pages across 14 locales (build log). No mention of ContentLanguage vs Locale, aliases, or resources-English-only.",
+          "recommendation": "Update README after CLAUDE.md is rewritten (README should point at CLAUDE.md, which it does at line 7 — just fix the locale count and page count, or genericize to avoid restating numbers that drift).",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        },
+        {
+          "title": "LANGUAGE-PARITY-PLAN.md is largely accurate but its status checkboxes overstate completion vs the committed snapshot",
+          "severity": "minor",
+          "category": "doc-stale",
+          "status": "newly-introduced",
+          "evidence": "LANGUAGE-PARITY-PLAN.md:185-191 marks Phase B (German) '[x] COMPLETE ... Build 1942->2261 pages' and :108 'Build: 1050 -> 1942 pages' — but the current build is 4467 pages and products.json only carries de among the new langs (es..ru not synced). The doc's per-language runbook (:164-181) is solid and accurate; the gap is that it reads as if more is done than the snapshot reflects, and it doesn't record the 'empty-locale routes are being emitted' consequence.",
+          "recommendation": "Add a one-line 'Current snapshot state' note to the plan: which languages are actually IN products.json/articles.json vs only have specs+translations, and the decision on whether to emit routes for not-yet-synced locales. Otherwise the plan is good and should be kept.",
+          "verified": null,
+          "verifierNote": "minor — not verified"
+        },
+        {
+          "title": "LanguageSwitcher still blind-swaps the locale prefix, ignores the trid map, emits no hreflang, and is full of Tailwind",
+          "severity": "major",
+          "category": "plan-divergence",
+          "status": "partially-fixed",
+          "evidence": "LanguageSwitcher.astro:13-20 switchLocalePath() just shifts the first path segment and re-prefixes — it does not consult any trid/translation map (CLAUDE.md old known-broken: 'LanguageSwitcher blind-swaps'). Mitigated by urlSlug canonicalization (URLs are now English-slug-stable, so product/industry slugs survive the swap), but it still: (a) sends users to empty es/fr/etc. pages, (b) emits no <link rel=alternate hreflang>, and (c) is styled with Tailwind utilities (:26 'bg-maxam-gray-900 text-maxam-gray-300 text-sm border ...') violating standing decision #1.",
+          "recommendation": "Lower priority than the empty-locale and repo issues. When addressed (recovery Phase 2/3): emit hreflang alternates, hide switcher entries for locales with no content, and de-Tailwind this component.",
+          "verified": true,
+          "verifierNote": "CONFIRMED with a path correction. File is at src/components/global/LanguageSwitcher.astro (finding cited bare 'LanguageSwitcher.astro' — missing the global/ dir, but the cited line numbers match). switchLocalePath() at :13-20 splits the path, shifts the first segment if it's a locale, and re-prefixes — consulting no trid/translation map. No <link rel=alternate hreflang> emitted anywhere in the component. Tailwind utility classes at :26 ('bg-maxam-gray-900 text-maxam-gray-300 text-sm border border-maxam-gray-700 rounded px-2 py-1 ...'), violating standing decision #1. All three sub-claims hold."
+        },
+        {
+          "title": "Contact page still hardcodes the full office dataset + translation map in frontmatter, with mixed Simplified/Traditional Chinese, and Tailwind classes",
+          "severity": "major",
+          "category": "hardcoded-content",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "contact/index.astro:26-65 hardcodes offices[] and officeRegionNames inline (TODO at :23 acknowledges 'recovery phase 5'). zh-hant region names are mixed script: :28 '欧盟' (Simplified 欧, Traditional is 歐盟) and :29 '亚洲、中東和非洲' mixes Simplified 亚洲 with Traditional 中東 — the prior audit (AUDIT-2026-06-10.md:82) flagged Simplified-in-Traditional here and it is still wrong. Page also uses Tailwind: :69 'max-w-[var(--container-max)] mx-auto px-4 py-10', :72 'text-4xl font-bold text-maxam-black'. The 7 new langs fall back to English region names (:31).",
+          "recommendation": "Defer to recovery Phase 5 (Offices Notion record) per the plan, but fix the zh-hant Simplified glyphs now (cheap correctness fix) and note in CLAUDE.md that contact office data is still hardcoded.",
+          "verified": true,
+          "verifierNote": "CONFIRMED (path is src/pages/[locale]/contact/index.astro; cited line numbers match). offices[] hardcoded at :33-65 and officeRegionNames at :26-30; TODO at :23 references 'recovery phase 5'; the 7 new langs fall back to English (:31 '?? officeRegionNames[key].en'). Mixed script confirmed: :28 'Maxam Tire（欧盟）' uses Simplified 欧 (Traditional is 歐盟); :29 '（亚洲、中東和非洲）' mixes Simplified 亚洲 with Traditional 中東. AUDIT-2026-06-10.md:82 flagged the same glyphs ('欧盟', '亚洲、中东和非洲') — still unfixed. Tailwind at :69 ('max-w-[var(--container-max)] mx-auto px-4 py-10') and :72 ('text-4xl font-bold text-maxam-black'). Holds exactly."
+        },
+        {
+          "title": "All three half-finished migrations from cluster 1 are unchanged: Tailwind still load-bearing, Rubber* naming intact, dead code present",
+          "severity": "major",
+          "category": "plan-divergence",
+          "status": "still-broken-from-prior-audit",
+          "evidence": "global.css:1 still '@import ' + chr + 'tailwindcss'; package.json still depends on tailwindcss@4.2.1 + @tailwindcss/vite. 24 .astro files still carry utility classes. 17 Rubber* component files remain; 380 rubber/Rubber occurrences across 28 .astro files. Dead code from prior audit all still present: src/components/global/Header.astro, MegaNav.astro (no importers), src/data/mock-tires.ts, mock-articles.ts; empty dirs src/pages/{en,ar-ae,zh-hans}, src/components/tire. prose-content class referenced on live detail pages ([slug].astro:141,170) and design gallery but defined in NO stylesheet (grep of src/styles = 0) — exact prior finding (AUDIT-2026-06-10.md:51).",
+          "recommendation": "These are explicitly deferred recovery phases (Tailwind removal=Phase 3, rename=Phase 4) and the sprint said don't touch — so they are 'known half-finished', not new regressions. BUT add the prose-content.css fix to the near-term list (it is a real undefined-class bug on live tire pages, cheap to fix). Delete the 4 dead files + 4 empty dirs as part of Phase 0 cleanup — they were supposed to go in the prior Phase 0.",
+          "verified": true,
+          "verifierNote": "CONFIRMED with one off-by-one citation note. global.css:1 = @import 'tailwindcss'; package.json has tailwindcss 4.2.1 + @tailwindcss/vite (dev) + @tailwindcss/oxide-win32 dep. Rubber: exactly 380 occurrences across 28 .astro files (grep count matches verbatim); 17 Rubber* component files (glob count = 17, matches). Dead files all present: src/components/global/Header.astro, MegaNav.astro (Header imports MegaNav but nothing imports Header — both dead), src/data/mock-tires.ts, mock-articles.ts (mutually-importing dead island). Empty dirs present with 0 files: src/pages/{en,ar-ae,zh-hans}, src/components/tire. prose-content referenced at products [slug].astro:141 and :170 (exact), also resources/[slug].astro:75 and design:873, but defined in 0 stylesheets (grep src/styles = 0). CORRECTION: the prior prose-content finding is at AUDIT-2026-06-10.md:50, not :51 (line 51 is the adjacent rtl: Tailwind item). Off-by-one citation; substance fully holds."
+        },
+        {
+          "title": "META / sequencing verdict: the out-of-order language port was the wrong call; concrete recommended next sequence",
+          "severity": "critical",
+          "category": "plan-divergence",
+          "status": "newly-introduced",
+          "evidence": "Prior Path Forward (AUDIT-2026-06-10.md:156-197) sequenced Phase 0 (repo) -> Phase 1 (docs) -> Phase 2 (locale/slug) -> ... The team instead executed a large Phase-A/B/C-style language port (LANGUAGE-PARITY-PLAN.md) while skipping Phase 0 and Phase 1 entirely. Result, all verified above: contract doc still stale+gitignored, fresh clone still cannot build (now 14 untracked imports), 470 files uncommitted, 6 locales shipping empty, ~918 dead duplicate files. The locale/slug work (intended Phase 2) WAS partly delivered well, but on an unversioned, undocumented foundation — multiplying the exact drift the audit warned about.",
+          "recommendation": "Recommended sequence for the next sessions, opinionated: SESSION 1 (Phase 0, do not skip again): fix .gitignore (un-ignore CLAUDE.md/docs/scripts; ignore only scripts/output/), commit the 470 files in logical chunks, delete the ~918 dead non-en article block dupes + Header/MegaNav/mocks + empty dirs, verify a clean clone builds. SESSION 2 (Phase 1): rewrite CLAUDE.md to current reality (10/14 locale model, urlSlug, resources-English-only) and fix README; this is what stops the drift. SESSION 3: DECIDE the language-breadth question explicitly — either (a) finish syncing es/fr/it/ja/pt-pt/ru content so the 14 locales are real, or (b) reduce emitted locales to those with content (en/de/ar-ae/zh-hant) and keep the others behind a flag until synced. Do NOT keep shipping empty locales. SESSIONS 4+: resume the original Phase 2 polish (LanguageSwitcher hreflang/trid, prose-content.css), then Tailwind removal (Phase 3) and rename (Phase 4). Principle: stop adding breadth; commit and document what exists, then finish or fence the language port before any further expansion.",
+          "verified": true,
+          "verifierNote": "CONFIRMED. AUDIT-2026-06-10.md:156 'Path forward (sequenced...)' with Phase 0 (repo) at :158 and Phase 2 (locale slug identity) at :172; the prior plan sequenced Phase 0 -> Phase 1 -> Phase 2. The team instead executed the LANGUAGE-PARITY-PLAN port (Phase B German '[x]' at :185, Phase C '[ ]' at :192) while leaving Phase 0/1 undone. Every consequence is independently verified above: CLAUDE.md still stale + gitignored, 14 untracked imports (fresh clone cannot build), 470 files uncommitted (33M/437??), 6 locales shipping empty (0 product rows), 918 dead duplicate article blocks. The locale/slug work (urlSlug in types/index.ts, contentLang/LOCALE_ALIASES in i18n.ts, canonical slug maps in data.ts) was partly delivered but on an unversioned, undocumented base. Meta-verdict holds."
+        }
+      ]
+    }
+  ]
+}
