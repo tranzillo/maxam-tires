@@ -29,6 +29,10 @@ const { article, locale, showFilterData = false, class: className } = Astro.prop
 
 const isDownload = article.type === 'product-sheet' || article.type === 'brochure';
 const isExternal = !!article.externalUrl;
+// Events (trade-show appearances) have no detail page and no file — they're
+// informational cards. If one ever carries an external URL it links out;
+// otherwise it renders as a static, non-linking card.
+const isStatic = article.type === 'event' && !isExternal;
 const href = isExternal
   ? article.externalUrl!
   : isDownload && article.fileUrl
@@ -36,6 +40,8 @@ const href = isExternal
     : `/${locale}/resources/${article.slug}`;
 const typeLabel = t(locale, `resources.type.${article.type}`);
 const actionLabel = isDownload ? t(locale, 'resources.download') : t(locale, 'resources.read_more');
+// Use a non-interactive wrapper for static cards so we don't emit a dead link.
+const Wrapper = isStatic ? 'div' : 'a';
 
 const dateFormatted = article.date
   ? new Date(article.date).toLocaleDateString(
@@ -54,14 +60,14 @@ const filterAttrs = showFilterData
   : {};
 ---
 
-<a
-  href={href}
+<Wrapper
+  href={isStatic ? undefined : href}
   class:list={[
     'article-card',
-    showFilterData && 'article-card', // legacy hook for the resources filter JS
+    isStatic && 'article-card--static',
     className,
   ]}
-  {...externalAttrs}
+  {...(isStatic ? {} : externalAttrs)}
   {...filterAttrs}
 >
   <div class="article-card__image-frame">
@@ -93,9 +99,11 @@ const filterAttrs = showFilterData
       <p class="article-card__excerpt">{article.excerpt}</p>
     )}
 
-    <span class="article-card__cta">
-      {actionLabel}
-      <span aria-hidden="true" class="article-card__cta-arrow">&rarr;</span>
-    </span>
+    {!isStatic && (
+      <span class="article-card__cta">
+        {actionLabel}
+        <span aria-hidden="true" class="article-card__cta-arrow">&rarr;</span>
+      </span>
+    )}
   </div>
-</a>
+</Wrapper>

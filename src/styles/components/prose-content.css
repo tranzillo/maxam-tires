@@ -148,6 +148,34 @@
   background: var(--color-surface-sunken);
   border-radius: var(--radius-card);
 }
+/* Stat card — a data point rendered from a "VALUE | LABEL" callout. Adjacent
+   stat cards flow into a wrapping row; number-forward like the source page. */
+.prose-content .prose-stat {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 12rem;
+  flex: 1 1 12rem;
+  padding: 1.25rem 1.5rem;
+  margin-block: 0.5rem;
+  background: var(--color-surface-raised);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card), var(--edge-highlight-top);
+}
+/* Pull consecutive stat cards onto the same row. */
+.prose-content .prose-stat + .prose-stat {
+  margin-inline-start: 1rem;
+}
+.prose-content .prose-stat__value {
+  font-size: var(--heading-lg);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-maxam-blue);
+}
+.prose-content .prose-stat__label {
+  color: var(--color-maxam-gray-500);
+  font-size: 0.95rem;
+}
 .prose-content .prose-toggle {
   border: 1px solid var(--color-edge);
   border-radius: var(--radius-card);

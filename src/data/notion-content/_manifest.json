@@ -1,16 +1,16 @@
 {
-  "syncedAt": "2026-06-15T16:45:49.545Z",
+  "syncedAt": "2026-06-17T17:12:03.659Z",
   "withBlocks": true,
   "counts": {
     "industries": 100,
     "applications": 536,
     "tireTypes": 111,
     "products": 1170,
-    "articles": 358,
+    "articles": 357,
     "documents": 130,
     "testimonials": 28,
     "events": 6,
-    "pages": 10,
+    "pages": 11,
     "pagePromos": 20
   }
 }

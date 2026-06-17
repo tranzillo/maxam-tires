@@ -235,6 +235,10 @@ async function main() {
   const productsLean = splitBlocks(productsResolved, 'product');
   const articlesLean = splitBlocks(articlesResolved, 'article');
   const eventsLean = splitBlocks(events, 'event');
+  // Long-form content pages (sustainability, legal…) carry a Notion block body;
+  // split it into a sidecar like other content types. Templated pages have no
+  // body and get no sidecar.
+  const pagesLean = splitBlocks(pages, 'page');
 
   write('industries', industries);
   write('applications', applications);
@@ -247,7 +251,7 @@ async function main() {
 
   // Pages + promos come from Notion like everything else (we already threw
   // above if either was missing/empty), so write them unconditionally.
-  write('pages', pages);
+  write('pages', pagesLean);
   write('page-promos', pagePromos);
 
   // Manifest with sync timestamp for build observability.

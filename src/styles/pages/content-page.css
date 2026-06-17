@@ -1,0 +1,27 @@
+/*
+ * Generic content page (sustainability, and future ported brand/legal pages).
+ *
+ * Markup lives in: src/pages/[locale]/sustainability.astro
+ *
+ * A long-form reading page rendered from a Notion block body (styled by
+ * prose-content.css, including the stat-card convention). Same reading column
+ * and gutter as the article detail page so all long-form pages line up.
+ */
+
+.content-page {
+  max-width: var(--reading-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  padding-block: 2.5rem 4rem;
+}
+
+.content-page__breadcrumb {
+  margin-bottom: 1.5rem;
+}
+
+.content-page__header {
+  margin-bottom: 2rem;
+}
+
+/* The body's own headings/spacing come from prose-content.css; nothing extra
+   needed here beyond the reading column. */

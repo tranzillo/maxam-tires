@@ -55,7 +55,7 @@ import { join } from 'node:path';
 // dev` and `astro build`, so the path is stable.
 const blocksDir = join(process.cwd(), 'src', 'data', 'notion-content', 'blocks');
 
-function readBlocks(type: 'product' | 'article' | 'event', locale: string, slug: string): any[] {
+function readBlocks(type: 'product' | 'article' | 'event' | 'page', locale: string, slug: string): any[] {
   const file = join(blocksDir, `${type}-${locale}-${slug}.json`);
   if (!existsSync(file)) return [];
   try {
@@ -390,6 +390,33 @@ function documentToArticle(d: DocumentRow, locale: Locale): Article {
   };
 }
 
+/** Adapt an event (a trade-show appearance) to the Article shape so it slots
+ *  into the unified resource feed under the existing 'event' type/filter. The
+ *  start date drives sorting; the date range reads as the excerpt. */
+function eventToArticle(e: EventRow, locale: Locale): Article {
+  const fmt = (iso: string) =>
+    new Date(iso).toLocaleDateString(
+      locale === 'ar-ae' ? 'ar' : locale === 'zh-hant' ? 'zh-Hant' : 'en',
+      { year: 'numeric', month: 'short', day: 'numeric' }
+    );
+  const range = e.startDate
+    ? e.endDate && e.endDate !== e.startDate
+      ? `${fmt(e.startDate)} – ${fmt(e.endDate)}`
+      : fmt(e.startDate)
+    : '';
+  return {
+    id: e.slug,
+    slug: e.slug,
+    title: e.title,
+    excerpt: range,
+    content: '',
+    type: 'event',
+    date: e.startDate ?? '',
+    featuredImage: e.featuredImage ?? undefined,
+    industries: [],
+  };
+}
+
 // ── Product queries ─────────────────────────────────────────────────────
 
 export function getAllProducts(locale: Locale): Tire[] {
@@ -623,7 +650,14 @@ export function getAllResources(locale: Locale): Article[] {
   const documentEntries = documents
     .filter((d) => d.language === RESOURCE_LANG)
     .map((d) => documentToArticle(d, locale));
-  return [...articleEntries, ...documentEntries].sort((a, b) => b.date.localeCompare(a.date));
+  // Events (trade-show appearances) are a resource type; fold them into the
+  // feed so the existing 'event' filter has content. English-only like the rest.
+  const eventEntries = events
+    .filter((e) => e.language === RESOURCE_LANG)
+    .map((e) => eventToArticle(e, locale));
+  return [...articleEntries, ...documentEntries, ...eventEntries].sort((a, b) =>
+    b.date.localeCompare(a.date)
+  );
 }
 
 // ── Utilities ───────────────────────────────────────────────────────────
@@ -685,6 +719,26 @@ export function getPageContent(locale: Locale, slug: string): PageContent | unde
     language: row.language,
     content: row.content,
   };
+}
+
+/** Notion block body for a long-form content page (sustainability, legal…),
+ *  in the requested locale. `slug` is locale-stable. Falls back to English when
+ *  a page hasn't been translated yet, so the page is available in every locale
+ *  (in English) rather than 404ing. Empty array only if no English body either. */
+export function getPageBlocks(locale: Locale, slug: string): any[] {
+  const lang = contentLang(locale);
+  const own = readBlocks('page', lang, slug);
+  if (own.length > 0) return own;
+  return lang === 'en' ? own : readBlocks('page', 'en', slug);
+}
+
+/** Does a content page with a block body exist for this (locale, slug)? Used by
+ *  the generic content-page route to know which pages to statically generate. */
+export function getContentPages(locale: Locale): { slug: string; title: string }[] {
+  const lang = contentLang(locale);
+  return pages
+    .filter((p) => p.language === lang && getPageBlocks(locale, p.slug).length > 0)
+    .map((p) => ({ slug: p.slug, title: p.title }));
 }
 
 /**

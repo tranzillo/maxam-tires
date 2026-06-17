@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NotionBlocks from '../../components/NotionBlocks.astro';
+import Breadcrumb from '../../components/ui/Breadcrumb.astro';
+import type { Locale } from '../../types';
+import { locales, t, localePath } from '../../lib/i18n';
+import { getPageBlocks } from '../../lib/data';
+
+export function getStaticPaths() {
+  // One sustainability page per locale (content is per-language once translated;
+  // English-only today, so non-en locales fall back to en content via getPageBlocks).
+  return locales.map((locale) => ({ params: { locale } }));
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const blocks = getPageBlocks(locale, 'sustainability');
+
+// If the page body somehow isn't present, don't ship an empty shell.
+if (blocks.length === 0) {
+  return Astro.redirect(localePath(locale, '/'));
+}
+
+const title = t(locale, 'nav.sustainability') || 'Sustainability';
+---
+
+<BaseLayout locale={locale} title={title}>
+  <article class="content-page">
+    <div class="content-page__breadcrumb">
+      <Breadcrumb items={[{ label: title }]} />
+    </div>
+
+    <header class="content-page__header">
+      <h1 class="content-page__title heading heading--xl">{title}</h1>
+    </header>
+
+    <section class="prose-content content-page__body">
+      <NotionBlocks blocks={blocks} />
+    </section>
+  </article>
+</BaseLayout>

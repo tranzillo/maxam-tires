@@ -219,8 +219,28 @@ a locale.
 - **Contact offices hardcoded** in `contact/index.astro` frontmatter (should be a
   Notion record). **Featured-product** logic and **homepage Pages content** for
   the 6 unsynced languages still incomplete.
-- **`/sustainability` dead-end CTA** on the homepage (page not built). Events sync
-  but have no route.
+- **`/sustainability` page + events routing — FIXED 2026-06-17.** The
+  sustainability page is built (`src/pages/[locale]/sustainability.astro`),
+  content stored as a Notion **Page block body** (seeded by
+  `scripts/seed-sustainability-page.ts`, reinterpreted from the WP ACF page into
+  our design system). The homepage CTA now resolves. Events were folded into the
+  Resource Center feed (`getAllResources` → `eventToArticle`); the 'event' filter
+  now has content, and event cards render non-linking (no detail page). Long-form
+  content pages use the new page-block pipeline: `fetchPages` captures a block
+  body, `splitBlocks(pages,'page')` writes a `page-<lang>-<slug>.json` sidecar,
+  `getPageBlocks` reads it (with **English fallback** for untranslated locales).
+  Stat cards are a render convention: a `callout` whose text is `VALUE | LABEL`
+  → styled `.prose-stat`. **Still to port (later, by design — they're ACF
+  page-builder layouts, NOT clean content):** why-maxam, ecopoint3, privacy-
+  policy, warranty, compliance; the tire-pressure calculator needs a rebuild.
+  Job postings + category intro copy: skipped by decision.
+- **⚠ `npm run sync` (full) DROPS the 34 table-fixed articles.** They live in the
+  snapshot + sidecars but NOT in the current Notion Articles DB (the known
+  WP↔Notion divergence). A full sync rewrites `articles.json` from Notion only
+  (358→323 en) and silently removes them, regressing the `[table content
+  omitted]` fix. **After any full sync, restore the dropped article rows from the
+  prior `articles.json` (git HEAD) before building** — or scope syncs to avoid
+  rewriting articles. Encountered + repaired 2026-06-17.
 - **Images**: ~900 product/article images hotlink the live maxamtire.com —
   re-host before launch.
 - **The "three half-finished migrations" cluster is CLOSED** (2026-06-13):

@@ -136,6 +136,9 @@ export interface RawPage {
    * The template reads via `content[key]` with a default fallback.
    */
   content: Record<string, string>;
+  /** Notion block body for long-form content pages (sustainability, legal…).
+   *  Empty for templated pages (homepage). Split into a sidecar at sync time. */
+  blocks?: any[];
   translationIds: string[];
 }
 
@@ -348,27 +351,36 @@ export async function fetchPages(): Promise<RawPage[]> {
   const ids = getNotionIds();
   if (!ids.pagesDataSourceId) return [];
   const pages = await queryAllPages(ids.pagesDataSourceId);
-  return pages.map((p: any) => {
+  const out: RawPage[] = [];
+  for (const p of pages) {
     const props = p.properties;
     // Editorial enters content as one rich-text property per key; key names
     // contain a dot (e.g. "hero.lead", "sustainability.body") so we collect
-    // any property whose name follows that convention.
+    // any property whose name follows that convention. (Templated pages like
+    // the homepage use this flat map; long-form content pages use the block
+    // body below instead.)
     const content: Record<string, string> = {};
     for (const key of Object.keys(props)) {
       if (!key.includes('.')) continue;
       const val = getRichText(props, key) || getUrl(props, key) || '';
       if (val) content[key] = val;
     }
-    return {
+    // Also capture the page's block body. Long-form pages (sustainability,
+    // legal, etc.) are authored as Notion blocks and rendered via NotionBlocks;
+    // templated pages simply have an empty body and get no sidecar.
+    const blocks = await fetchPageBlocks(p.id);
+    out.push({
       pageId: p.id,
       trid: getNumber(props, 'Translation Group'),
       language: getSelect(props, 'Language') ?? 'en',
       title: getTitle(props, 'Name'),
       slug: getRichText(props, 'Slug'),
       content,
+      blocks,
       translationIds: getRelationIds(props, 'Translations'),
-    } as RawPage;
-  });
+    } as RawPage);
+  }
+  return out;
 }
 
 /**
