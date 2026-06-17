@@ -229,8 +229,11 @@ a locale.
   (rows at top-level `children`, not `table.children`). Verified: 0 placeholders
   and 476 article dist pages render real `<table>`s. If articles are ever
   re-imported into Notion proper, this regen becomes unnecessary.
-- **PR not merged**: the `chore/repo-integrity` branch (Session 1) is pushed but
-  not merged to `main`.
+- **Recovery work merged to `main`** (2026-06-17): the `chore/repo-integrity`
+  branch (35 commits — repo integrity, locale model, slug fix, Tailwind removal,
+  Rubber rename, table fix) fast-forwarded into `main` and pushed. New work
+  branches from `main`. The recovery sequence from `docs/AUDIT-2026-06-13.md` is
+  complete.
 
 ---
 
