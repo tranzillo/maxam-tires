@@ -21,18 +21,52 @@
 5. The runtime shape `data.ts` consumes (`ProductSpecs {headers, units, variants}`)
    must not change — only its *source* changes (build script → Notion sync).
 
+## Findings from the real data (2026-06-17, step-2 investigation)
+
+Before generating header maps, I audited all 117 products × 10 languages. Three
+facts revise the original assumptions:
+
+1. **42 distinct header sets**, not one canonical ~13. Headers vary by product
+   family (some have `Tread Compound`, `Number of lugs`; some use `SIZE/LI/SR/PR`
+   shorthand). Union of distinct English headers = **60**. The source is also
+   internally inconsistent (`S.W` vs `S.W.`, `L.C.C` vs `L.C.C.`).
+2. **A flat per-language header map is LOSSY.** 18 English headers map to multiple
+   target strings in de — almost always `["Größe", "Size"]`: the translation *plus*
+   an untranslated-English fallback (some products were never header-translated).
+   A few are genuinely two columns sharing an English label (two `Rim` columns).
+   → Headers must be stored **per-product, per-language** (small arrays, 1,168
+   total), NOT collapsed into a shared map. Lossless and exact.
+3. **The "language-invariant values" claim holds — and the 17% that "diverges"
+   is WP source CORRUPTION, not real data.** Value-only comparison: 83% of
+   product×language pairs are byte-identical to English; the diverging 17% have
+   the SAME row/column counts but stray garbage — e.g. `flotxtra` fr Gross Flat
+   Plate = `"okay / 1426"` where en = `"221 / 1426"`. `okay` is a data-entry
+   error. **Storing one canonical English value grid and reusing it for every
+   language FIXES these bugs** instead of faithfully preserving garbage.
+
+**Net effect on the plan:** the one-value-grid model is *more* justified (it
+launders WP corruption). The header map changes from flat-per-language to
+**per-product-per-language arrays**. See revised decisions below.
+
 ## Design decisions (locked with the user 2026-06-17)
 
 - **Storage:** one native Notion **table block per Product page** holding the
   value grid (one row per size). Reuses the `tableBlock()` writer + read-shape
   normalizer proven in the `[table content omitted]` fix.
-- **Headers:** a **per-language header map** (`spec-headers.<lang>.json`, ~13 keys,
-  keyed by English header) — NOT stored per-language in Notion. Values stored once.
+- **Headers:** ~~a per-language header map keyed by English header~~ **REVISED →**
+  per-product, per-language header arrays (`spec-headers.<lang>.json` =
+  `{ "<slug>": ["Größe","Typ",…] }`). A flat keyed map proved lossy (finding #2).
+  ~1,168 short arrays total; values still stored once.
 - **Normalize at SEED, store clean.** Seed Notion from the *already-normalized*
   `product-specs.en.json` variants, not the raw TablePress grid. The Notion table
   is then a clean `size + field-columns` grid, and the sync reader is trivial
   (no colspan/paired/single logic). The three normalizers stay in the retired
   one-time script as historical record; they never run at sync time.
+- **Values canonicalize on English** (user, 2026-06-17). The English value grid is
+  the single source of truth for spec values across ALL languages. This
+  intentionally discards the ~17% non-English value divergence, which the audit
+  showed is WP source corruption (`"okay / 1426"`), not real per-language data.
+  Only headers are per-language.
 
 ## The shape stored in Notion (per product)
 
