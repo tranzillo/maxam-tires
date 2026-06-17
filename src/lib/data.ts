@@ -758,8 +758,10 @@ const productSpecsByLang: Record<ContentLanguage, Record<string, ProductSpecs>> 
  */
 export function getProductSpecs(locale: Locale, slug: string): ProductSpecs | undefined {
   const lang = contentLang(locale);
-  // `slug` is the canonical URL slug; spec tables are keyed by the locale's
-  // real slug (built from tires-<lang>.json), so resolve it first.
-  const row = productRowByUrlSlug(lang, slug);
-  return productSpecsByLang[lang]?.[row?.slug ?? slug];
+  // Spec tables now come from Notion (sync-product-specs.ts) keyed by the
+  // CANONICAL (English) slug — `slug` here already IS that canonical urlSlug.
+  // Fall back to the per-locale row slug for safety (covers any legacy key).
+  const specs = productSpecsByLang[lang];
+  if (!specs) return undefined;
+  return specs[slug] ?? specs[productRowByUrlSlug(lang, slug)?.slug ?? slug];
 }

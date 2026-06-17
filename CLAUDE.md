@@ -150,8 +150,9 @@ Notion databases  ──npm run sync──▶  src/data/notion-content/*.json (c
 - `scripts/content-languages.ts` — the 10 `CONTENT_LANGUAGES` + `resolveLanguages`.
   Extract/import scripts take optional language args (default all).
 - Per-language runbook: extract → import taxonomies FIRST (idempotent, merges the
-  tax map) → import products → link siblings → `build-product-specs` →
-  `seed-pages-translations` (homepage) → `sync --only-lang=<lang>` (blocks) → build.
+  tax map) → import products → link siblings → `seed-pages-translations` (homepage)
+  → `sync --only-lang=<lang>` (blocks) → `sync-product-specs` (specs from Notion)
+  → build. (Product specs now live in Notion — see "Product specs" below.)
 - **Idempotency:** import-products/articles/taxonomies + seed-pages skip existing
   rows (WP-ID/trid + language). `import-pages-to-notion.ts` is the ONE
   non-idempotent importer (re-run duplicates) — use `seed-pages-translations.ts`
@@ -165,7 +166,8 @@ Notion databases  ──npm run sync──▶  src/data/notion-content/*.json (c
 | `npm run build` | Full build (currently ~4,467 pages across 14 locales) |
 | `npm run sync` / `sync:fast` | Notion → snapshots (fast skips block bodies) |
 | `npm run sync -- --only-lang=de` | Sync block bodies for one language only |
-| `npx tsx scripts/build-product-specs.ts` | Regenerate product-specs (see open loop) |
+| `npx tsx scripts/sync-product-specs.ts` | Read spec tables from Notion → product-specs.*.json |
+| `npx tsx scripts/seed-product-specs-to-notion.ts` | One-time: push clean spec tables INTO Notion |
 
 After a sync or specs rebuild, **restart the dev server** (snapshots read at startup).
 
@@ -197,9 +199,16 @@ a locale.
 
 ## Known issues / open loops (don't re-discover; map in docs/AUDIT-2026-06-13.md)
 
-- **Product specs don't flow from Notion**: `product-specs.*.json` is built by
-  `build-product-specs.ts` from the frozen WP export (`scripts/output/tires-*.json`).
-  Editing specs in Notion changes nothing. Fix = a structured Specs Notion DB.
+- **Product specs flow from Notion** — FIXED 2026-06-17 (was the biggest open
+  loop). Each English Product page holds a clean spec **table block** (one row per
+  size, merged imperial/metric values); `sync-product-specs.ts` reads it and
+  writes `product-specs.<lang>.json`. **Spec values canonicalize on English** —
+  values are language-invariant, so one grid serves all 10 languages; only the
+  ~13 column headers are translated (`spec-headers.<lang>.json`). This also
+  laundered ~165 WP source-corruption values (e.g. `"okay / 1426"` → `"221 /
+  1426"`). `data.ts getProductSpecs` keys by canonical (English) slug.
+  `build-product-specs.ts` (the frozen-WP-export builder) is DELETED. Full
+  story: `docs/SPECS-NOTION-MIGRATION.md`. Editors edit specs in Notion now.
 - **LanguageSwitcher** — FIXED 2026-06-13. The blind prefix-swap no longer 404s
   (slug normalization + English-only resources made every path identical across
   locales). Switcher now preserves query string + hash on switch; BaseLayout

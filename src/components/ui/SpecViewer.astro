@@ -22,8 +22,20 @@ const headers = specs.headers;
 const units = specs.units;
 
 function variantCells(variant: (typeof specs.variants)[number]): string[] {
-  const byLabel = new Map(variant.fields.map((f) => [f.label, f.value]));
-  return headers.map((h, i) => (i === 0 ? variant.size : byLabel.get(h) ?? ''));
+  // Align fields to header columns by label, consuming each field once so
+  // DUPLICATE headers (e.g. two "Infl. P." / two "L.C.C." columns at different
+  // load ratings) render their distinct values in order. A plain label->value
+  // map collapsed duplicates to the last value (wrong first column).
+  const queues = new Map<string, string[]>();
+  for (const f of variant.fields) {
+    if (!queues.has(f.label)) queues.set(f.label, []);
+    queues.get(f.label)!.push(f.value);
+  }
+  return headers.map((h, i) => {
+    if (i === 0) return variant.size;
+    const q = queues.get(h);
+    return q && q.length ? q.shift()! : '';
+  });
 }
 ---
 

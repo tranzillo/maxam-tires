@@ -35,7 +35,18 @@ const OUT = outArg ? outArg.split('=')[1] : NC;
 // Concatenate rich-text segments WITHOUT trimming: spec values legitimately
 // carry leading/trailing spaces (e.g. " / 700" = empty imperial, metric 700),
 // and the build-product-specs.ts output we must match preserves them.
-const cellText = (cell: any) => (cell ?? []).map((c: any) => c.plain_text ?? '').join('');
+const cellText = (cell: any) => stripColspan((cell ?? []).map((c: any) => c.plain_text ?? '').join(''));
+
+/**
+ * Strip the TablePress merge-cell marker `#colspan#` (a pre-existing WP-import
+ * artifact in 14 products). Two forms: a standalone `#colspan#` cell → empty,
+ * and `"X / #colspan#"` where the metric half merged away → keep `X`.
+ */
+function stripColspan(s: string): string {
+  if (!s.includes('#colspan#')) return s;
+  const t = s.replace(/\s*\/\s*#colspan#\s*$/i, '').trim();
+  return t === '#colspan#' ? '' : t;
+}
 
 interface SpecField { label: string; value: string; unit: string | null }
 interface SpecVariant { size: string; fields: SpecField[] }
@@ -78,15 +89,19 @@ async function fetchSpecGrid(pageId: string): Promise<string[][] | null> {
  * each language shows its own translated columns over the shared values.
  */
 function reconstruct(grid: string[][], langHeaders: string[], enUnits: (string | null)[]): ProductSpecs {
+  // Clean the #colspan# marker out of headers and units too (it lives in those,
+  // not just cell values). A unit that becomes empty is normalized to null.
+  const headers = langHeaders.map(stripColspan);
+  const units = enUnits.map((u) => { const c = stripColspan(u ?? ''); return c === '' ? null : c; });
   const variants: SpecVariant[] = grid.slice(1).map((r) => ({
     size: r[0],
-    fields: langHeaders.slice(1).map((label, i) => ({
+    fields: headers.slice(1).map((label, i) => ({
       label,
-      value: r[i + 1] ?? '',
-      unit: enUnits[i + 1] ?? null,
+      value: r[i + 1] ?? '', // already stripped by cellText at read time
+      unit: units[i + 1] ?? null,
     })).filter((f) => f.value !== ''),
   }));
-  return { headers: langHeaders, units: enUnits, variants };
+  return { headers, units, variants };
 }
 
 export async function syncProductSpecs(): Promise<Record<string, number>> {

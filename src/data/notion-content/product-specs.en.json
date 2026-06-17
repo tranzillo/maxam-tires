@@ -20363,17 +20363,17 @@
           },
           {
             "label": "O.D.",
-            "value": "4029 / #colspan#",
+            "value": "4029",
             "unit": "in / mm"
           },
           {
             "label": "S.W",
-            "value": "1469 / #colspan#",
+            "value": "1469",
             "unit": "in / mm"
           },
           {
             "label": "T.D.",
-            "value": "116 / #colspan#",
+            "value": "116",
             "unit": "32nds / mm"
           },
           {
@@ -20388,12 +20388,12 @@
           },
           {
             "label": "Infl. P.",
-            "value": "700 / #colspan#",
+            "value": "700",
             "unit": "psi / KPa"
           },
           {
             "label": "L.C.C.",
-            "value": "100000 / #colspan#",
+            "value": "100000",
             "unit": "30 mph / 50 kph"
           },
           {
@@ -27584,7 +27584,7 @@
       "SM / TR",
       "in / mm",
       "in / mm",
-      "6 mph/10 kph / #colspan#"
+      "6 mph/10 kph"
     ],
     "variants": [
       {
@@ -27608,7 +27608,7 @@
           {
             "label": "L.C.C.",
             "value": "1720/780 / 1410/640",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -27633,7 +27633,7 @@
           {
             "label": "L.C.C.",
             "value": "2225/1010 / 1830/830",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -27658,7 +27658,7 @@
           {
             "label": "L.C.C.",
             "value": "2580/1170 / 2115/960",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -27683,7 +27683,7 @@
           {
             "label": "L.C.C.",
             "value": "2940/1335 / 2415/1095",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -27708,7 +27708,7 @@
           {
             "label": "L.C.C.",
             "value": "3330/1510 / 2735/1240",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -27733,7 +27733,7 @@
           {
             "label": "L.C.C.",
             "value": "4210/1910 / 3460/1570",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -27758,7 +27758,7 @@
           {
             "label": "L.C.C.",
             "value": "5125/2325 / 4210/1910",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -27783,7 +27783,7 @@
           {
             "label": "L.C.C.",
             "value": "3065/1390 / 2515/1140",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -27808,7 +27808,7 @@
           {
             "label": "L.C.C.",
             "value": "3375/1530 / 2755/1250",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -27833,7 +27833,7 @@
           {
             "label": "L.C.C.",
             "value": "4235/1920 / 3485/1580",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -27858,7 +27858,7 @@
           {
             "label": "L.C.C.",
             "value": "5125/2325 / 4190/1900",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -27883,7 +27883,7 @@
           {
             "label": "L.C.C.",
             "value": "4630/2100 / 3790/1720",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -27908,7 +27908,7 @@
           {
             "label": "L.C.C.",
             "value": "5620/2550 / 4630/2100",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -27933,7 +27933,7 @@
           {
             "label": "L.C.C.",
             "value": "6615/3000 / 5455/2475",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -27958,7 +27958,7 @@
           {
             "label": "L.C.C.",
             "value": "6340/2875 / 5180/2350",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -27983,7 +27983,7 @@
           {
             "label": "L.C.C.",
             "value": "7440/3375 / 6120/2775",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28008,7 +28008,7 @@
           {
             "label": "L.C.C.",
             "value": "7715/3500 / 6340/2875",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28033,7 +28033,7 @@
           {
             "label": "L.C.C.",
             "value": "8930/4050 / 7330/3325",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28058,7 +28058,7 @@
           {
             "label": "L.C.C.",
             "value": "10085/4575 / 8270/3750",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28083,7 +28083,7 @@
           {
             "label": "L.C.C.",
             "value": "12400/5625 / 10195/4625",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28108,7 +28108,7 @@
           {
             "label": "L.C.C.",
             "value": "14860/6740 / 12215/5540",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       }
@@ -28127,7 +28127,7 @@
       "SM / TR",
       "in. / mm",
       "in. / mm",
-      "6 mph/10 kph / #colspan#"
+      "6 mph/10 kph"
     ],
     "variants": [
       {
@@ -28151,7 +28151,7 @@
           {
             "label": "L.C.C.",
             "value": "2115/960 / 1740/790",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28176,7 +28176,7 @@
           {
             "label": "L.C.C.",
             "value": "1720/780 / 1410/640",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28201,7 +28201,7 @@
           {
             "label": "L.C.C.",
             "value": "2095/950 / 1720/780",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28226,7 +28226,7 @@
           {
             "label": "L.C.C.",
             "value": "2225/1010 / 1830/830",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28251,7 +28251,7 @@
           {
             "label": "L.C.C.",
             "value": "2360/1070 / 1940/880",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28276,7 +28276,7 @@
           {
             "label": "L.C.C.",
             "value": "2305/1045 / 1885/855",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28301,7 +28301,7 @@
           {
             "label": "L.C.C.",
             "value": "2955/1340 / 2425/1100",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28326,7 +28326,7 @@
           {
             "label": "L.C.C.",
             "value": "2535/1150 / 2070/940",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28351,7 +28351,7 @@
           {
             "label": "L.C.C.",
             "value": "3330/1510 / 2735/1240",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28376,7 +28376,7 @@
           {
             "label": "L.C.C.",
             "value": "2580/1170 / 2115/960",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28401,7 +28401,7 @@
           {
             "label": "L.C.C.",
             "value": "2940/1335 / 2415/1095",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28426,7 +28426,7 @@
           {
             "label": "L.C.C.",
             "value": "3330/1510 / 2735/1240",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28451,7 +28451,7 @@
           {
             "label": "L.C.C.",
             "value": "4210/1910 / 3460/1570",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28476,7 +28476,7 @@
           {
             "label": "L.C.C.",
             "value": "5125/2325 / 4210/1910",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28501,7 +28501,7 @@
           {
             "label": "L.C.C.",
             "value": "1960/890 / 1610/730",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28526,7 +28526,7 @@
           {
             "label": "L.C.C.",
             "value": "3065/1390 / 2515/1140",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28551,7 +28551,7 @@
           {
             "label": "L.C.C.",
             "value": "3375/1530 / 2755/1250",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28576,7 +28576,7 @@
           {
             "label": "L.C.C.",
             "value": "4235/1920 / 3485/1580",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28601,7 +28601,7 @@
           {
             "label": "L.C.C.",
             "value": "5125/2325 / 4190/1900",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28626,7 +28626,7 @@
           {
             "label": "L.C.C.",
             "value": "1985/900 / 1620/735",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28651,7 +28651,7 @@
           {
             "label": "L.C.C.",
             "value": "3615/1640 / 2975/1350",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28676,7 +28676,7 @@
           {
             "label": "L.C.C.",
             "value": "4630/2100 / 3790/1720",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28701,7 +28701,7 @@
           {
             "label": "L.C.C.",
             "value": "5620/2550 / 4630/2100",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28726,7 +28726,7 @@
           {
             "label": "L.C.C.",
             "value": "6615/3000 / 5455/2475",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28751,7 +28751,7 @@
           {
             "label": "L.C.C.",
             "value": "7605/3450 / 6285/2850",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28776,7 +28776,7 @@
           {
             "label": "L.C.C.",
             "value": "5180/2350 / 4255/1930",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28801,7 +28801,7 @@
           {
             "label": "L.C.C.",
             "value": "6340/2875 / 5180/2350",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28826,7 +28826,7 @@
           {
             "label": "L.C.C.",
             "value": "7440/3375 / 6120/2775",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28851,7 +28851,7 @@
           {
             "label": "L.C.C.",
             "value": "8600/3900 / 7055/3200",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28876,7 +28876,7 @@
           {
             "label": "L.C.C.",
             "value": "7715/3500 / 6340/2875",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28901,7 +28901,7 @@
           {
             "label": "L.C.C.",
             "value": "8930/4050 / 7330/3325",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28926,7 +28926,7 @@
           {
             "label": "L.C.C.",
             "value": "10085/4575 / 8270/3750",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28951,7 +28951,7 @@
           {
             "label": "L.C.C.",
             "value": "12400/5625 / 10195/4625",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -28976,7 +28976,7 @@
           {
             "label": "L.C.C.",
             "value": "14770/6700 / 12135/5505",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -29001,7 +29001,7 @@
           {
             "label": "L.C.C.",
             "value": "17075/7745 / 14020/6360",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -29026,7 +29026,7 @@
           {
             "label": "L.C.C.",
             "value": "8025/3640 / 6580/2985",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -29051,7 +29051,7 @@
           {
             "label": "L.C.C.",
             "value": "14860/6740 / 12215/5540",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -29076,7 +29076,7 @@
           {
             "label": "L.C.C.",
             "value": "17680/8020 / 14530/6590",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -29101,7 +29101,7 @@
           {
             "label": "L.C.C.",
             "value": "20435/9270 / 16800/7620",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       },
@@ -29126,7 +29126,7 @@
           {
             "label": "L.C.C.",
             "value": "14575/6610 / 11950/5420",
-            "unit": "6 mph/10 kph / #colspan#"
+            "unit": "6 mph/10 kph"
           }
         ]
       }
@@ -29147,7 +29147,7 @@
       "ST / SW",
       "in / mm",
       "in / mm",
-      "15 mph/25 kph / #colspan#"
+      "15 mph/25 kph"
     ],
     "variants": [
       {
@@ -29176,7 +29176,7 @@
           {
             "label": "L.C.C.",
             "value": "2295/1040 / 1765/800",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29206,7 +29206,7 @@
           {
             "label": "L.C.C.",
             "value": "2295/1040 / 1765/800",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29236,7 +29236,7 @@
           {
             "label": "L.C.C.",
             "value": "3210/1455 / 2470/1120",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29266,7 +29266,7 @@
           {
             "label": "L.C.C.",
             "value": "4730/2145 / 3640/1650",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29296,7 +29296,7 @@
           {
             "label": "L.C.C.",
             "value": "3120/1415 / 2405/1090",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29326,7 +29326,7 @@
           {
             "label": "L.C.C.",
             "value": "2580/1170 / 1985/900",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29356,7 +29356,7 @@
           {
             "label": "L.C.C.",
             "value": "4155/1885 / 3200/1450",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29386,7 +29386,7 @@
           {
             "label": "L.C.C.",
             "value": "6075/2755 / 4675/2120",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29416,7 +29416,7 @@
           {
             "label": "L.C.C.",
             "value": "5160/2340 / 3970/1800",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29446,7 +29446,7 @@
           {
             "label": "L.C.C.",
             "value": "7595/3445 / 5840/2650",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29476,7 +29476,7 @@
           {
             "label": "L.C.C.",
             "value": "5445/2470 / 4190/1900",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29506,7 +29506,7 @@
           {
             "label": "L.C.C.",
             "value": "6440/2920 / 4940/2240",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29536,7 +29536,7 @@
           {
             "label": "L.C.C.",
             "value": "8310/3770 / 6395/2900",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29566,7 +29566,7 @@
           {
             "label": "L.C.C.",
             "value": "8600/3900 / 6610/3000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29596,7 +29596,7 @@
           {
             "label": "L.C.C.",
             "value": "9890/4485 / 7605/3450",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29626,7 +29626,7 @@
           {
             "label": "L.C.C.",
             "value": "7815/3545 / 6010/2725",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29656,7 +29656,7 @@
           {
             "label": "L.C.C.",
             "value": "7815/3545 / 6010/2725",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29686,7 +29686,7 @@
           {
             "label": "L.C.C.",
             "value": "10470/4750 / 8050/3650",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29716,7 +29716,7 @@
           {
             "label": "L.C.C.",
             "value": "8600/3900 / 6615/3000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29746,7 +29746,7 @@
           {
             "label": "L.C.C.",
             "value": "12180/5525 / 9370/4250",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29776,7 +29776,7 @@
           {
             "label": "L.C.C.",
             "value": "10470/4750 / 8045/3650",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29806,7 +29806,7 @@
           {
             "label": "L.C.C.",
             "value": "10470/4750 / 8045/3650",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29836,7 +29836,7 @@
           {
             "label": "L.C.C.",
             "value": "12895/5850 / 9920/4500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29866,7 +29866,7 @@
           {
             "label": "L.C.C.",
             "value": "17195/7800 / 13230/6000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29896,7 +29896,7 @@
           {
             "label": "L.C.C.",
             "value": "19775/8970 / 15210/6900",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29926,7 +29926,7 @@
           {
             "label": "L.C.C.",
             "value": "13230/6000 / 11025/5000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29956,7 +29956,7 @@
           {
             "label": "L.C.C.",
             "value": "13230/6000 / 11025/5000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -29986,7 +29986,7 @@
           {
             "label": "L.C.C.",
             "value": "13230/6000 / 11025/5000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -30016,7 +30016,7 @@
           {
             "label": "L.C.C.",
             "value": "16660/7560 / 13890/6300",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -30046,7 +30046,7 @@
           {
             "label": "L.C.C.",
             "value": "16660/7560 / 13890/6300",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -30076,7 +30076,7 @@
           {
             "label": "L.C.C.",
             "value": "16660/7560 / 13890/6300",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -30106,7 +30106,7 @@
           {
             "label": "L.C.C.",
             "value": "17720/8040 / 14770/6700",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -30136,7 +30136,7 @@
           {
             "label": "L.C.C.",
             "value": "17720/8040 / 14770/6700",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -30166,7 +30166,7 @@
           {
             "label": "L.C.C.",
             "value": "24470/11100 / 20390/9250",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -30196,7 +30196,7 @@
           {
             "label": "L.C.C.",
             "value": "24470/11100 / 20390/9250",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -30226,7 +30226,7 @@
           {
             "label": "L.C.C.",
             "value": "24470/11100 / 20390/9250",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -30256,7 +30256,7 @@
           {
             "label": "L.C.C.",
             "value": "35880/16250 / 27600/12500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -30286,7 +30286,7 @@
           {
             "label": "L.C.C.",
             "value": "50180/22750 / 38600/17500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       }
@@ -30304,7 +30304,7 @@
     ],
     "units": [
       null,
-      "#colspan#",
+      null,
       null,
       null,
       "in. / mm",
@@ -30317,8 +30317,8 @@
         "fields": [
           {
             "label": "Alt Size",
-            "value": "4.80-8 / #colspan#",
-            "unit": "#colspan#"
+            "value": "4.80-8",
+            "unit": null
           },
           {
             "label": "Rim",
@@ -30352,8 +30352,8 @@
         "fields": [
           {
             "label": "Alt Size",
-            "value": "4.80-8 / #colspan#",
-            "unit": "#colspan#"
+            "value": "4.80-8",
+            "unit": null
           },
           {
             "label": "Rim",
@@ -30387,8 +30387,8 @@
         "fields": [
           {
             "label": "Alt Size",
-            "value": "4.80-8 / #colspan#",
-            "unit": "#colspan#"
+            "value": "4.80-8",
+            "unit": null
           },
           {
             "label": "Rim",
@@ -30422,8 +30422,8 @@
         "fields": [
           {
             "label": "Alt Size",
-            "value": "4.80-8 / #colspan#",
-            "unit": "#colspan#"
+            "value": "4.80-8",
+            "unit": null
           },
           {
             "label": "Rim",
@@ -30457,8 +30457,8 @@
         "fields": [
           {
             "label": "Alt Size",
-            "value": "5.70-8 / #colspan#",
-            "unit": "#colspan#"
+            "value": "5.70-8",
+            "unit": null
           },
           {
             "label": "Rim",
@@ -30492,8 +30492,8 @@
         "fields": [
           {
             "label": "Alt Size",
-            "value": "5.70-8 / #colspan#",
-            "unit": "#colspan#"
+            "value": "5.70-8",
+            "unit": null
           },
           {
             "label": "Rim",
@@ -30527,8 +30527,8 @@
         "fields": [
           {
             "label": "Alt Size",
-            "value": "5.70-8 / #colspan#",
-            "unit": "#colspan#"
+            "value": "5.70-8",
+            "unit": null
           },
           {
             "label": "Rim",
@@ -30562,8 +30562,8 @@
         "fields": [
           {
             "label": "Alt Size",
-            "value": "5.70-8 / #colspan#",
-            "unit": "#colspan#"
+            "value": "5.70-8",
+            "unit": null
           },
           {
             "label": "Rim",
@@ -30597,8 +30597,8 @@
         "fields": [
           {
             "label": "Alt Size",
-            "value": "5.70-8 / #colspan#",
-            "unit": "#colspan#"
+            "value": "5.70-8",
+            "unit": null
           },
           {
             "label": "Rim",
@@ -30632,8 +30632,8 @@
         "fields": [
           {
             "label": "Alt Size",
-            "value": "5.70-8 / #colspan#",
-            "unit": "#colspan#"
+            "value": "5.70-8",
+            "unit": null
           },
           {
             "label": "Rim",
@@ -30681,7 +30681,7 @@
       "in. / mm",
       "in. / mm",
       "in / mm",
-      "15 mph/25 kph / #colspan#"
+      "15 mph/25 kph"
     ],
     "variants": [
       {
@@ -30715,7 +30715,7 @@
           {
             "label": "L.C.C",
             "value": "2295/1040 / 1765/800",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -30750,7 +30750,7 @@
           {
             "label": "L.C.C",
             "value": "2295/1040 / 1765/800",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -30785,7 +30785,7 @@
           {
             "label": "L.C.C",
             "value": "2095/950 / 1610/730",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -30820,7 +30820,7 @@
           {
             "label": "L.C.C",
             "value": "3120/1415 / 2405/1090",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -30855,7 +30855,7 @@
           {
             "label": "L.C.C",
             "value": "3210/1455 / 2470/1120",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -30890,7 +30890,7 @@
           {
             "label": "L.C.C",
             "value": "4730/2145 / 3640/1650",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -30925,7 +30925,7 @@
           {
             "label": "L.C.C",
             "value": "5590/2535 / 4300/1950",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -30960,7 +30960,7 @@
           {
             "label": "L.C.C",
             "value": "2580/1170 / 1985/900",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -30995,7 +30995,7 @@
           {
             "label": "L.C.C",
             "value": "4155/1885 / 3200/1450",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31030,7 +31030,7 @@
           {
             "label": "L.C.C",
             "value": "4155/1885 / 3200/1450",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31065,7 +31065,7 @@
           {
             "label": "L.C.C",
             "value": "6075/2755 / 4675/2120",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31100,7 +31100,7 @@
           {
             "label": "L.C.C",
             "value": "5445/2470 / 4190/1900",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31135,7 +31135,7 @@
           {
             "label": "L.C.C",
             "value": "5160/2340 / 3970/1800",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31170,7 +31170,7 @@
           {
             "label": "L.C.C",
             "value": "5160/2340 / 3970/1800",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31205,7 +31205,7 @@
           {
             "label": "L.C.C",
             "value": "7595/3445 / 5840/2650",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31240,7 +31240,7 @@
           {
             "label": "L.C.C",
             "value": "8310/3770 / 6395/2900",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31275,7 +31275,7 @@
           {
             "label": "L.C.C",
             "value": "6440/2920 / 4940/2240",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31310,7 +31310,7 @@
           {
             "label": "L.C.C",
             "value": "6440/2920 / 4940/2240",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31345,7 +31345,7 @@
           {
             "label": "L.C.C",
             "value": "8600/3900 / 6610/3000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31380,7 +31380,7 @@
           {
             "label": "L.C.C",
             "value": "9890/4485 / 7605/3450",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31415,7 +31415,7 @@
           {
             "label": "L.C.C",
             "value": "8600/3900 / 6615/3000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31450,7 +31450,7 @@
           {
             "label": "L.C.C",
             "value": "8600/3900 / 6610/3000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31485,7 +31485,7 @@
           {
             "label": "L.C.C",
             "value": "12180/5525 / 9370/4250",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31520,7 +31520,7 @@
           {
             "label": "L.C.C",
             "value": "7815/3545 / 6010/2725",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31555,7 +31555,7 @@
           {
             "label": "L.C.C",
             "value": "7815/3545 / 6010/2725",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31590,7 +31590,7 @@
           {
             "label": "L.C.C",
             "value": "8600/3900 / 6615/3000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31625,7 +31625,7 @@
           {
             "label": "L.C.C",
             "value": "10230/4640 / 7870/3570",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31660,7 +31660,7 @@
           {
             "label": "L.C.C",
             "value": "10230/4640 / 7870/3570",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31695,7 +31695,7 @@
           {
             "label": "L.C.C",
             "value": "10470/4750 / 8050/3650",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31730,7 +31730,7 @@
           {
             "label": "L.C.C",
             "value": "10470/4750 / 8050/3650",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31765,7 +31765,7 @@
           {
             "label": "L.C.C",
             "value": "12895/5850 / 9920/4500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31800,7 +31800,7 @@
           {
             "label": "L.C.C",
             "value": "17195/7800 / 13230/6000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31835,7 +31835,7 @@
           {
             "label": "L.C.C",
             "value": "19775/8970 / 15210/6900",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31870,7 +31870,7 @@
           {
             "label": "L.C.C",
             "value": "19820/8990 / 15245/6915",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31905,7 +31905,7 @@
           {
             "label": "L.C.C",
             "value": "11905/5400 / 9920/4500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31940,7 +31940,7 @@
           {
             "label": "L.C.C",
             "value": "11905/5400 / 9920/4500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -31975,7 +31975,7 @@
           {
             "label": "L.C.C",
             "value": "11905/5400 / 9920/4500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32010,7 +32010,7 @@
           {
             "label": "L.C.C",
             "value": "13230/6000 / 11025/5000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32045,7 +32045,7 @@
           {
             "label": "L.C.C",
             "value": "13230/6000 / 11025/5000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32080,7 +32080,7 @@
           {
             "label": "L.C.C",
             "value": "13230/6000 / 11025/5000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32115,7 +32115,7 @@
           {
             "label": "L.C.C",
             "value": "13230/6000 / 11025/5000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32150,7 +32150,7 @@
           {
             "label": "L.C.C",
             "value": "13230/6000 / 11025/5000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32185,7 +32185,7 @@
           {
             "label": "L.C.C",
             "value": "16660/7560 / 13890/6300",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32220,7 +32220,7 @@
           {
             "label": "L.C.C",
             "value": "16660/7560 / 13890/6300",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32255,7 +32255,7 @@
           {
             "label": "L.C.C",
             "value": "17190/7800 / 14330/6500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32290,7 +32290,7 @@
           {
             "label": "L.C.C",
             "value": "16660/7560 / 13890/6300",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32325,7 +32325,7 @@
           {
             "label": "L.C.C",
             "value": "16660/7560 / 13890/6300",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32360,7 +32360,7 @@
           {
             "label": "L.C.C",
             "value": "17190/7800 / 14330/6500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32395,7 +32395,7 @@
           {
             "label": "L.C.C",
             "value": "17720/8040 / 14770/6700",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32430,7 +32430,7 @@
           {
             "label": "L.C.C",
             "value": "19840/9000 / 16535/7500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32465,7 +32465,7 @@
           {
             "label": "L.C.C",
             "value": "24470/11100 / 20390/9250",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       }
@@ -32488,7 +32488,7 @@
       "in. / mm",
       "in / mm",
       "in / mm",
-      "15 mph/25 kph / #colspan#"
+      "15 mph/25 kph"
     ],
     "variants": [
       {
@@ -32522,7 +32522,7 @@
           {
             "label": "L.C.C.",
             "value": "2205/1000 / 1700/770",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32557,7 +32557,7 @@
           {
             "label": "L.C.C.",
             "value": "2290/1040 / 1765/800",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32592,7 +32592,7 @@
           {
             "label": "L.C.C.",
             "value": "2290/1040 / 1765/800",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32627,7 +32627,7 @@
           {
             "label": "L.C.C.",
             "value": "2290/1040 / 1765/800",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32662,7 +32662,7 @@
           {
             "label": "L.C.C.",
             "value": "2290/1040 / 1765/800",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32697,7 +32697,7 @@
           {
             "label": "L.C.C.",
             "value": "2095/950 / 1610/730",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32732,7 +32732,7 @@
           {
             "label": "L.C.C.",
             "value": "2095/950 / 1610/730",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32767,7 +32767,7 @@
           {
             "label": "L.C.C.",
             "value": "3120/1415 / 2400/1090",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32802,7 +32802,7 @@
           {
             "label": "L.C.C.",
             "value": "3210/1455 / 2470/1120",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32837,7 +32837,7 @@
           {
             "label": "L.C.C.",
             "value": "4730/2145 / 3640/1650",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32872,7 +32872,7 @@
           {
             "label": "L.C.C.",
             "value": "2580/1170 / 1985/900",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32907,7 +32907,7 @@
           {
             "label": "L.C.C.",
             "value": "4155/1885 / 3200/1450",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32942,7 +32942,7 @@
           {
             "label": "L.C.C.",
             "value": "4155/1885 / 3200/1450",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -32977,7 +32977,7 @@
           {
             "label": "L.C.C.",
             "value": "6075/2755 / 4675/2120",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33012,7 +33012,7 @@
           {
             "label": "L.C.C.",
             "value": "5445/2470 / 4190/1900",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33047,7 +33047,7 @@
           {
             "label": "L.C.C.",
             "value": "5160/2340 / 3970/1800",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33082,7 +33082,7 @@
           {
             "label": "L.C.C.",
             "value": "7595/3445 / 5840/2650",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33117,7 +33117,7 @@
           {
             "label": "L.C.C.",
             "value": "6440/2920 / 4940/2240",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33152,7 +33152,7 @@
           {
             "label": "L.C.C.",
             "value": "8600/3900 / 6610/3000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33187,7 +33187,7 @@
           {
             "label": "L.C.C.",
             "value": "8600/3900 / 6610/3000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33222,7 +33222,7 @@
           {
             "label": "L.C.C.",
             "value": "7815/3545 / 6010/2725",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33257,7 +33257,7 @@
           {
             "label": "L.C.C.",
             "value": "8600/3900 / 6610/3000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33292,7 +33292,7 @@
           {
             "label": "L.C.C.",
             "value": "8600/3900 / 6610/3000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33327,7 +33327,7 @@
           {
             "label": "L.C.C.",
             "value": "10175/4615 / 7825/3550",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33362,7 +33362,7 @@
           {
             "label": "L.C.C.",
             "value": "10470/4750 / 8045/3650",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33397,7 +33397,7 @@
           {
             "label": "L.C.C.",
             "value": "10470/4750 / 8045/3650",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33432,7 +33432,7 @@
           {
             "label": "L.C.C.",
             "value": "10470/4750 / 8045/3650",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33467,7 +33467,7 @@
           {
             "label": "L.C.C.",
             "value": "12895/5850 / 9920/4500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33502,7 +33502,7 @@
           {
             "label": "L.C.C.",
             "value": "17195/7800 / 13230/6000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33537,7 +33537,7 @@
           {
             "label": "L.C.C.",
             "value": "13230/6000 / 11025/5000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33572,7 +33572,7 @@
           {
             "label": "L.C.C.",
             "value": "13230/6000 / 11025/5000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33607,7 +33607,7 @@
           {
             "label": "L.C.C.",
             "value": "13230/6000 / 11025/5000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33642,7 +33642,7 @@
           {
             "label": "L.C.C.",
             "value": "16660/7560 / 13890/6300",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33677,7 +33677,7 @@
           {
             "label": "L.C.C.",
             "value": "16660/7560 / 13890/6300",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -33712,7 +33712,7 @@
           {
             "label": "L.C.C.",
             "value": "17190/7800 / 14330/6500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       }
@@ -34959,7 +34959,7 @@
     ],
     "units": [
       null,
-      "#colspan#",
+      null,
       null,
       "in",
       "in",
@@ -34973,8 +34973,8 @@
         "fields": [
           {
             "label": "Alt Size",
-            "value": "31x10-20 / #colspan#",
-            "unit": "#colspan#"
+            "value": "31x10-20",
+            "unit": null
           },
           {
             "label": "Rim",
@@ -35013,8 +35013,8 @@
         "fields": [
           {
             "label": "Alt Size",
-            "value": "31x10-20 / #colspan#",
-            "unit": "#colspan#"
+            "value": "31x10-20",
+            "unit": null
           },
           {
             "label": "Rim",
@@ -35053,8 +35053,8 @@
         "fields": [
           {
             "label": "Alt Size",
-            "value": "33x12-20 / #colspan#",
-            "unit": "#colspan#"
+            "value": "33x12-20",
+            "unit": null
           },
           {
             "label": "Rim",
@@ -35093,8 +35093,8 @@
         "fields": [
           {
             "label": "Alt Size",
-            "value": "33x12-20 / #colspan#",
-            "unit": "#colspan#"
+            "value": "33x12-20",
+            "unit": null
           },
           {
             "label": "Rim",
@@ -35133,8 +35133,8 @@
         "fields": [
           {
             "label": "Alt Size",
-            "value": "36x14-20 / #colspan#",
-            "unit": "#colspan#"
+            "value": "36x14-20",
+            "unit": null
           },
           {
             "label": "Rim",
@@ -35173,8 +35173,8 @@
         "fields": [
           {
             "label": "Alt Size",
-            "value": "36x14-20 / #colspan#",
-            "unit": "#colspan#"
+            "value": "36x14-20",
+            "unit": null
           },
           {
             "label": "Rim",
@@ -35213,8 +35213,8 @@
         "fields": [
           {
             "label": "Alt Size",
-            "value": "40x14-20 / #colspan#",
-            "unit": "#colspan#"
+            "value": "40x14-20",
+            "unit": null
           },
           {
             "label": "Rim",
@@ -35253,8 +35253,8 @@
         "fields": [
           {
             "label": "Alt Size",
-            "value": "40x14-20 / #colspan#",
-            "unit": "#colspan#"
+            "value": "40x14-20",
+            "unit": null
           },
           {
             "label": "Rim",
@@ -35307,7 +35307,7 @@
       "in. / mm",
       "in / mm",
       "in / mm",
-      "15 mph/25 kph / #colspan#"
+      "15 mph/25 kph"
     ],
     "variants": [
       {
@@ -35341,7 +35341,7 @@
           {
             "label": "L.C.C.",
             "value": "13225/6000 / 11025/5000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       }
@@ -43102,7 +43102,7 @@
     ],
     "units": [
       null,
-      "#colspan#",
+      null,
       null,
       null,
       "in",
@@ -43116,8 +43116,8 @@
         "fields": [
           {
             "label": "Rim",
-            "value": "8.50 / #colspan#",
-            "unit": "#colspan#"
+            "value": "8.50",
+            "unit": null
           },
           {
             "label": "Tread",
@@ -43156,8 +43156,8 @@
         "fields": [
           {
             "label": "Rim",
-            "value": "8.50 / #colspan#",
-            "unit": "#colspan#"
+            "value": "8.50",
+            "unit": null
           },
           {
             "label": "Tread",
@@ -43196,8 +43196,8 @@
         "fields": [
           {
             "label": "Rim",
-            "value": "8.50 / #colspan#",
-            "unit": "#colspan#"
+            "value": "8.50",
+            "unit": null
           },
           {
             "label": "Tread",
@@ -43236,8 +43236,8 @@
         "fields": [
           {
             "label": "Rim",
-            "value": "8.50 / #colspan#",
-            "unit": "#colspan#"
+            "value": "8.50",
+            "unit": null
           },
           {
             "label": "Tread",
@@ -43294,7 +43294,7 @@
       "in / mm",
       "32nds / mm",
       "psi/KPa",
-      "15 mph/25 kph / #colspan#"
+      "15 mph/25 kph"
     ],
     "variants": [
       {
@@ -43338,7 +43338,7 @@
           {
             "label": "L.C.C.",
             "value": "4160/1885 / 3200/1450",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -43383,7 +43383,7 @@
           {
             "label": "L.C.C.",
             "value": "4730/2145 / 3640/1650",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -43428,7 +43428,7 @@
           {
             "label": "L.C.C.",
             "value": "3120/1415 / 2400/1090",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -43473,7 +43473,7 @@
           {
             "label": "L.C.C.",
             "value": "3785/1715 / 2910/1320",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -43518,7 +43518,7 @@
           {
             "label": "L.C.C.",
             "value": "4160/1885 / 3200/1450",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -43563,7 +43563,7 @@
           {
             "label": "L.C.C.",
             "value": "6970/3160 / 5360/2430",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -43608,7 +43608,7 @@
           {
             "label": "L.C.C.",
             "value": "7590/3445 / 5840/2650",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -43653,7 +43653,7 @@
           {
             "label": "L.C.C.",
             "value": "4290/1950 / 3300/1500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -43698,7 +43698,7 @@
           {
             "label": "L.C.C.",
             "value": "4730/2145 / 3640/1650",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -43743,7 +43743,7 @@
           {
             "label": "L.C.C.",
             "value": "6970/3160 / 5360/2430",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -43788,7 +43788,7 @@
           {
             "label": "L.C.C.",
             "value": "8320/3770 / 6400/2900",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -43833,7 +43833,7 @@
           {
             "label": "L.C.C.",
             "value": "5900/2680 / 4540/2060",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -43878,7 +43878,7 @@
           {
             "label": "L.C.C.",
             "value": "6085/2755 / 4680/2120",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -43923,7 +43923,7 @@
           {
             "label": "L.C.C.",
             "value": "8580/3900 / 6600/3000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -43968,7 +43968,7 @@
           {
             "label": "L.C.C.",
             "value": "9295/4225 / 7150/3250",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -44013,7 +44013,7 @@
           {
             "label": "L.C.C.",
             "value": "10205/4615 / 7850/3550",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -44058,7 +44058,7 @@
           {
             "label": "L.C.C.",
             "value": "8580/3900 / 6600/3000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -44103,7 +44103,7 @@
           {
             "label": "L.C.C.",
             "value": "10465/4745 / 8050/3650",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -44148,7 +44148,7 @@
           {
             "label": "L.C.C.",
             "value": "11115/5040 / 8550/3875",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -44193,7 +44193,7 @@
           {
             "label": "L.C.C.",
             "value": "7385/3350 / 5680/2575",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -44238,7 +44238,7 @@
           {
             "label": "L.C.C.",
             "value": "7995/3640 / 6150/2800",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -44283,7 +44283,7 @@
           {
             "label": "L.C.C.",
             "value": "9295/4225 / 7150/3250",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -44328,7 +44328,7 @@
           {
             "label": "L.C.C.",
             "value": "14300/6500 / 11000/5000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -44373,7 +44373,7 @@
           {
             "label": "L.C.C.",
             "value": "14820/6695 / 11400/5150",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -44418,7 +44418,7 @@
           {
             "label": "L.C.C.",
             "value": "12870/5850 / 9900/4500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -44463,7 +44463,7 @@
           {
             "label": "L.C.C.",
             "value": "14300/6500 / 11000/5000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -44508,7 +44508,7 @@
           {
             "label": "L.C.C.",
             "value": "17160/7800 / 13200/6000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -44553,7 +44553,7 @@
           {
             "label": "L.C.C.",
             "value": "20410/9230 / 15700/7100",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -44598,7 +44598,7 @@
           {
             "label": "L.C.C.",
             "value": "20930/9490 / 16100/7300",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -44643,7 +44643,7 @@
           {
             "label": "L.C.C.",
             "value": "21450/9750 / 16500/7500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -44688,7 +44688,7 @@
           {
             "label": "L.C.C.",
             "value": "22230/10075 / 17100/7750",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -44733,7 +44733,7 @@
           {
             "label": "L.C.C.",
             "value": "28600/13000 / 22000/10000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       }
@@ -45440,48 +45440,7 @@
       },
       {
         "size": "MS802W",
-        "fields": [
-          {
-            "label": "PR",
-            "value": "#colspan#",
-            "unit": null
-          },
-          {
-            "label": "Type",
-            "value": "#colspan#",
-            "unit": null
-          },
-          {
-            "label": "Rim",
-            "value": "#colspan#",
-            "unit": null
-          },
-          {
-            "label": "O.D.",
-            "value": "#colspan#",
-            "unit": "in. / mm"
-          },
-          {
-            "label": "S.W.",
-            "value": "#colspan#",
-            "unit": "in / mm"
-          },
-          {
-            "label": "T.D.",
-            "value": "#colspan#",
-            "unit": "32nds / mm"
-          },
-          {
-            "label": "Infl. P.",
-            "value": "#colspan#",
-            "unit": "psi/KPa"
-          },
-          {
-            "label": "L.C.C.",
-            "value": "#colspan#",
-            "unit": "15 mph/25 kph / 30 mph/50 kph"
-          }
-        ]
+        "fields": []
       },
       {
         "size": "8.75-16.5",
@@ -45596,7 +45555,7 @@
       "in. / mm",
       "32nds / mm",
       "psi/KPa",
-      "15 mph/25 kph / #colspan#"
+      "15 mph/25 kph"
     ],
     "variants": [
       {
@@ -45640,7 +45599,7 @@
           {
             "label": "L.C.C.",
             "value": "20410/9230 / 15700/7100",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -45685,7 +45644,7 @@
           {
             "label": "L.C.C.",
             "value": "28600/13000 / 22000/10000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -45730,7 +45689,7 @@
           {
             "label": "L.C.C.",
             "value": "28600/13000 / 22000/10000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -45775,7 +45734,7 @@
           {
             "label": "L.C.C.",
             "value": "50180/22750 / 38600/17500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -45820,7 +45779,7 @@
           {
             "label": "L.C.C.",
             "value": "35880/16250 / 27600/12500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -45865,7 +45824,7 @@
           {
             "label": "L.C.C.",
             "value": "50180/22750 / 38600/17500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -45910,54 +45869,13 @@
           {
             "label": "L.C.C.",
             "value": "60710/27560 / 46700/21200",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
       {
         "size": "*Load rating for counterbalanced industrial cyclic application. Please contact a MAXAM representative for other applications.",
-        "fields": [
-          {
-            "label": "PR",
-            "value": "#colspan#",
-            "unit": null
-          },
-          {
-            "label": "Type",
-            "value": "#colspan#",
-            "unit": null
-          },
-          {
-            "label": "Rim",
-            "value": "#colspan#",
-            "unit": null
-          },
-          {
-            "label": "O.D.",
-            "value": "#colspan#",
-            "unit": "in / mm"
-          },
-          {
-            "label": "S.W.",
-            "value": "#colspan#",
-            "unit": "in. / mm"
-          },
-          {
-            "label": "T.D.",
-            "value": "#colspan#",
-            "unit": "32nds / mm"
-          },
-          {
-            "label": "Infl. P.",
-            "value": "#colspan#",
-            "unit": "psi/KPa"
-          },
-          {
-            "label": "L.C.C.",
-            "value": "#colspan#",
-            "unit": "15 mph/25 kph / #colspan#"
-          }
-        ]
+        "fields": []
       }
     ]
   },
@@ -45982,7 +45900,7 @@
       "in. / mm",
       "32nds / mm",
       "psi/KPa",
-      "15 mph/25 kph / #colspan#"
+      "15 mph/25 kph"
     ],
     "variants": [
       {
@@ -46026,7 +45944,7 @@
           {
             "label": "L.C.C.",
             "value": "20410/9230 / 15700/7100",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -46071,7 +45989,7 @@
           {
             "label": "L.C.C.",
             "value": "28600/13000 / 22000/10000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -46116,7 +46034,7 @@
           {
             "label": "L.C.C.",
             "value": "28600/13000 / 22000/10000",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -46161,7 +46079,7 @@
           {
             "label": "L.C.C.",
             "value": "50180/22750 / 38600/17500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -46206,7 +46124,7 @@
           {
             "label": "L.C.C.",
             "value": "35880/16250 / 27600/12500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -46251,7 +46169,7 @@
           {
             "label": "L.C.C.",
             "value": "50180/22750 / 38600/17500",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
@@ -46296,54 +46214,13 @@
           {
             "label": "L.C.C.",
             "value": "60710/27560 / 46700/21200",
-            "unit": "15 mph/25 kph / #colspan#"
+            "unit": "15 mph/25 kph"
           }
         ]
       },
       {
         "size": "*Load rating for counterbalanced industrial cyclic application. Please contact a MAXAM representative for other applications.",
-        "fields": [
-          {
-            "label": "PR",
-            "value": "#colspan#",
-            "unit": null
-          },
-          {
-            "label": "Type",
-            "value": "#colspan#",
-            "unit": null
-          },
-          {
-            "label": "Rim",
-            "value": "#colspan#",
-            "unit": null
-          },
-          {
-            "label": "O.D.",
-            "value": "#colspan#",
-            "unit": "in / mm"
-          },
-          {
-            "label": "S.W.",
-            "value": "#colspan#",
-            "unit": "in. / mm"
-          },
-          {
-            "label": "T.D.",
-            "value": "#colspan#",
-            "unit": "32nds / mm"
-          },
-          {
-            "label": "Infl. P.",
-            "value": "#colspan#",
-            "unit": "psi/KPa"
-          },
-          {
-            "label": "L.C.C.",
-            "value": "#colspan#",
-            "unit": "15 mph/25 kph / #colspan#"
-          }
-        ]
+        "fields": []
       }
     ]
   },

@@ -1,6 +1,9 @@
 # Plan — Close the product-specs Notion loop
 
-> Status: **PROPOSED (awaiting buy-in)** — 2026-06-17. No Notion writes until approved.
+> Status: **DONE — 2026-06-17.** Specs now flow from Notion; `build-product-specs.ts`
+> deleted; `data.ts` keys specs by canonical slug. Verified in rendered output
+> (1568 spec-viewer pages; 0 `#colspan#`; corruption fixed; duplicate-header
+> columns correct). History below kept as the record of how/why.
 > Closes the open loop in CLAUDE.md "Known issues": product specs are built from a
 > frozen WP export (`build-product-specs.ts`), so editing specs in Notion does
 > nothing. This makes specs flow from Notion like all other editorial content
