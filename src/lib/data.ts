@@ -55,7 +55,7 @@ import { join } from 'node:path';
 // dev` and `astro build`, so the path is stable.
 const blocksDir = join(process.cwd(), 'src', 'data', 'notion-content', 'blocks');
 
-function readBlocks(type: 'product' | 'article' | 'event' | 'page', locale: string, slug: string): any[] {
+function readBlocks(type: 'product' | 'article' | 'event', locale: string, slug: string): any[] {
   const file = join(blocksDir, `${type}-${locale}-${slug}.json`);
   if (!existsSync(file)) return [];
   try {
@@ -721,25 +721,6 @@ export function getPageContent(locale: Locale, slug: string): PageContent | unde
   };
 }
 
-/** Notion block body for a long-form content page (sustainability, legal…),
- *  in the requested locale. `slug` is locale-stable. Falls back to English when
- *  a page hasn't been translated yet, so the page is available in every locale
- *  (in English) rather than 404ing. Empty array only if no English body either. */
-export function getPageBlocks(locale: Locale, slug: string): any[] {
-  const lang = contentLang(locale);
-  const own = readBlocks('page', lang, slug);
-  if (own.length > 0) return own;
-  return lang === 'en' ? own : readBlocks('page', 'en', slug);
-}
-
-/** Does a content page with a block body exist for this (locale, slug)? Used by
- *  the generic content-page route to know which pages to statically generate. */
-export function getContentPages(locale: Locale): { slug: string; title: string }[] {
-  const lang = contentLang(locale);
-  return pages
-    .filter((p) => p.language === lang && getPageBlocks(locale, p.slug).length > 0)
-    .map((p) => ({ slug: p.slug, title: p.title }));
-}
 
 /**
  * Get the promo cards owned by a page, in the requested locale, sorted by order.

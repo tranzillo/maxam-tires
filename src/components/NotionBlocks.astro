@@ -167,22 +167,6 @@ function tableRows(block: any): any[] {
       );
     }
     case 'callout': {
-      // Stat-card convention: a callout whose text is "VALUE | LABEL" (e.g.
-      // "16.43% | Reduced carbon emissions") renders as a styled stat card
-      // rather than a generic callout. Lets editors author data points as plain
-      // Notion callouts. See scripts/seed-sustainability-page.ts.
-      const calloutText = (block.callout?.rich_text ?? [])
-        .map((r: any) => r.plain_text ?? r.text?.content ?? '')
-        .join('');
-      const statMatch = calloutText.match(/^\s*([^|]+?)\s*\|\s*(.+?)\s*$/);
-      if (statMatch && /\d/.test(statMatch[1])) {
-        return (
-          <div class="prose-stat">
-            <span class="prose-stat__value">{statMatch[1]}</span>
-            <span class="prose-stat__label">{statMatch[2]}</span>
-          </div>
-        );
-      }
       const icon = block.callout?.icon?.emoji ?? '💡';
       return (
         <div class="prose-callout">

@@ -124,6 +124,20 @@ lookups use the resolved 10. `getLang`/`getDir`/`localeName` cover all 14.
     buttons of the same size match height — pair by size.
 13. **Footer = top-level link parity with the header** (Products, Resources,
     Contact, Dealer Login). No subnav columns.
+14. **TWO page templates — exactly two, no third way** (the central architectural
+    decision; 2026-06-17):
+    - **Designed landing pages** — *home, sustainability, why-maxam, ecopoint3.*
+      Bespoke layouts with structured content fields on a Notion Page (dotted keys
+      like `hero.heading`, read via `getPageContent`/`pageText`) + a purpose-built
+      Astro template + design components (stat cards, section strips, etc.). Use
+      this for any page whose value is its *design*, not a wall of prose.
+    - **Block content** — *resources/articles, product bodies, legal pages.*
+      Long-form prose stored as a Notion **block body**, rendered by
+      `NotionBlocks` + `prose-content.css`. Use this for editorial prose.
+    Do NOT invent a per-page content pipeline. A new page is one of these two —
+    pick by "is it designed, or is it prose?" The reverted sustainability attempt
+    broke this by putting a designed page through the block-content path and then
+    bolting on a one-off stat-card convention; that is exactly what #14 forbids.
 
 ---
 
@@ -219,21 +233,27 @@ a locale.
 - **Contact offices hardcoded** in `contact/index.astro` frontmatter (should be a
   Notion record). **Featured-product** logic and **homepage Pages content** for
   the 6 unsynced languages still incomplete.
-- **`/sustainability` page + events routing — FIXED 2026-06-17.** The
-  sustainability page is built (`src/pages/[locale]/sustainability.astro`),
-  content stored as a Notion **Page block body** (seeded by
-  `scripts/seed-sustainability-page.ts`, reinterpreted from the WP ACF page into
-  our design system). The homepage CTA now resolves. Events were folded into the
-  Resource Center feed (`getAllResources` → `eventToArticle`); the 'event' filter
-  now has content, and event cards render non-linking (no detail page). Long-form
-  content pages use the new page-block pipeline: `fetchPages` captures a block
-  body, `splitBlocks(pages,'page')` writes a `page-<lang>-<slug>.json` sidecar,
-  `getPageBlocks` reads it (with **English fallback** for untranslated locales).
-  Stat cards are a render convention: a `callout` whose text is `VALUE | LABEL`
-  → styled `.prose-stat`. **Still to port (later, by design — they're ACF
-  page-builder layouts, NOT clean content):** why-maxam, ecopoint3, privacy-
-  policy, warranty, compliance; the tire-pressure calculator needs a rebuild.
-  Job postings + category intro copy: skipped by decision.
+- **Events routing — FIXED 2026-06-17.** Events were folded into the Resource
+  Center feed (`getAllResources` → `eventToArticle`); the 'event' filter now has
+  content, and event cards render non-linking (no detail page).
+- **`/sustainability` page — NOT built (reverted 2026-06-17).** A first attempt
+  was built as block content and **reverted** because it violated the page-
+  architecture decision (#14 below) AND because the content was rewritten rather
+  than ported (a serious process failure — see below). The homepage CTA points to
+  `/sustainability` and is a **dead link** again (pre-existing). When rebuilt, it
+  must be a **designed landing page** (homepage pattern: structured fields +
+  bespoke template), with **verbatim** WP copy.
+- **Pages still to port (designed landing pages, by design — ACF layouts, not
+  clean prose):** sustainability, why-maxam, ecopoint3. **Legal pages** (privacy-
+  policy, warranty, compliance) are short content pages. Tire-pressure calculator
+  needs a rebuild. Job postings + category intro copy: skipped by decision.
+- **⚠ CONTENT-FIDELITY RULE (added 2026-06-17 after a failure):** editorial copy
+  is the client's and must be ported **VERBATIM** — never reword, paraphrase,
+  invent connective text, drop, or reorder. "Reinterpret into our design system"
+  means LAYOUT/visual only; the WORDS never change. The first sustainability
+  attempt rewrote MAXAM's marketing copy and was thrown away. Audit confirmed the
+  rewriting was isolated to that one page; all other migrations (specs, articles,
+  tables) transform real source data mechanically and are faithful.
 - **WP↔Notion article divergence — RESOLVED 2026-06-17.** The Notion Articles DB
   had drifted into an incomplete copy: 34 articles missing entirely (the
   table-containing ones, never re-imported after the converter fix) and 16 with
