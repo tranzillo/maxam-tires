@@ -234,13 +234,18 @@ a locale.
   page-builder layouts, NOT clean content):** why-maxam, ecopoint3, privacy-
   policy, warranty, compliance; the tire-pressure calculator needs a rebuild.
   Job postings + category intro copy: skipped by decision.
-- **⚠ `npm run sync` (full) DROPS the 34 table-fixed articles.** They live in the
-  snapshot + sidecars but NOT in the current Notion Articles DB (the known
-  WP↔Notion divergence). A full sync rewrites `articles.json` from Notion only
-  (358→323 en) and silently removes them, regressing the `[table content
-  omitted]` fix. **After any full sync, restore the dropped article rows from the
-  prior `articles.json` (git HEAD) before building** — or scope syncs to avoid
-  rewriting articles. Encountered + repaired 2026-06-17.
+- **WP↔Notion article divergence — RESOLVED 2026-06-17.** The Notion Articles DB
+  had drifted into an incomplete copy: 34 articles missing entirely (the
+  table-containing ones, never re-imported after the converter fix) and 16 with
+  truncated bodies from an older converter import (e.g. 7 blocks where the current
+  converter produces 112). A full `npm run sync` reads Notion only, so it silently
+  dropped/truncated those — destructive to articles. **Fixed by realigning Notion
+  to the complete WP extract:** `scripts/realign-articles-to-notion.ts` re-imported
+  the 50 affected articles (slug-matched, full bodies via the fixed converter;
+  missing→create, truncated→archive+recreate). Notion is now 357 en (== snapshot);
+  a verified full sync reproduces all 357 with full bodies + intact tables, 0
+  dropped/truncated. **A full sync is no longer destructive to articles.** The
+  realign script is idempotent — re-run it if the DB ever drifts again.
 - **Images**: ~900 product/article images hotlink the live maxamtire.com —
   re-host before launch.
 - **The "three half-finished migrations" cluster is CLOSED** (2026-06-13):

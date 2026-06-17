@@ -1,5 +1,855 @@
 [
   {
+    "pageId": "38234d6d-7cea-81b6-8bf2-e21226cf441f",
+    "wpId": 6472,
+    "trid": 32585,
+    "language": "en",
+    "title": "THE NEW MAXAM MS503",
+    "slug": "the-new-maxam-ms503",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2019-07-16",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/IMG_3882-scaled-e1621457136521.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8194-a30d-f824543e1cad",
+    "wpId": 6485,
+    "trid": 32598,
+    "language": "en",
+    "title": "THE NEW MAXAM MS931",
+    "slug": "the-new-maxam-ms931",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2019-08-19",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/9E8A9264-scaled.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-81c8-91ab-df1d192ff59f",
+    "wpId": 6511,
+    "trid": 32624,
+    "language": "en",
+    "title": "MAXAM EXPANDS LARGE MINING SERIES",
+    "slug": "maxam-expands-large-mining-series",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2019-10-15",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/20180228_121829-scaled.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-814b-9a3d-f5ffc7de287f",
+    "wpId": 6577,
+    "trid": 32690,
+    "language": "en",
+    "title": "MAXAM TIRE EXPANDS PORT SERIES",
+    "slug": "maxam-tire-expands-port-series",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2020-05-05",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/unnamed.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-81b3-885f-c15a6e78af8f",
+    "wpId": 6618,
+    "trid": 32731,
+    "language": "en",
+    "title": "MAXAM ANNOUNCES A NEW LARGE HAULAGE TIRE – THE MS453",
+    "slug": "maxam-announces-a-new-large-haulage-tire-the-ms453",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2020-09-15",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/Marigold_MS453_6_edited.png",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-813e-9250-f0a477d7bf98",
+    "wpId": 6631,
+    "trid": 32744,
+    "language": "en",
+    "title": "MAXAM ENHANCES THE FORESTRY SERIES WITH THE NEW MS930",
+    "slug": "maxam-enhances-the-forestry-series-with-the-new-ms930",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2020-10-13",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/MS930_product-angles.png",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8114-8290-f761639260e2",
+    "wpId": 6644,
+    "trid": 32757,
+    "language": "en",
+    "title": "THE ALL-NEW MAXAM MS709 SOLID TELEHANDLER",
+    "slug": "the-all-new-maxam-ms709-solid-telehandler",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2020-10-27",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/1300-24-MS709-Assemblies-Pic.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-81c7-9ce4-d652b710af2d",
+    "wpId": 6657,
+    "trid": 32770,
+    "language": "en",
+    "title": "The All New MAXAM Mining Haulage Tire – MS412",
+    "slug": "the-all-new-maxam-mining-haulage-tire-ms412",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2020-11-10",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/200917_Maxam-Tires_MS412-TREAD-scaled.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8146-a6d2-c87508700b69",
+    "wpId": 6734,
+    "trid": 32847,
+    "language": "en",
+    "title": "MAXAM MS302 BOASTS A COMPLETE LINE WITH NEW SIZES",
+    "slug": "maxam-ms302-boasts-a-complete-line-with-new-sizes-2",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2021-02-02",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/DSC_0312-scaled.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-81ff-9558-e3f51dc68876",
+    "wpId": 6721,
+    "trid": 32834,
+    "language": "en",
+    "title": "MS910R DELIVERING VERSATILE SOLUTIONS TO THE INDUSTRY",
+    "slug": "ms910r-delivering-versatile-solutions-to-the-industry",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2021-02-23",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/TSC7219.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8188-927b-fb148a74e53e",
+    "wpId": 6696,
+    "trid": 32809,
+    "language": "en",
+    "title": "MAXAM SOLID OTR MS708 - THE  EVOLUTIONARY PERFORMANCE",
+    "slug": "maxam-ms302-boasts-a-complete-line-with-new-sizes",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2021-03-01",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/P1020759.MP4.00_00_11_17.Still002.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-81a1-be4c-f90ff802a5dd",
+    "wpId": 6747,
+    "trid": 32860,
+    "language": "en",
+    "title": "MAXAM DEBUTS THE FULL MS933 LOGXTRA SERIES",
+    "slug": "maxam-debuts-the-full-ms933-logxtra-series",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2021-05-04",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/MAXAM_Stills_24-scaled.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8170-96db-f457c2dcd0fe",
+    "wpId": 5789,
+    "trid": 13703,
+    "language": "en",
+    "title": "Top Trends in Agriculture: Implement Tires",
+    "slug": "implement-tire-trends",
+    "type": "blog",
+    "excerpt": "Agriculture is a prime example of the Axiom: “Necessity is the mother of all invention”. Tire technology has evolved dramatically in the last twenty years...",
+    "publishedDate": "2021-05-05",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/iStock-164458970-scaled.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8126-973f-d07e41771a73",
+    "wpId": 5802,
+    "trid": 13706,
+    "language": "en",
+    "title": "Operator Tips to Reduce Soil Compaction",
+    "slug": "operator-tips-to-reduce-soil-compaction",
+    "type": "blog",
+    "excerpt": "In agricultural operations, the primary driver for increased crop results or yields is the impact of soil compaction on the plant’s ability to grow. Soil compaction occurs when stress is applied to a surface soil causing...",
+    "publishedDate": "2021-05-05",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/Tyremax-Maxam-9-scaled.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8115-9c5f-dce160b9b871",
+    "wpId": 5867,
+    "trid": 13721,
+    "language": "en",
+    "title": "How to Reduce Emission Rates with Carbon Sequestration",
+    "slug": "maxam-on-carbon-sequestration-and-how-to-reduce-rates",
+    "type": "blog",
+    "excerpt": "Animal manure is used as the primary fertilizer or crop nutrient/booster. Agriculture naturally generates carbon emissions as organic matter in feed or manure decomposes under anaerobic conditions...",
+    "publishedDate": "2021-06-18",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/heiko-janowski-XLmWt913EOc-unsplash-scaled.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-81b7-8b1d-f81a14462ebb",
+    "wpId": 6773,
+    "trid": 32886,
+    "language": "en",
+    "title": "INTRODUCING THE HIGH-TRACTION MS303 SCRAPER TIRE",
+    "slug": "introducing-the-high-traction-ms303-scraper-tire",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2021-07-20",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/14647753457_66e06a17ca_o-scaled.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8185-8ec8-e9bd3c6f75c5",
+    "wpId": 6812,
+    "trid": 32925,
+    "language": "en",
+    "title": "MS708 DELIVERS A ZERO-MAINTENACE SOLUTION TO MODERN WHEEL LOADERS",
+    "slug": "ms708-delivers-a-zero-maintenace-solution-to-modern-wheel-loaders",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2021-09-14",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/PXL_20210720_135333916-scaled.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-81d6-b7e2-e4d872d17a55",
+    "wpId": 6838,
+    "trid": 32951,
+    "language": "en",
+    "title": "MAXAM TIRE RIGID HAUL TRUCK MS403 BOASTS ITS LARGEST SIZE",
+    "slug": "maxam-tire-rigid-haul-truck-ms403-boasts-its-largest-size",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2021-10-04",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/MS403-63-website_thumbnail-1.png",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-812d-96b4-c0ce1f9c67d9",
+    "wpId": 5932,
+    "trid": 13736,
+    "language": "en",
+    "title": "What Tire Construction Means for Agriculture",
+    "slug": "maxam-on-ag-tire-construction-which-is-best-for-each-application",
+    "type": "blog",
+    "excerpt": "",
+    "publishedDate": "2021-10-04",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/ag-tire-talk.png",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-81e2-a28f-c947372d0bd6",
+    "wpId": 6825,
+    "trid": 32938,
+    "language": "en",
+    "title": "MAXAM MS503 BOASTS A NEW SIZE IN THE 65-SERIES",
+    "slug": "maxam-ms503-boasts-a-new-size-in-65-series",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2021-10-19",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/IMG_3882-scaled-e1634564372842.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-81cb-9152-c6bfa0298ab3",
+    "wpId": 6851,
+    "trid": 32964,
+    "language": "en",
+    "title": "MAXAM EXPANDS THE MS930 LOGXTRA SERIES",
+    "slug": "maxam-expands-the-ms930-logxtra-series",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2021-11-16",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/MAXAM_Stills_11-scaled.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8127-a37e-e9c6dd04ce99",
+    "wpId": 25865,
+    "trid": 94508,
+    "language": "en",
+    "title": "Sprayer Tires vs. Tractor Tires",
+    "slug": "differences-between-a-row-crop-sprayer-tire-and-a-tractor-tire",
+    "type": "blog",
+    "excerpt": "Like all industries, the agricultural market is constantly being driven by the forces of necessity or by the need to improve an existing product to meet evolving demands.",
+    "publishedDate": "2021-12-15",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/12/field-of-crops.png",
+    "author": "maxam",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8176-bf3e-f98bbaa70638",
+    "wpId": 6890,
+    "trid": 33003,
+    "language": "en",
+    "title": "MAXAM Tire Debuts VF Technology at the 2022 National Farm Machinery Show",
+    "slug": "maxam-tire-debuts-vf-technology-at-the-2022-national-farm-machinery-show",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2022-02-01",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/4.png",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-81c9-b4f1-deade7fa1fbd",
+    "wpId": 5973,
+    "trid": 13749,
+    "language": "en",
+    "title": "Optimize Ag Tire Traction with Wheel Slip",
+    "slug": "maxam-tire-on-optimized-traction-in-ag-applications",
+    "type": "blog",
+    "excerpt": "Understanding why it is important for AG Tires to have a small slip percentage to optimize traction, recommendations for % of slip for MFWD & 4WD Tractors, and how tire physics and slip ratios differ from tracks?",
+    "publishedDate": "2022-03-01",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/1-2-e1646081123877.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-81bd-a944-d07e1cf16ec7",
+    "wpId": 6903,
+    "trid": 33016,
+    "language": "en",
+    "title": "MAXAM Tire Grows the MS915 Series for Modern Machinery",
+    "slug": "maxam-tire-grows-the-ms915-series-for-modern-machinery",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2022-04-04",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/ms915_th.png",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-81b2-adba-d7f7e0e65d37",
+    "wpId": 5999,
+    "trid": 13755,
+    "language": "en",
+    "title": "How RFID and Smart Tire Technology are Transforming Agricultural Performance",
+    "slug": "maxam-on-precision-agriculture-tire-sensors-and-rfid-tags-in-ag-tire-use",
+    "type": "blog",
+    "excerpt": "",
+    "publishedDate": "2022-04-19",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/loren-king-bp4Kj6RMH9E-unsplash-scaled.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-814f-a9a7-d7afa25d2c98",
+    "wpId": 6038,
+    "trid": 13764,
+    "language": "en",
+    "title": "When Should You Replace Tractor Tires?",
+    "slug": "maxam-on-when-a-producer-should-replace-their-agricultural-tires",
+    "type": "blog",
+    "excerpt": "",
+    "publishedDate": "2022-06-20",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/dualled-3.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8186-ab87-d422f55f9651",
+    "wpId": 6051,
+    "trid": 13767,
+    "language": "en",
+    "title": "Ag Tire Tips to Reduce Fuel Consumption",
+    "slug": "maxam-on-precision-agriculture-tire-tactics-to-reduce-fuel-consumption",
+    "type": "blog",
+    "excerpt": "",
+    "publishedDate": "2022-09-07",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/john-mark-strange-vJRxicBIFeM-unsplash-1-scaled.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8136-9619-cf68d9c50eca",
+    "wpId": 6993,
+    "trid": 33106,
+    "language": "en",
+    "title": "MAXAM Tire Adds New Sizes to the AGRIXTRA 70 & 65 Family of Agricultural Tires",
+    "slug": "maxam-tire-adds-new-sizes-to-the-agrixtra-70-65-family",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2022-09-27",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/Screenshot-2022-09-20-162134.png",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8141-b9e0-d044e7b84b43",
+    "wpId": 6064,
+    "trid": 13770,
+    "language": "en",
+    "title": "Single Digit PSI Tire Pressure for Agriculture",
+    "slug": "maxam-on-precision-agriculture-single-digit-psis",
+    "type": "blog",
+    "excerpt": "",
+    "publishedDate": "2022-12-06",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/iStock-1254421735-scaled.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-81cd-b583-ea41b028fce1",
+    "wpId": 7046,
+    "trid": 33159,
+    "language": "en",
+    "title": "MAXAM Tire Announces the All-New MS962R AGILXTRA Series",
+    "slug": "maxam-tire-announces-the-all-new-ms962r-agilxtra-series",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2023-01-02",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/agilxtra-MS962R.png",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8173-898e-d4e11bab441f",
+    "wpId": 6116,
+    "trid": 13782,
+    "language": "en",
+    "title": "VF Tires and Standard Tires: Which Ag Tire is Right for You?",
+    "slug": "which-tractor-tires-should-you-choose-standard-or-vf",
+    "type": "blog",
+    "excerpt": "From the outside, there is no way to tell the product differences between standard and VF agricultural tires. The shape will be similar, and the number of lugs may only change based on specific tire sizes – so what makes one better than the other?",
+    "publishedDate": "2023-05-02",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/jason-edwards-SH5AC4ATqZQ-unsplash-1-scaled.jpg",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8198-92ba-cae79d4ec751",
+    "wpId": 6142,
+    "trid": 13788,
+    "language": "en",
+    "title": "How To Understand Tractor Tire Markings",
+    "slug": "how-to-understand-the-markings-on-your-tractor-tires",
+    "type": "blog",
+    "excerpt": "",
+    "publishedDate": "2023-05-10",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/1682409540216.png",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-810c-a736-f9645a6f20e4",
+    "wpId": 6207,
+    "trid": 13803,
+    "language": "en",
+    "title": "Proper mining conditions and how to extend your mining tire life",
+    "slug": "proper-mining-conditions-and-how-to-extend-your-mining-tire-life",
+    "type": "blog",
+    "excerpt": "With rigid haul truck tires being one of the highest expenses for your mining operations, maintaining proper mining conditions for the tires plays a key role in extending tire life. In this article, we discuss in depth factors that affect your mining tire’s life and some ways to improve site conditions, ensuring maximum tire life and productivity.",
+    "publishedDate": "2023-05-23",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/Proper-mining-conditions-and-how-to-extend-tire-life-thumbnail.png",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-811e-b06d-ff66093457a3",
+    "wpId": 6259,
+    "trid": 13815,
+    "language": "en",
+    "title": "Strategic Haul Road Management for OTR Tire Performance",
+    "slug": "proper-road-conditions-for-otr-tires",
+    "type": "blog",
+    "excerpt": "With rigid haul truck tires being one of the highest expenses for your mining operations, maintaining proper mining conditions for the tires plays a key role in extending tire life.",
+    "publishedDate": "2023-06-27",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/Proper-road-conditions-for-OTR-tires_thumbnail.png",
+    "author": "Steve Cunningham",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8160-b83c-ec154bc9f566",
+    "wpId": 25820,
+    "trid": 94500,
+    "language": "en",
+    "title": "How to identify damaged OTR tires",
+    "slug": "how-to-identify-damaged-otr-tires-2",
+    "type": "blog",
+    "excerpt": "It’s vital for operations to inspect their OTR tires daily to maximize tire life and productivity.",
+    "publishedDate": "2023-12-15",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/12/how-to-identify-damaged-otr-tires.png",
+    "author": "maxam",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-81f5-ab05-eda0924a7b62",
+    "wpId": 25896,
+    "trid": 94514,
+    "language": "en",
+    "title": "Why Ag Tires Use 45 Degree Lug Design",
+    "slug": "45-degree-lug-design",
+    "type": "blog",
+    "excerpt": "When reviewing tire tread designs for traction across various applications and surface conditions, the best traction available for any operation in softer soils or cropped fields would be a flat or horizontal traction bar like a military tank tread or tracked dozer.",
+    "publishedDate": "2023-12-15",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/12/45-degree-lug-design.jpeg",
+    "author": "maxam",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8185-8ad2-c9d91cba596d",
+    "wpId": 30307,
+    "trid": 95077,
+    "language": "en",
+    "title": "Ag Tire Life Span",
+    "slug": "ag-tire-life-span",
+    "type": "blog",
+    "excerpt": "",
+    "publishedDate": "2024-03-28",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2024/03/chris-ensminger-yJDZTDeHeG8-unsplash-1.jpg",
+    "author": "Jennifer Krouse",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-811c-a9e6-f4dc37c730ff",
+    "wpId": 30379,
+    "trid": 95087,
+    "language": "en",
+    "title": "Top Tire Tips to Promote Forklift Safety Practices",
+    "slug": "top-5-tips-to-maximize-forklift-tire-safety-and-efficiency",
+    "type": "blog",
+    "excerpt": "Optimize your forklift tire's performance and longevity, and maximize your fleet's safety. In this article, we discuss some forklift tire components, types of application, most common tire breakdowns, tire replacement vs. opportunity cost, what to inspect on your forklift tires and so much more.",
+    "publishedDate": "2024-04-01",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2024/04/Top-5-tips-to-maximize-forklift-tire-safety-and-efficiency-thumbnail.png",
+    "author": "Molly Chen",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-81d9-bdec-d09aa0f47fd0",
+    "wpId": 30502,
+    "trid": 95093,
+    "language": "en",
+    "title": "How to best maintain your construction equipment tires",
+    "slug": "how-to-best-maintain-your-construction-equipment-tires",
+    "type": "blog",
+    "excerpt": "In addition to maintaining your construction equipment, maintaining your construction machine’s tires is equally important to run an efficient operation. By maintaining your construction tires, it’ll have a direct impact on your bottom line.",
+    "publishedDate": "2024-04-19",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2024/04/How-to-best-maintain-your-construction-equipment-tires-featured-image.png",
+    "author": "Molly Chen",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8137-8884-d5f67dd6dbb0",
+    "wpId": 30726,
+    "trid": 95116,
+    "language": "en",
+    "title": "How Different Tire Specs Affect Farm Equipment",
+    "slug": "different-manufacturers-agricultural-tire-sizes-and-its-impact-on-equipment",
+    "type": "blog",
+    "excerpt": "Why does the same size tire, in a different brand, often have a slightly larger or smaller overall diameter & section width, how much can variance be, what is impact on equipment, and do you build product in accordance to a specific standard and benchmark?",
+    "publishedDate": "2024-05-22",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2024/05/Ag-Tire-Talk_Question-40_BlogThumbnail.png",
+    "author": "Molly Chen",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-81a9-bd29-d9be8b79bcd4",
+    "wpId": 32276,
+    "trid": 95283,
+    "language": "en",
+    "title": "Rolling Resistance and its Ag Tire Impact",
+    "slug": "rolling-resistance-and-its-ag-tire-impact",
+    "type": "blog",
+    "excerpt": "",
+    "publishedDate": "2024-08-03",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2024/08/Question-41-feature-image.png",
+    "author": "Jennifer Krouse",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8150-8674-ece5731a08e6",
+    "wpId": 33036,
+    "trid": 95395,
+    "language": "en",
+    "title": "5 radial tire tips to maximize your aggregate and quarry productivity",
+    "slug": "5-radial-tire-tips-to-maximize-your-aggregate-and-quarry-productivity",
+    "type": "blog",
+    "excerpt": "Knowing the type of tires that are appropriate for your earthmoving equipment and how to maintain them are equally important as maintaining your machines. Here are 5 ways to conducting a proper OTR (off-the-road) tire maintenance program, do this and it’ll directly impact your overall safety, productivity and cost.",
+    "publishedDate": "2024-10-22",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2024/10/5-radial-tire-tips-to-maximize-your-quarry-and-aggregate-equipment-productivity-thumbnail.png",
+    "author": "Molly Chen",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-815b-8d7c-dc767baf3b08",
+    "wpId": 32863,
+    "trid": 95374,
+    "language": "en",
+    "title": "Low Rolling Resistance Forklift Tires and Why Are They Better",
+    "slug": "low-rolling-resistance-forklift-tires-and-why-are-they-better",
+    "type": "blog",
+    "excerpt": "As electric forklifts become a sustainable alternative for fleets, energy efficiency has also become the priority for fleets. In this article, we’ll discuss what rolling resistance is, how rolling resistance plays a major role in forklift tires and why they matter.",
+    "publishedDate": "2024-10-22",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2024/10/Low-Rolling-Resistance-Forklift-Article-Image.png",
+    "author": "Jennifer Krouse",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-81a6-ac55-fd34dc4974ec",
+    "wpId": 32814,
+    "trid": 95368,
+    "language": "en",
+    "title": "How to Use Low Air Pressure for Ag Tire Performance",
+    "slug": "lower-air-pressure-products-and-its-capabilities",
+    "type": "blog",
+    "excerpt": "Why air pressure requirements are different for free rolling, low torque, and high torque applications and VF tire PSIs.",
+    "publishedDate": "2024-10-22",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2024/10/andrew-draper-Rxt07TbiFCA-unsplash.jpg",
+    "author": "Jennifer Krouse",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-810c-8a27-d3abb7cc1dd2",
+    "wpId": 36140,
+    "trid": 95742,
+    "language": "en",
+    "title": "4 Things to Check Pre-Shift on Your Skidder Tires",
+    "slug": "4-things-to-check-pre-shift-on-your-skidder-tires",
+    "type": "blog",
+    "excerpt": "In the forestry industry, downtime is a directly impacts productivity and profit. A single tire failure can stall operations, cost thousands in repairs, and jeopardize crew safety. At MAXAM, we understand how you maintain and monitor your tires is critical for day-to-day operations. Below, we jump into a detailed guide on the four crucial checks every operator should perform before starting a shift, ensuring your skidder tires deliver maximum uptime and performance.",
+    "publishedDate": "2025-04-23",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2025/04/shutterstock_643800220.jpg",
+    "author": "Trevor Wilson",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-81f9-b8b0-e17beef3c286",
+    "wpId": 36273,
+    "trid": 95752,
+    "language": "en",
+    "title": "5 Ways to Extend the Life of Your Rubber Tracks",
+    "slug": "5-ways-to-extend-the-life-of-your-rubber-tracks",
+    "type": "blog",
+    "excerpt": "Rubber tracks are the backbone of heavy machinery, enduring everything from rocky construction sites to waterlogged fields. While tracks are built to withstand harsh conditions, their lifespan hinges on proactive care.\n\nAt MAXAM, we’ve spent years refining rubber track technology, and we know that simple, consistent maintenance can mean the difference between years of reliable service and costly, unexpected downtime. Here’s how to prolong your track’s performance and lifespan.",
+    "publishedDate": "2025-05-21",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2024/11/rbt.jpg",
+    "author": "Matt Tranzillo",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-81fd-ae92-e62b027c656b",
+    "wpId": 36501,
+    "trid": 95769,
+    "language": "en",
+    "title": "3 Ways to Choose the Right Ag Tire for Farm’s Demands",
+    "slug": "3-ways-to-choose-the-right-ag-tire-for-farms-demands",
+    "type": "blog",
+    "excerpt": "In agriculture, the right tire isn’t just about traction—it’s about matching its tire construction to the right application. With modern farms relying on heavier machinery, faster transport, and precision field work, selecting the optimal tire design ensures efficiency, reduces soil compaction, and maximizes productivity.",
+    "publishedDate": "2025-06-16",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/12/45-degree-lug-design.jpeg",
+    "author": "Trevor Wilson",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8161-afb1-ca1b8629ae8a",
+    "wpId": 37672,
+    "trid": 95843,
+    "language": "en",
+    "title": "MAXAM Tire Expands MS303 Scraper Line To Power Heavy-duty Earthmoving Performance",
+    "slug": "maxam-tire-expands-ms303-scraper-line-to-power-heavy-duty-earthmoving-performance",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2025-11-11",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2025/09/bc7563e9-9b10-43c8-bf4e-d383808c8797.jpg",
+    "author": "Trevor Wilson",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
+    "pageId": "38234d6d-7cea-8153-b421-e2dd8b757fdd",
+    "wpId": 39089,
+    "trid": 96040,
+    "language": "en",
+    "title": "MAXAM Tire Introduces The New MSV01 PRO",
+    "slug": "maxam-tire-introduces-msv01-pro",
+    "type": "press-release",
+    "excerpt": "",
+    "publishedDate": "2026-02-10",
+    "externalLink": null,
+    "featuredImage": "https://maxamtire.com/wp-content/uploads/2026/01/MAXAM_MSV01PRO_ProductImage_PR.png",
+    "author": "Trevor Wilson",
+    "industryIds": [],
+    "translationIds": [],
+    "industries": []
+  },
+  {
     "pageId": "35634d6d-7cea-813c-9539-fee94f7cc0ab",
     "wpId": 39217,
     "trid": 96057,
@@ -2836,27 +3686,6 @@
     "industries": []
   },
   {
-    "pageId": "35534d6d-7cea-81b4-8b69-cdf6c05e46a5",
-    "wpId": 7292,
-    "trid": 33405,
-    "language": "en",
-    "title": "Implement Tire Trends",
-    "slug": "implement-tire-trends",
-    "type": "in-the-news",
-    "excerpt": "",
-    "publishedDate": "2021-01-12",
-    "externalLink": "https://agtiretalk.com/steep-slope-ag-tire-adjustments",
-    "featuredImage": null,
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-8144-9391-c4baa9957961",
-      "35534d6d-7cea-8132-b1d4-e70e722a830b",
-      "35534d6d-7cea-81bd-b80a-cd4f8ad7074c"
-    ],
-    "industries": []
-  },
-  {
     "pageId": "35534d6d-7cea-81d5-9bef-cb7d9258fc12",
     "wpId": 6683,
     "trid": 32796,
@@ -3398,31 +4227,6 @@
     ]
   },
   {
-    "pageId": "35534d6d-7cea-81eb-b804-ea6ac836f8a7",
-    "wpId": 5802,
-    "trid": 13706,
-    "language": "en",
-    "title": "Operator Tips to Reduce Soil Compaction",
-    "slug": "operator-tips-to-reduce-soil-compaction",
-    "type": "blog",
-    "excerpt": "In agricultural operations, the primary driver for increased crop results or yields is the impact of soil compaction on the plant’s ability to grow. Soil compaction occurs when stress is applied to a surface soil causing...",
-    "publishedDate": "2021-05-05",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/Tyremax-Maxam-9-scaled.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [
-      "35534d6d-7cea-81ae-b6ea-c7c91195dcde"
-    ],
-    "translationIds": [
-      "38034d6d-7cea-8131-a872-cbb5c55c66c8",
-      "35534d6d-7cea-8154-b2fa-e5f96ccd0608",
-      "35534d6d-7cea-8161-9f6d-d6f29c28054c"
-    ],
-    "industries": [
-      "agricultural-tires"
-    ]
-  },
-  {
     "pageId": "35534d6d-7cea-8141-85c3-cacb8b04f145",
     "wpId": 5841,
     "trid": 13715,
@@ -3597,31 +4401,6 @@
       "35534d6d-7cea-81e4-b6d6-d9bcac428377"
     ],
     "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-8198-b181-c66f109c16ae",
-    "wpId": 5867,
-    "trid": 13721,
-    "language": "en",
-    "title": "MAXAM ON CARBON SEQUESTRATION AND HOW TO REDUCE RATES",
-    "slug": "maxam-on-carbon-sequestration-and-how-to-reduce-rates",
-    "type": "blog",
-    "excerpt": "Animal manure is used as the primary fertilizer or crop nutrient/booster. Agriculture naturally generates carbon emissions as organic matter in feed or manure decomposes under anaerobic conditions...",
-    "publishedDate": "2021-06-18",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/heiko-janowski-XLmWt913EOc-unsplash-scaled.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [
-      "35534d6d-7cea-81ae-b6ea-c7c91195dcde"
-    ],
-    "translationIds": [
-      "38034d6d-7cea-8158-9d8e-c09d5b6973a1",
-      "35534d6d-7cea-8172-a326-fe44c83d376e",
-      "35534d6d-7cea-81ad-9c98-d832e624bfc7"
-    ],
-    "industries": [
-      "agricultural-tires"
-    ]
   },
   {
     "pageId": "35534d6d-7cea-8156-a6ec-d1477e04dbd2",
@@ -4669,31 +5448,6 @@
     "industries": []
   },
   {
-    "pageId": "35534d6d-7cea-8154-9759-d464c4867a38",
-    "wpId": 5973,
-    "trid": 13749,
-    "language": "en",
-    "title": "MAXAM TIRE ON OPTIMIZED TRACTION IN AG APPLICATIONS",
-    "slug": "maxam-tire-on-optimized-traction-in-ag-applications",
-    "type": "blog",
-    "excerpt": "Understanding why it is important for AG Tires to have a small slip percentage to optimize traction, recommendations for % of slip for MFWD & 4WD Tractors, and how tire physics and slip ratios differ from tracks?",
-    "publishedDate": "2022-03-01",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/1-2-e1646081123877.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [
-      "35534d6d-7cea-81ae-b6ea-c7c91195dcde"
-    ],
-    "translationIds": [
-      "38034d6d-7cea-8172-a465-c0971b035083",
-      "35534d6d-7cea-815e-af0e-c12e78a330be",
-      "35534d6d-7cea-81f9-ba0d-f838414cb808"
-    ],
-    "industries": [
-      "agricultural-tires"
-    ]
-  },
-  {
     "pageId": "35534d6d-7cea-817b-bc4e-c7f59589cdea",
     "wpId": 6916,
     "trid": 33029,
@@ -5034,31 +5788,6 @@
     "industries": []
   },
   {
-    "pageId": "35534d6d-7cea-81ee-bf8a-cbdb99eaf162",
-    "wpId": 5999,
-    "trid": 13755,
-    "language": "en",
-    "title": "MAXAM on Precision Agriculture: Tire Sensors and RFID Tags in AG Tire Use",
-    "slug": "maxam-on-precision-agriculture-tire-sensors-and-rfid-tags-in-ag-tire-use",
-    "type": "blog",
-    "excerpt": "In the agricultural world, there is an indisputable link between the impact of ground pressure and the resulting yield of a planted crop. Tires play a key role in soil compaction and ground pressure as it is the primary tool that creates the ground contact between the machinery and the soil...",
-    "publishedDate": "2022-04-19",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/loren-king-bp4Kj6RMH9E-unsplash-scaled.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [
-      "35534d6d-7cea-81ae-b6ea-c7c91195dcde"
-    ],
-    "translationIds": [
-      "38034d6d-7cea-8168-bb91-e0592710e380",
-      "35534d6d-7cea-811c-92cb-d9a14f5ae26e",
-      "35534d6d-7cea-8193-a748-d29b9d6c9e3f"
-    ],
-    "industries": [
-      "agricultural-tires"
-    ]
-  },
-  {
     "pageId": "35534d6d-7cea-8168-8a9a-d0100381a2a4",
     "wpId": 6929,
     "trid": 33042,
@@ -5147,31 +5876,6 @@
     "industries": []
   },
   {
-    "pageId": "35534d6d-7cea-81a4-8273-d623de193a7b",
-    "wpId": 6038,
-    "trid": 13764,
-    "language": "en",
-    "title": "MAXAM on When a Producer Should Replace Their Agricultural Tires",
-    "slug": "maxam-on-when-a-producer-should-replace-their-agricultural-tires",
-    "type": "blog",
-    "excerpt": "In the agricultural industry, it is how the equipment is utilized or the inherent operational requirements that will affect the tire replacement cycle. As agricultural tires are considered off-road and not US Department of Transportation (DOT) regulated, there are no firm rules to determine when an ag tire absolutely needs to be replaced....",
-    "publishedDate": "2022-06-20",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/dualled-3.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [
-      "35534d6d-7cea-81ae-b6ea-c7c91195dcde"
-    ],
-    "translationIds": [
-      "38034d6d-7cea-81a2-b1e1-dfc545320ad9",
-      "35534d6d-7cea-8113-a502-e7a8a17bc53f",
-      "35534d6d-7cea-812d-bf78-df3fadd745d7"
-    ],
-    "industries": [
-      "agricultural-tires"
-    ]
-  },
-  {
     "pageId": "35534d6d-7cea-8160-ac2c-edc92638e372",
     "wpId": 6967,
     "trid": 33080,
@@ -5191,31 +5895,6 @@
       "35534d6d-7cea-8179-af5a-d17ea8d45f6f"
     ],
     "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-8198-be26-fbbe676f6a30",
-    "wpId": 6051,
-    "trid": 13767,
-    "language": "en",
-    "title": "MAXAM on Precision Agriculture: Tire Tactics to Reduce Fuel Consumption",
-    "slug": "maxam-on-precision-agriculture-tire-tactics-to-reduce-fuel-consumption",
-    "type": "blog",
-    "excerpt": "Ag tires are the integral component that connects the farm machinery or vehicle to the ground whether working in the field or on the road. Over the last eighteen months, we have seen both fuel and fertilizer prices increase dramatically driving up the operational expenses of farmers and growers...",
-    "publishedDate": "2022-09-07",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/john-mark-strange-vJRxicBIFeM-unsplash-1-scaled.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [
-      "35534d6d-7cea-81ae-b6ea-c7c91195dcde"
-    ],
-    "translationIds": [
-      "38034d6d-7cea-81db-a302-f91cf3a17994",
-      "35534d6d-7cea-819e-8c3d-e3dce437f347",
-      "35534d6d-7cea-8128-b802-e8dcda243f0a"
-    ],
-    "industries": [
-      "agricultural-tires"
-    ]
   },
   {
     "pageId": "35534d6d-7cea-81cd-9758-d00583a22ba6",
@@ -5405,31 +6084,6 @@
       "35534d6d-7cea-819e-8d89-daa573e62dbf"
     ],
     "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-8117-be58-d689c4c19126",
-    "wpId": 6064,
-    "trid": 13770,
-    "language": "en",
-    "title": "MAXAM on Precision Agriculture:  Single-Digit PSIs",
-    "slug": "maxam-on-precision-agriculture-single-digit-psis",
-    "type": "blog",
-    "excerpt": "Agricultural tires in comparison to construction, commercial truck, and passenger or light truck tires operate at the lowest air pressure possible. The primary reason agricultural tires can operate at such low pressures is the combination of the size of the air chamber in an ag tire and the number of tires mounted on a vehicle allowing lower air pressures to be able to carry the weight....",
-    "publishedDate": "2022-12-06",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/iStock-1254421735-scaled.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [
-      "35534d6d-7cea-81ae-b6ea-c7c91195dcde"
-    ],
-    "translationIds": [
-      "38034d6d-7cea-81b0-8810-f262942f8285",
-      "35534d6d-7cea-813f-addf-cdea21a65c15",
-      "35534d6d-7cea-81fa-aa8d-e78932db2dfb"
-    ],
-    "industries": [
-      "agricultural-tires"
-    ]
   },
   {
     "pageId": "35534d6d-7cea-8114-9e01-e920f301b907",
@@ -5671,31 +6325,6 @@
     ]
   },
   {
-    "pageId": "35534d6d-7cea-81a4-90e9-c72eb6e292fb",
-    "wpId": 6116,
-    "trid": 13782,
-    "language": "en",
-    "title": "Which Tractor Tires should you choose: Standard or VF?",
-    "slug": "which-tractor-tires-should-you-choose-standard-or-vf",
-    "type": "blog",
-    "excerpt": "From the outside, there is no way to tell the product differences between standard and VF agricultural tires. The shape will be similar, and the number of lugs may only change based on specific tire sizes – so what makes one better than the other?",
-    "publishedDate": "2023-05-02",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/jason-edwards-SH5AC4ATqZQ-unsplash-1-scaled.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [
-      "35534d6d-7cea-81ae-b6ea-c7c91195dcde"
-    ],
-    "translationIds": [
-      "38034d6d-7cea-8101-954e-db587442be83",
-      "35534d6d-7cea-8164-9222-f5edcc003819",
-      "35534d6d-7cea-81e0-9d18-c30669345274"
-    ],
-    "industries": [
-      "agricultural-tires"
-    ]
-  },
-  {
     "pageId": "35534d6d-7cea-816f-822c-ed146ea7cc99",
     "wpId": 6129,
     "trid": 13785,
@@ -5740,31 +6369,6 @@
       "35534d6d-7cea-81bd-8044-eb971c9386ba"
     ],
     "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-81f0-9e33-d418226d6948",
-    "wpId": 6142,
-    "trid": 13788,
-    "language": "en",
-    "title": "How to understand the markings on your Tractor tires?",
-    "slug": "how-to-understand-the-markings-on-your-tractor-tires",
-    "type": "blog",
-    "excerpt": "From the outside, there is no way to tell the product differences between standard and VF agricultural tires. The shape will be similar, and the number of lugs may only change based on specific tire sizes – so what makes one better than the other?",
-    "publishedDate": "2023-05-10",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/1682409540216.png",
-    "author": "Steve Cunningham",
-    "industryIds": [
-      "35534d6d-7cea-81ae-b6ea-c7c91195dcde"
-    ],
-    "translationIds": [
-      "38034d6d-7cea-8160-95cc-cf4267c943a4",
-      "35534d6d-7cea-810d-986e-d46c31bab912",
-      "35534d6d-7cea-81bc-891c-e18e92ebdd66"
-    ],
-    "industries": [
-      "agricultural-tires"
-    ]
   },
   {
     "pageId": "35534d6d-7cea-815e-b0a2-c4d6afd33678",
@@ -6089,27 +6693,6 @@
     ]
   },
   {
-    "pageId": "35534d6d-7cea-8190-9124-f59ecd074dc8",
-    "wpId": 25896,
-    "trid": 94514,
-    "language": "en",
-    "title": "45-Degree Lug Design – Why is it so popular?",
-    "slug": "45-degree-lug-design",
-    "type": "blog",
-    "excerpt": "When reviewing tire tread designs for traction across various applications and surface conditions, the best traction available for any operation in softer soils or cropped fields would be a flat or horizontal traction bar like a military tank tread or tracked dozer.",
-    "publishedDate": "2023-12-15",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/12/45-degree-lug-design.jpeg",
-    "author": "maxam",
-    "industryIds": [
-      "35534d6d-7cea-81ae-b6ea-c7c91195dcde"
-    ],
-    "translationIds": [],
-    "industries": [
-      "agricultural-tires"
-    ]
-  },
-  {
     "pageId": "35534d6d-7cea-812c-bad4-e3c2859aac4b",
     "wpId": 25970,
     "trid": 94527,
@@ -6228,27 +6811,6 @@
     ]
   },
   {
-    "pageId": "35534d6d-7cea-8153-807f-e790dc40d164",
-    "wpId": 30379,
-    "trid": 95087,
-    "language": "en",
-    "title": "Top 5 tips to maximize forklift tire safety and efficiency",
-    "slug": "top-5-tips-to-maximize-forklift-tire-safety-and-efficiency",
-    "type": "blog",
-    "excerpt": "Optimize your forklift tire's performance and longevity, and maximize your fleet's safety. In this article, we discuss some forklift tire components, types of application, most common tire breakdowns, tire replacement vs. opportunity cost, what to inspect on your forklift tires and so much more.",
-    "publishedDate": "2024-04-01",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2024/04/Top-5-tips-to-maximize-forklift-tire-safety-and-efficiency-thumbnail.png",
-    "author": "Molly Chen",
-    "industryIds": [
-      "35534d6d-7cea-8190-942c-dd8c4330e333"
-    ],
-    "translationIds": [],
-    "industries": [
-      "industrial-forklift-tires"
-    ]
-  },
-  {
     "pageId": "35534d6d-7cea-81d9-bc8b-c79765190864",
     "wpId": 30591,
     "trid": 95103,
@@ -6333,27 +6895,6 @@
     ]
   },
   {
-    "pageId": "35534d6d-7cea-81b5-8391-ed2b6b5f52aa",
-    "wpId": 32276,
-    "trid": 95283,
-    "language": "en",
-    "title": "Rolling Resistance and its Ag Tire Impact",
-    "slug": "rolling-resistance-and-its-ag-tire-impact",
-    "type": "blog",
-    "excerpt": "What is Rolling Resistance, why is it important consideration for fuel usage in transport mode, what are main contributors to energy loss, what tactics can a producer use to minimize, and what specific tire attributes can help reduce the impact?",
-    "publishedDate": "2024-08-03",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2024/08/Question-41-feature-image.png",
-    "author": "Jennifer Krouse",
-    "industryIds": [
-      "35534d6d-7cea-81ae-b6ea-c7c91195dcde"
-    ],
-    "translationIds": [],
-    "industries": [
-      "agricultural-tires"
-    ]
-  },
-  {
     "pageId": "35534d6d-7cea-81df-8867-f2e1569d77db",
     "wpId": 32438,
     "trid": 95318,
@@ -6435,48 +6976,6 @@
     "translationIds": [],
     "industries": [
       "forestry-tires"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81fd-b1ac-f30805eb86c9",
-    "wpId": 32863,
-    "trid": 95374,
-    "language": "en",
-    "title": "Low Rolling Resistance Forklift Tires and Why Are They Better",
-    "slug": "low-rolling-resistance-forklift-tires-and-why-are-they-better",
-    "type": "blog",
-    "excerpt": "As electric forklifts become a sustainable alternative for fleets, energy efficiency has also become the priority for fleets. In this article, we’ll discuss what rolling resistance is, how rolling resistance plays a major role in forklift tires and why they matter.",
-    "publishedDate": "2024-10-22",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2024/10/Low-Rolling-Resistance-Forklift-Article-Image.png",
-    "author": "Jennifer Krouse",
-    "industryIds": [
-      "35534d6d-7cea-8190-942c-dd8c4330e333"
-    ],
-    "translationIds": [],
-    "industries": [
-      "industrial-forklift-tires"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81c7-9d4e-f27b4e89e8dc",
-    "wpId": 32814,
-    "trid": 95368,
-    "language": "en",
-    "title": "Lower Air Pressure Products and Its Capabilities",
-    "slug": "lower-air-pressure-products-and-its-capabilities",
-    "type": "blog",
-    "excerpt": "Why air pressure requirements are different for free rolling, low torque, and high torque applications and VF tire PSIs.",
-    "publishedDate": "2024-10-22",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2024/10/andrew-draper-Rxt07TbiFCA-unsplash.jpg",
-    "author": "Jennifer Krouse",
-    "industryIds": [
-      "35534d6d-7cea-81ae-b6ea-c7c91195dcde"
-    ],
-    "translationIds": [],
-    "industries": [
-      "agricultural-tires"
     ]
   },
   {
@@ -6720,27 +7219,6 @@
     ]
   },
   {
-    "pageId": "35534d6d-7cea-8175-96bf-f40714d4bad2",
-    "wpId": 36140,
-    "trid": 95742,
-    "language": "en",
-    "title": "4 Things to Check Pre-Shift on Your Skidder Tires",
-    "slug": "4-things-to-check-pre-shift-on-your-skidder-tires",
-    "type": "blog",
-    "excerpt": "In the forestry industry, downtime is a directly impacts productivity and profit. A single tire failure can stall operations, cost thousands in repairs, and jeopardize crew safety. At MAXAM, we understand how you maintain and monitor your tires is critical for day-to-day operations. Below, we jump into a detailed guide on the four crucial checks every operator should perform before starting a shift, ensuring your skidder tires deliver maximum uptime and performance.",
-    "publishedDate": "2025-04-23",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2025/04/shutterstock_643800220.jpg",
-    "author": "Trevor Wilson",
-    "industryIds": [
-      "35534d6d-7cea-8114-a850-c2bdc474dce1"
-    ],
-    "translationIds": [],
-    "industries": [
-      "forestry-tires"
-    ]
-  },
-  {
     "pageId": "35534d6d-7cea-8165-b829-e81c58899e56",
     "wpId": 36229,
     "trid": 95747,
@@ -6858,732 +7336,6 @@
     "externalLink": null,
     "featuredImage": "https://maxamtire.com/wp-content/uploads/2025/09/1652852333185.jpg",
     "author": "Matt Tranzillo",
-    "industryIds": [
-      "35534d6d-7cea-8191-a6e5-fdbcb2d482b4"
-    ],
-    "translationIds": [],
-    "industries": [
-      "off-the-road-tires"
-    ]
-  },
-  {
-    "pageId": "35634d6d-7cea-8174-981c-febb05e05029",
-    "wpId": 39089,
-    "trid": 96040,
-    "language": "en",
-    "title": "MAXAM Tire Introduces The New MSV01 PRO",
-    "slug": "maxam-tire-introduces-msv01-pro",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2026-02-10",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2026/01/MAXAM_MSV01PRO_ProductImage_PR.png",
-    "author": "Trevor Wilson",
-    "industryIds": [
-      "35534d6d-7cea-8167-9f06-d0ae6ee328d3"
-    ],
-    "translationIds": [],
-    "industries": [
-      "construction-tires"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81dd-90b2-d9ce9dd367c8",
-    "wpId": 6472,
-    "trid": 32585,
-    "language": "en",
-    "title": "THE NEW MAXAM MS503",
-    "slug": "the-new-maxam-ms503",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2019-07-16",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/IMG_3882-scaled-e1621457136521.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-8183-86ea-cd396650f557",
-      "35534d6d-7cea-81a5-a1f4-c8772016aadc",
-      "35534d6d-7cea-816f-a76c-f03b32cc925f"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-81c4-8b8d-c8fe06300695",
-    "wpId": 6485,
-    "trid": 32598,
-    "language": "en",
-    "title": "THE NEW MAXAM MS931",
-    "slug": "the-new-maxam-ms931",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2019-08-19",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/9E8A9264-scaled.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-8100-afce-f58027d9eeaa",
-      "35534d6d-7cea-81e9-a077-eb57c5ec481b",
-      "35534d6d-7cea-8146-8e99-c1c3598703e0"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-8147-9561-e1988e1a3439",
-    "wpId": 6511,
-    "trid": 32624,
-    "language": "en",
-    "title": "MAXAM EXPANDS LARGE MINING SERIES",
-    "slug": "maxam-expands-large-mining-series",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2019-10-15",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/20180228_121829-scaled.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-8133-8dff-da0361fcad7b",
-      "35534d6d-7cea-8194-8b12-fd3608a9be74",
-      "35534d6d-7cea-81df-acc8-cfffd2a10b4a"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-8175-9ac4-ff5020636829",
-    "wpId": 6577,
-    "trid": 32690,
-    "language": "en",
-    "title": "MAXAM TIRE EXPANDS PORT SERIES",
-    "slug": "maxam-tire-expands-port-series",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2020-05-05",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/unnamed.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-814c-a6c3-e881d5e5fafe",
-      "35534d6d-7cea-81da-ae1c-d55e1ebb35b5",
-      "35534d6d-7cea-81a9-a18b-d0415133fa65"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-8169-83e2-f436bb30fdbf",
-    "wpId": 6618,
-    "trid": 32731,
-    "language": "en",
-    "title": "MAXAM ANNOUNCES A NEW LARGE HAULAGE TIRE – THE MS453",
-    "slug": "maxam-announces-a-new-large-haulage-tire-the-ms453",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2020-09-15",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/Marigold_MS453_6_edited.png",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-8189-a47a-f97bd4d59f91",
-      "35534d6d-7cea-8103-9617-ee52df10444e",
-      "35534d6d-7cea-815d-acf5-cdb96f4d28fa"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-811b-ba39-c7e48fb781ab",
-    "wpId": 6631,
-    "trid": 32744,
-    "language": "en",
-    "title": "MAXAM ENHANCES THE FORESTRY SERIES WITH THE NEW MS930",
-    "slug": "maxam-enhances-the-forestry-series-with-the-new-ms930",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2020-10-13",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/MS930_product-angles.png",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-815e-9f90-d0a9a10514b6",
-      "35534d6d-7cea-815a-b32c-df11bc6b10a6",
-      "35534d6d-7cea-813b-924a-d551365085ce"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-819e-b8bd-dcf0a693613c",
-    "wpId": 6644,
-    "trid": 32757,
-    "language": "en",
-    "title": "THE ALL-NEW MAXAM MS709 SOLID TELEHANDLER",
-    "slug": "the-all-new-maxam-ms709-solid-telehandler",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2020-10-27",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/1300-24-MS709-Assemblies-Pic.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-810d-932f-cc195e056768",
-      "35534d6d-7cea-81ad-9d8e-c355df0fa66f",
-      "35534d6d-7cea-814f-9c13-ea1da18e7bcd"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-8135-a98b-ff6f81462cb1",
-    "wpId": 6657,
-    "trid": 32770,
-    "language": "en",
-    "title": "The All New MAXAM Mining Haulage Tire – MS412",
-    "slug": "the-all-new-maxam-mining-haulage-tire-ms412",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2020-11-10",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/200917_Maxam-Tires_MS412-TREAD-scaled.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-81a3-ba27-d89d76717938",
-      "35534d6d-7cea-81e3-b601-fb8c4b690948",
-      "35534d6d-7cea-8139-a963-d63f930308da"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-8188-b02e-f8b73a8d500b",
-    "wpId": 6734,
-    "trid": 32847,
-    "language": "en",
-    "title": "MAXAM MS302 BOASTS A COMPLETE LINE WITH NEW SIZES",
-    "slug": "maxam-ms302-boasts-a-complete-line-with-new-sizes-2",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2021-02-02",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/DSC_0312-scaled.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-8153-bde1-f30e7c1b38a7",
-      "35534d6d-7cea-8101-92fa-ecc8606e4ee2",
-      "35534d6d-7cea-817b-a386-ef5838c12d07"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-81ac-8658-c5afe7378ff0",
-    "wpId": 6721,
-    "trid": 32834,
-    "language": "en",
-    "title": "MS910R DELIVERING VERSATILE SOLUTIONS TO THE INDUSTRY",
-    "slug": "ms910r-delivering-versatile-solutions-to-the-industry",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2021-02-23",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/TSC7219.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-8142-a204-e38f32274e56",
-      "35534d6d-7cea-81e1-86c8-ec5e4b3fee29",
-      "35534d6d-7cea-815f-b4f7-d75f9ccef5e4"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-8141-a6db-d3ad63f5d89f",
-    "wpId": 6696,
-    "trid": 32809,
-    "language": "en",
-    "title": "MAXAM SOLID OTR MS708 - THE  EVOLUTIONARY PERFORMANCE",
-    "slug": "maxam-ms302-boasts-a-complete-line-with-new-sizes",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2021-03-01",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/P1020759.MP4.00_00_11_17.Still002.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-81d9-bb63-f51182b71dbf",
-      "35534d6d-7cea-816a-9269-fd8ea15c0d9e",
-      "35534d6d-7cea-81a9-b617-cede357f2a88"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-8186-9857-c38e6edce220",
-    "wpId": 6747,
-    "trid": 32860,
-    "language": "en",
-    "title": "MAXAM DEBUTS THE FULL MS933 LOGXTRA SERIES",
-    "slug": "maxam-debuts-the-full-ms933-logxtra-series",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2021-05-04",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/MAXAM_Stills_24-scaled.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-817d-ab7c-d923b452c28b",
-      "35534d6d-7cea-8123-9c09-ccac067003bf",
-      "35534d6d-7cea-8118-b6e9-ce678b68c065"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-8175-81a0-eb7280aa77b4",
-    "wpId": 6773,
-    "trid": 32886,
-    "language": "en",
-    "title": "INTRODUCING THE HIGH-TRACTION MS303 SCRAPER TIRE",
-    "slug": "introducing-the-high-traction-ms303-scraper-tire",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2021-07-20",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/14647753457_66e06a17ca_o-scaled.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-812f-9f32-fedf00446013",
-      "35534d6d-7cea-81e1-a595-ef605641f731",
-      "35534d6d-7cea-810a-ae63-c272a2efd95b"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-81ad-97b8-fefa14c4476b",
-    "wpId": 6812,
-    "trid": 32925,
-    "language": "en",
-    "title": "MS708 DELIVERS A ZERO-MAINTENACE SOLUTION TO MODERN WHEEL LOADERS",
-    "slug": "ms708-delivers-a-zero-maintenace-solution-to-modern-wheel-loaders",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2021-09-14",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/PXL_20210720_135333916-scaled.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-816c-bb06-f24cdbbe3d53",
-      "35534d6d-7cea-815d-b1a2-dfa1bee82c24",
-      "35534d6d-7cea-81d2-af46-c7a7ca4798d5"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-81c8-b7ba-cd152a11e7b1",
-    "wpId": 6838,
-    "trid": 32951,
-    "language": "en",
-    "title": "MAXAM TIRE RIGID HAUL TRUCK MS403 BOASTS ITS LARGEST SIZE",
-    "slug": "maxam-tire-rigid-haul-truck-ms403-boasts-its-largest-size",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2021-10-04",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/MS403-63-website_thumbnail-1.png",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-8141-8813-fcc707caec0f",
-      "35534d6d-7cea-81c0-8cc6-fbc409a89914",
-      "35534d6d-7cea-8162-9c05-e912c5a4f66c"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-8144-8ba0-e6f25f0b33cc",
-    "wpId": 5932,
-    "trid": 13736,
-    "language": "en",
-    "title": "What Tire Construction Means for Agriculture",
-    "slug": "maxam-on-ag-tire-construction-which-is-best-for-each-application",
-    "type": "blog",
-    "excerpt": "",
-    "publishedDate": "2021-10-04",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/ag-tire-talk.png",
-    "author": "Steve Cunningham",
-    "industryIds": [
-      "35534d6d-7cea-81ae-b6ea-c7c91195dcde"
-    ],
-    "translationIds": [
-      "38034d6d-7cea-81d4-b930-f96c6b7c4b8c",
-      "35534d6d-7cea-819a-b82c-ea20e9ed86ca",
-      "35534d6d-7cea-81b7-96fa-d37fbb688673"
-    ],
-    "industries": [
-      "agricultural-tires"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-8158-a624-e9b8b562db21",
-    "wpId": 6825,
-    "trid": 32938,
-    "language": "en",
-    "title": "MAXAM MS503 BOASTS A NEW SIZE IN THE 65-SERIES",
-    "slug": "maxam-ms503-boasts-a-new-size-in-65-series",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2021-10-19",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/IMG_3882-scaled-e1634564372842.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-817c-bad6-cce5b3d2e4c1",
-      "35534d6d-7cea-81ff-905b-ce1c8eeea385",
-      "35534d6d-7cea-810e-afba-cc22acce823b"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-8175-bcad-c1166f802582",
-    "wpId": 6851,
-    "trid": 32964,
-    "language": "en",
-    "title": "MAXAM EXPANDS THE MS930 LOGXTRA SERIES",
-    "slug": "maxam-expands-the-ms930-logxtra-series",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2021-11-16",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/MAXAM_Stills_11-scaled.jpg",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-81a8-a078-f17e03bfaca2",
-      "35534d6d-7cea-81e6-8752-e59f76830c2e",
-      "35534d6d-7cea-81db-8e86-c75051b57eaf"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-8166-b9ac-f34e40bafcef",
-    "wpId": 25865,
-    "trid": 94508,
-    "language": "en",
-    "title": "MAXAM on the Differences Between a Row Crop Sprayer Tire and a Tractor Tire",
-    "slug": "differences-between-a-row-crop-sprayer-tire-and-a-tractor-tire",
-    "type": "blog",
-    "excerpt": "Like all industries, the agricultural market is constantly being driven by the forces of necessity or by the need to improve an existing product to meet evolving demands.",
-    "publishedDate": "2021-12-15",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/12/field-of-crops.png",
-    "author": "maxam",
-    "industryIds": [
-      "35534d6d-7cea-81ae-b6ea-c7c91195dcde"
-    ],
-    "translationIds": [],
-    "industries": [
-      "agricultural-tires"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-8113-9381-f57a8d25f9d0",
-    "wpId": 6890,
-    "trid": 33003,
-    "language": "en",
-    "title": "MAXAM Tire Debuts VF Technology at the 2022 National Farm Machinery Show",
-    "slug": "maxam-tire-debuts-vf-technology-at-the-2022-national-farm-machinery-show",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2022-02-01",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/4.png",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-81fd-a090-dbe752ee872b",
-      "35534d6d-7cea-81a7-93be-eff9dfebecdf",
-      "35534d6d-7cea-810e-b6dc-fac87d88799e"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-819e-8cf3-c002e33a7264",
-    "wpId": 6903,
-    "trid": 33016,
-    "language": "en",
-    "title": "MAXAM Tire Grows the MS915 Series for Modern Machinery",
-    "slug": "maxam-tire-grows-the-ms915-series-for-modern-machinery",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2022-04-04",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/ms915_th.png",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-8145-b740-f00c700d1567",
-      "35534d6d-7cea-81c5-b5b4-d19551f8e1f2",
-      "35534d6d-7cea-8103-9a93-f2b1fc93359d"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-8135-b771-ea4d21be63d9",
-    "wpId": 6993,
-    "trid": 33106,
-    "language": "en",
-    "title": "MAXAM Tire Adds New Sizes to the AGRIXTRA 70 & 65 Family of Agricultural Tires",
-    "slug": "maxam-tire-adds-new-sizes-to-the-agrixtra-70-65-family",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2022-09-27",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/Screenshot-2022-09-20-162134.png",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-81ce-9a5e-c6305b36e057",
-      "35534d6d-7cea-81db-aafc-ef104fcb70a9",
-      "35534d6d-7cea-8102-b653-e0596d4f0dee"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-815b-b0b5-fce1b2cf0d14",
-    "wpId": 7046,
-    "trid": 33159,
-    "language": "en",
-    "title": "MAXAM Tire Announces the All-New MS962R AGILXTRA Series",
-    "slug": "maxam-tire-announces-the-all-new-ms962r-agilxtra-series",
-    "type": "press-release",
-    "excerpt": "",
-    "publishedDate": "2023-01-02",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/agilxtra-MS962R.png",
-    "author": "Steve Cunningham",
-    "industryIds": [],
-    "translationIds": [
-      "38034d6d-7cea-81c1-8bc5-c13631b6385f",
-      "35534d6d-7cea-8173-b8c1-ee09bd0cd208",
-      "35534d6d-7cea-816f-9004-d3971c77e4c8"
-    ],
-    "industries": []
-  },
-  {
-    "pageId": "35534d6d-7cea-8132-a6e2-fdc60859ee3d",
-    "wpId": 6207,
-    "trid": 13803,
-    "language": "en",
-    "title": "Proper mining conditions and how to extend your mining tire life",
-    "slug": "proper-mining-conditions-and-how-to-extend-your-mining-tire-life",
-    "type": "blog",
-    "excerpt": "With rigid haul truck tires being one of the highest expenses for your mining operations, maintaining proper mining conditions for the tires plays a key role in extending tire life. In this article, we discuss in depth factors that affect your mining tire’s life and some ways to improve site conditions, ensuring maximum tire life and productivity.",
-    "publishedDate": "2023-05-23",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/Proper-mining-conditions-and-how-to-extend-tire-life-thumbnail.png",
-    "author": "Steve Cunningham",
-    "industryIds": [
-      "35534d6d-7cea-8193-a922-d38658c5ec95"
-    ],
-    "translationIds": [
-      "38034d6d-7cea-8111-94f0-f947d48128e3",
-      "35534d6d-7cea-818e-a892-c4817bed9e58",
-      "35534d6d-7cea-81cf-b9b7-e6fcce6fc44a"
-    ],
-    "industries": [
-      "mining-tires"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81bf-8be1-cc336141212f",
-    "wpId": 6259,
-    "trid": 13815,
-    "language": "en",
-    "title": "Proper road conditions for OTR tires",
-    "slug": "proper-road-conditions-for-otr-tires",
-    "type": "blog",
-    "excerpt": "With rigid haul truck tires being one of the highest expenses for your mining operations, maintaining proper mining conditions for the tires plays a key role in extending tire life. In this article, we discuss in depth factors that affect your mining tire’s life and some ways to improve site conditions, ensuring maximum tire life and productivity.",
-    "publishedDate": "2023-06-27",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/10/Proper-road-conditions-for-OTR-tires_thumbnail.png",
-    "author": "Steve Cunningham",
-    "industryIds": [
-      "35534d6d-7cea-8191-a6e5-fdbcb2d482b4"
-    ],
-    "translationIds": [
-      "38034d6d-7cea-818f-b621-dba0bb152fbc",
-      "35534d6d-7cea-816f-a7cb-cf8d74fb05d3",
-      "35534d6d-7cea-819e-9622-c3521985ccf4"
-    ],
-    "industries": [
-      "off-the-road-tires"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81ad-bcfe-f8b6ec5f927f",
-    "wpId": 25820,
-    "trid": 94500,
-    "language": "en",
-    "title": "How to identify damaged OTR tires",
-    "slug": "how-to-identify-damaged-otr-tires-2",
-    "type": "blog",
-    "excerpt": "It’s vital for operations to inspect their OTR tires daily to maximize tire life and productivity.",
-    "publishedDate": "2023-12-15",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/12/how-to-identify-damaged-otr-tires.png",
-    "author": "maxam",
-    "industryIds": [
-      "35534d6d-7cea-8191-a6e5-fdbcb2d482b4"
-    ],
-    "translationIds": [],
-    "industries": [
-      "off-the-road-tires"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-816f-a7f7-ea45471085b3",
-    "wpId": 30307,
-    "trid": 95077,
-    "language": "en",
-    "title": "Ag Tire Life Span",
-    "slug": "ag-tire-life-span",
-    "type": "blog",
-    "excerpt": "In the agricultural industry, it is how the equipment is utilized or the inherent operational requirements that will affect tire life.",
-    "publishedDate": "2024-03-28",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2024/03/chris-ensminger-yJDZTDeHeG8-unsplash-1.jpg",
-    "author": "Jennifer Krouse",
-    "industryIds": [
-      "35534d6d-7cea-81ae-b6ea-c7c91195dcde"
-    ],
-    "translationIds": [],
-    "industries": [
-      "agricultural-tires"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81e6-859f-ea06cd52510b",
-    "wpId": 30502,
-    "trid": 95093,
-    "language": "en",
-    "title": "How to best maintain your construction equipment tires",
-    "slug": "how-to-best-maintain-your-construction-equipment-tires",
-    "type": "blog",
-    "excerpt": "In addition to maintaining your construction equipment, maintaining your construction machine’s tires is equally important to run an efficient operation. By maintaining your construction tires, it’ll have a direct impact on your bottom line.",
-    "publishedDate": "2024-04-19",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2024/04/How-to-best-maintain-your-construction-equipment-tires-featured-image.png",
-    "author": "Molly Chen",
-    "industryIds": [
-      "35534d6d-7cea-8167-9f06-d0ae6ee328d3"
-    ],
-    "translationIds": [],
-    "industries": [
-      "construction-tires"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-8122-82b1-fdc928ca7412",
-    "wpId": 30726,
-    "trid": 95116,
-    "language": "en",
-    "title": "How Different Tire Specs Affect Farm Equipment",
-    "slug": "different-manufacturers-agricultural-tire-sizes-and-its-impact-on-equipment",
-    "type": "blog",
-    "excerpt": "Why does the same size tire, in a different brand, often have a slightly larger or smaller overall diameter & section width, how much can variance be, what is impact on equipment, and do you build product in accordance to a specific standard and benchmark?",
-    "publishedDate": "2024-05-22",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2024/05/Ag-Tire-Talk_Question-40_BlogThumbnail.png",
-    "author": "Molly Chen",
-    "industryIds": [
-      "35534d6d-7cea-81ae-b6ea-c7c91195dcde"
-    ],
-    "translationIds": [],
-    "industries": [
-      "agricultural-tires"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-816f-8314-f93146473102",
-    "wpId": 33036,
-    "trid": 95395,
-    "language": "en",
-    "title": "5 radial tire tips to maximize your aggregate and quarry productivity",
-    "slug": "5-radial-tire-tips-to-maximize-your-aggregate-and-quarry-productivity",
-    "type": "blog",
-    "excerpt": "Knowing the type of tires that are appropriate for your earthmoving equipment and how to maintain them are equally important as maintaining your machines. Here are 5 ways to conducting a proper OTR (off-the-road) tire maintenance program, do this and it’ll directly impact your overall safety, productivity and cost.",
-    "publishedDate": "2024-10-22",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2024/10/5-radial-tire-tips-to-maximize-your-quarry-and-aggregate-equipment-productivity-thumbnail.png",
-    "author": "Molly Chen",
-    "industryIds": [
-      "35534d6d-7cea-8193-a922-d38658c5ec95"
-    ],
-    "translationIds": [],
-    "industries": [
-      "mining-tires"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-81d5-bf8e-c8aaf542e757",
-    "wpId": 36273,
-    "trid": 95752,
-    "language": "en",
-    "title": "5 Ways to Extend the Life of Your Rubber Tracks",
-    "slug": "5-ways-to-extend-the-life-of-your-rubber-tracks",
-    "type": "blog",
-    "excerpt": "Rubber tracks are the backbone of heavy machinery, enduring everything from rocky construction sites to waterlogged fields. While tracks are built to withstand harsh conditions, their lifespan hinges on proactive care.\n\nAt MAXAM, we’ve spent years refining rubber track technology, and we know that simple, consistent maintenance can mean the difference between years of reliable service and costly, unexpected downtime. Here’s how to prolong your track’s performance and lifespan.",
-    "publishedDate": "2025-05-21",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2024/11/rbt.jpg",
-    "author": "Matt Tranzillo",
-    "industryIds": [
-      "35534d6d-7cea-810c-b429-ddfc02d384e4"
-    ],
-    "translationIds": [],
-    "industries": [
-      "rubber-tracks"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-8100-96a6-ce8eac2f4115",
-    "wpId": 36501,
-    "trid": 95769,
-    "language": "en",
-    "title": "3 Ways to Choose the Right Ag Tire for Farm’s Demands",
-    "slug": "3-ways-to-choose-the-right-ag-tire-for-farms-demands",
-    "type": "blog",
-    "excerpt": "In agriculture, the right tire isn’t just about traction—it’s about matching its tire construction to the right application. With modern farms relying on heavier machinery, faster transport, and precision field work, selecting the optimal tire design ensures efficiency, reduces soil compaction, and maximizes productivity.",
-    "publishedDate": "2025-06-16",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2023/12/45-degree-lug-design.jpeg",
-    "author": "Trevor Wilson",
-    "industryIds": [
-      "35534d6d-7cea-81ae-b6ea-c7c91195dcde"
-    ],
-    "translationIds": [],
-    "industries": [
-      "agricultural-tires"
-    ]
-  },
-  {
-    "pageId": "35534d6d-7cea-8180-b892-e0cc38d91689",
-    "wpId": 37672,
-    "trid": 95843,
-    "language": "en",
-    "title": "MAXAM Tire Expands MS303 Scraper Line To Power Heavy-duty Earthmoving Performance",
-    "slug": "maxam-tire-expands-ms303-scraper-line-to-power-heavy-duty-earthmoving-performance",
-    "type": "in-the-news",
-    "excerpt": "",
-    "publishedDate": "2025-11-11",
-    "externalLink": null,
-    "featuredImage": "https://maxamtire.com/wp-content/uploads/2025/09/bc7563e9-9b10-43c8-bf4e-d383808c8797.jpg",
-    "author": "Trevor Wilson",
     "industryIds": [
       "35534d6d-7cea-8191-a6e5-fdbcb2d482b4"
     ],
