@@ -57,11 +57,21 @@ function buildTableBlock(specs: ProductSpecs) {
     table_row: { cells: headers.map((h) => richText(h, true)) },
   };
   const rows = specs.variants.map((v) => {
-    // Map field label -> value for alignment to header columns 1..n.
-    const byLabel = new Map(v.fields.map((f) => [f.label, f.value]));
+    // Align fields to header columns by label, consuming each field once so
+    // DUPLICATE headers (e.g. two "Infl. P." / two "L.C.C." columns — different
+    // load ratings) pick up their fields in order. A plain label->value map
+    // would collapse duplicates to the last value (the parity-gate bug).
+    // `fields` omits empty cells, so we match per-label FIFO rather than by
+    // position.
+    const queues = new Map<string, string[]>();
+    for (const f of v.fields) {
+      if (!queues.has(f.label)) queues.set(f.label, []);
+      queues.get(f.label)!.push(f.value);
+    }
     const cells = headers.map((h, i) => {
       if (i === 0) return richText(v.size);
-      return richText(byLabel.get(h) ?? '');
+      const q = queues.get(h);
+      return richText(q && q.length ? q.shift()! : '');
     });
     return { object: 'block' as const, type: 'table_row' as const, table_row: { cells } };
   });

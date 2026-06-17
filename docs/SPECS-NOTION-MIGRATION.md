@@ -134,6 +134,35 @@ facing change happens until parity is proven.
 6. Flip `data.ts` source / sync output path; retire build script; build + verify.
 7. Update CLAUDE.md (close the open loop).
 
+## Parity-gate results (2026-06-17, all 117 seeded + read back)
+
+Seeded all 117 English spec tables; ran the reader (`sync-product-specs.ts`) to a
+temp dir; diffed vs the committed (build-script) `product-specs.*.json`. Two
+seed/reader bugs were caught and fixed HERE, before any source flip:
+
+- **Duplicate-header collision (seed):** products with two `Infl. P.` / two
+  `L.C.C.` columns (different load ratings) collapsed to one value via a
+  `label→value` map. Fixed: align fields to columns FIFO-by-label. (23 → 1.)
+- **Leading-space trim (reader):** values like `" / 700"` (empty imperial /
+  metric 700) lost their leading space. Partly a reader `.trim()` (fixed) and
+  partly Notion stripping leading whitespace in table cells at write time
+  (unavoidable) — a benign normalization.
+
+**Remaining differences, all explained:**
+- **English: byte-identical except ~10 whitespace-normalization cases.** ✓
+- **165 value diffs across languages = exactly the WP-corruption fixes** the
+  audit predicted (canonicalizing on English). Intended. ✓
+- **~114 whitespace-only diffs** (the `" / 700"` pattern). Benign.
+- **Keying-model difference:** committed files are keyed by per-LOCALE WPML slug
+  (incl. `-2` collision slugs); the new files are keyed by canonical/English
+  slug. This is *more correct* (locale-stable, matches the `urlSlug` decision #6)
+  but means `data.ts getProductSpecs` must look specs up by canonical slug, not
+  `row.slug`. **This is the one load-bearing change required to flip the source.**
+
+**Verdict:** the loop works end-to-end. Flipping requires (a) a `data.ts` keying
+change and (b) accepting two documented benign diffs (whitespace, English-value
+canonicalization). Checkpoint with the user before flipping (work-style rule #9).
+
 ## Risks / open questions
 
 - **Slug/page matching:** seed must reliably map `product-specs` keys (slugs) →
